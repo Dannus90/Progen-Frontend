@@ -22,7 +22,7 @@ interface Props {
 export type LandingScreenClasses = "pageWrapperStyles";
 
 const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Element => {
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
   const theme = useTheme<MainTheme>();
 
   const landingScreenStyles = makeStyles({

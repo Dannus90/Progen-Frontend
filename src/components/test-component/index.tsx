@@ -17,7 +17,7 @@ const TestComponentWrapper: React.FC = (): JSX.Element => {
 
   const testComponentStyles = makeStyles({
     test: {
-      backgroundColor: `${theme.colorPrimary}`,
+      backgroundColor: `${theme.palette.primary.main}`,
       height: "50px",
       width: "50px"
     },

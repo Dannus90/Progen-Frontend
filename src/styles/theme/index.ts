@@ -1,6 +1,13 @@
-import { theme } from "./Theme";
-import { themeColors } from "./ThemeColors";
+/**
+ * Merging theme.
+ *
+ * @author Daniel Persson
+ * @version 1.0.0
+ */
 
-export const mainTheme = Object.assign(theme, themeColors);
+import { theme } from "./Theme";
+import { overrides } from "./Overrides";
+
+export const mainTheme = Object.assign(theme, overrides);
 
 export type MainTheme = typeof mainTheme;

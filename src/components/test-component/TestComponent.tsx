@@ -13,7 +13,7 @@ const TestComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   return (
     <div>
-      <h2 style={{ color: `${theme.colorPrimary}` }}>Testar</h2>
+      <h2 style={{ color: `${theme.palette.secondary.main}` }}>Testar</h2>
       <div className={`${styles.test}`} />
     </div>
   );

@@ -11,7 +11,8 @@ const defaultColors = {
   colorPrimary: "#26A69A",
   colorPrimaryLight: "#26C0B2",
   colorSecondary: "#445E93",
-  colorSecondaryLight: "#102927"
+  colorSecondaryLight: "#102927",
+  textColorDarkPrimary: "#212529"
 };
 
 // Incase we want to override some material ui theme styles it is done here.
@@ -33,7 +34,8 @@ export const overrides = createMuiTheme({
           WebkitFontSmoothing: "auto"
         },
         body: {
-          letterSpacing: "0.075rem"
+          letterSpacing: "0.075rem",
+          color: "#212529"
         },
         a: {
           textDecoration: "none"
@@ -45,6 +47,11 @@ export const overrides = createMuiTheme({
       text: {
         // Some CSS
         color: "#fff"
+      }
+    },
+    MuiPaper: {
+      root: {
+        color: "#212529"
       }
     }
   }

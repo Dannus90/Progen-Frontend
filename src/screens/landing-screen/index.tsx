@@ -1,6 +1,7 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Paper, Theme, CircularProgress, Typography } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
+import { useTranslation } from "react-i18next";
 import React, { CSSProperties, lazy, Suspense } from "react";
 import { MainTheme } from "../../styles/theme";
 import LandingScreen from "./LandingScreen";
@@ -21,6 +22,7 @@ interface Props {
 export type LandingScreenClasses = "pageWrapperStyles";
 
 const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Element => {
+  const { t, i18n } = useTranslation("common");
   const theme = useTheme<MainTheme>();
 
   const landingScreenStyles = makeStyles({
@@ -31,6 +33,21 @@ const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Elem
       display: "flex",
       justifyContent: "center",
       alignItems: "center"
+    },
+    fallbackWrapper: {
+      width: "50%",
+      height: "50%",
+      maxWidth: "500px",
+      maxHeight: "500px",
+      minWidth: "240px",
+      minHeight: "240px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column"
+    },
+    progressSpacer: {
+      marginBottom: "1rem"
     }
   });
 
@@ -49,9 +66,18 @@ const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Elem
     }
   };
 
+  const fallbackComponent = () => {
+    return (
+      <Paper className={styles.fallbackWrapper} elevation={2}>
+        <CircularProgress size={120} thickness={2.4} className={styles.progressSpacer} />
+        <Typography variant="h5">{t("appStates.generalLoading")}</Typography>
+      </Paper>
+    );
+  };
+
   return (
     <LandingScreen styles={styles}>
-      <Suspense fallback={<div>Loading...</div>}>{componentToRender()}</Suspense>
+      <Suspense fallback={fallbackComponent()}>{componentToRender()}</Suspense>
     </LandingScreen>
   );
 };

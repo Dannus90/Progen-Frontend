@@ -4,6 +4,8 @@ import "./styles/theme/global.scss";
 import { ApplicationRoutes } from "./ApplicationRoutes";
 import { CssBaseline } from "@material-ui/core";
 import { I18nextProvider } from "react-i18next";
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "./ApolloClient";
 import i18next from "./i18NextSetup";
 
 const App = (): JSX.Element => {
@@ -11,7 +13,9 @@ const App = (): JSX.Element => {
     <ThemeProvider theme={mainTheme}>
       <CssBaseline />
       <I18nextProvider i18n={i18next}>
-        <ApplicationRoutes />
+        <ApolloProvider client={apolloClient}>
+          <ApplicationRoutes />
+        </ApolloProvider>
       </I18nextProvider>
     </ThemeProvider>
   );

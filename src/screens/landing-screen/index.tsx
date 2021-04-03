@@ -1,22 +1,26 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, lazy, Suspense } from "react";
 import { MainTheme } from "../../styles/theme";
 import LandingScreen from "./LandingScreen";
+const Login = lazy(() => import("../../components/landing-screen-components/login/index"));
+const Register = lazy(() => import("../../components/landing-screen-components/register/index"));
+const ResetPassword = lazy(
+  () => import("../../components/landing-screen-components/reset-password/index")
+);
 
 export interface LandingScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
 }
 
-export type LandingScreenClasses = "pageWrapperStyles";
-
 interface Props {
-  children: React.ReactNode;
+  componentToDisplay: string;
 }
 
-const LandingScreenWrapper: React.FC<Props> = ({ children }): JSX.Element => {
-  console.log(children);
+export type LandingScreenClasses = "pageWrapperStyles";
+
+const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const landingScreenStyles = makeStyles({
@@ -32,9 +36,22 @@ const LandingScreenWrapper: React.FC<Props> = ({ children }): JSX.Element => {
 
   const styles = landingScreenStyles();
 
+  const componentToRender = () => {
+    switch (componentToDisplay) {
+      case "login":
+        return <Login />;
+      case "register":
+        return <Register />;
+      case "reset-password":
+        return <ResetPassword />;
+      default:
+        return <Login />;
+    }
+  };
+
   return (
     <LandingScreen styles={styles}>
-      <>{children}</>
+      <Suspense fallback={<div>Loading...</div>}>{componentToRender()}</Suspense>
     </LandingScreen>
   );
 };

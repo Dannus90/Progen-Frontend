@@ -10,7 +10,7 @@ export interface RegisterComponentStyles extends Theme {
   registerContainer: CreateCSSProperties | CSSProperties;
 }
 
-export type RegisterComponentClasses = "registerPaper" | "registerContainer";
+export type RegisterComponentClasses = "registerPaper" | "registerContainer" | "headingStyle";
 
 const RegisterComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();

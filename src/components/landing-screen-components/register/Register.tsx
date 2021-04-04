@@ -38,10 +38,13 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 name="firstName"
                 variant="outlined"
                 required
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
                 fullWidth
                 id="firstName"
                 label={t("form.firstName")}
                 autoFocus
+                size="small"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -50,9 +53,12 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 required
                 fullWidth
                 id="lastName"
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("form.lastName")}
                 name="lastName"
                 autoComplete="lname"
+                size="small"
               />
             </Grid>
             <Grid item xs={12}>
@@ -61,9 +67,12 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 required
                 fullWidth
                 id="email"
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("form.email")}
                 name="email"
                 autoComplete="email"
+                size="small"
               />
             </Grid>
             <Grid item xs={12}>
@@ -72,10 +81,13 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 required
                 fullWidth
                 name="password"
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("form.password")}
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                size="small"
               />
             </Grid>
             <Grid item xs={12}>

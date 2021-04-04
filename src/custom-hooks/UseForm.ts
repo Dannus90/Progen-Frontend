@@ -13,7 +13,5 @@ export const useForm = (initialState: RegisterFormData): ReturnObject => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(formData);
-
   return { formData, handleInputChange };
 };

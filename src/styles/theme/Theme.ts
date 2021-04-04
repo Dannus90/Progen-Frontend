@@ -5,6 +5,14 @@
  * @version 1.0.0
  */
 
- export const theme = {
-  landingScreenBackground: `linear-gradient(#102927, #445E93)`
+export const theme = {
+  landingScreenBackground: `linear-gradient(#102927, #445E93)`,
+  customSpacings: {
+    xs: "0.5rem",
+    s: "1rem",
+    m: "1.5rem",
+    l: "2rem",
+    xl: "2.5rem",
+    xxl: "3rem"
+  }
 };

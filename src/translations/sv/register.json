@@ -1,0 +1,12 @@
+{
+  "form": {
+      "header": "Registrera dig till ProGen",
+      "termsOfUse1": "Genom att klicka i checkboxen acceptar du våra ",
+      "termsOfUse2": "användarvillkor",
+      "firstName": "Förnamn",
+      "lastName": "Efternamn",
+      "email": "Email Address",
+      "password": "Lösenord",
+      "alreadyHaveAccount": "Har du redan en användare? Logga in"
+  }
+}

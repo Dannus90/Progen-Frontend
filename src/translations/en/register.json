@@ -1,0 +1,12 @@
+{
+  "form": {
+      "header": "Sign up to ProGen",
+      "termsOfUse1": "By checking the box you agree to our ",
+      "termsOfUse2": "terms of use.",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email Address",
+      "password": "Password",
+      "alreadyHaveAccount": "Already have an account? Sign in"
+  }
+}

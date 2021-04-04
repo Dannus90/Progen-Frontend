@@ -8,6 +8,7 @@
       "es5",
       "es6"
     ],
+    "typeRoots": ["node_modules/@types", "src/config"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,

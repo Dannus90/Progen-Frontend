@@ -10,7 +10,6 @@ import {
   Typography,
   TextField,
   Grid,
-  FormControlLabel,
   Checkbox,
   Link,
   Button
@@ -90,6 +89,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 autoComplete="current-password"
                 size="small"
               />
+              <p className={`${styles.passwordRules}`}>{t("form.passwordLength")}</p>
             </Grid>
             <Container className={`${styles.termsAgreementContainer}`}>
               <Checkbox value="allowExtraEmails" color="primary" />

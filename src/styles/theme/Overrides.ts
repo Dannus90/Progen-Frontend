@@ -16,6 +16,7 @@ const defaultColors = {
   textColorDarkPrimary: "#212529",
   textColorDarkLight: "#505050",
   textColorGreyPrimary: "#909090",
+  textColorGreyLight: "#888",
   lightBackgroundPrimary: "#fff"
 };
 
@@ -41,7 +42,8 @@ export const overrides = createMuiTheme({
         light: defaultColors.textColorDarkLight
       },
       textVariantGrey: {
-        main: defaultColors.textColorGreyPrimary
+        main: defaultColors.textColorGreyPrimary,
+        light: defaultColors.textColorGreyLight
       }
     }
   },

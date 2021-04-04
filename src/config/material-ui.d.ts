@@ -13,6 +13,7 @@ declare module "@material-ui/core/styles/createMuiTheme" {
         };
         textVariantGrey: {
           main: string;
+          light: string;
         };
       };
     };
@@ -30,6 +31,7 @@ declare module "@material-ui/core/styles/createMuiTheme" {
         };
         textVariantGrey?: {
           main?: string;
+          light?: string;
         };
       };
     };

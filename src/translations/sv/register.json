@@ -10,6 +10,7 @@
       "alreadyHaveAccount1": "Har du redan en användare? ",
       "alreadyHaveAccount2": "Logga in.",
       "signUp": "Registrera dig",
-      "createCV": "Skapa ditt professionella CV"
+      "createCV": "Skapa ditt professionella CV",
+      "passwordLength": "8 tecken minst"
   }
 }

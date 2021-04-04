@@ -13,6 +13,7 @@ export interface RegisterComponentStyles extends Theme {
   termsAgreementContainer: CreateCSSProperties | CSSProperties;
   termsAgreementText: CreateCSSProperties | CSSProperties;
   submitButtonSpacer: CreateCSSProperties | CSSProperties;
+  passwordRules: CreateCSSProperties | CSSProperties;
 }
 
 export type RegisterComponentClasses =
@@ -22,7 +23,8 @@ export type RegisterComponentClasses =
   | "paragraphStyle"
   | "termsAgreementContainer"
   | "termsAgreementText"
-  | "submitButtonSpacer";
+  | "submitButtonSpacer"
+  | "passwordRules";
 
 const RegisterComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -60,6 +62,13 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
     },
     submitButtonSpacer: {
       marginBottom: `${theme.customSpacings.xxs}`
+    },
+    passwordRules: {
+      color: `${theme.custom.palette.textVariantGrey.light}`,
+      fontSize: "0.8rem",
+      marginLeft: `${theme.customSpacings.xxs}`,
+      marginTop: `${theme.customSpacings.xxxs}`,
+      lineHeight: "1.25rem"
     }
   });
 

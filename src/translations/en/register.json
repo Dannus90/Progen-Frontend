@@ -10,6 +10,7 @@
       "alreadyHaveAccount1": "Already have an account? ",
       "alreadyHaveAccount2": "Sign in.",
       "signUp": "Sign up",
-      "createCV": "Create your professional CV"
+      "createCV": "Create your professional CV",
+      "passwordLength": "8 characters minimum"
   }
 }

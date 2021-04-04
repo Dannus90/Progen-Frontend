@@ -7,6 +7,7 @@
       "lastName": "Last name",
       "email": "Email Address",
       "password": "Password",
-      "alreadyHaveAccount": "Already have an account? Sign in"
+      "alreadyHaveAccount": "Already have an account? Sign in",
+      "signUp": "Sign up"
   }
 }

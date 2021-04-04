@@ -86,7 +86,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
             </Grid>
           </Grid>
           <Button type="submit" fullWidth variant="contained" color="primary">
-            Sign Up
+            {t("form.signUp")}
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

@@ -8,6 +8,8 @@
 export const theme = {
   landingScreenBackground: `linear-gradient(#102927, #445E93)`,
   customSpacings: {
+    xxxs: "0.15rem",
+    xxs: "0.25rem",
     xs: "0.5rem",
     s: "1rem",
     m: "1.5rem",

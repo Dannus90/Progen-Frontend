@@ -8,13 +8,21 @@ import Register from "./Register";
 export interface RegisterComponentStyles extends Theme {
   registerPaper: CreateCSSProperties | CSSProperties;
   registerContainer: CreateCSSProperties | CSSProperties;
+  headingStyle: CreateCSSProperties | CSSProperties;
+  paragraphStyle: CreateCSSProperties | CSSProperties;
+  termsAgreementContainer: CreateCSSProperties | CSSProperties;
+  termsAgreementText: CreateCSSProperties | CSSProperties;
+  submitButtonSpacer: CreateCSSProperties | CSSProperties;
 }
 
 export type RegisterComponentClasses =
   | "registerPaper"
   | "registerContainer"
   | "headingStyle"
-  | "paragraphStyle";
+  | "paragraphStyle"
+  | "termsAgreementContainer"
+  | "termsAgreementText"
+  | "submitButtonSpacer";
 
 const RegisterComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -38,6 +46,20 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
       marginBottom: `${theme.customSpacings.m}`,
       color: `${theme.custom.palette.textVariantGrey.main}`,
       fontSize: "0.85rem"
+    },
+    termsAgreementContainer: {
+      display: "flex",
+      alignItems: "center",
+      padding: "0px",
+      marginBottom: `${theme.customSpacings.m}`
+    },
+    termsAgreementText: {
+      color: `${theme.custom.palette.textVariantDark.light}`,
+      fontSize: "0.85rem",
+      lineHeight: "1.25rem"
+    },
+    submitButtonSpacer: {
+      marginBottom: `${theme.customSpacings.xxs}`
     }
   });
 

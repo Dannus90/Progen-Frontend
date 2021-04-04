@@ -91,21 +91,29 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 size="small"
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label={`${t("form.termsOfUse1")} <a href="">${t("form.termsOfUse2")}</a>`}
-              />
-            </Grid>
+            <Container className={`${styles.termsAgreementContainer}`}>
+              <Checkbox value="allowExtraEmails" color="primary" />
+              <Typography className={`${styles.termsAgreementText}`}>
+                {t("form.termsOfUse1")} {t("form.termsOfUse2")}
+              </Typography>
+            </Container>
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary">
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={`${styles.submitButtonSpacer}`}>
             {t("form.signUp")}
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/login" variant="body2">
-                {t("form.alreadyHaveAccount")}
-              </Link>
+              <Typography className={`${styles.termsAgreementText}`}>
+                {t("form.alreadyHaveAccount1")}{" "}
+                <Link href="/login" variant="body2">
+                  {t("form.alreadyHaveAccount2")}
+                </Link>
+              </Typography>
             </Grid>
           </Grid>
         </form>

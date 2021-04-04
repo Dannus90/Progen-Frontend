@@ -1,13 +1,14 @@
 {
   "form": {
       "header": "Registrera dig till ProGen",
-      "termsOfUse1": "Genom att klicka i checkboxen acceptar du våra ",
-      "termsOfUse2": "användarvillkor",
+      "termsOfUse1": "Jag accepterar ",
+      "termsOfUse2": "användarvillkoren.",
       "firstName": "Förnamn",
       "lastName": "Efternamn",
       "email": "Email Address",
       "password": "Lösenord",
-      "alreadyHaveAccount": "Har du redan en användare? Logga in",
+      "alreadyHaveAccount1": "Har du redan en användare? ",
+      "alreadyHaveAccount2": "Logga in.",
       "signUp": "Registrera dig",
       "createCV": "Skapa ditt professionella CV"
   }

@@ -10,7 +10,11 @@ export interface RegisterComponentStyles extends Theme {
   registerContainer: CreateCSSProperties | CSSProperties;
 }
 
-export type RegisterComponentClasses = "registerPaper" | "registerContainer" | "headingStyle";
+export type RegisterComponentClasses =
+  | "registerPaper"
+  | "registerContainer"
+  | "headingStyle"
+  | "paragraphStyle";
 
 const RegisterComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -25,10 +29,15 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
       borderRadius: "3px"
     },
     registerContainer: {
-      padding: `${theme.customSpacings.xl} ${theme.customSpacings.l}`
+      padding: `${theme.customSpacings.xxl} ${theme.customSpacings.xxl}`
     },
     headingStyle: {
       color: `${theme.custom.palette.textVariantDark.main}`
+    },
+    paragraphStyle: {
+      marginBottom: `${theme.customSpacings.m}`,
+      color: `${theme.custom.palette.textVariantGrey.main}`,
+      fontSize: "0.85rem"
     }
   });
 

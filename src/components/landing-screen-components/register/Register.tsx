@@ -27,11 +27,12 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
   return (
     <Paper elevation={2} className={`${styles.registerPaper}`}>
       <Container maxWidth="sm" className={`${styles.registerContainer}`}>
-        <Typography component="h1" variant="h6">
+        <Typography component="h1" variant="h6" className={`${styles.headingStyle}`}>
           {t("form.header")}
         </Typography>
+        <p className={`${styles.paragraphStyle}`}>{t("form.createCV")}</p>
         <form noValidate>
-          <Grid container spacing={2}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
@@ -93,7 +94,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label={t("form.termsOfUse1")}
+                label={`${t("form.termsOfUse1")} <a href="">${t("form.termsOfUse2")}</a>`}
               />
             </Grid>
           </Grid>

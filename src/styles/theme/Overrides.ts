@@ -1,3 +1,4 @@
+import { mainTheme } from "./index";
 /**
  * Material UI theming and overrides.
  *
@@ -5,8 +6,7 @@
  * @version 1.0.0
  */
 
-import { createMuiTheme, Theme, ThemeOptions } from "@material-ui/core";
-import { dark, Palette } from "@material-ui/core/styles/createPalette";
+import { createMuiTheme, ThemeOptions } from "@material-ui/core";
 
 const defaultColors = {
   colorPrimary: "#26A69A",
@@ -14,6 +14,8 @@ const defaultColors = {
   colorSecondary: "#445E93",
   colorSecondaryLight: "#102927",
   textColorDarkPrimary: "#212529",
+  textColorDarkLight: "#505050",
+  textColorGreyPrimary: "#909090",
   lightBackgroundPrimary: "#fff"
 };
 
@@ -35,7 +37,11 @@ export const overrides = createMuiTheme({
         main: defaultColors.lightBackgroundPrimary
       },
       textVariantDark: {
-        main: defaultColors.textColorDarkPrimary
+        main: defaultColors.textColorDarkPrimary,
+        light: defaultColors.textColorDarkLight
+      },
+      textVariantGrey: {
+        main: defaultColors.textColorGreyPrimary
       }
     }
   },

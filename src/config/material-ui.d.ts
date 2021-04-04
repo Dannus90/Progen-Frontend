@@ -9,6 +9,10 @@ declare module "@material-ui/core/styles/createMuiTheme" {
         };
         textVariantDark: {
           main: string;
+          light: string;
+        };
+        textVariantGrey: {
+          main: string;
         };
       };
     };
@@ -21,6 +25,10 @@ declare module "@material-ui/core/styles/createMuiTheme" {
           main?: string;
         };
         textVariantDark?: {
+          main?: string;
+          light?: string;
+        };
+        textVariantGrey?: {
           main?: string;
         };
       };

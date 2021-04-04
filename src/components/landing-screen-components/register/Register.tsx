@@ -14,12 +14,28 @@ import {
   Link,
   Button
 } from "@material-ui/core";
+import { useForm } from "../../../custom-hooks/UseForm";
 
 interface Props {
   styles: ClassNameMap<RegisterComponentClasses>;
 }
 
+export interface RegisterFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
+const initialFormState: RegisterFormData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: ""
+};
+
 const Register: React.FC<Props> = ({ styles }): JSX.Element => {
+  const { formData, handleInputChange } = useForm(initialFormState);
   const { t } = useTranslation("register");
   const theme = useTheme<MainTheme>();
 
@@ -38,6 +54,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 name="firstName"
                 variant="outlined"
                 required
+                onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 fullWidth
@@ -53,6 +70,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 required
                 fullWidth
                 id="lastName"
+                onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("form.lastName")}
@@ -67,6 +85,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 required
                 fullWidth
                 id="email"
+                onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("form.email")}
@@ -81,6 +100,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 required
                 fullWidth
                 name="password"
+                onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("form.password")}

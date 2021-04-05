@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useTheme } from "@material-ui/core/styles";
-import { MainTheme } from "../../../styles/theme";
 import { useTranslation } from "react-i18next";
 import { RegisterComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
@@ -15,11 +13,13 @@ import {
   Grid,
   Checkbox,
   Link,
-  Button
+  Button,
+  CircularProgress
 } from "@material-ui/core";
 import { useForm } from "../../../custom-hooks/UseForm";
 import { RegisterData, RegisterFormData, RegisterResponse } from "./interfaces/register-interfaces";
 import DraggableModal from "../../common/modals/DraggableModal";
+import { useNavigation } from "../../../custom-hooks/UseNavigation";
 
 interface Props {
   styles: ClassNameMap<RegisterComponentClasses>;
@@ -34,7 +34,9 @@ const initialFormState: RegisterFormData = {
 
 const Register: React.FC<Props> = ({ styles }): JSX.Element => {
   const { formData, handleInputChange } = useForm(initialFormState);
+  const { navigateTo } = useNavigation();
   const { t } = useTranslation("register");
+  const [submitDisabled, setSubmitDisabled] = useState(false);
   const [agreementChecked, setAgreementChecked] = useState(false);
   const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
   const [displayAgreementError, setDisplayAgreementError] = useState(false);
@@ -78,6 +80,11 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
 
   const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    // Prevent resubmitting.
+    if (submitDisabled) {
+      return;
+    }
+
     setDisplayAgreementError(false);
     setDisplayErrorMessage(false);
     if (!agreementChecked) {
@@ -85,6 +92,10 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
       return;
     }
     registerUser();
+    setSubmitDisabled(true);
+    setTimeout(() => {
+      setSubmitDisabled(false);
+    }, 1500);
   };
 
   const removeErrorDisplay = (): void => {
@@ -98,6 +109,14 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
   useEffect(() => {
     setDisplayErrorMessage(true);
   }, [error]);
+
+  useEffect(() => {
+    if (data) {
+      setTimeout(() => {
+        navigateTo("/login");
+      }, 1000);
+    }
+  }, [data]);
 
   return (
     <Paper elevation={2} className={`${styles.registerPaper}`}>
@@ -216,16 +235,26 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 </span>
               </Typography>
             </Container>
-            {data && data?.authentication.registerUser.message}
           </Grid>
+
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={`${styles.submitButtonSpacer}`}>
-            {t("form.signUp")}
+            {data ? (
+              <>
+                <span className={`${styles.successRegistration}`}>
+                  {data?.authentication.registerUser.message}
+                </span>
+                <CircularProgress size={20} color="inherit" />
+              </>
+            ) : (
+              t("form.signUp")
+            )}
           </Button>
+
           <Grid container justify="flex-end">
             <Grid item>
               <Typography className={`${styles.termsAgreementText}`}>

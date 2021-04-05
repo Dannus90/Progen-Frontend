@@ -15,6 +15,8 @@ export interface RegisterComponentStyles extends Theme {
   submitButtonSpacer: CreateCSSProperties | CSSProperties;
   passwordRules: CreateCSSProperties | CSSProperties;
   alertStyle: CreateCSSProperties | CSSProperties;
+  agreementButton: CreateCSSProperties | CSSProperties;
+  successRegistration: CreateCSSProperties | CSSProperties;
 }
 
 export type RegisterComponentClasses =
@@ -27,7 +29,8 @@ export type RegisterComponentClasses =
   | "submitButtonSpacer"
   | "passwordRules"
   | "alertStyle"
-  | "agreementButton";
+  | "agreementButton"
+  | "successRegistration";
 
 const RegisterComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -90,6 +93,9 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
       outline: "none",
       width: "100%",
       cursor: "pointer"
+    },
+    successRegistration: {
+      paddingRight: "1rem"
     }
   });
 

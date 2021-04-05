@@ -26,7 +26,8 @@ export type RegisterComponentClasses =
   | "termsAgreementText"
   | "submitButtonSpacer"
   | "passwordRules"
-  | "alertStyle";
+  | "alertStyle"
+  | "agreementButton";
 
 const RegisterComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -44,7 +45,8 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
       padding: `${theme.customSpacings.xxl} ${theme.customSpacings.xxl}`
     },
     headingStyle: {
-      color: `${theme.custom.palette.textVariantDark.main}`
+      color: `${theme.custom.palette.textVariantDark.main}`,
+      lineHeight: "1.45rem"
     },
     paragraphStyle: {
       marginBottom: `${theme.customSpacings.m}`,
@@ -55,7 +57,7 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
       display: "flex",
       alignItems: "center",
       padding: "0px",
-      marginBottom: `${theme.customSpacings.xs}`
+      marginBottom: `${theme.customSpacings.s}`
     },
     termsAgreementText: {
       color: `${theme.custom.palette.textVariantDark.light}`,
@@ -80,6 +82,13 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
       padding: "0px 10px",
       fontSize: "14px",
       marginBottom: `${theme.customSpacings.s}`
+    },
+    agreementButton: {
+      textDecoration: "underline",
+      color: `${theme.palette.primary.main}`,
+      outline: "none",
+      width: "100%",
+      cursor: "pointer"
     }
   });
 

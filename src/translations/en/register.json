@@ -2,7 +2,9 @@
   "form": {
       "header": "ProGen - Signup",
       "termsOfUse1": "I agree to the ",
-      "termsOfUse2": "terms of the service.",
+      "termsOfUse2": "terms of the service ",
+      "termsOfUse3": "and the ",
+      "termsOfUse4": "privacy policy.",
       "firstName": "First name",
       "lastName": "Last name",
       "email": "Email Address",
@@ -12,6 +14,18 @@
       "signUp": "Sign up",
       "createCV": "Create your professional CV",
       "passwordLength": "10 characters minimum",
-      "missingAgreementCheck": "Please accept the terms of agreement."
+      "missingAgreementCheck": "Please accept the terms of agreement.",
+      "modalText": {
+        "agreementModal": {
+          "header": "Terms of the service.",
+          "p1": "By accepting our terms of agreement you do accept that we store personal data.",
+          "p2": "Once you have accepted your data will be stored until the account is deleted."
+        },
+        "policyModal": {
+          "header": "Privacy Policy.",
+          "p1": "By accepting our privacy policy you do accept that we store personal data.",
+          "p2": "Once you have accepted your data will be stored until the account is deleted."
+        }
+      }
   }
 }

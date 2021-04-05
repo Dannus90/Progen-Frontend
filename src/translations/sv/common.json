@@ -1,5 +1,8 @@
 {
   "appStates": {
       "generalLoading": "Laddar..."
+  },
+  "buttonText": {
+    "close": "Stäng"
   }
 }

@@ -2,7 +2,9 @@
   "form": {
       "header": "ProGen - Registrering",
       "termsOfUse1": "Jag accepterar ",
-      "termsOfUse2": "användarvillkoren.",
+      "termsOfUse2": "användarvillkoren ",
+      "termsOfUse3": "och ",
+      "termsOfUse4": "integritetspolicyn.",
       "firstName": "Förnamn",
       "lastName": "Efternamn",
       "email": "Email Address",
@@ -12,6 +14,18 @@
       "signUp": "Registrera dig",
       "createCV": "Skapa ditt professionella CV",
       "passwordLength": "10 tecken minst",
-      "missingAgreementCheck": "Vänligen acceptera användarvillkoren."
+      "missingAgreementCheck": "Vänligen acceptera användarvillkoren.",
+      "modalText": {
+        "agreementModal": {
+          "header": "Användarvillkor",
+          "p1": "Genom att acceptera våra användarvillkor godkänner du att vi lagrar personlig data.",
+          "p2": "När du accepterar så lagras din personliga data fram till den dagen du avslutar ditt konto."
+        },
+        "policyModal": {
+          "header": "Integritetspolicy",
+          "p1": "Genom att acceptera vår integritetspolicy godkänner du att vi lagrar personlig data.",
+          "p2": "När du accepterar så lagras din personliga data fram till den dagen du avslutar ditt konto."
+        }
+      }
   }
 }

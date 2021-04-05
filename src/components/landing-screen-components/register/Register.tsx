@@ -19,6 +19,7 @@ import {
 } from "@material-ui/core";
 import { useForm } from "../../../custom-hooks/UseForm";
 import { RegisterData, RegisterFormData, RegisterResponse } from "./interfaces/register-interfaces";
+import DraggableModal from "../../common/modals/DraggableModal";
 
 interface Props {
   styles: ClassNameMap<RegisterComponentClasses>;
@@ -34,7 +35,6 @@ const initialFormState: RegisterFormData = {
 const Register: React.FC<Props> = ({ styles }): JSX.Element => {
   const { formData, handleInputChange } = useForm(initialFormState);
   const { t } = useTranslation("register");
-  const theme = useTheme<MainTheme>();
   const [agreementChecked, setAgreementChecked] = useState(false);
   const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
   const [displayAgreementError, setDisplayAgreementError] = useState(false);
@@ -53,6 +53,25 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
     errorPolicy: "all"
   });
 
+  const [modalAgreementOpen, setModalAgreementOpen] = useState(false);
+  const [modalPrivacyPolicyOpen, setHandlePrivacyPolicyModalOpen] = useState(false);
+
+  const handleAgreementModalOpen = (): void => {
+    setModalAgreementOpen(true);
+  };
+
+  const handleAgreementModalClose = (): void => {
+    setModalAgreementOpen(false);
+  };
+
+  const handlePrivacyPolicyModalOpen = (): void => {
+    setHandlePrivacyPolicyModalOpen(true);
+  };
+
+  const handlePrivacyPolicyModalClose = (): void => {
+    setHandlePrivacyPolicyModalOpen(false);
+  };
+
   const handleAgreementCheckedState = (): void => {
     setAgreementChecked((prev) => !prev);
   };
@@ -68,11 +87,11 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
     registerUser();
   };
 
-  const removeErrorDisplay = () => {
+  const removeErrorDisplay = (): void => {
     setDisplayErrorMessage(false);
   };
 
-  const removeAgreementErrorDisplay = () => {
+  const removeAgreementErrorDisplay = (): void => {
     setDisplayAgreementError(false);
   };
 
@@ -177,7 +196,24 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 onChange={() => handleAgreementCheckedState()}
               />
               <Typography className={`${styles.termsAgreementText}`}>
-                {t("form.termsOfUse1")} {t("form.termsOfUse2")}
+                {t("form.termsOfUse1")}{" "}
+                <span
+                  className={`${styles.agreementButton}`}
+                  role="button"
+                  tabIndex={-1}
+                  onClick={() => handleAgreementModalOpen()}
+                  onKeyDown={() => handleAgreementModalOpen()}>
+                  {t("form.termsOfUse2")}
+                </span>
+                {t("form.termsOfUse3")}{" "}
+                <span
+                  className={`${styles.agreementButton}`}
+                  role="button"
+                  tabIndex={-1}
+                  onClick={() => handlePrivacyPolicyModalOpen()}
+                  onKeyDown={() => handlePrivacyPolicyModalOpen()}>
+                  {t("form.termsOfUse4")}
+                </span>
               </Typography>
             </Container>
             {data && data?.authentication.registerUser.message}
@@ -202,6 +238,20 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
           </Grid>
         </form>
       </Container>
+      <DraggableModal
+        header={t("form.modalText.agreementModal.header")}
+        p1={t("form.modalText.agreementModal.p1")}
+        p2={t("form.modalText.agreementModal.p2")}
+        handleClose={handleAgreementModalClose}
+        open={modalAgreementOpen}
+      />
+      <DraggableModal
+        header={t("form.modalText.policyModal.header")}
+        p1={t("form.modalText.policyModal.p1")}
+        p2={t("form.modalText.policyModal.p2")}
+        handleClose={handlePrivacyPolicyModalClose}
+        open={modalPrivacyPolicyOpen}
+      />
     </Paper>
   );
 };

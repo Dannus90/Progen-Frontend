@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "@material-ui/core/styles";
 import { MainTheme } from "../../../styles/theme";
 import { useTranslation } from "react-i18next";
@@ -6,6 +6,7 @@ import { RegisterComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { useMutation } from "@apollo/client";
 import { REGISTER_USER } from "./gql";
+import { Alert } from "@material-ui/lab";
 import {
   Container,
   Paper,
@@ -34,6 +35,8 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
   const { formData, handleInputChange } = useForm(initialFormState);
   const { t } = useTranslation("register");
   const theme = useTheme<MainTheme>();
+  const [agreementChecked, setAgreementChecked] = useState(false);
+  const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
   const [registerUser, { error, data }] = useMutation<{
     authentication: RegisterResponse;
     registerUserInput: RegisterData;
@@ -45,13 +48,26 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
         email: formData.email,
         password: formData.password
       }
-    }
+    },
+    errorPolicy: "all"
   });
+
+  const handleAgreementCheckedState = (): void => {
+    setAgreementChecked((prev) => !prev);
+  };
 
   const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     registerUser();
   };
+
+  const removeErrorDisplay = () => {
+    setDisplayErrorMessage(false);
+  };
+
+  useEffect(() => {
+    setDisplayErrorMessage(true);
+  }, [error]);
 
   return (
     <Paper elevation={2} className={`${styles.registerPaper}`}>
@@ -60,6 +76,16 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
           {t("form.header")}
         </Typography>
         <p className={`${styles.paragraphStyle}`}>{t("form.createCV")}</p>
+        {displayErrorMessage && error && error.graphQLErrors && (
+          <Alert
+            className={`${styles.alertStyle}`}
+            onClose={() => removeErrorDisplay()}
+            severity="error">
+            {error?.graphQLErrors.map(
+              (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+            )}
+          </Alert>
+        )}
         <form noValidate onSubmit={(e) => handleRegisterUser(e)}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
@@ -126,7 +152,11 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
               <p className={`${styles.passwordRules}`}>{t("form.passwordLength")}</p>
             </Grid>
             <Container className={`${styles.termsAgreementContainer}`}>
-              <Checkbox value="allowExtraEmails" color="primary" />
+              <Checkbox
+                value="acceptTermsAgreement"
+                color="primary"
+                onChange={() => handleAgreementCheckedState()}
+              />
               <Typography className={`${styles.termsAgreementText}`}>
                 {t("form.termsOfUse1")} {t("form.termsOfUse2")}
               </Typography>

@@ -14,6 +14,7 @@ export interface RegisterComponentStyles extends Theme {
   termsAgreementText: CreateCSSProperties | CSSProperties;
   submitButtonSpacer: CreateCSSProperties | CSSProperties;
   passwordRules: CreateCSSProperties | CSSProperties;
+  alertStyle: CreateCSSProperties | CSSProperties;
 }
 
 export type RegisterComponentClasses =
@@ -24,7 +25,8 @@ export type RegisterComponentClasses =
   | "termsAgreementContainer"
   | "termsAgreementText"
   | "submitButtonSpacer"
-  | "passwordRules";
+  | "passwordRules"
+  | "alertStyle";
 
 const RegisterComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -69,6 +71,15 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
       marginLeft: `${theme.customSpacings.xxs}`,
       marginTop: `${theme.customSpacings.xxxs}`,
       lineHeight: "1.25rem"
+    },
+    alertStyle: {
+      height: "auto",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "0px 10px",
+      fontSize: "14px",
+      marginBottom: `${theme.customSpacings.s}`
     }
   });
 

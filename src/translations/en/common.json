@@ -4,5 +4,8 @@
   },
   "buttonText": {
     "close": "Close"
+  },
+  "languagePicker": {
+    "language": "Language"
   }
 }

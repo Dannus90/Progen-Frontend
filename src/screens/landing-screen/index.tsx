@@ -1,15 +1,24 @@
-import { makeStyles, Paper, Theme, CircularProgress, Typography } from "@material-ui/core";
+import {
+  makeStyles,
+  Paper,
+  Theme,
+  CircularProgress,
+  Typography,
+  Container
+} from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import { useTranslation } from "react-i18next";
 import React, { CSSProperties, lazy, Suspense } from "react";
 import { MainTheme } from "../../styles/theme";
 import LandingScreen from "./LandingScreen";
+import LanguageIcon from "@material-ui/icons/Language";
 const Login = lazy(() => import("../../components/landing-screen-components/login/index"));
 const Register = lazy(() => import("../../components/landing-screen-components/register/index"));
 const ResetPassword = lazy(
   () => import("../../components/landing-screen-components/reset-password/index")
 );
+import LanguagePicker from "../../components/common/language-picker/index";
 
 export interface LandingScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
@@ -48,6 +57,21 @@ const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Elem
     },
     progressSpacer: {
       marginBottom: "1rem"
+    },
+    languageContainer: {
+      width: "100px",
+      height: "100px",
+      position: "absolute",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+      top: "0",
+      right: "1%",
+      cursor: "pointer"
+    },
+    languageTypography: {
+      color: "#fff"
     }
   });
 
@@ -77,6 +101,13 @@ const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Elem
 
   return (
     <LandingScreen styles={styles}>
+      <Container className={styles.languageContainer}>
+        <LanguageIcon color="primary" fontSize="large" />
+        <Typography className={styles.languageTypography}>
+          {t("languagePicker.language")}
+        </Typography>
+      </Container>
+      <LanguagePicker />
       <Suspense fallback={fallbackComponent()}>{componentToRender()}</Suspense>
     </LandingScreen>
   );

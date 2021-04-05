@@ -46,7 +46,8 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
     },
     headingStyle: {
       color: `${theme.custom.palette.textVariantDark.main}`,
-      lineHeight: "1.45rem"
+      lineHeight: "1.45rem",
+      marginBottom: `${theme.customSpacings.xxxs}`
     },
     paragraphStyle: {
       marginBottom: `${theme.customSpacings.m}`,

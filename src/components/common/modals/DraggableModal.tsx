@@ -7,6 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Paper from "@material-ui/core/Paper";
 import Draggable from "react-draggable";
 import { useTranslation } from "react-i18next";
+import styles from "./ComplementaryModalStyles.module.scss";
 
 function PaperComponent(props: any) {
   return (
@@ -44,11 +45,14 @@ export default function DraggableDialog({
         onClose={handleClose}
         PaperComponent={PaperComponent}
         aria-labelledby="draggable-dialog-title">
-        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+        <DialogTitle
+          className={styles.draggableModalTitleStyle}
+          style={{ cursor: "move" }}
+          id="draggable-dialog-title">
           {header}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText className={styles.draggableModalDialogContent}>
             {p1}
             <br />
             <br />

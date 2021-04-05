@@ -34,6 +34,9 @@ declare module "@material-ui/core/styles/createMuiTheme" {
           light?: string;
         };
       };
+      borderColors: {
+        subtleGreyMain?: string;
+      };
     };
   }
 }

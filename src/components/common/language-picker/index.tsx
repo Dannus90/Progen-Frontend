@@ -6,22 +6,28 @@ import { MainTheme } from "../../../styles/theme/index";
 import LanguagePicker from "./LanguagePicker";
 
 export interface LanguagePickerComponentStyles extends Theme {
-  registerPaper: CreateCSSProperties | CSSProperties;
+  languagesPaper: CreateCSSProperties | CSSProperties;
 }
 
-export type LanguagePickerComponentClasses = "registerPaper";
+export type LanguagePickerComponentClasses = "languagesPaper";
 
 const LanguagePickerComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const languagePickerComponentStyles = makeStyles({
-    registerPaper: {
+    languagesPaper: {
       backgroundColor: `${theme.custom.palette.lightBackground.main}`,
       height: "auto",
-      width: "434px",
-      minHeight: "280x",
-      minWidth: "280px",
-      borderRadius: "3px"
+      width: "auto",
+      borderRadius: "3px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "left",
+      flexDirection: "column",
+      padding: `${theme.customSpacings.s}`,
+      position: "absolute",
+      top: "50px",
+      right: "30px"
     }
   });
 

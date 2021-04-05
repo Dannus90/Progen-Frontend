@@ -20,7 +20,8 @@ i18next.init({
       common: commonSv,
       register: registerSv
     }
-  }
+  },
+  supportedLngs: ["sv", "en"]
 });
 
 export default i18next;

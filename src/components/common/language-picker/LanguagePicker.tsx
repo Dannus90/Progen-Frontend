@@ -1,3 +1,4 @@
+import { Container, Paper } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -9,11 +10,17 @@ interface Props {
 
 const LanguagePicker: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t, i18n] = useTranslation("common");
+  const languages = [...i18n.services.languageUtils.supportedLngs];
+  languages.splice(-1, 1);
+
   return (
-    <div>
-      <button onClick={() => i18n.changeLanguage("sv")}>sv</button>
-      <button onClick={() => i18n.changeLanguage("en")}>en</button>
-    </div>
+    <Paper elevation={2} className={styles.languagesPaper}>
+      {languages.map((lng) => (
+        <button key={lng} onClick={() => i18n.changeLanguage(lng)}>
+          {lng}
+        </button>
+      ))}
+    </Paper>
   );
 };
 

@@ -67,7 +67,7 @@ const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Elem
       alignItems: "center",
       flexDirection: "column",
       top: "0",
-      right: "1%",
+      right: "5px",
       cursor: "pointer"
     },
     languageTypography: {

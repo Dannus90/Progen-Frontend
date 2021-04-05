@@ -37,6 +37,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
   const theme = useTheme<MainTheme>();
   const [agreementChecked, setAgreementChecked] = useState(false);
   const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
+  const [displayAgreementError, setDisplayAgreementError] = useState(false);
   const [registerUser, { error, data }] = useMutation<{
     authentication: RegisterResponse;
     registerUserInput: RegisterData;
@@ -58,11 +59,21 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
 
   const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    setDisplayAgreementError(false);
+    setDisplayErrorMessage(false);
+    if (!agreementChecked) {
+      setDisplayAgreementError(true);
+      return;
+    }
     registerUser();
   };
 
   const removeErrorDisplay = () => {
     setDisplayErrorMessage(false);
+  };
+
+  const removeAgreementErrorDisplay = () => {
+    setDisplayAgreementError(false);
   };
 
   useEffect(() => {
@@ -84,6 +95,14 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
             {error?.graphQLErrors.map(
               (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
             )}
+          </Alert>
+        )}
+        {displayAgreementError && (
+          <Alert
+            className={`${styles.alertStyle}`}
+            onClose={() => removeAgreementErrorDisplay()}
+            severity="error">
+            {t("form.missingAgreementCheck")}
           </Alert>
         )}
         <form noValidate onSubmit={(e) => handleRegisterUser(e)}>

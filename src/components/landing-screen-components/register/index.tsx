@@ -55,7 +55,7 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
       display: "flex",
       alignItems: "center",
       padding: "0px",
-      marginBottom: `${theme.customSpacings.m}`
+      marginBottom: `${theme.customSpacings.xs}`
     },
     termsAgreementText: {
       color: `${theme.custom.palette.textVariantDark.light}`,

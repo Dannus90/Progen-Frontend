@@ -11,6 +11,7 @@
       "alreadyHaveAccount2": "Logga in.",
       "signUp": "Registrera dig",
       "createCV": "Skapa ditt professionella CV",
-      "passwordLength": "10 tecken minst"
+      "passwordLength": "10 tecken minst",
+      "missingAgreementCheck": "Vänligen acceptera användarvillkoren."
   }
 }

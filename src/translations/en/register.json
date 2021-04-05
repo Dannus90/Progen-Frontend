@@ -1,6 +1,6 @@
 {
   "form": {
-      "header": "Sign up to ProGen",
+      "header": "ProGen - Signup",
       "termsOfUse1": "I agree to the ",
       "termsOfUse2": "terms of the service.",
       "firstName": "First name",
@@ -11,6 +11,6 @@
       "alreadyHaveAccount2": "Sign in.",
       "signUp": "Sign up",
       "createCV": "Create your professional CV",
-      "passwordLength": "8 characters minimum"
+      "passwordLength": "10 characters minimum"
   }
 }

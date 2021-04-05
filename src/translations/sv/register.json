@@ -1,6 +1,6 @@
 {
   "form": {
-      "header": "Registrera dig till ProGen",
+      "header": "ProGen - Registrering",
       "termsOfUse1": "Jag accepterar ",
       "termsOfUse2": "användarvillkoren.",
       "firstName": "Förnamn",
@@ -11,6 +11,6 @@
       "alreadyHaveAccount2": "Logga in.",
       "signUp": "Registrera dig",
       "createCV": "Skapa ditt professionella CV",
-      "passwordLength": "8 tecken minst"
+      "passwordLength": "10 tecken minst"
   }
 }

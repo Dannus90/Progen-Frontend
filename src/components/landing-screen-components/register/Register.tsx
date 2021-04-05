@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTheme } from "@material-ui/core/styles";
 import { MainTheme } from "../../../styles/theme";
 import { useTranslation } from "react-i18next";
 import { RegisterComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
+import { useMutation } from "@apollo/client";
+import { REGISTER_USER } from "./gql";
 import {
   Container,
   Paper,
@@ -15,21 +17,15 @@ import {
   Button
 } from "@material-ui/core";
 import { useForm } from "../../../custom-hooks/UseForm";
+import { RegisterData, RegisterFormData, RegisterResponse } from "./interfaces/register-interfaces";
 
 interface Props {
   styles: ClassNameMap<RegisterComponentClasses>;
 }
 
-export interface RegisterFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-}
-
 const initialFormState: RegisterFormData = {
-  firstName: "",
-  lastName: "",
+  firstname: "",
+  lastname: "",
   email: "",
   password: ""
 };
@@ -38,6 +34,24 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
   const { formData, handleInputChange } = useForm(initialFormState);
   const { t } = useTranslation("register");
   const theme = useTheme<MainTheme>();
+  const [registerUser, { error, data }] = useMutation<{
+    authentication: RegisterResponse;
+    registerUserInput: RegisterData;
+  }>(REGISTER_USER, {
+    variables: {
+      registerUserInput: {
+        firstname: formData.firstname,
+        lastname: formData.lastname,
+        email: formData.email,
+        password: formData.password
+      }
+    }
+  });
+
+  const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    registerUser();
+  };
 
   return (
     <Paper elevation={2} className={`${styles.registerPaper}`}>
@@ -46,19 +60,19 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
           {t("form.header")}
         </Typography>
         <p className={`${styles.paragraphStyle}`}>{t("form.createCV")}</p>
-        <form noValidate>
+        <form noValidate onSubmit={(e) => handleRegisterUser(e)}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="firstname"
                 variant="outlined"
                 required
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 fullWidth
-                id="firstName"
+                id="firstname"
                 label={t("form.firstName")}
                 autoFocus
                 size="small"
@@ -69,12 +83,12 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
+                id="lastname"
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("form.lastName")}
-                name="lastName"
+                name="lastname"
                 autoComplete="lname"
                 size="small"
               />
@@ -117,6 +131,7 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 {t("form.termsOfUse1")} {t("form.termsOfUse2")}
               </Typography>
             </Container>
+            {data && data?.authentication.registerUser.message}
           </Grid>
           <Button
             type="submit"

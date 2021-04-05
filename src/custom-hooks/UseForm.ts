@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RegisterFormData } from "../components/landing-screen-components/register/Register";
+import { RegisterFormData } from "../components/landing-screen-components/register/interfaces/register-interfaces";
 
 interface ReturnObject {
   formData: RegisterFormData;

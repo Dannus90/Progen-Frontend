@@ -9,13 +9,13 @@ import Draggable from "react-draggable";
 import { useTranslation } from "react-i18next";
 import styles from "./ComplementaryModalStyles.module.scss";
 
-function PaperComponent(props: any) {
+const PaperComponent = (props: any): JSX.Element => {
   return (
     <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
       <Paper {...props} />
     </Draggable>
   );
-}
+};
 
 interface DraggableModalProps {
   handleClose: () => void;

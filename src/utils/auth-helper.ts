@@ -1,9 +1,9 @@
-interface Tokens {
+interface TokenData {
   accessToken: string | null;
   refreshToken: string | null;
 }
 
-export const getToken = (): Tokens | null => {
+export const getToken = (): TokenData | null => {
   let tokenData;
   const retrievedData = localStorage.getItem("tokenData");
   if (retrievedData) {
@@ -13,6 +13,6 @@ export const getToken = (): Tokens | null => {
   return tokenData;
 };
 
-export const setTokens = (tokenData: Tokens): void => {
+export const setTokens = (tokenData: TokenData): void => {
   localStorage.setItem("tokenData", JSON.stringify(tokenData));
 };

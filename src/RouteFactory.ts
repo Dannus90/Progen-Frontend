@@ -4,5 +4,8 @@ export const routeFactory = {
     login: (): string => "/login",
     register: (): string => "/register",
     forgotPassword: (): string => "/reset-password"
+  },
+  home: {
+    main: (): string => "/home"
   }
 };

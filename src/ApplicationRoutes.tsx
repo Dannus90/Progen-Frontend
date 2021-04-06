@@ -1,7 +1,10 @@
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import TopBar from "./components/layout/topbar/index";
 import { routeFactory } from "./RouteFactory";
 import LandingScreen from "./screens/landing-screen/index";
+import { AuthRoutes } from "./AuthRoutes";
+import HomeScreen from "./screens/home-screen/index";
 
 export const ApplicationRoutes: React.FC = () => {
   return (
@@ -28,6 +31,9 @@ export const ApplicationRoutes: React.FC = () => {
           component={() => <LandingScreen componentToDisplay="reset-password" />}
         />
       </Switch>
+      <TopBar />
+      <Route exact path={routeFactory.home.main()} component={() => <HomeScreen />} />
+      <AuthRoutes />
     </Router>
   );
 };

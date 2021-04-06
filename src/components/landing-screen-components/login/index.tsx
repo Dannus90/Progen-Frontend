@@ -3,40 +3,37 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import { CSSProperties } from "react";
 import { MainTheme } from "../../../styles/theme/index";
-import Register from "./Login";
+import Login from "./Login";
 
 export interface RegisterComponentStyles extends Theme {
-  registerPaper: CreateCSSProperties | CSSProperties;
-  registerContainer: CreateCSSProperties | CSSProperties;
+  loginPaper: CreateCSSProperties | CSSProperties;
+  loginContainer: CreateCSSProperties | CSSProperties;
   headingStyle: CreateCSSProperties | CSSProperties;
   paragraphStyle: CreateCSSProperties | CSSProperties;
   termsAgreementContainer: CreateCSSProperties | CSSProperties;
-  termsAgreementText: CreateCSSProperties | CSSProperties;
-  submitButtonSpacer: CreateCSSProperties | CSSProperties;
-  passwordRules: CreateCSSProperties | CSSProperties;
+  noAccountText: CreateCSSProperties | CSSProperties;
+  loginButtonSpacer: CreateCSSProperties | CSSProperties;
   alertStyle: CreateCSSProperties | CSSProperties;
   agreementButton: CreateCSSProperties | CSSProperties;
-  successRegistration: CreateCSSProperties | CSSProperties;
+  successLogin: CreateCSSProperties | CSSProperties;
 }
 
 export type RegisterComponentClasses =
-  | "registerPaper"
-  | "registerContainer"
+  | "loginPaper"
+  | "loginContainer"
   | "headingStyle"
   | "paragraphStyle"
-  | "termsAgreementContainer"
-  | "termsAgreementText"
-  | "submitButtonSpacer"
-  | "passwordRules"
+  | "noAccountText"
+  | "loginButtonSpacer"
   | "alertStyle"
   | "agreementButton"
-  | "successRegistration";
+  | "successLogin";
 
 const LoginComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const registerComponentStyles = makeStyles({
-    registerPaper: {
+    loginPaper: {
       backgroundColor: `${theme.custom.palette.lightBackground.main}`,
       height: "auto",
       width: "434px",
@@ -44,7 +41,7 @@ const LoginComponentWrapper: React.FC = (): JSX.Element => {
       minWidth: "280px",
       borderRadius: "3px"
     },
-    registerContainer: {
+    loginContainer: {
       padding: `${theme.customSpacings.xxl} ${theme.customSpacings.xxl}`
     },
     headingStyle: {
@@ -57,26 +54,14 @@ const LoginComponentWrapper: React.FC = (): JSX.Element => {
       color: `${theme.custom.palette.textVariantGrey.main}`,
       fontSize: "0.85rem"
     },
-    termsAgreementContainer: {
-      display: "flex",
-      alignItems: "center",
-      padding: "0px",
-      marginBottom: `${theme.customSpacings.s}`
-    },
-    termsAgreementText: {
+    noAccountText: {
       color: `${theme.custom.palette.textVariantDark.light}`,
       fontSize: "0.85rem",
       lineHeight: "1.25rem"
     },
-    submitButtonSpacer: {
+    loginButtonSpacer: {
+      marginTop: `${theme.customSpacings.l}`,
       marginBottom: `${theme.customSpacings.xxs}`
-    },
-    passwordRules: {
-      color: `${theme.custom.palette.textVariantGrey.light}`,
-      fontSize: "0.8rem",
-      marginLeft: `${theme.customSpacings.xxs}`,
-      marginTop: `${theme.customSpacings.xxxs}`,
-      lineHeight: "1.25rem"
     },
     alertStyle: {
       height: "auto",
@@ -94,14 +79,14 @@ const LoginComponentWrapper: React.FC = (): JSX.Element => {
       width: "100%",
       cursor: "pointer"
     },
-    successRegistration: {
+    successLogin: {
       paddingRight: "1rem"
     }
   });
 
   const styles = registerComponentStyles();
 
-  return <Register styles={styles} />;
+  return <Login styles={styles} />;
 };
 
 export default LoginComponentWrapper;

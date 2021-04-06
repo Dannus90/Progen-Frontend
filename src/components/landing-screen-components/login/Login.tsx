@@ -36,7 +36,6 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
   const { t } = useTranslation("login");
   const [submitDisabled, setSubmitDisabled] = useState(false);
   const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
-  const [displayAgreementError, setDisplayAgreementError] = useState(false);
   const [registerUser, { error, data }] = useMutation<{
     authentication: RegisterResponse;
     registerUserInput: RegisterData;
@@ -52,19 +51,15 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
     errorPolicy: "all"
   });
 
-  const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleLoginUser = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     // Prevent resubmitting.
     if (submitDisabled) {
       return;
     }
 
-    setDisplayAgreementError(false);
     setDisplayErrorMessage(false);
-    if (!agreementChecked) {
-      setDisplayAgreementError(true);
-      return;
-    }
+
     registerUser();
     setSubmitDisabled(true);
     setTimeout(() => {
@@ -74,10 +69,6 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
 
   const removeErrorDisplay = (): void => {
     setDisplayErrorMessage(false);
-  };
-
-  const removeAgreementErrorDisplay = (): void => {
-    setDisplayAgreementError(false);
   };
 
   useEffect(() => {
@@ -93,8 +84,8 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
   }, [data]);
 
   return (
-    <Paper elevation={2} className={`${styles.registerPaper}`}>
-      <Container maxWidth="sm" className={`${styles.registerContainer}`}>
+    <Paper elevation={2} className={`${styles.loginPaper}`}>
+      <Container maxWidth="sm" className={`${styles.loginContainer}`}>
         <Typography component="h1" variant="h6" className={`${styles.headingStyle}`}>
           {t("form.header")}
         </Typography>
@@ -109,15 +100,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
             )}
           </Alert>
         )}
-        {displayAgreementError && (
-          <Alert
-            className={`${styles.alertStyle}`}
-            onClose={() => removeAgreementErrorDisplay()}
-            severity="error">
-            {t("form.missingAgreementCheck")}
-          </Alert>
-        )}
-        <form noValidate onSubmit={(e) => handleRegisterUser(e)}>
+        <form noValidate onSubmit={(e) => handleLoginUser(e)}>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <TextField
@@ -157,10 +140,10 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
             fullWidth
             variant="contained"
             color="primary"
-            className={`${styles.submitButtonSpacer}`}>
+            className={`${styles.loginButtonSpacer}`}>
             {data ? (
               <>
-                <span className={`${styles.successRegistration}`}>
+                <span className={`${styles.successLogin}`}>
                   {data?.authentication.registerUser.message}
                 </span>
                 <CircularProgress size={20} color="inherit" />
@@ -172,7 +155,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
 
           <Grid container justify="flex-end">
             <Grid item>
-              <Typography className={`${styles.termsAgreementText}`}>
+              <Typography className={`${styles.noAccountText}`}>
                 {t("form.noAccount1")}{" "}
                 <Link href="/register" variant="body2">
                   {t("form.noAccount2")}

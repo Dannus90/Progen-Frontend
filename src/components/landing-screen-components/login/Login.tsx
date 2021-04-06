@@ -11,14 +11,12 @@ import {
   Typography,
   TextField,
   Grid,
-  Checkbox,
   Link,
   Button,
   CircularProgress
 } from "@material-ui/core";
 import { useForm } from "../../../custom-hooks/UseForm";
 import { RegisterData, RegisterFormData, RegisterResponse } from "./interfaces/login-interfaces";
-import DraggableModal from "../../common/modals/DraggableModal";
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
 
 interface Props {
@@ -35,9 +33,8 @@ const initialFormState: RegisterFormData = {
 const Login: React.FC<Props> = ({ styles }): JSX.Element => {
   const { formData, handleInputChange } = useForm(initialFormState);
   const { navigateTo } = useNavigation();
-  const { t } = useTranslation("register");
+  const { t } = useTranslation("login");
   const [submitDisabled, setSubmitDisabled] = useState(false);
-  const [agreementChecked, setAgreementChecked] = useState(false);
   const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
   const [displayAgreementError, setDisplayAgreementError] = useState(false);
   const [registerUser, { error, data }] = useMutation<{
@@ -54,29 +51,6 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
     },
     errorPolicy: "all"
   });
-
-  const [modalAgreementOpen, setModalAgreementOpen] = useState(false);
-  const [modalPrivacyPolicyOpen, setHandlePrivacyPolicyModalOpen] = useState(false);
-
-  const handleAgreementModalOpen = (): void => {
-    setModalAgreementOpen(true);
-  };
-
-  const handleAgreementModalClose = (): void => {
-    setModalAgreementOpen(false);
-  };
-
-  const handlePrivacyPolicyModalOpen = (): void => {
-    setHandlePrivacyPolicyModalOpen(true);
-  };
-
-  const handlePrivacyPolicyModalClose = (): void => {
-    setHandlePrivacyPolicyModalOpen(false);
-  };
-
-  const handleAgreementCheckedState = (): void => {
-    setAgreementChecked((prev) => !prev);
-  };
 
   const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -145,37 +119,6 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
         )}
         <form noValidate onSubmit={(e) => handleRegisterUser(e)}>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstname"
-                variant="outlined"
-                required
-                onChange={handleInputChange}
-                inputProps={{ style: { fontSize: 14 } }}
-                InputLabelProps={{ style: { fontSize: 14 } }}
-                fullWidth
-                id="firstname"
-                label={t("form.firstName")}
-                autoFocus
-                size="small"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastname"
-                onChange={handleInputChange}
-                inputProps={{ style: { fontSize: 14 } }}
-                InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("form.lastName")}
-                name="lastname"
-                autoComplete="lname"
-                size="small"
-              />
-            </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -206,35 +149,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
                 autoComplete="current-password"
                 size="small"
               />
-              <p className={`${styles.passwordRules}`}>{t("form.passwordLength")}</p>
             </Grid>
-            <Container className={`${styles.termsAgreementContainer}`}>
-              <Checkbox
-                value="acceptTermsAgreement"
-                color="primary"
-                onChange={() => handleAgreementCheckedState()}
-              />
-              <Typography className={`${styles.termsAgreementText}`}>
-                {t("form.termsOfUse1")}{" "}
-                <span
-                  className={`${styles.agreementButton}`}
-                  role="button"
-                  tabIndex={-1}
-                  onClick={() => handleAgreementModalOpen()}
-                  onKeyDown={() => handleAgreementModalOpen()}>
-                  {t("form.termsOfUse2")}
-                </span>
-                {t("form.termsOfUse3")}{" "}
-                <span
-                  className={`${styles.agreementButton}`}
-                  role="button"
-                  tabIndex={-1}
-                  onClick={() => handlePrivacyPolicyModalOpen()}
-                  onKeyDown={() => handlePrivacyPolicyModalOpen()}>
-                  {t("form.termsOfUse4")}
-                </span>
-              </Typography>
-            </Container>
           </Grid>
 
           <Button
@@ -251,36 +166,22 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
                 <CircularProgress size={20} color="inherit" />
               </>
             ) : (
-              t("form.signUp")
+              t("form.signIn")
             )}
           </Button>
 
           <Grid container justify="flex-end">
             <Grid item>
               <Typography className={`${styles.termsAgreementText}`}>
-                {t("form.alreadyHaveAccount1")}{" "}
-                <Link href="/login" variant="body2">
-                  {t("form.alreadyHaveAccount2")}
+                {t("form.noAccount1")}{" "}
+                <Link href="/register" variant="body2">
+                  {t("form.noAccount2")}
                 </Link>
               </Typography>
             </Grid>
           </Grid>
         </form>
       </Container>
-      <DraggableModal
-        header={t("form.modalText.agreementModal.header")}
-        p1={t("form.modalText.agreementModal.p1")}
-        p2={t("form.modalText.agreementModal.p2")}
-        handleClose={handleAgreementModalClose}
-        open={modalAgreementOpen}
-      />
-      <DraggableModal
-        header={t("form.modalText.policyModal.header")}
-        p1={t("form.modalText.policyModal.p1")}
-        p2={t("form.modalText.policyModal.p2")}
-        handleClose={handlePrivacyPolicyModalClose}
-        open={modalPrivacyPolicyOpen}
-      />
     </Paper>
   );
 };

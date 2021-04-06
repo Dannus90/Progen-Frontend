@@ -1,0 +1,11 @@
+{
+  "form": {
+    "header": "ProGen - Login",
+    "email": "Email Address",
+    "password": "Password",
+    "noAccount1": "No account? ",
+    "noAccount2": "Register",
+    "signIn": "Sign in",
+    "createCV": "Create your professional CV"
+  }
+}

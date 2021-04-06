@@ -13,7 +13,7 @@ const Topbar: React.FC<Props> = ({ styles }): JSX.Element => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleMenu = (event: React.MouseEventHandler<HTMLAnchorElement>) => {
+  const handleMenu = (event: React.MouseEventHandler<HTMLAnchorElement>): void => {
     setAnchorEl(event.currentTarget);
   };
 

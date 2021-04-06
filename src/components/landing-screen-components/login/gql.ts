@@ -1,11 +1,12 @@
 import { gql } from "@apollo/client";
 
-export const REGISTER_USER = gql`
-  mutation Mutation($registerUserInput: RegisterInput) {
+export const LOGIN_USER = gql`
+  mutation Mutation($loginUserInput: LoginInput) {
     authentication {
-      registerUser(input: $registerUserInput) {
+      loginUser(input: $loginUserInput) {
         statusCode
-        message
+        accessToken
+        refreshToken
       }
     }
   }

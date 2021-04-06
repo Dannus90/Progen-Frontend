@@ -1,5 +1,6 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { getToken } from "./utils/auth-helper";
 
 // More information regarding auth handling -> https://www.apollographql.com/docs/react/networking/authentication/#header
 
@@ -11,12 +12,12 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const accessToken = localStorage.getItem("accessToken");
+  const tokenData = getToken();
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: accessToken ? `Bearer ${accessToken}` : ""
+      authorization: tokenData?.accessToken ? `Bearer ${tokenData.accessToken}` : ""
     }
   };
 });

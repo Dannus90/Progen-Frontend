@@ -1,20 +1,12 @@
-export interface RegisterFormData {
-  firstname: string;
-  lastname: string;
+export interface LoginData {
   email: string;
   password: string;
 }
 
-export interface RegisterData {
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-}
-
-export interface RegisterResponse {
-  registerUser: {
+export interface LoginResponse {
+  loginUser: {
     statusCode: number;
-    message: string;
+    accessToken: string;
+    refreshToken: string;
   };
 }

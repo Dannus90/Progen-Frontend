@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { RegisterComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { useMutation } from "@apollo/client";
-import { REGISTER_USER } from "./gql";
+import { LOGIN_USER } from "./gql";
 import { Alert } from "@material-ui/lab";
 import {
   Container,
@@ -16,16 +16,15 @@ import {
   CircularProgress
 } from "@material-ui/core";
 import { useForm } from "../../../custom-hooks/UseForm";
-import { RegisterData, RegisterFormData, RegisterResponse } from "./interfaces/login-interfaces";
+import { LoginData, LoginResponse } from "./interfaces/login-interfaces";
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
+import { setTokens } from "../../../utils/auth-helper";
 
 interface Props {
   styles: ClassNameMap<RegisterComponentClasses>;
 }
 
-const initialFormState: RegisterFormData = {
-  firstname: "",
-  lastname: "",
+const initialFormState: LoginData = {
   email: "",
   password: ""
 };
@@ -34,16 +33,14 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
   const { formData, handleInputChange } = useForm(initialFormState);
   const { navigateTo } = useNavigation();
   const { t } = useTranslation("login");
-  const [submitDisabled, setSubmitDisabled] = useState(false);
+  const [loginDisabled, setLoginDisabled] = useState(false);
   const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
-  const [registerUser, { error, data }] = useMutation<{
-    authentication: RegisterResponse;
-    registerUserInput: RegisterData;
-  }>(REGISTER_USER, {
+  const [loginUser, { error, data }] = useMutation<{
+    authentication: LoginResponse;
+    loginUserInput: LoginData;
+  }>(LOGIN_USER, {
     variables: {
-      registerUserInput: {
-        firstname: formData.firstname,
-        lastname: formData.lastname,
+      loginUserInput: {
         email: formData.email,
         password: formData.password
       }
@@ -54,16 +51,16 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
   const handleLoginUser = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     // Prevent resubmitting.
-    if (submitDisabled) {
+    if (loginDisabled) {
       return;
     }
 
     setDisplayErrorMessage(false);
 
-    registerUser();
-    setSubmitDisabled(true);
+    loginUser();
+    setLoginDisabled(true);
     setTimeout(() => {
-      setSubmitDisabled(false);
+      setLoginDisabled(false);
     }, 1500);
   };
 
@@ -77,8 +74,10 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
 
   useEffect(() => {
     if (data) {
+      const { accessToken, refreshToken } = data.authentication.loginUser;
+      setTokens({ accessToken, refreshToken });
       setTimeout(() => {
-        navigateTo("/login");
+        navigateTo("/home");
       }, 1000);
     }
   }, [data]);
@@ -144,7 +143,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
             {data ? (
               <>
                 <span className={`${styles.successLogin}`}>
-                  {data?.authentication.registerUser.message}
+                  {data?.authentication.loginUser && t("form.successfulLogin")}
                 </span>
                 <CircularProgress size={20} color="inherit" />
               </>

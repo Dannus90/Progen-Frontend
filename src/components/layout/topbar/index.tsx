@@ -7,25 +7,28 @@ import TopBar from "./TopBar";
 
 export interface LandingScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
+  toolBarStyle: CreateCSSProperties | CSSProperties;
 }
 
-export type LandingScreenClasses = "pageWrapperStyles";
+export type TopBarClasses = "topBarStyle" | "toolBarStyle";
 
 const TopBarWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
-  const landingScreenStyles = makeStyles({
-    pageWrapperStyles: {
+  const topBarStyles = makeStyles({
+    topBarStyle: {
       background: `${theme.landingScreenBackground}`,
-      height: "100vh",
-      width: "100vw",
+      height: "52px",
       display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
+      justifyContent: "center"
+    },
+    toolBarStyle: {
+      display: "flex",
+      justifyContent: "space-between"
     }
   });
 
-  const styles = landingScreenStyles();
+  const styles = topBarStyles();
 
   return <TopBar styles={styles} />;
 };

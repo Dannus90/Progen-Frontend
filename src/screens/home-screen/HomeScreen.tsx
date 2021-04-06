@@ -1,9 +1,9 @@
 import React from "react";
-import { LandingScreenClasses } from "./index";
+import { HomeScreenClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 
 interface Props {
-  styles: ClassNameMap<LandingScreenClasses>;
+  styles: ClassNameMap<HomeScreenClasses>;
 }
 
 const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {

@@ -9,12 +9,12 @@ export interface LandingScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
 }
 
-export type LandingScreenClasses = "pageWrapperStyles";
+export type HomeScreenClasses = "pageWrapperStyles";
 
-const LandingScreenWrapper: React.FC = (): JSX.Element => {
+const HomeScreenWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
-  const landingScreenStyles = makeStyles({
+  const homeScreenStyles = makeStyles({
     pageWrapperStyles: {
       background: `${theme.landingScreenBackground}`,
       height: "100vh",
@@ -25,9 +25,9 @@ const LandingScreenWrapper: React.FC = (): JSX.Element => {
     }
   });
 
-  const styles = landingScreenStyles();
+  const styles = homeScreenStyles();
 
   return <HomeScreen styles={styles} />;
 };
 
-export default LandingScreenWrapper;
+export default HomeScreenWrapper;

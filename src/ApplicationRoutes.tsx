@@ -31,8 +31,6 @@ export const ApplicationRoutes: React.FC = () => {
           component={() => <LandingScreen componentToDisplay="reset-password" />}
         />
       </Switch>
-      <TopBar />
-      <Route exact path={routeFactory.home.main()} component={() => <HomeScreen />} />
       <AuthRoutes />
     </Router>
   );

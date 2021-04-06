@@ -9,7 +9,7 @@ import {
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import { useTranslation } from "react-i18next";
-import React, { CSSProperties, lazy, Suspense } from "react";
+import React, { CSSProperties, lazy, Suspense, useState } from "react";
 import { MainTheme } from "../../styles/theme";
 import LandingScreen from "./LandingScreen";
 import LanguageIcon from "@material-ui/icons/Language";
@@ -19,6 +19,7 @@ const ResetPassword = lazy(
   () => import("../../components/landing-screen-components/reset-password/index")
 );
 import LanguagePicker from "../../components/common/language-picker/index";
+import useComponentVisible from "../../custom-hooks/UseComponentVisible";
 
 export interface LandingScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
@@ -31,8 +32,13 @@ interface Props {
 export type LandingScreenClasses = "pageWrapperStyles";
 
 const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Element => {
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const { t } = useTranslation("common");
   const theme = useTheme<MainTheme>();
+
+  const handleDisplayLanguagePicker = (): void => {
+    setIsComponentVisible((prev) => !prev);
+  };
 
   const landingScreenStyles = makeStyles({
     pageWrapperStyles: {
@@ -101,13 +107,13 @@ const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Elem
 
   return (
     <LandingScreen styles={styles}>
-      <Container className={styles.languageContainer}>
+      <Container className={styles.languageContainer} onClick={handleDisplayLanguagePicker}>
         <LanguageIcon color="primary" fontSize="large" />
         <Typography className={styles.languageTypography}>
           {t("languagePicker.language")}
         </Typography>
       </Container>
-      <LanguagePicker />
+      <div ref={ref}>{isComponentVisible && <LanguagePicker />}</div>
       <Suspense fallback={fallbackComponent()}>{componentToRender()}</Suspense>
     </LandingScreen>
   );

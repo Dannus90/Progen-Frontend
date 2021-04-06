@@ -7,9 +7,10 @@ import LanguagePicker from "./LanguagePicker";
 
 export interface LanguagePickerComponentStyles extends Theme {
   languagesPaper: CreateCSSProperties | CSSProperties;
+  languageButton: CreateCSSProperties | CSSProperties;
 }
 
-export type LanguagePickerComponentClasses = "languagesPaper";
+export type LanguagePickerComponentClasses = "languagesPaper" | "languageButton";
 
 const LanguagePickerComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -26,8 +27,18 @@ const LanguagePickerComponentWrapper: React.FC = (): JSX.Element => {
       flexDirection: "column",
       padding: `${theme.customSpacings.s}`,
       position: "absolute",
-      top: "50px",
-      right: "30px"
+      top: "45px",
+      right: "7.5px"
+    },
+    languageButton: {
+      border: "none",
+      outline: "none",
+      cursor: "pointer",
+      padding: "0.15rem 0.3rem",
+      backgroundColor: `${theme.palette.secondary.main}`,
+      marginBottom: `${theme.customSpacings.xxs}`,
+      borderRadius: "3px",
+      color: `${theme.custom.palette.lightBackground}`
     }
   });
 

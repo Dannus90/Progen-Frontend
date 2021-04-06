@@ -1,4 +1,4 @@
-import { Container, Paper } from "@material-ui/core";
+import { Button, Container, Paper } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -16,9 +16,14 @@ const LanguagePicker: React.FC<Props> = ({ styles }): JSX.Element => {
   return (
     <Paper elevation={2} className={styles.languagesPaper}>
       {languages.map((lng) => (
-        <button key={lng} onClick={() => i18n.changeLanguage(lng)}>
+        <Button
+          color="secondary"
+          variant="contained"
+          key={lng}
+          className={styles.languageButton}
+          onClick={() => i18n.changeLanguage(lng)}>
           {lng}
-        </button>
+        </Button>
       ))}
     </Paper>
   );

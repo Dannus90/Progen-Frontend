@@ -18,10 +18,10 @@ interface Props {
   styles: ClassNameMap<DrawerComponentClasses>;
 }
 
-const DrawerComponent: React.FC<Props> = ({ styles }) => {
+const DrawerComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const theme = useTheme();
   const [drawerOpen, setDrawerOpen] = useState(true);
-  
+
   const handleDrawerOpen = (): void => {
     setDrawerOpen(true);
   };

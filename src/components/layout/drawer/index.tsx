@@ -1,9 +1,9 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import { CSSProperties } from "react";
 import { MainTheme } from "../../../styles/theme/index";
-import Drawer from "./Drawer";
+import DrawerComponent from "./Drawer";
 
 export interface DrawerComponentStyles extends Theme {
   drawerOpen: CreateCSSProperties | CSSProperties;
@@ -14,14 +14,17 @@ export interface DrawerComponentStyles extends Theme {
 
 export type DrawerComponentClasses = "drawerOpen" | "drawerClose" | "drawer" | "toolbar";
 
-const drawerWidth = 240;
+const drawerWidthXLScreen = "320px";
+const drawerWidthLScreen = "280px";
+const drawerWidthMScreen = "240px";
 
 const DrawerComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
-  const registerComponentStyles = makeStyles((theme) => ({
+  const drawerComponentStyles = makeStyles({
     drawer: {
       width: drawerWidth,
+      minWidth: drawerMinWidth,
       flexShrink: 0,
       whiteSpace: "nowrap"
     },
@@ -44,18 +47,18 @@ const DrawerComponentWrapper: React.FC = (): JSX.Element => {
       }
     },
     toolbar: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
       padding: theme.spacing(0, 1),
       // necessary for content to be below app bar
-      ...theme.mixins.toolbar,
-    },
-  }));
+      ...theme.mixins.toolbar
+    }
+  });
 
-  const styles = registerComponentStyles();
+  const styles = drawerComponentStyles();
 
-  return <Drawer styles={styles} />;
+  return <DrawerComponent styles={styles} />;
 };
 
 export default DrawerComponentWrapper;

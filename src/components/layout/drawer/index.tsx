@@ -12,9 +12,14 @@ export interface DrawerComponentStyles extends Theme {
 
 export type DrawerComponentClasses = "drawer" | "drawerPaper";
 
+interface Props {
+  handleDrawerToggle: () => void;
+  mobileOpen: boolean;
+}
+
 const drawerWidth = "240px";
 
-const DrawerComponentWrapper: React.FC = (): JSX.Element => {
+const DrawerComponentWrapper: React.FC<Props> = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const drawerComponentStyles = makeStyles({

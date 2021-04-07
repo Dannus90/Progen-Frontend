@@ -1,15 +1,17 @@
 import { AppBar, IconButton, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountCircle } from "@material-ui/icons";
-import React, { MouseEventHandler } from "react";
+import MenuIcon from '@material-ui/icons/Menu';
+import React from "react";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
+  handleDrawerToggle: () => void;
 }
 
-export type TopBarClasses = "topBarStyle" | "toolBarStyle";
+export type TopBarClasses = "topBarStyle" | "toolBarStyle" | "menuButton";
 
-const Topbar: React.FC<Props> = ({ styles }): JSX.Element => {
+const Topbar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -27,6 +29,14 @@ const Topbar: React.FC<Props> = ({ styles }): JSX.Element => {
         <Typography variant="h6" color="inherit">
           ProGen
         </Typography>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          className={styles.menuButton}>
+          <MenuIcon />
+        </IconButton>
         <div>
           <IconButton
             aria-label="account of current user"

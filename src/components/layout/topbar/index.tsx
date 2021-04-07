@@ -8,11 +8,16 @@ import TopBar from "./TopBar";
 export interface LandingScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
   toolBarStyle: CreateCSSProperties | CSSProperties;
+  menuButton: CreateCSSProperties | CSSProperties;
 }
 
-export type TopBarClasses = "topBarStyle" | "toolBarStyle";
+export type TopBarClasses = "topBarStyle" | "toolBarStyle" | "menuButton";
 
-const TopBarWrapper: React.FC = (): JSX.Element => {
+interface Props {
+  handleDrawerToggle: () => void;
+}
+
+const TopBarWrapper: React.FC<Props> = ({ handleDrawerToggle }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const topBarStyles = makeStyles({
@@ -25,12 +30,18 @@ const TopBarWrapper: React.FC = (): JSX.Element => {
     toolBarStyle: {
       display: "flex",
       justifyContent: "space-between"
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+      [theme.breakpoints.up("sm")]: {
+        display: "none"
+      }
     }
   });
 
   const styles = topBarStyles();
 
-  return <TopBar styles={styles} />;
+  return <TopBar handleDrawerToggle={handleDrawerToggle} styles={styles} />;
 };
 
 export default TopBarWrapper;

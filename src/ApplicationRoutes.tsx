@@ -29,9 +29,9 @@ export const ApplicationRoutes: React.FC = () => {
           path={routeFactory.auth.forgotPassword()}
           component={() => <LandingScreen componentToDisplay="reset-password" />}
         />
+        <Layout />
+        <AuthRoutes />
       </Switch>
-      <Layout />
-      <AuthRoutes />
     </Router>
   );
 };

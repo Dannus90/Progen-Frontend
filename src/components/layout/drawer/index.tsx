@@ -19,7 +19,10 @@ interface Props {
 
 const drawerWidth = "240px";
 
-const DrawerComponentWrapper: React.FC<Props> = (): JSX.Element => {
+const DrawerComponentWrapper: React.FC<Props> = ({
+  handleDrawerToggle,
+  mobileOpen
+}): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const drawerComponentStyles = makeStyles({
@@ -37,7 +40,13 @@ const DrawerComponentWrapper: React.FC<Props> = (): JSX.Element => {
 
   const styles = drawerComponentStyles();
 
-  return <DrawerComponent styles={styles} />;
+  return (
+    <DrawerComponent
+      handleDrawerToggle={handleDrawerToggle}
+      mobileOpen={mobileOpen}
+      styles={styles}
+    />
+  );
 };
 
 export default DrawerComponentWrapper;

@@ -1,8 +1,18 @@
-import { AppBar, IconButton, Menu, MenuItem, Toolbar, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  IconButton,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme
+} from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountCircle } from "@material-ui/icons";
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
+import { MainTheme } from "../../../styles/theme";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
@@ -12,6 +22,8 @@ interface Props {
 export type TopBarClasses = "topBarStyle" | "toolBarStyle" | "menuButton";
 
 const Topbar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
+  const theme = useTheme<MainTheme>();
+  const screenSize = useMediaQuery(theme.breakpoints.up("sm"));
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -26,9 +38,12 @@ const Topbar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
   return (
     <AppBar position="static" className={styles.topBarStyle}>
       <Toolbar variant="dense" className={styles.toolBarStyle}>
-        <Typography variant="h6" color="inherit">
-          ProGen
-        </Typography>
+        {screenSize && (
+          <Typography variant="h6" color="inherit">
+            ProGen
+          </Typography>
+        )}
+
         <IconButton
           color="inherit"
           aria-label="open drawer"

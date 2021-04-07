@@ -3,8 +3,7 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { routeFactory } from "./RouteFactory";
 import LandingScreen from "./screens/landing-screen/index";
 import { AuthRoutes } from "./AuthRoutes";
-import TopBar from "./components/layout/topbar/index";
-import Drawer from "./components/layout/drawer/index";
+import Layout from "./components/layout/index";
 
 export const ApplicationRoutes: React.FC = () => {
   return (
@@ -31,8 +30,7 @@ export const ApplicationRoutes: React.FC = () => {
           component={() => <LandingScreen componentToDisplay="reset-password" />}
         />
       </Switch>
-      <TopBar />
-      <Drawer />
+      <Layout />
       <AuthRoutes />
     </Router>
   );

@@ -1,14 +1,11 @@
 import {
   Divider,
   Drawer,
-  FormControlLabel,
   Hidden,
-  IconButton,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Switch,
   useTheme
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
@@ -19,15 +16,17 @@ import { DrawerComponentClasses } from ".";
 interface Props {
   styles: ClassNameMap<DrawerComponentClasses>;
   window?: any;
+  handleDrawerToggle: () => void;
+  mobileOpen: boolean;
 }
 
-const DrawerComponent: React.FC<Props> = ({ styles, window }): JSX.Element => {
+const DrawerComponent: React.FC<Props> = ({
+  styles,
+  window,
+  handleDrawerToggle,
+  mobileOpen
+}): JSX.Element => {
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   const drawerBody = (
     <>

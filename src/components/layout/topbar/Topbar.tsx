@@ -21,7 +21,7 @@ interface Props {
 
 export type TopBarClasses = "topBarStyle" | "toolBarStyle" | "menuButton";
 
-const Topbar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
+const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
   const theme = useTheme<MainTheme>();
   const screenSize = useMediaQuery(theme.breakpoints.up("sm"));
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -84,4 +84,4 @@ const Topbar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
   );
 };
 
-export default Topbar;
+export default TopBar;

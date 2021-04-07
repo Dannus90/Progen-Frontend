@@ -14,22 +14,31 @@ export interface DrawerComponentStyles extends Theme {
 
 export type DrawerComponentClasses = "drawerOpen" | "drawerClose" | "drawer" | "toolbar";
 
-const drawerWidthXLScreen = "320px";
-const drawerWidthLScreen = "280px";
-const drawerWidthMScreen = "240px";
+const drawerWidthLargeScreen = "300px";
+const drawerWidthMediumScreen = "270px";
+const drawerWidthSmallScreen = "240px";
 
 const DrawerComponentWrapper: React.FC = (): JSX.Element => {
+  const smallScreen = useMediaQuery("(max-width:600px)");
+  const mediumScreen = useMediaQuery("(max-width:1000px)");
   const theme = useTheme<MainTheme>();
 
   const drawerComponentStyles = makeStyles({
     drawer: {
-      width: drawerWidth,
-      minWidth: drawerMinWidth,
+      width: smallScreen
+        ? drawerWidthSmallScreen
+        : mediumScreen
+        ? drawerWidthMediumScreen
+        : drawerWidthLargeScreen,
       flexShrink: 0,
       whiteSpace: "nowrap"
     },
     drawerOpen: {
-      width: drawerWidth,
+      width: smallScreen
+        ? drawerWidthSmallScreen
+        : mediumScreen
+        ? drawerWidthMediumScreen
+        : drawerWidthLargeScreen,
       transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen

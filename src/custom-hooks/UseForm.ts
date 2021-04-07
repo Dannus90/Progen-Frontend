@@ -2,8 +2,15 @@ import { useState } from "react";
 import { LoginData } from "../components/landing-screen-components/login/interfaces/login-interfaces";
 import { RegisterFormData } from "../components/landing-screen-components/register/interfaces/register-interfaces";
 
+interface RegisterLoginData {
+  firstname?: string;
+  lastname?: string;
+  email: string;
+  password: string;
+}
+
 interface ReturnObject {
-  formData: RegisterFormData | LoginData;
+  formData: RegisterLoginData;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

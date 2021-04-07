@@ -9,7 +9,7 @@ import {
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import { useTranslation } from "react-i18next";
-import React, { CSSProperties, lazy, Suspense, useState } from "react";
+import React, { CSSProperties, lazy, Suspense } from "react";
 import { MainTheme } from "../../styles/theme";
 import LandingScreen from "./LandingScreen";
 import LanguageIcon from "@material-ui/icons/Language";

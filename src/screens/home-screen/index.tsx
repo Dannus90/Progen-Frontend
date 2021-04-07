@@ -16,7 +16,7 @@ const HomeScreenWrapper: React.FC = (): JSX.Element => {
 
   const homeScreenStyles = makeStyles({
     pageWrapperStyles: {
-      background: `${theme.landingScreenBackground}`,
+      background: `${theme.custom.palette.lightBackground}`,
       height: "100vh",
       width: "100vw",
       display: "flex",

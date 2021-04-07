@@ -66,7 +66,7 @@ const RegisterComponentWrapper: React.FC = (): JSX.Element => {
     termsAgreementText: {
       color: `${theme.custom.palette.textVariantDark.light}`,
       fontSize: "0.85rem",
-      lineHeight: "1.25rem"
+      lineHeight: "1.10rem"
     },
     submitButtonSpacer: {
       marginBottom: `${theme.customSpacings.xxs}`

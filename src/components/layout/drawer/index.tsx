@@ -8,9 +8,17 @@ import DrawerComponent from "./Drawer";
 export interface DrawerComponentStyles extends Theme {
   drawer: CreateCSSProperties | CSSProperties;
   drawerPaper: CreateCSSProperties | CSSProperties;
+  sizeAvatar: CreateCSSProperties | CSSProperties;
+  avatarName: CreateCSSProperties | CSSProperties;
+  avatarOccupation: CreateCSSProperties | CSSProperties;
 }
 
-export type DrawerComponentClasses = "drawer" | "drawerPaper";
+export type DrawerComponentClasses =
+  | "drawer"
+  | "drawerPaper"
+  | "sizeAvatar"
+  | "avatarName"
+  | "avatarOccupation";
 
 interface Props {
   handleDrawerToggle: () => void;
@@ -35,6 +43,22 @@ const DrawerComponentWrapper: React.FC<Props> = ({
     drawerPaper: {
       width: drawerWidth,
       marginTop: "52px"
+    },
+    sizeAvatar: {
+      height: "150px",
+      width: "150px",
+      margin: "0px auto",
+      marginTop: "45px",
+      marginBottom: "15px"
+    },
+    avatarName: {
+      color: theme.custom.palette.textVariantDark.medium,
+      textAlign: "center"
+    },
+    avatarOccupation: {
+      color: theme.custom.palette.textVariantGrey.light,
+      textAlign: "center",
+      marginBottom: "25px"
     }
   });
 

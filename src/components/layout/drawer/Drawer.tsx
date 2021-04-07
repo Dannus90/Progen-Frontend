@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Divider,
   Drawer,
   Hidden,
@@ -6,6 +7,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  Typography,
   useTheme
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
@@ -26,19 +28,14 @@ const DrawerComponent: React.FC<Props> = ({
   handleDrawerToggle,
   mobileOpen
 }): JSX.Element => {
-  const theme = useTheme();
-
   const drawerBody = (
     <>
       <Divider />
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <AccessAlarm /> : <ThreeDRotation />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <Avatar className={styles.sizeAvatar} />
+      <Typography className={styles.avatarName} variant="h6">
+        Daniel Persson
+      </Typography>
+      <Typography className={styles.avatarOccupation}>Software Developer</Typography>
       <Divider />
       <List>
         {["All mail", "Trash", "Spam"].map((text, index) => (

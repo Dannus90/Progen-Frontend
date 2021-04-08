@@ -1,10 +1,10 @@
 import { useHistory } from "react-router-dom";
 
-interface ReturnObject {
+interface NavigationObject {
   navigateTo: (location: string) => void;
 }
 
-export const useNavigation = (): ReturnObject => {
+export const useNavigation = (): NavigationObject => {
   const history = useHistory();
 
   const navigateTo = (location: string): void => {

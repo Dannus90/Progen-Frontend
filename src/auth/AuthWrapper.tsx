@@ -1,15 +1,93 @@
-import React from 'react'
+import React, { useEffect, useMemo } from "react";
+import { getToken, setTokens } from "../utils/auth-helper";
+import jwt from "jwt-decode";
+import { useNavigation } from "../custom-hooks/UseNavigation";
+import { useMutation } from "@apollo/client";
+import { GET_REFRESH_TOKEN } from "./gql";
 
 interface Props {
   children: React.ReactNode;
 }
 
-const AuthWrapper: React.FC<Props> = ({ children }):JSX.Element => {
-  return (
-    <div>
-      {children}
-    </div>
-  )
+interface TokenData {
+  aud: string;
+  email: string;
+  exp: number;
+  iss: string;
+  sub: string;
 }
 
-export default AuthWrapper
+interface RefreshTokenData {
+  accessToken: string;
+  refreshToken: string;
+}
+
+interface RefreshTokenDataResponse {
+  refreshToken: {
+    accessToken: string;
+    refreshToken: string;
+    statusCode: number;
+  };
+}
+
+interface RefreshTokenDataResponseBackend {
+  authentication: {
+    refreshToken: {
+      accessToken: string;
+      refreshToken: string;
+      statusCode: number;
+    };
+  };
+}
+
+const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
+  const { navigateTo } = useNavigation();
+  const respondToGraphqlResponse = (responseData: RefreshTokenDataResponseBackend): void => {
+    setTokens({
+      refreshToken: responseData.authentication.refreshToken.refreshToken,
+      accessToken: responseData.authentication.refreshToken.accessToken
+    });
+  };
+
+  const [generateAccessToken, { error, data }] = useMutation<{
+    authentication: RefreshTokenDataResponse;
+    refreshTokenInput: RefreshTokenData;
+  }>(GET_REFRESH_TOKEN, {
+    errorPolicy: "all",
+    onCompleted: (data) => respondToGraphqlResponse(data)
+  });
+
+  useMemo((): void => {
+    if (error) {
+      navigateTo("/login");
+    }
+  }, [error]);
+
+  const getAccessToken = async (tokenData: RefreshTokenData) => {
+    await generateAccessToken({
+      variables: {
+        refreshTokenInput: {
+          accessToken: tokenData.accessToken,
+          refreshToken: tokenData.refreshToken
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    const { accessToken, refreshToken } = getToken();
+    if (accessToken && refreshToken) {
+      const { exp } = jwt<TokenData>(accessToken);
+      const currentTime = new Date().getTime() / 1000;
+
+      if (currentTime < exp) {
+        getAccessToken({ accessToken, refreshToken });
+      }
+    } else {
+      return navigateTo("/login");
+    }
+  }, []);
+  return <>{children}</>;
+};
+
+export default AuthWrapper;

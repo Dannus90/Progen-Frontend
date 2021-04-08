@@ -3,7 +3,7 @@ interface TokenData {
   refreshToken: string | null;
 }
 
-export const getToken = (): TokenData | null => {
+export const getToken = (): TokenData => {
   let tokenData;
   const retrievedData = localStorage.getItem("tokenData");
   if (retrievedData) {

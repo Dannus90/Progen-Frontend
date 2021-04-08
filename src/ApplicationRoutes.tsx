@@ -4,6 +4,7 @@ import { routeFactory } from "./RouteFactory";
 import LandingScreen from "./screens/landing-screen/index";
 import { AuthRoutes } from "./AuthRoutes";
 import Layout from "./components/layout/index";
+import AuthWrapper from "./auth/AuthWrapper";
 
 export const ApplicationRoutes: React.FC = () => {
   return (
@@ -29,8 +30,11 @@ export const ApplicationRoutes: React.FC = () => {
           path={routeFactory.auth.forgotPassword()}
           component={() => <LandingScreen componentToDisplay="reset-password" />}
         />
-        <Layout />
-        <AuthRoutes />
+        <Layout>
+          <AuthWrapper>
+            <AuthRoutes />
+          </AuthWrapper>
+        </Layout>
       </Switch>
     </Router>
   );

@@ -1,5 +1,6 @@
-import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
+import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { onError } from "@apollo/client/link/error";
 import { getToken } from "./utils/auth-helper";
 
 // More information regarding auth handling -> https://www.apollographql.com/docs/react/networking/authentication/#header
@@ -22,8 +23,23 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors)
+    graphQLErrors.forEach(({ message, locations, path }) =>
+      console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
+    );
+
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+
+  // To retry on network errors, we recommend the RetryLink
+  // instead of the onError link. This just logs the error.
+  if (networkError) {
+    console.log(`[Network error]: ${networkError}`);
+  }
+});
+
 // Creating the apollo server.
 export const apolloClient = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: ApolloLink.from([errorLink, authLink, httpLink]),
   cache: new InMemoryCache()
 });

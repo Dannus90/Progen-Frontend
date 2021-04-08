@@ -4,6 +4,7 @@ import jwt from "jwt-decode";
 import { useNavigation } from "../custom-hooks/UseNavigation";
 import { useMutation } from "@apollo/client";
 import { GET_REFRESH_TOKEN } from "./gql";
+import { onError } from "@apollo/client/link/error";
 
 interface Props {
   children: React.ReactNode;
@@ -43,6 +44,10 @@ interface RefreshTokenDataResponseBackend {
 const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
   const { navigateTo } = useNavigation();
   const respondToGraphqlResponse = (responseData: RefreshTokenDataResponseBackend): void => {
+    if (!responseData) {
+      return;
+    }
+
     setTokens({
       refreshToken: responseData.authentication.refreshToken.refreshToken,
       accessToken: responseData.authentication.refreshToken.accessToken
@@ -87,6 +92,16 @@ const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
       return navigateTo("/login");
     }
   }, []);
+
+  onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+      graphQLErrors.forEach(({ message, locations, path }) =>
+        console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
+      );
+
+    if (networkError) console.log(`[Network error]: ${networkError}`);
+  });
+
   return <>{children}</>;
 };
 

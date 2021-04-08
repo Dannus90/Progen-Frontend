@@ -1,7 +1,20 @@
-import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloLink,
+  createHttpLink,
+  InMemoryCache,
+  useMutation
+} from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
-import { getToken } from "./utils/auth-helper";
+import { GET_REFRESH_TOKEN } from "./auth/gql";
+import {
+  RefreshTokenData,
+  RefreshTokenDataResponse,
+  RefreshTokenDataResponseBackend
+} from "./auth/interfaces/auth-interaces";
+import { useNavigation } from "./custom-hooks/UseNavigation";
+import { getToken, setTokens } from "./utils/auth-helper";
 
 // More information regarding auth handling -> https://www.apollographql.com/docs/react/networking/authentication/#header
 
@@ -24,10 +37,55 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors)
+  const { navigateTo } = useNavigation();
+  const respondToGraphqlResponse = (responseData: RefreshTokenDataResponseBackend): void => {
+    if (!responseData) {
+      return navigateTo("/login");
+    }
+
+    setTokens({
+      refreshToken: responseData.authentication.refreshToken.refreshToken,
+      accessToken: responseData.authentication.refreshToken.accessToken
+    });
+  };
+
+  const [generateAccessToken, { error, data }] = useMutation<{
+    authentication: RefreshTokenDataResponse;
+    refreshTokenInput: RefreshTokenData;
+  }>(GET_REFRESH_TOKEN, {
+    errorPolicy: "all",
+    onCompleted: (data) => respondToGraphqlResponse(data)
+  });
+
+  const getAccessToken = async (tokenData: RefreshTokenData) => {
+    await generateAccessToken({
+      variables: {
+        refreshTokenInput: {
+          accessToken: tokenData.accessToken,
+          refreshToken: tokenData.refreshToken
+        }
+      }
+    });
+  };
+
+  if (graphQLErrors) {
     graphQLErrors.forEach(({ message, locations, path }) =>
       console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
     );
+  }
+
+  if (
+    graphQLErrors?.some((ge) => {
+      return ge.extensions?.exception.statusCode === 401;
+    })
+  ) {
+    const tokenData = getToken();
+    if (tokenData.accessToken && tokenData.refreshToken) {
+      getAccessToken({ refreshToken: tokenData.refreshToken, accessToken: tokenData.accessToken });
+    } else {
+      navigateTo("/login");
+    }
+  }
 
   if (networkError) console.log(`[Network error]: ${networkError}`);
 

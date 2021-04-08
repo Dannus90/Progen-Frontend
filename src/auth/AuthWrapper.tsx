@@ -4,48 +4,17 @@ import jwt from "jwt-decode";
 import { useNavigation } from "../custom-hooks/UseNavigation";
 import { useMutation } from "@apollo/client";
 import { GET_REFRESH_TOKEN } from "./gql";
-import { onError } from "@apollo/client/link/error";
+import { RefreshTokenData, RefreshTokenDataResponse, RefreshTokenDataResponseBackend, TokenData } from "./interfaces/auth-interaces";
 
 interface Props {
   children: React.ReactNode;
-}
-
-interface TokenData {
-  aud: string;
-  email: string;
-  exp: number;
-  iss: string;
-  sub: string;
-}
-
-interface RefreshTokenData {
-  accessToken: string;
-  refreshToken: string;
-}
-
-interface RefreshTokenDataResponse {
-  refreshToken: {
-    accessToken: string;
-    refreshToken: string;
-    statusCode: number;
-  };
-}
-
-interface RefreshTokenDataResponseBackend {
-  authentication: {
-    refreshToken: {
-      accessToken: string;
-      refreshToken: string;
-      statusCode: number;
-    };
-  };
 }
 
 const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
   const { navigateTo } = useNavigation();
   const respondToGraphqlResponse = (responseData: RefreshTokenDataResponseBackend): void => {
     if (!responseData) {
-      return;
+      return navigateTo("/login");
     }
 
     setTokens({
@@ -92,16 +61,6 @@ const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
       return navigateTo("/login");
     }
   }, []);
-
-  onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors)
-      graphQLErrors.forEach(({ message, locations, path }) =>
-        console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
-      );
-
-    if (networkError) console.log(`[Network error]: ${networkError}`);
-  });
-
   return <>{children}</>;
 };
 

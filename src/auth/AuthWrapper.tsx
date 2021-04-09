@@ -4,7 +4,12 @@ import jwt from "jwt-decode";
 import { useNavigation } from "../custom-hooks/UseNavigation";
 import { useMutation } from "@apollo/client";
 import { GET_REFRESH_TOKEN } from "./gql";
-import { RefreshTokenData, RefreshTokenDataResponse, RefreshTokenDataResponseBackend, TokenData } from "./interfaces/auth-interaces";
+import {
+  RefreshTokenData,
+  RefreshTokenDataResponse,
+  RefreshTokenDataResponseBackend,
+  TokenData
+} from "./interfaces/auth-interaces";
 
 interface Props {
   children: React.ReactNode;

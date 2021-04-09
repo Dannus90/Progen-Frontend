@@ -2,6 +2,7 @@ import {
   ApolloClient,
   ApolloLink,
   createHttpLink,
+  fromPromise,
   InMemoryCache,
   useMutation
 } from "@apollo/client";
@@ -17,6 +18,8 @@ import { useNavigation } from "./custom-hooks/UseNavigation";
 import { getToken, setTokens } from "./utils/auth-helper";
 
 // More information regarding auth handling -> https://www.apollographql.com/docs/react/networking/authentication/#header
+
+let apolloClient;
 
 const { REACT_APP_PROGEN_GRAPHQL_URL } = process.env;
 
@@ -36,55 +39,65 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  const { navigateTo } = useNavigation();
-  const respondToGraphqlResponse = (responseData: RefreshTokenDataResponseBackend): void => {
-    if (!responseData) {
-      return navigateTo("/login");
-    }
+const [generateAccessToken] = useMutation<{
+  authentication: RefreshTokenDataResponse;
+  refreshTokenInput: RefreshTokenData;
+}>(GET_REFRESH_TOKEN, {
+  errorPolicy: "all"
+});
 
-    setTokens({
-      refreshToken: responseData.authentication.refreshToken.refreshToken,
-      accessToken: responseData.authentication.refreshToken.accessToken
-    });
-  };
-
-  const [generateAccessToken, { error, data }] = useMutation<{
-    authentication: RefreshTokenDataResponse;
-    refreshTokenInput: RefreshTokenData;
-  }>(GET_REFRESH_TOKEN, {
-    errorPolicy: "all",
-    onCompleted: (data) => respondToGraphqlResponse(data)
-  });
-
-  const getAccessToken = async (tokenData: RefreshTokenData) => {
-    await generateAccessToken({
-      variables: {
-        refreshTokenInput: {
-          accessToken: tokenData.accessToken,
-          refreshToken: tokenData.refreshToken
-        }
+const getAccessToken = async (tokenData: RefreshTokenData) => {
+  await generateAccessToken({
+    variables: {
+      refreshTokenInput: {
+        accessToken: tokenData.accessToken,
+        refreshToken: tokenData.refreshToken
       }
-    });
-  };
+    }
+  });
+};
+
+const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) => {
+  if (graphQLErrors) {
+    for (const err of graphQLErrors) {
+      const tokenData = getToken();
+      switch (err?.extensions?.exception.statusCode) {
+        case 401:
+          if (tokenData.refreshToken && tokenData.accessToken) {
+            return fromPromise(
+              getAccessToken({
+                accessToken: tokenData.accessToken,
+                refreshToken: tokenData.refreshToken
+              }).catch((error) => {
+                console.log(error);
+                window.location.replace("/login");
+                return;
+              })
+            )
+              .filter((value) => Boolean(value))
+              .flatMap((accessToken) => {
+                console.log("HERE!!!!");
+                const oldHeaders = operation.getContext().headers;
+                // modify the operation context with a new token
+                operation.setContext({
+                  headers: {
+                    ...oldHeaders,
+                    authorization: `Bearer ${accessToken}`
+                  }
+                });
+
+                // retry the request, returning the new observable
+                return forward(operation);
+              });
+          }
+      }
+    }
+  }
 
   if (graphQLErrors) {
     graphQLErrors.forEach(({ message, locations, path }) =>
       console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
     );
-  }
-
-  if (
-    graphQLErrors?.some((ge) => {
-      return ge.extensions?.exception.statusCode === 401;
-    })
-  ) {
-    const tokenData = getToken();
-    if (tokenData.accessToken && tokenData.refreshToken) {
-      getAccessToken({ refreshToken: tokenData.refreshToken, accessToken: tokenData.accessToken });
-    } else {
-      navigateTo("/login");
-    }
   }
 
   if (networkError) console.log(`[Network error]: ${networkError}`);
@@ -97,7 +110,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 // Creating the apollo server.
-export const apolloClient = new ApolloClient({
+apolloClient = new ApolloClient({
   link: ApolloLink.from([errorLink, authLink, httpLink]),
   cache: new InMemoryCache()
 });
+
+export { apolloClient };

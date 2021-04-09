@@ -45,8 +45,8 @@ const DrawerComponentWrapper: React.FC<Props> = ({
       marginTop: "52px"
     },
     sizeAvatar: {
-      height: "150px",
-      width: "150px",
+      height: "125px",
+      width: "125px",
       margin: "0px auto",
       marginTop: "45px",
       marginBottom: "15px"

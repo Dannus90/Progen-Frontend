@@ -18,9 +18,6 @@ import { useNavigation } from "./custom-hooks/UseNavigation";
 import { getToken, setTokens } from "./utils/auth-helper";
 
 // More information regarding auth handling -> https://www.apollographql.com/docs/react/networking/authentication/#header
-
-let apolloClient;
-
 const { REACT_APP_PROGEN_GRAPHQL_URL } = process.env;
 
 const httpLink = createHttpLink({
@@ -110,9 +107,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
 });
 
 // Creating the apollo server.
-apolloClient = new ApolloClient({
+export const apolloClient = new ApolloClient({
   link: ApolloLink.from([errorLink, authLink, httpLink]),
   cache: new InMemoryCache()
 });
-
-export { apolloClient };

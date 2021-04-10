@@ -1,10 +1,4 @@
-import {
-  ApolloClient,
-  ApolloLink,
-  createHttpLink,
-  fromPromise,
-  InMemoryCache
-} from "@apollo/client";
+import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import { getNewToken, getToken, setTokens } from "./utils/auth-helper";
@@ -32,7 +26,6 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
       const tokenData = getToken();
-      console.log(err);
       switch (err?.extensions?.exception.statusCode) {
         case 401:
           if (tokenData.refreshToken && tokenData.accessToken) {
@@ -41,7 +34,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
                 return window.location.replace("/login");
               }
 
-              const { accessToken, refreshToken } = res.data.authentication.refreshToken;
+              const { accessToken, refreshToken } = res.data?.authentication.refreshToken;
 
               setTokens({ accessToken, refreshToken });
 

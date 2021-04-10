@@ -24,10 +24,10 @@ export type TopBarClasses = "topBarStyle" | "toolBarStyle" | "menuButton";
 const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
   const theme = useTheme<MainTheme>();
   const screenSize = useMediaQuery(theme.breakpoints.up("sm"));
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState<(EventTarget & HTMLButtonElement) | null>();
   const open = Boolean(anchorEl);
 
-  const handleMenu = (event: any): void => {
+  const handleMenu = (event: React.SyntheticEvent<HTMLButtonElement>): void => {
     setAnchorEl(event.currentTarget);
   };
 

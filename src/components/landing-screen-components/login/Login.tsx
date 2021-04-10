@@ -44,8 +44,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
         email: formData.email,
         password: formData.password
       }
-    },
-    errorPolicy: "all"
+    }
   });
 
   const handleLoginUser = (e: React.FormEvent<HTMLFormElement>): void => {

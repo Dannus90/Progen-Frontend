@@ -20,6 +20,7 @@ import { useNavigation } from "../../../custom-hooks/UseNavigation";
 
 interface Props {
   styles: ClassNameMap<DrawerComponentClasses>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   window?: any;
   handleDrawerToggle: () => void;
   mobileOpen: boolean;

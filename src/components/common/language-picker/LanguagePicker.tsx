@@ -1,4 +1,4 @@
-import { Button, Container, Paper } from "@material-ui/core";
+import { Button, Paper } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const LanguagePicker: React.FC<Props> = ({ styles }): JSX.Element => {
-  const [t, i18n] = useTranslation("common");
+  const [, i18n] = useTranslation("common");
   const languages = [...i18n.services.languageUtils.supportedLngs];
   languages.splice(-1, 1);
 

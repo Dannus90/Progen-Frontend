@@ -9,6 +9,7 @@ import Draggable from "react-draggable";
 import { useTranslation } from "react-i18next";
 import styles from "./ComplementaryModalStyles.module.scss";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PaperComponent = (props: any): JSX.Element => {
   return (
     <Draggable handle="#draggable-dialog-title" cancel={'[class*="MuiDialogContent-root"]'}>
@@ -35,7 +36,7 @@ export default function DraggableDialog({
   p2,
   p3,
   p4
-}: DraggableModalProps) {
+}: DraggableModalProps): JSX.Element {
   const { t } = useTranslation("common");
 
   return (

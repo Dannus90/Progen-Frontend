@@ -1,4 +1,4 @@
-import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
+import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import { CSSProperties } from "react";

@@ -28,7 +28,7 @@ const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
     });
   };
 
-  const [generateAccessToken, { error, data }] = useMutation<{
+  const [generateAccessToken, { error }] = useMutation<{
     authentication: RefreshTokenDataResponse;
     refreshTokenInput: RefreshTokenData;
   }>(GET_REFRESH_TOKEN, {

@@ -1,4 +1,3 @@
-import { mainTheme } from "./index";
 /**
  * Material UI theming and overrides.
  *

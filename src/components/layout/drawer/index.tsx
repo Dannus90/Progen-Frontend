@@ -11,6 +11,8 @@ export interface DrawerComponentStyles extends Theme {
   sizeAvatar: CreateCSSProperties | CSSProperties;
   avatarName: CreateCSSProperties | CSSProperties;
   avatarOccupation: CreateCSSProperties | CSSProperties;
+  logoutIcon: CreateCSSProperties | CSSProperties;
+  listStyle: CreateCSSProperties | CSSProperties;
 }
 
 export type DrawerComponentClasses =
@@ -18,7 +20,9 @@ export type DrawerComponentClasses =
   | "drawerPaper"
   | "sizeAvatar"
   | "avatarName"
-  | "avatarOccupation";
+  | "avatarOccupation"
+  | "logoutIcon"
+  | "listStyle";
 
 interface Props {
   handleDrawerToggle: () => void;
@@ -59,6 +63,16 @@ const DrawerComponentWrapper: React.FC<Props> = ({
       color: theme.custom.palette.textVariantGrey.light,
       textAlign: "center",
       marginBottom: "25px"
+    },
+    logoutIcon: {
+      transform: "rotate(180deg)"
+    },
+    listStyle: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "space-between",
+      height: "calc(100vh - 325px)"
     }
   });
 

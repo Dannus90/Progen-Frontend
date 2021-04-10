@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
 import {
   Avatar,
+  Box,
   Divider,
   Drawer,
   Hidden,
@@ -55,19 +56,23 @@ const DrawerComponent: React.FC<Props> = ({
       </Typography>
       <Typography className={styles.avatarOccupation}>Software Developer</Typography>
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <AccessAlarm /> : <ThreeDRotation />}</ListItemIcon>
-            <ListItemText primary={text} />
+      <List className={styles.listStyle}>
+        <Box>
+          {["All mail", "Trash", "Spam"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>{index % 2 === 0 ? <AccessAlarm /> : <ThreeDRotation />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </Box>
+        <Box>
+          <ListItem button key={"logout"} onClick={() => handleLogoutUser()}>
+            <ListItemIcon>
+              <ExitToAppRounded className={styles.logoutIcon} />
+            </ListItemIcon>
+            <ListItemText primary={t("auth.logout")} />
           </ListItem>
-        ))}
-        <ListItem button key={"logout"} onClick={() => handleLogoutUser()}>
-          <ListItemIcon>
-            <ExitToAppRounded />
-          </ListItemIcon>
-          <ListItemText primary={t("auth.logout")} />
-        </ListItem>
+        </Box>
       </List>
     </>
   );

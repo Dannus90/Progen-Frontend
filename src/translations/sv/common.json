@@ -7,5 +7,9 @@
   },
   "languagePicker": {
     "language": "Språk"
+  },
+
+  "auth": {
+    "logout": "Logga ut"
   }
 }

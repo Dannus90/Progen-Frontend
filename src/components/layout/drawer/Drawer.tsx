@@ -17,6 +17,7 @@ import { DrawerComponentClasses } from ".";
 import { LOGOUT_USER } from "./gql";
 import { LogoutUserResponseBackend } from "./interfaces/drawer-interfaces";
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   styles: ClassNameMap<DrawerComponentClasses>;
@@ -33,7 +34,7 @@ const DrawerComponent: React.FC<Props> = ({
   mobileOpen
 }): JSX.Element => {
   const { navigateTo } = useNavigation();
-
+  const [t] = useTranslation("common");
   const [logoutUser] = useMutation<LogoutUserResponseBackend>(LOGOUT_USER);
 
   const handleLogoutUser = async () => {
@@ -65,7 +66,7 @@ const DrawerComponent: React.FC<Props> = ({
           <ListItemIcon>
             <ExitToAppRounded />
           </ListItemIcon>
-          <ListItemText primary={"Logout"} />
+          <ListItemText primary={t("auth.logout")} />
         </ListItem>
       </List>
     </>

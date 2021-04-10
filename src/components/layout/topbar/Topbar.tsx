@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Container,
   IconButton,
   Menu,
   MenuItem,
@@ -8,18 +9,18 @@ import {
   useMediaQuery,
   useTheme
 } from "@material-ui/core";
+import LanguageIcon from "@material-ui/icons/Language";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountCircle } from "@material-ui/icons";
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
 import { MainTheme } from "../../../styles/theme";
+import { TopBarClasses } from ".";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
   handleDrawerToggle: () => void;
 }
-
-export type TopBarClasses = "topBarStyle" | "toolBarStyle" | "menuButton";
 
 const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -52,7 +53,8 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
           className={styles.menuButton}>
           <MenuIcon />
         </IconButton>
-        <div>
+        <div className={styles.languageProfileContainer}>
+          <LanguageIcon color="primary" fontSize="large" className={styles.languageIcon} />
           <IconButton
             aria-label="account of current user"
             aria-controls="menu-appbar"

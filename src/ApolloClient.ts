@@ -3,19 +3,11 @@ import {
   ApolloLink,
   createHttpLink,
   fromPromise,
-  InMemoryCache,
-  useMutation
+  InMemoryCache
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
-import { GET_REFRESH_TOKEN } from "./auth/gql";
-import {
-  RefreshTokenData,
-  RefreshTokenDataResponse,
-  RefreshTokenDataResponseBackend
-} from "./auth/interfaces/auth-interaces";
-import { useNavigation } from "./custom-hooks/UseNavigation";
-import { getToken, setTokens } from "./utils/auth-helper";
+import { getNewToken, getToken, setTokens } from "./utils/auth-helper";
 
 // More information regarding auth handling -> https://www.apollographql.com/docs/react/networking/authentication/#header
 const { REACT_APP_PROGEN_GRAPHQL_URL } = process.env;
@@ -36,56 +28,32 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const [generateAccessToken] = useMutation<{
-  authentication: RefreshTokenDataResponse;
-  refreshTokenInput: RefreshTokenData;
-}>(GET_REFRESH_TOKEN, {
-  errorPolicy: "all"
-});
-
-const getAccessToken = async (tokenData: RefreshTokenData) => {
-  await generateAccessToken({
-    variables: {
-      refreshTokenInput: {
-        accessToken: tokenData.accessToken,
-        refreshToken: tokenData.refreshToken
-      }
-    }
-  });
-};
-
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) => {
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
       const tokenData = getToken();
+      console.log(err);
       switch (err?.extensions?.exception.statusCode) {
         case 401:
           if (tokenData.refreshToken && tokenData.accessToken) {
-            return fromPromise(
-              getAccessToken({
-                accessToken: tokenData.accessToken,
-                refreshToken: tokenData.refreshToken
-              }).catch((error) => {
-                console.log(error);
-                window.location.replace("/login");
-                return;
-              })
-            )
-              .filter((value) => Boolean(value))
-              .flatMap((accessToken) => {
-                console.log("HERE!!!!");
-                const oldHeaders = operation.getContext().headers;
-                // modify the operation context with a new token
-                operation.setContext({
-                  headers: {
-                    ...oldHeaders,
-                    authorization: `Bearer ${accessToken}`
-                  }
-                });
+            getNewToken().then((res) => {
+              if (res.data === null && res.errors) {
+                return window.location.replace("/login");
+              }
+              const { accessToken, refreshToken } = res.data.authentication.refreshToken;
 
-                // retry the request, returning the new observable
-                return forward(operation);
+              setTokens({ accessToken, refreshToken });
+
+              const oldHeaders = operation.getContext().headers;
+              operation.setContext({
+                headers: {
+                  ...oldHeaders,
+                  authorization: `Bearer ${accessToken}`
+                }
               });
+
+              return forward(operation);
+            });
           }
       }
     }
@@ -109,5 +77,16 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
 // Creating the apollo server.
 export const apolloClient = new ApolloClient({
   link: ApolloLink.from([errorLink, authLink, httpLink]),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  defaultOptions: {
+    watchQuery: {
+      errorPolicy: "all"
+    },
+    query: {
+      errorPolicy: "all"
+    },
+    mutate: {
+      errorPolicy: "all"
+    }
+  }
 });

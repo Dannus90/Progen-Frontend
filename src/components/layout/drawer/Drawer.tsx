@@ -1,3 +1,4 @@
+import { useMutation } from "@apollo/client";
 import {
   Avatar,
   Divider,
@@ -7,13 +8,15 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Typography,
-  useTheme
+  Typography
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { AccessAlarm, ThreeDRotation } from "@material-ui/icons";
+import { AccessAlarm, ThreeDRotation, ExitToAppRounded } from "@material-ui/icons";
 import React from "react";
 import { DrawerComponentClasses } from ".";
+import { LOGOUT_USER } from "./gql";
+import { LogoutUserResponseBackend } from "./interfaces/drawer-interfaces";
+import { useNavigation } from "../../../custom-hooks/UseNavigation";
 
 interface Props {
   styles: ClassNameMap<DrawerComponentClasses>;
@@ -28,6 +31,19 @@ const DrawerComponent: React.FC<Props> = ({
   handleDrawerToggle,
   mobileOpen
 }): JSX.Element => {
+  const { navigateTo } = useNavigation();
+
+  const [logoutUser] = useMutation<LogoutUserResponseBackend>(LOGOUT_USER);
+
+  const handleLogoutUser = async () => {
+    const response = await logoutUser();
+    if (response.data === null && response.errors) {
+      return;
+    }
+
+    navigateTo("/login");
+  };
+
   const drawerBody = (
     <>
       <Divider />
@@ -44,6 +60,12 @@ const DrawerComponent: React.FC<Props> = ({
             <ListItemText primary={text} />
           </ListItem>
         ))}
+        <ListItem button key={"logout"} onClick={() => handleLogoutUser()}>
+          <ListItemIcon>
+            <ExitToAppRounded />
+          </ListItemIcon>
+          <ListItemText primary={"Logout"} />
+        </ListItem>
       </List>
     </>
   );

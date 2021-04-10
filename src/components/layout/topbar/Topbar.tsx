@@ -45,7 +45,7 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
   };
 
   return (
-    <AppBar position="static" className={styles.topBarStyle}>
+    <AppBar position="fixed" className={styles.topBarStyle}>
       <Toolbar variant="dense" className={styles.toolBarStyle}>
         {screenSize && (
           <Typography variant="h6" color="inherit">

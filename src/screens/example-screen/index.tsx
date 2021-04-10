@@ -3,18 +3,18 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
 import { MainTheme } from "../../styles/theme";
-import HomeScreen from "./HomeScreen";
+import TestScreen from "./ExampleScreen";
 
-export interface HomeScreenStyles extends Theme {
+export interface ExampleScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
 }
 
-export type HomeScreenClasses = "pageWrapperStyles";
+export type ExampleScreenClasses = "pageWrapperStyles";
 
-const HomeScreenWrapper: React.FC = (): JSX.Element => {
+const ExampleScreenWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
-  const homeScreenStyles = makeStyles({
+  const exampleScreenStyles = makeStyles({
     pageWrapperStyles: {
       background: `${theme.custom.palette.lightBackground}`,
       height: "100vh",
@@ -25,9 +25,9 @@ const HomeScreenWrapper: React.FC = (): JSX.Element => {
     }
   });
 
-  const styles = homeScreenStyles();
+  const styles = exampleScreenStyles();
 
-  return <HomeScreen styles={styles} />;
+  return <TestScreen styles={styles} />;
 };
 
-export default HomeScreenWrapper;
+export default ExampleScreenWrapper;

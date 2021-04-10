@@ -1,6 +1,5 @@
 import {
   AppBar,
-  Container,
   IconButton,
   Menu,
   MenuItem,
@@ -16,6 +15,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
 import { MainTheme } from "../../../styles/theme";
 import { TopBarClasses } from ".";
+import useComponentVisible from "../../../custom-hooks/UseComponentVisible";
+import LanguagePicker from "../../common/language-picker/index";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
@@ -24,9 +25,14 @@ interface Props {
 
 const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
   const theme = useTheme<MainTheme>();
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const screenSize = useMediaQuery(theme.breakpoints.up("sm"));
   const [anchorEl, setAnchorEl] = React.useState<(EventTarget & HTMLButtonElement) | null>();
   const open = Boolean(anchorEl);
+
+  const handleDisplayLanguagePicker = (): void => {
+    setIsComponentVisible((prev) => !prev);
+  };
 
   const handleMenu = (event: React.SyntheticEvent<HTMLButtonElement>): void => {
     setAnchorEl(event.currentTarget);
@@ -54,7 +60,13 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
           <MenuIcon />
         </IconButton>
         <div className={styles.languageProfileContainer}>
-          <LanguageIcon color="primary" fontSize="large" className={styles.languageIcon} />
+          <LanguageIcon
+            color="primary"
+            fontSize="large"
+            className={styles.languageIcon}
+            onClick={handleDisplayLanguagePicker}
+          />
+          <div ref={ref}>{isComponentVisible && <LanguagePicker />}</div>
           <IconButton
             aria-label="account of current user"
             aria-controls="menu-appbar"

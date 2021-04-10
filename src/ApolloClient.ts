@@ -37,9 +37,10 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
         case 401:
           if (tokenData.refreshToken && tokenData.accessToken) {
             getNewToken().then((res) => {
-              if (res.data === null && res.errors) {
+              if ((res.data === null && res.errors) || err.path?.includes("logoutUser")) {
                 return window.location.replace("/login");
               }
+
               const { accessToken, refreshToken } = res.data.authentication.refreshToken;
 
               setTokens({ accessToken, refreshToken });

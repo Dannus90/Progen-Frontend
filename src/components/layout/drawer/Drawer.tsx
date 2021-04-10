@@ -12,7 +12,7 @@ import {
   Typography
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { AccessAlarm, ThreeDRotation, ExitToAppRounded } from "@material-ui/icons";
+import { ExitToAppRounded, Dashboard, Group, ContactSupportOutlined } from "@material-ui/icons";
 import React from "react";
 import { DrawerComponentClasses } from ".";
 import { LOGOUT_USER } from "./gql";
@@ -47,6 +47,24 @@ const DrawerComponent: React.FC<Props> = ({
     navigateTo("/login");
   };
 
+  const listIconsUpper = [
+    {
+      name: "dashboard",
+      icon: <Dashboard />
+    },
+    {
+      name: "team",
+      icon: <Group />
+    }
+  ];
+
+  const listIconsLower = [
+    {
+      name: "support",
+      icon: <ContactSupportOutlined />
+    }
+  ];
+
   const drawerBody = (
     <>
       <Divider />
@@ -58,10 +76,18 @@ const DrawerComponent: React.FC<Props> = ({
       <Divider />
       <List className={styles.listStyle}>
         <Box>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <AccessAlarm /> : <ThreeDRotation />}</ListItemIcon>
-              <ListItemText primary={text} />
+          {listIconsUpper.map((item) => (
+            <ListItem button key={item.name}>
+              <ListItemIcon className={styles.listItemStyle}>{item.icon}</ListItemIcon>
+              <ListItemText className={styles.listItemStyle} primary={t(`list.${item.name}`)} />
+            </ListItem>
+          ))}
+        </Box>
+        <Box className={styles.boxDivider}>
+          {listIconsLower.map((item) => (
+            <ListItem button key={item.name}>
+              <ListItemIcon className={styles.listItemStyle}>{item.icon}</ListItemIcon>
+              <ListItemText className={styles.listItemStyle} primary={t(`list.${item.name}`)} />
             </ListItem>
           ))}
         </Box>
@@ -70,7 +96,7 @@ const DrawerComponent: React.FC<Props> = ({
             <ListItemIcon>
               <ExitToAppRounded className={styles.logoutIcon} />
             </ListItemIcon>
-            <ListItemText primary={t("auth.logout")} />
+            <ListItemText className={styles.listItemStyle} primary={t("auth.logout")} />
           </ListItem>
         </Box>
       </List>

@@ -8,8 +8,12 @@
   "languagePicker": {
     "language": "Språk"
   },
-
   "auth": {
     "logout": "Logga ut"
+  },
+  "list": {
+    "dashboard": "Hem",
+    "team": "Ditt team",
+    "support": "Support"
   }
 }

@@ -18,7 +18,8 @@ const defaultColors = {
   textColorGreyPrimary: "#909090",
   textColorGreyLight: "#9EA0A5",
   lightBackgroundPrimary: "#fff",
-  subtleBorderColorGrey: "#E4E7EB"
+  subtleBorderColorGrey: "#E4E7EB",
+  listItemStyleMain: "#66788A"
 };
 
 // Incase we want to override some material ui theme styles it is done here.
@@ -46,6 +47,9 @@ export const overrides = createMuiTheme({
       textVariantGrey: {
         main: defaultColors.textColorGreyPrimary,
         light: defaultColors.textColorGreyLight
+      },
+      listItemStyle: {
+        main: defaultColors.listItemStyleMain
       }
     },
     borderColors: {

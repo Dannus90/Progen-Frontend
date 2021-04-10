@@ -17,6 +17,12 @@ declare module "@material-ui/core/styles/createMuiTheme" {
           main: string;
           light: string;
         };
+        listItemStyle: {
+          main: string;
+        };
+      };
+      borderColors: {
+        subtleGreyMain: string;
       };
     };
   }
@@ -35,6 +41,9 @@ declare module "@material-ui/core/styles/createMuiTheme" {
         textVariantGrey?: {
           main?: string;
           light?: string;
+        };
+        listItemStyle: {
+          main?: string;
         };
       };
       borderColors: {

@@ -10,5 +10,10 @@
   },
   "auth": {
     "logout": "Logout"
+  },
+  "list": {
+    "dashboard": "Dashboard",
+    "team": "Your team",
+    "support": "Support"
   }
 }

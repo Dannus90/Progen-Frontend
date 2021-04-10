@@ -17,6 +17,7 @@ import { MainTheme } from "../../../styles/theme";
 import { TopBarClasses } from ".";
 import useComponentVisible from "../../../custom-hooks/UseComponentVisible";
 import LanguagePicker from "../../common/language-picker/index";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
@@ -24,6 +25,7 @@ interface Props {
 }
 
 const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
+  const { t } = useTranslation("common");
   const theme = useTheme<MainTheme>();
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const screenSize = useMediaQuery(theme.breakpoints.up("sm"));
@@ -66,7 +68,7 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
             className={styles.languageIcon}
             onClick={handleDisplayLanguagePicker}
           />
-          <div ref={ref}>{isComponentVisible && <LanguagePicker />}</div>
+          <div ref={ref}>{isComponentVisible && <LanguagePicker isHome={true} />}</div>
           <IconButton
             aria-label="account of current user"
             aria-controls="menu-appbar"
@@ -89,8 +91,8 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
             }}
             open={open}
             onClose={handleClose}>
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>{t("topBar.menu.profile")}</MenuItem>
+            <MenuItem onClick={handleClose}>{t("topBar.menu.account")}</MenuItem>
           </Menu>
         </div>
       </Toolbar>

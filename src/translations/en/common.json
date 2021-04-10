@@ -15,5 +15,11 @@
     "dashboard": "Dashboard",
     "team": "Your team",
     "support": "Support"
+  },
+  "topBar": {
+    "menu": {
+      "profile": "Profile",
+      "account": "Account"
+    }
   }
 }

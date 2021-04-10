@@ -12,7 +12,11 @@ export interface LanguagePickerComponentStyles extends Theme {
 
 export type LanguagePickerComponentClasses = "languagesPaper" | "languageButton";
 
-const LanguagePickerComponentWrapper: React.FC = (): JSX.Element => {
+interface Props {
+  isHome?: boolean;
+}
+
+const LanguagePickerComponentWrapper: React.FC<Props> = ({ isHome }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const languagePickerComponentStyles = makeStyles({
@@ -28,7 +32,7 @@ const LanguagePickerComponentWrapper: React.FC = (): JSX.Element => {
       padding: `${theme.customSpacings.s}`,
       position: "absolute",
       top: "45px",
-      right: "7.5px"
+      right: isHome ? "50px" : "7.5px"
     },
     languageButton: {
       border: "none",

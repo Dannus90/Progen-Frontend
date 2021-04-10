@@ -15,5 +15,11 @@
     "dashboard": "Hem",
     "team": "Ditt team",
     "support": "Support"
+  },
+  "topBar": {
+    "menu": {
+      "profile": "Profil",
+      "account": "Konto"
+    }
   }
 }

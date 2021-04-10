@@ -3,7 +3,7 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
 import { MainTheme } from "../../../styles/theme/index";
-import TopBar from "./TopBar";
+import TopBar from "./Topbar";
 
 export interface LandingScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;

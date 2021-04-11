@@ -3,8 +3,8 @@ import { LoginData } from "../components/landing-screen-components/login/interfa
 import { RegisterFormData } from "../components/landing-screen-components/register/interfaces/register-interfaces";
 
 interface RegisterLoginData {
-  firstname?: string;
-  lastname?: string;
+  firstName?: string;
+  lastName?: string;
   email: string;
   password: string;
 }

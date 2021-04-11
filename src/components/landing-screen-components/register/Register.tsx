@@ -26,8 +26,8 @@ interface Props {
 }
 
 const initialFormState: RegisterFormData = {
-  firstname: "",
-  lastname: "",
+  firstName: "",
+  lastName: "",
   email: "",
   password: ""
 };
@@ -46,8 +46,8 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
   }>(REGISTER_USER, {
     variables: {
       registerUserInput: {
-        firstname: formData.firstname,
-        lastname: formData.lastname,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
         email: formData.email,
         password: formData.password
       }
@@ -148,14 +148,14 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstname"
+                name="firstName"
                 variant="outlined"
                 required
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 fullWidth
-                id="firstname"
+                id="firstName"
                 label={t("form.firstName")}
                 autoFocus
                 size="small"
@@ -166,12 +166,12 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastname"
+                id="lastName"
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("form.lastName")}
-                name="lastname"
+                name="lastName"
                 autoComplete="lname"
                 size="small"
               />

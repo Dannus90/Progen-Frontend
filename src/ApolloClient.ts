@@ -26,15 +26,15 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
       const tokenData = getToken();
+      if (err.path?.includes("loginUser")) {
+        return;
+      }
+
       switch (err?.extensions?.exception.statusCode) {
         case 401:
           if (tokenData.refreshToken && tokenData.accessToken) {
             getNewToken().then((res) => {
-              if (
-                (res.data === null && res.errors) ||
-                err.path?.includes("logoutUser") ||
-                err.path?.includes("loginUser")
-              ) {
+              if (res.data === null && res.errors && err.path?.includes("logoutUser")) {
                 return window.location.replace("/login");
               }
 

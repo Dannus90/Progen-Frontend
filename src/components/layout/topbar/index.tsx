@@ -11,6 +11,7 @@ export interface LandingScreenStyles extends Theme {
   menuButton: CreateCSSProperties | CSSProperties;
   languageProfileContainer: CreateCSSProperties | CSSProperties;
   languageIcon: CreateCSSProperties | CSSProperties;
+  proGenSignature: CreateCSSProperties | CSSProperties;
 }
 
 export type TopBarClasses =
@@ -18,7 +19,8 @@ export type TopBarClasses =
   | "toolBarStyle"
   | "menuButton"
   | "languageProfileContainer"
-  | "languageIcon";
+  | "languageIcon"
+  | "proGenSignature";
 
 interface Props {
   handleDrawerToggle: () => void;
@@ -55,6 +57,9 @@ const TopBarWrapper: React.FC<Props> = ({ handleDrawerToggle }): JSX.Element => 
       justifyContent: "center",
       alignItems: "center",
       flexDirection: "row"
+    },
+    proGenSignature: {
+      color: theme.custom.palette.lightBackground.main
     }
   });
 

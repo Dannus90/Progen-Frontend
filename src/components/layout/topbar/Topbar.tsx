@@ -18,6 +18,7 @@ import { TopBarClasses } from ".";
 import useComponentVisible from "../../../custom-hooks/UseComponentVisible";
 import LanguagePicker from "../../common/language-picker/index";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
@@ -48,9 +49,11 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
     <AppBar position="fixed" className={styles.topBarStyle}>
       <Toolbar variant="dense" className={styles.toolBarStyle}>
         {screenSize && (
-          <Typography variant="h6" color="inherit">
-            ProGen
-          </Typography>
+          <Link to="/home" className={styles.proGenSignature}>
+            <Typography variant="h6" color="inherit">
+              ProGen
+            </Typography>
+          </Link>
         )}
 
         <IconButton

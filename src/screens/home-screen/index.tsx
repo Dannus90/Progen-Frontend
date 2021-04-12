@@ -1,4 +1,4 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
@@ -13,12 +13,15 @@ export type HomeScreenClasses = "pageWrapperStyles";
 
 const HomeScreenWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
+  const smallScreen = useMediaQuery("(max-width:600px)");
 
   const homeScreenStyles = makeStyles({
     pageWrapperStyles: {
       background: `${theme.custom.palette.lightBackground}`,
-      height: "100vh",
-      width: "100vw",
+      minHeight: "calc(100vh - 52px)",
+      marginTop: "52px",
+      width: smallScreen ? "100vw" : "calc(100vw - 240px)",
+      marginLeft: smallScreen ? "0px" : "240px",
       display: "flex",
       justifyContent: "center",
       alignItems: "center"

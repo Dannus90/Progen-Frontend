@@ -58,7 +58,7 @@ const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
       const { exp } = jwt<TokenData>(accessToken);
       const currentTime = new Date().getTime() / 1000;
 
-      if (currentTime > exp) {
+      if (currentTime < exp) {
         getAccessToken({ accessToken, refreshToken });
       }
     } else {

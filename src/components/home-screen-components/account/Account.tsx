@@ -7,11 +7,7 @@ interface Props {
 }
 
 const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
-  return (
-    <div className={styles.accountWrapperStyles}>
-      Account Component
-    </div>
-  );
+  return <div className={styles.accountWrapperStyles}>Account Component</div>;
 };
 
 export default AccountComponent;

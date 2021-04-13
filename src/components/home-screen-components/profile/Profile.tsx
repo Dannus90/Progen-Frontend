@@ -7,11 +7,7 @@ interface Props {
 }
 
 const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
-  return (
-    <div className={styles.profileWrapperStyles}>
-      Profile
-    </div>
-  );
+  return <div className={styles.profileWrapperStyles}>Profile</div>;
 };
 
 export default ProfileComponent;

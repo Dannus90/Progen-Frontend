@@ -4,6 +4,10 @@ import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AppBar, Tab, Tabs } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import { TabPanel } from "../../components/common/tab-panel/TabPanel";
+import Profile from "../../components/home-screen-components/profile/index";
+import CreateCv from "../../components/home-screen-components/create-cv/index";
+import CvInformation from "../../components/home-screen-components/cv-information/index";
+import Account from "../../components/home-screen-components/account/index";
 
 interface Props {
   styles: ClassNameMap<HomeScreenClasses>;
@@ -50,10 +54,18 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
           <Tab label={t("tabs.createCv")} {...getTabProps(3)} />
         </Tabs>
       </AppBar>
-      <TabPanel {...getTabPanelProps(currentTab, 0)}>Profile</TabPanel>
-      <TabPanel {...getTabPanelProps(currentTab, 1)}>Account</TabPanel>
-      <TabPanel {...getTabPanelProps(currentTab, 2)}>CV Information</TabPanel>
-      <TabPanel {...getTabPanelProps(currentTab, 3)}>Create CV</TabPanel>
+      <TabPanel {...getTabPanelProps(currentTab, 0)}>
+        <Profile />
+      </TabPanel>
+      <TabPanel {...getTabPanelProps(currentTab, 1)}>
+        <Account />
+      </TabPanel>
+      <TabPanel {...getTabPanelProps(currentTab, 2)}>
+        <CvInformation />
+      </TabPanel>
+      <TabPanel {...getTabPanelProps(currentTab, 3)}>
+        <CreateCv />
+      </TabPanel>
     </div>
   );
 };

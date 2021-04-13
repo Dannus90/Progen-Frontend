@@ -16,7 +16,7 @@ const ProfileComponentWrapper: React.FC = (): JSX.Element => {
 
   const profileComponentStyles = makeStyles({
     profileWrapperStyles: {
-      background: `${theme.custom.palette.lightBackground}`,
+      background: `${theme.custom.palette.lightBackground}`
     }
   });
 

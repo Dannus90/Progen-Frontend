@@ -7,11 +7,7 @@ interface Props {
 }
 
 const CreateCvComponent: React.FC<Props> = ({ styles }): JSX.Element => {
-  return (
-    <div className={styles.createCvWrapperStyles}>
-      Create Cv Component
-    </div>
-  );
+  return <div className={styles.createCvWrapperStyles}>Create Cv Component</div>;
 };
 
 export default CreateCvComponent;

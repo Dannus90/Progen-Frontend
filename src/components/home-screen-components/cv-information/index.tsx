@@ -16,7 +16,7 @@ const CvInformationComponentWrapper: React.FC = (): JSX.Element => {
 
   const createCvInformationComponentStyles = makeStyles({
     cvInformationWrapperStyles: {
-      background: `${theme.custom.palette.lightBackground}`,
+      background: `${theme.custom.palette.lightBackground}`
     }
   });
 

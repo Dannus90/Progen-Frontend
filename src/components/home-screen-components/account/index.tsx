@@ -16,7 +16,7 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
 
   const accountComponentStyles = makeStyles({
     accountWrapperStyles: {
-      background: `${theme.custom.palette.lightBackground}`,
+      background: `${theme.custom.palette.lightBackground}`
     }
   });
 

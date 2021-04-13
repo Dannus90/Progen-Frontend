@@ -16,7 +16,7 @@ const CreateCvComponentWrapper: React.FC = (): JSX.Element => {
 
   const createCvComponentStyles = makeStyles({
     createCvWrapperStyles: {
-      background: `${theme.custom.palette.lightBackground}`,
+      background: `${theme.custom.palette.lightBackground}`
     }
   });
 

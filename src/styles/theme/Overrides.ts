@@ -13,6 +13,7 @@ const defaultColors = {
   colorSecondary: "#445E93",
   colorSecondaryLight: "#102927",
   textColorDarkPrimary: "#212529",
+  textColorDarkDark: "#000",
   textColorDarkLight: "#505050",
   textColorDarkMedium: "#3A3B3F",
   textColorGreyPrimary: "#909090",
@@ -41,6 +42,7 @@ export const overrides = createMuiTheme({
       },
       textVariantDark: {
         main: defaultColors.textColorDarkPrimary,
+        dark: defaultColors.textColorDarkDark,
         medium: defaultColors.textColorDarkMedium,
         light: defaultColors.textColorDarkLight
       },

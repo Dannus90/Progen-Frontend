@@ -1,48 +1,31 @@
 import React, { useState } from "react";
 import { HomeScreenClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { AppBar, Box, Tab, Tabs, Typography } from "@material-ui/core";
+import { AppBar, Tab, Tabs } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
+import { TabPanel } from "../../components/common/tab-panel/TabPanel";
 
 interface Props {
   styles: ClassNameMap<HomeScreenClasses>;
 }
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
+interface TabProps {
+  id: string;
+  "aria-controls": string;
 }
 
-const TabPanel = (props: TabPanelProps) => {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}>
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-};
-
 const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
-  const [currentTab, setCurrentTab] = useState(1);
+  const { t } = useTranslation("home");
+  const [currentTab, setCurrentTab] = useState(0);
 
-  const tabProps = (index: number) => {
+  const getTabProps = (index: number): TabProps => {
     return {
       id: `home-tab-${index}`,
       "aria-controls": `home-tabpanel-${index}`
     };
   };
 
-  const tabPanelProps = (tab: number, index: number) => {
+  const getTabPanelProps = (tab: number, index: number) => {
     return {
       value: tab,
       index
@@ -55,16 +38,22 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
 
   return (
     <div className={styles.pageWrapperStyles}>
-      <AppBar position="static">
-        <Tabs value={currentTab} onChange={handleTabChange} aria-label="simple tabs example">
-          <Tab label="Item One" {...tabProps(0)} />
-          <Tab label="Item Two" {...tabProps(1)} />
-          <Tab label="Item Three" {...tabProps(2)} />
+      <AppBar color="transparent" position="static" className={styles.tabsStyle}>
+        <Tabs
+          indicatorColor="primary"
+          value={currentTab}
+          onChange={handleTabChange}
+          aria-label="home tabs">
+          <Tab label={t("tabs.profile")} {...getTabProps(0)} />
+          <Tab label={t("tabs.account")} {...getTabProps(1)} />
+          <Tab label={t("tabs.baseCv")} {...getTabProps(2)} />
+          <Tab label={t("tabs.createCv")} {...getTabProps(3)} />
         </Tabs>
       </AppBar>
-      <TabPanel {...tabPanelProps(currentTab, 0)}>Item One</TabPanel>
-      <TabPanel {...tabPanelProps(currentTab, 1)}>Item Two</TabPanel>
-      <TabPanel {...tabPanelProps(currentTab, 2)}>Item Three</TabPanel>
+      <TabPanel {...getTabPanelProps(currentTab, 0)}>Profile</TabPanel>
+      <TabPanel {...getTabPanelProps(currentTab, 1)}>Account</TabPanel>
+      <TabPanel {...getTabPanelProps(currentTab, 2)}>CV Information</TabPanel>
+      <TabPanel {...getTabPanelProps(currentTab, 3)}>Create CV</TabPanel>
     </div>
   );
 };

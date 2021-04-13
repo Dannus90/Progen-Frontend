@@ -7,9 +7,10 @@ import HomeScreen from "./HomeScreen";
 
 export interface HomeScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
+  tabsStyle: CreateCSSProperties | CSSProperties;
 }
 
-export type HomeScreenClasses = "pageWrapperStyles";
+export type HomeScreenClasses = "pageWrapperStyles" | "tabsStyle";
 
 const HomeScreenWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -21,10 +22,12 @@ const HomeScreenWrapper: React.FC = (): JSX.Element => {
       minHeight: "calc(100vh - 52px)",
       marginTop: "52px",
       width: smallScreen ? "100vw" : "calc(100vw - 240px)",
-      marginLeft: smallScreen ? "0px" : "240px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
+      marginLeft: smallScreen ? "0px" : "240px"
+    },
+    tabsStyle: {
+      boxShadow: "none",
+      borderBottom: `${theme.custom.borderColors.subtleGreyMain}`,
+      color: `${theme.custom.palette.textVariantDark.dark}`
     }
   });
 

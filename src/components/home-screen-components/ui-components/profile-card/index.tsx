@@ -32,7 +32,8 @@ const ProfileCardComponentWrapper: React.FC = (): JSX.Element => {
 
   const profileCardComponentStyles = makeStyles({
     profileCardWrapperStyles: {
-      width: "385px"
+      width: "385px",
+      borderRadius: "15px"
     },
     profileImageStyle: {
       width: "140px",

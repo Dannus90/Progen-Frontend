@@ -13,6 +13,8 @@ export interface ProfileCardComponentStyles extends Theme {
   cardContentStyle: CreateCSSProperties | CSSProperties;
   cardActionsStyle: CreateCSSProperties | CSSProperties;
   cardButtonStyles: CreateCSSProperties | CSSProperties;
+  cardButtonAddImageStyles: CreateCSSProperties | CSSProperties;
+  cardButtonRemoveImageStyles: CreateCSSProperties | CSSProperties;
 }
 
 export type ProfileCardComponentClasses =
@@ -22,7 +24,8 @@ export type ProfileCardComponentClasses =
   | "profileCardInformation"
   | "cardContentStyle"
   | "cardActionsStyle"
-  | "cardButtonStyles";
+  | "cardButtonAddImageStyles"
+  | "cardButtonRemoveImageStyles";
 
 const ProfileCardComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -51,8 +54,12 @@ const ProfileCardComponentWrapper: React.FC = (): JSX.Element => {
     cardActionsStyle: {
       padding: "1rem"
     },
-    cardButtonStyles: {
+    cardButtonAddImageStyles: {
       width: "50%"
+    },
+    cardButtonRemoveImageStyles: {
+      width: "50%",
+      color: theme.custom.palette.textVariantCustom.lightPurple
     }
   });
 

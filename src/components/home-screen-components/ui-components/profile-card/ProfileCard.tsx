@@ -9,8 +9,10 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Typography
+  Typography,
+  useTheme
 } from "@material-ui/core";
+import { MainTheme } from "../../../../styles/theme";
 
 interface Props {
   styles: ClassNameMap<ProfileCardComponentClasses>;
@@ -18,6 +20,8 @@ interface Props {
 
 const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("home");
+  const theme = useTheme<MainTheme>();
+
   return (
     <>
       <Card className={styles.profileCardWrapperStyles}>
@@ -40,10 +44,10 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           />
         </CardActionArea>
         <CardActions className={styles.cardActionsStyle}>
-          <Button size="small" color="primary" className={styles.cardButtonStyles}>
+          <Button size="small" color="primary" className={styles.cardButtonAddImageStyles}>
             {t("profileCard.uploadImage")}
           </Button>
-          <Button size="small" color="secondary" className={styles.cardButtonStyles}>
+          <Button size="small" className={styles.cardButtonRemoveImageStyles}>
             {t("profileCard.removeImage")}
           </Button>
         </CardActions>

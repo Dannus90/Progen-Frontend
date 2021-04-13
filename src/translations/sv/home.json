@@ -4,5 +4,9 @@
       "account": "Konto",
       "baseCv": "CV Information",
       "createCv": "Skapa CV"
+  },
+  "profileCard": {
+    "uploadImage": "VÄLJ PROFILBILD",
+    "removeImage": "TA BORT PROFILBILD"
   }
 }

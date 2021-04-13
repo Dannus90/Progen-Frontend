@@ -68,7 +68,7 @@ const DrawerComponent: React.FC<Props> = ({
   const drawerBody = (
     <>
       <Divider />
-      <Avatar className={styles.sizeAvatar} />
+      <Avatar className={styles.sizeAvatar} src="./assets/images/SmallProfile.jpg" />
       <Typography className={styles.avatarName} variant="h6">
         Daniel Persson
       </Typography>

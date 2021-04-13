@@ -4,5 +4,9 @@
     "account": "Account",
     "baseCv": "CV Information",
     "createCv": "Create CV"
+  },
+  "profileCard": {
+    "uploadImage": "UPLOAD PROFILE PICTURE",
+    "removeImage": "REMOVE PROFILE PICTURE"
   }
 }

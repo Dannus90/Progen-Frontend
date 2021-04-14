@@ -9,16 +9,15 @@ export interface ProfileFormComponentStyles extends Theme {
   profileFormWrapperStyles: CreateCSSProperties | CSSProperties;
 }
 
-export type ProfileFormComponentClasses =
-  | "profileFormWrapperStyles";
+export type ProfileFormComponentClasses = "profileFormWrapperStyles";
 
 const ProfileFormComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const profileFormComponentStyles = makeStyles({
     profileFormWrapperStyles: {
-      width: "385px",
-      borderRadius: "15px"
+      borderRadius: "15px",
+      padding: "1.5rem"
     }
   });
 

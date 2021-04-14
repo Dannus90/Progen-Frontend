@@ -17,6 +17,9 @@
     "countrySv": "Country in swedish",
     "citySv": "City in swedish",
     "countryEn": "Country in english",
-    "cityEn": "City in english"
+    "cityEn": "City in english",
+    "profileInformation": "Profile information",
+    "profileText": "Your profile information can be edited down belown",
+    "saveSettings": "SAVE PROFILE"
   }
 }

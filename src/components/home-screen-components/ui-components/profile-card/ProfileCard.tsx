@@ -20,7 +20,6 @@ interface Props {
 
 const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("home");
-  const theme = useTheme<MainTheme>();
 
   return (
     <>

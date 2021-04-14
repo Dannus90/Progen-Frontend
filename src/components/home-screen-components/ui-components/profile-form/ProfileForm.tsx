@@ -2,7 +2,7 @@ import React from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileFormComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
-import { Card, Grid, TextField } from "@material-ui/core";
+import { Button, Card, Container, Grid, TextField, Typography } from "@material-ui/core";
 import { useForm } from "../../../../custom-hooks/UseForm";
 import { ProfileFormData } from "./interfaces/profile-form-interfaces";
 
@@ -28,8 +28,12 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   return (
     <>
       <Card className={styles.profileFormWrapperStyles}>
+        <Container className={styles.headerWrapper}>
+          <h4 className={styles.headerStyles}>{t("profileForm.profileInformation")}</h4>{" "}
+          <span className={styles.headerSpanStyles}>{t("profileForm.profileText")}</span>
+        </Container>
         <form>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} className={styles.formStyle}>
             <Grid item xs={12} sm={6}>
               <TextField
                 id="firstName"
@@ -42,6 +46,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 label={t("profileForm.firstName")}
                 autoFocus
                 size="small"
+                fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -56,6 +61,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 label={t("profileForm.lastName")}
                 autoFocus
                 size="small"
+                fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -70,6 +76,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 label={t("profileForm.email")}
                 autoFocus
                 size="small"
+                fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -84,6 +91,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 label={t("profileForm.phoneNumber")}
                 autoFocus
                 size="small"
+                fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -98,6 +106,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 label={t("profileForm.countrySv")}
                 autoFocus
                 size="small"
+                fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -112,6 +121,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 label={t("profileForm.citySv")}
                 autoFocus
                 size="small"
+                fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -126,6 +136,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 label={t("profileForm.countryEn")}
                 autoFocus
                 size="small"
+                fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -140,9 +151,15 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 label={t("profileForm.cityEn")}
                 autoFocus
                 size="small"
+                fullWidth
               />
             </Grid>
           </Grid>
+          <Container className={styles.submitButton}>
+            <Button type="submit" color="primary" variant="contained">
+              {t("profileForm.saveSettings")}
+            </Button>
+          </Container>
         </form>
       </Card>
     </>

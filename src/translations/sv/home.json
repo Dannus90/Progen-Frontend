@@ -17,6 +17,9 @@
     "countrySv": "Land på svenska",
     "citySv": "Stad på svenska",
     "countryEn": "Land på engelska",
-    "cityEn": "Land på engelska"
+    "cityEn": "Land på engelska",
+    "profileInformation": "Profil information",
+    "profileText": "Din profilinformatiion kan ändras nedan",
+    "saveSettings": "SPARA PROFIL"
   }
 }

@@ -8,5 +8,15 @@
   "profileCard": {
     "uploadImage": "UPLOAD PROFILE PICTURE",
     "removeImage": "REMOVE PROFILE PICTURE"
+  },
+  "profileForm": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phoneNumber": "Telephone number",
+    "countrySv": "Country in swedish",
+    "citySv": "City in swedish",
+    "countryEn": "Country in english",
+    "cityEn": "City in english"
   }
 }

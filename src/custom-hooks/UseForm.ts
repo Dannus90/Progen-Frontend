@@ -20,7 +20,7 @@ interface ReturnObject {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-type state = RegisterFormData | LoginData | ProfileFormData
+type state = RegisterFormData | LoginData | ProfileFormData;
 
 export const useForm = (initialState: state): ReturnObject => {
   const [formData, setFormData] = useState(initialState);

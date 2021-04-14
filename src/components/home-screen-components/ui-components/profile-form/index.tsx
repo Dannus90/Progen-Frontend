@@ -23,8 +23,7 @@ const ProfileFormComponentWrapper: React.FC = (): JSX.Element => {
   const profileFormComponentStyles = makeStyles({
     profileFormWrapperStyles: {
       borderRadius: "15px",
-      width: "60%",
-      marginRight: "2rem"
+      width: "100%"
     },
     headerWrapper: {
       display: "flex",

@@ -123,7 +123,7 @@ const DrawerComponent: React.FC<Props> = ({
           {drawerBody}
         </Drawer>
       </Hidden>
-      <Hidden xsDown implementation="css">
+      <Hidden smDown implementation="css">
         <Drawer
           classes={{
             paper: styles.drawerPaper

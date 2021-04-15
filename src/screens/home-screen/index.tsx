@@ -14,7 +14,7 @@ export type HomeScreenClasses = "pageWrapperStyles" | "tabsStyle";
 
 const HomeScreenWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
-  const smallScreen = useMediaQuery("(max-width:600px)");
+  const smallScreen = useMediaQuery("(max-width:960px)");
 
   const homeScreenStyles = makeStyles({
     pageWrapperStyles: {

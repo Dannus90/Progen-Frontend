@@ -59,7 +59,6 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("profileForm.lastName")}
-                autoFocus
                 size="small"
                 fullWidth
               />
@@ -74,7 +73,6 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("profileForm.email")}
-                autoFocus
                 size="small"
                 fullWidth
               />
@@ -89,7 +87,6 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("profileForm.phoneNumber")}
-                autoFocus
                 size="small"
                 fullWidth
               />
@@ -104,7 +101,6 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("profileForm.countrySv")}
-                autoFocus
                 size="small"
                 fullWidth
               />
@@ -119,7 +115,6 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("profileForm.citySv")}
-                autoFocus
                 size="small"
                 fullWidth
               />
@@ -134,7 +129,6 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("profileForm.countryEn")}
-                autoFocus
                 size="small"
                 fullWidth
               />
@@ -149,7 +143,6 @@ const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("profileForm.cityEn")}
-                autoFocus
                 size="small"
                 fullWidth
               />

@@ -1,4 +1,4 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
@@ -13,15 +13,19 @@ export type ProfileComponentClasses = "profileWrapperStyles" | "profileFormConta
 
 const ProfileComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
+  const isSmallScreen = useMediaQuery("(max-width: 1330px)");
 
   const profileComponentStyles = makeStyles({
     profileWrapperStyles: {
       background: `${theme.custom.palette.lightBackground}`,
       display: "flex",
-      justifyContent: "space-between"
+      justifyContent: "space-between",
+      flexDirection: isSmallScreen ? "column" : "row"
     },
     profileFormContainer: {
-      marginRight: "2rem"
+      marginRight: "2rem",
+      marginTop: isSmallScreen ? "2rem" : "0rem",
+      minWidth: "416px"
     }
   });
 

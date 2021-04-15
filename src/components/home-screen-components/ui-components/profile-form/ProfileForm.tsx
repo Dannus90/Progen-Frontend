@@ -30,21 +30,20 @@ const ProfileFormComponent: React.FC<Props> = ({
 }): JSX.Element => {
   const { t } = useTranslation("home");
 
-  const incomingFormState: InitialFormData = {
-    firstName: profileFormData?.user.firstName,
-    lastName: profileFormData?.user.lastName,
-    email: profileFormData?.userData.emailCv,
-    phoneNumber: profileFormData?.userData.phoneNumber,
-    countrySv: profileFormData?.userData.countrySv,
-    citySv: profileFormData?.userData.citySv,
-    countryEn: profileFormData?.userData.countryEn,
-    cityEn: profileFormData?.userData.cityEn
-  };
-
   const { formData, setFormData, handleInputChange } = useForm(initialFormState);
 
   useMemo(() => {
     if (!loading) {
+      const incomingFormState: InitialFormData = {
+        firstName: profileFormData?.user.firstName,
+        lastName: profileFormData?.user.lastName,
+        email: profileFormData?.userData.emailCv,
+        phoneNumber: profileFormData?.userData.phoneNumber,
+        countrySv: profileFormData?.userData.countrySv,
+        citySv: profileFormData?.userData.citySv,
+        countryEn: profileFormData?.userData.countryEn,
+        cityEn: profileFormData?.userData.cityEn
+      };
       setFormData(incomingFormState);
     }
   }, [loading]);

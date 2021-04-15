@@ -1,4 +1,4 @@
-export interface ProfileFormData {
+export interface InitialFormData {
   firstName: string;
   lastName: string;
   email: string;

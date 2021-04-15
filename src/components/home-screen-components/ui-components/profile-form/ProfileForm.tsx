@@ -1,16 +1,18 @@
 import React from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { ProfileFormComponentClasses } from "./index";
+import { ProfileFormComponentClasses, ProfileFormData } from "./index";
 import { useTranslation } from "react-i18next";
-import { Button, Card, Container, Grid, TextField, Typography } from "@material-ui/core";
+import { Button, Card, Container, Grid, TextField } from "@material-ui/core";
 import { useForm } from "../../../../custom-hooks/UseForm";
-import { ProfileFormData } from "./interfaces/profile-form-interfaces";
+import { InitialFormData } from "./interfaces/profile-form-interfaces";
 
 interface Props {
   styles: ClassNameMap<ProfileFormComponentClasses>;
+  loading: boolean;
+  profileFormData: ProfileFormData | undefined;
 }
 
-const initialFormState: ProfileFormData = {
+const initialFormState: InitialFormData = {
   firstName: "",
   lastName: "",
   email: "",
@@ -21,7 +23,11 @@ const initialFormState: ProfileFormData = {
   cityEn: ""
 };
 
-const ProfileFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
+const ProfileFormComponent: React.FC<Props> = ({
+  styles,
+  profileFormData,
+  loading
+}): JSX.Element => {
   const { t } = useTranslation("home");
   const { formData, handleInputChange } = useForm(initialFormState);
 

@@ -17,7 +17,38 @@ export type ProfileFormComponentClasses =
   | "formStyle"
   | "submitButton";
 
-const ProfileFormComponentWrapper: React.FC = (): JSX.Element => {
+export interface ProfileFormData {
+  user: {
+    id: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    lastLogin: Date;
+    createdAt: Date;
+    updatedAt: Date;
+  };
+  userData: {
+    id: string;
+    userId: string;
+    phoneNumber?: string;
+    emailCv?: string;
+    citySv?: string;
+    cityEn?: string;
+    countrySv?: string;
+    countryEn?: string;
+    profileImage?: string;
+    updatedAt: Date;
+    createdAt: Date;
+  };
+  statusCode: number;
+}
+
+interface Props {
+  loading: boolean;
+  formData: ProfileFormData | undefined;
+}
+
+const ProfileFormComponentWrapper: React.FC<Props> = ({ loading, formData }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const profileFormComponentStyles = makeStyles({
@@ -50,7 +81,7 @@ const ProfileFormComponentWrapper: React.FC = (): JSX.Element => {
 
   const styles = profileFormComponentStyles();
 
-  return <ProfileFormComponent styles={styles} />;
+  return <ProfileFormComponent loading={loading} profileFormData={formData} styles={styles} />;
 };
 
 export default ProfileFormComponentWrapper;

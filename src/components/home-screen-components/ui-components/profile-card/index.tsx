@@ -27,7 +27,12 @@ export type ProfileCardComponentClasses =
   | "cardButtonAddImageStyles"
   | "cardButtonRemoveImageStyles";
 
-const ProfileCardComponentWrapper: React.FC = (): JSX.Element => {
+interface Props {
+  loading: boolean;
+  profileImage: string | undefined;
+}
+
+const ProfileCardComponentWrapper: React.FC<Props> = ({ loading, profileImage }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const profileCardComponentStyles = makeStyles({
@@ -66,7 +71,7 @@ const ProfileCardComponentWrapper: React.FC = (): JSX.Element => {
 
   const styles = profileCardComponentStyles();
 
-  return <ProfileCardComponent styles={styles} />;
+  return <ProfileCardComponent styles={styles} loading={loading} profileImage={profileImage} />;
 };
 
 export default ProfileCardComponentWrapper;

@@ -4,19 +4,26 @@ import { ProfileComponentClasses } from "./index";
 import ProfileCard from "../ui-components/profile-card/index";
 import ProfileForm from "../ui-components/profile-form/index";
 import { Container } from "@material-ui/core";
+import { useQuery } from "@apollo/client";
+import { GET_USERDATA } from "./gql";
+import { UserInformationResponse } from "./interfaces/profile-interfaces";
 
 interface Props {
   styles: ClassNameMap<ProfileComponentClasses>;
 }
 
 const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
+  const { loading, error, data } = useQuery<UserInformationResponse>(GET_USERDATA);
+
+  const formData = data?.userData.getFullUserInformationDto;
   return (
     <div className={styles.profileWrapperStyles}>
+      {error && error.graphQLErrors}
       <Container>
-        <ProfileCard />
+        <ProfileCard loading={loading} profileImage={formData?.userData.profileImage} />
       </Container>
       <Container className={styles.profileFormContainer}>
-        <ProfileForm />
+        <ProfileForm loading={loading} formData={formData} />
       </Container>
     </div>
   );

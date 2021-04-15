@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProfileFormData } from "../components/home-screen-components/ui-components/profile-form/interfaces/profile-form-interfaces";
+import { InitialFormData } from "../components/home-screen-components/ui-components/profile-form/interfaces/profile-form-interfaces";
 import { LoginData } from "../components/landing-screen-components/login/interfaces/login-interfaces";
 import { RegisterFormData } from "../components/landing-screen-components/register/interfaces/register-interfaces";
 
@@ -20,7 +20,7 @@ interface ReturnObject {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-type state = RegisterFormData | LoginData | ProfileFormData;
+type state = RegisterFormData | LoginData | InitialFormData;
 
 export const useForm = (initialState: state): ReturnObject => {
   const [formData, setFormData] = useState(initialState);

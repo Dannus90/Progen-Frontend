@@ -9,13 +9,13 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Typography,
-  useTheme
+  Typography
 } from "@material-ui/core";
-import { MainTheme } from "../../../../styles/theme";
 
 interface Props {
   styles: ClassNameMap<ProfileCardComponentClasses>;
+  loading: boolean;
+  profileImage: string | undefined;
 }
 
 const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {

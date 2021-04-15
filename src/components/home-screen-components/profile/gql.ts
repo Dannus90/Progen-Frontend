@@ -5,17 +5,11 @@ export const GET_USERDATA = gql`
     userData {
       getFullUserInformation {
         user {
-          id
-          email
           lastLogin
           lastName
           firstName
-          createdAt
-          updatedAt
         }
         userData {
-          id
-          userId
           phoneNumber
           emailCv
           citySv
@@ -26,7 +20,6 @@ export const GET_USERDATA = gql`
           updatedAt
           createdAt
         }
-        statusCode
       }
     }
   }

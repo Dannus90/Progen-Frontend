@@ -15,7 +15,8 @@ interface Props {
 const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const { loading, error, data } = useQuery<UserInformationResponse>(GET_USERDATA);
 
-  const formData = data?.userData.getFullUserInformationDto;
+  const formData = data?.userData.getFullUserInformation;
+
   return (
     <div className={styles.profileWrapperStyles}>
       {error && error.graphQLErrors}

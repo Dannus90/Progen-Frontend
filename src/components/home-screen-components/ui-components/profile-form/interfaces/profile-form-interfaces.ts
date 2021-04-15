@@ -1,10 +1,10 @@
 export interface InitialFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: string;
-  countrySv: string;
-  citySv: string;
-  countryEn: string;
-  cityEn: string;
+  firstName: string | undefined;
+  lastName: string | undefined;
+  email: string | undefined;
+  phoneNumber: string | undefined;
+  countrySv: string | undefined;
+  citySv: string | undefined;
+  countryEn: string | undefined;
+  cityEn: string | undefined;
 }

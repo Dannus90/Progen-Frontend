@@ -1,18 +1,12 @@
 export interface UserInformationResponse {
   userData: {
-    getFullUserInformationDto: {
+    getFullUserInformation: {
       user: {
-        id: string;
-        email: string;
         firstName: string;
         lastName: string;
         lastLogin: Date;
-        createdAt: Date;
-        updatedAt: Date;
       };
       userData: {
-        id: string;
-        userId: string;
         phoneNumber?: string;
         emailCv?: string;
         citySv?: string;
@@ -23,7 +17,6 @@ export interface UserInformationResponse {
         updatedAt: Date;
         createdAt: Date;
       };
-      statusCode: number;
     };
   };
 }

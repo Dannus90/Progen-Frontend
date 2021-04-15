@@ -17,6 +17,7 @@ interface RegisterLoginProfileData {
 
 interface ReturnObject {
   formData: RegisterLoginProfileData;
+  setFormData: (value: state) => void;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -29,5 +30,5 @@ export const useForm = (initialState: state): ReturnObject => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  return { formData, handleInputChange };
+  return { formData, setFormData, handleInputChange };
 };

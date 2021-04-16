@@ -20,3 +20,22 @@ export interface UserInformationResponse {
     };
   };
 }
+
+export interface UpdateUserResponse {
+  updateUserData: {
+    firstName: string | null;
+    lastName: string | null;
+    cityEn: string | null;
+    citySv: string | null;
+    countryEn: string | null;
+    countrySv: string | null;
+    createdAt: Date;
+    emailCv: string | null;
+    id: string;
+    phoneNumber: "testmail123@gmail.com";
+    profileImage: string | null;
+    statusCode: number;
+    updatedAt: Date;
+    userId: string;
+  };
+}

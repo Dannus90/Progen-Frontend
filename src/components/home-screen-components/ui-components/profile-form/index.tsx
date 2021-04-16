@@ -39,7 +39,7 @@ export interface ProfileFormData {
 
 interface Props {
   loading: boolean;
-  formData: ProfileFormData | undefined;
+  formData: ProfileFormDataState | undefined;
   onUpdateProfileData: (data: ProfileFormDataState) => void;
 }
 

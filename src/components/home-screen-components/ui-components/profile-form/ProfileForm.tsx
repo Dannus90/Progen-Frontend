@@ -10,7 +10,7 @@ interface Props {
   styles: ClassNameMap<ProfileFormComponentClasses>;
   loading: boolean;
   onUpdateProfileData: (data: ProfileFormDataState) => void;
-  profileFormData: ProfileFormData | undefined;
+  profileFormData: ProfileFormDataState | undefined;
 }
 
 const initialFormState: ProfileFormDataState = {
@@ -35,20 +35,15 @@ const ProfileFormComponent: React.FC<Props> = ({
   const { formData, setFormData, handleInputChange } = useForm(initialFormState);
 
   useMemo(() => {
-    if (!loading) {
-      const incomingFormState: ProfileFormDataState = {
-        firstName: profileFormData?.user.firstName ?? "",
-        lastName: profileFormData?.user.lastName ?? "",
-        email: profileFormData?.userData.emailCv ?? "",
-        phoneNumber: profileFormData?.userData.phoneNumber ?? "",
-        countrySv: profileFormData?.userData.countrySv ?? "",
-        citySv: profileFormData?.userData.citySv ?? "",
-        countryEn: profileFormData?.userData.countryEn ?? "",
-        cityEn: profileFormData?.userData.cityEn ?? ""
-      };
-      setFormData(incomingFormState);
+    if (!loading && profileFormData) {
+      setFormData(profileFormData);
     }
-  }, [loading]);
+  }, [loading, profileFormData]);
+
+  const updateProfileData = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    onUpdateProfileData(formData as ProfileFormDataState);
+  };
 
   return (
     <>
@@ -58,7 +53,7 @@ const ProfileFormComponent: React.FC<Props> = ({
             <h4 className={styles.headerStyles}>{t("profileForm.profileInformation")}</h4>{" "}
             <span className={styles.headerSpanStyles}>{t("profileForm.profileText")}</span>
           </Container>
-          <form>
+          <form onSubmit={updateProfileData}>
             <Grid container spacing={3} className={styles.formStyle}>
               <Grid item xs={12} sm={6}>
                 <TextField

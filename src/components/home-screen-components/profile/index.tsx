@@ -12,7 +12,8 @@ export interface ProfileComponentStyles extends Theme {
 export type ProfileComponentClasses =
   | "profileWrapperStyles"
   | "profileFormContainer"
-  | "errorLoaderWrapper";
+  | "errorLoaderWrapper"
+  | "alertStyle";
 
 const ProfileComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -36,6 +37,13 @@ const ProfileComponentWrapper: React.FC = (): JSX.Element => {
       justifyContent: "center",
       alignItems: "center",
       height: "100%"
+    },
+    alertStyle: {
+      height: "auto",
+      padding: "5px 30px",
+      minWidth: "400px",
+      fontSize: "14px",
+      marginBottom: `${theme.customSpacings.s}`
     }
   });
 

@@ -3,7 +3,8 @@
       "generalLoading": "Loading..."
   },
   "buttonText": {
-    "close": "Close"
+    "close": "Close",
+    "tryAgain": "Try Again"
   },
   "languagePicker": {
     "language": "Language"

@@ -3,7 +3,8 @@
       "generalLoading": "Laddar..."
   },
   "buttonText": {
-    "close": "Stäng"
+    "close": "Stäng",
+    "tryAgain": "Försök igen"
   },
   "languagePicker": {
     "language": "Språk"

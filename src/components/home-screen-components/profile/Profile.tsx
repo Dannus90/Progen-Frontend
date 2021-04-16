@@ -3,7 +3,7 @@ import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileComponentClasses } from "./index";
 import ProfileCard from "../ui-components/profile-card/index";
 import ProfileForm from "../ui-components/profile-form/index";
-import { Container } from "@material-ui/core";
+import { CircularProgress, Container } from "@material-ui/core";
 import { useQuery } from "@apollo/client";
 import { GET_USERDATA } from "./gql";
 import { UserInformationResponse } from "./interfaces/profile-interfaces";
@@ -20,12 +20,17 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   return (
     <div className={styles.profileWrapperStyles}>
       {error && error.graphQLErrors}
-      <Container>
-        <ProfileCard loading={loading} profileImage={formData?.userData.profileImage} />
-      </Container>
-      <Container className={styles.profileFormContainer}>
-        <ProfileForm loading={loading} formData={formData} />
-      </Container>
+      {loading && <CircularProgress />}
+      {!loading && !error && (
+        <>
+          <Container>
+            <ProfileCard loading={loading} profileImage={formData?.userData.profileImage} />
+          </Container>
+          <Container className={styles.profileFormContainer}>
+            <ProfileForm loading={loading} formData={formData} />
+          </Container>
+        </>
+      )}
     </div>
   );
 };

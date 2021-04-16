@@ -53,6 +53,10 @@ const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
   };
 
   useEffect(() => {
+    if (!getToken()) {
+      return navigateTo("/login");
+    }
+
     const { accessToken, refreshToken } = getToken();
     if (accessToken && refreshToken) {
       const { exp } = jwt<TokenData>(accessToken);

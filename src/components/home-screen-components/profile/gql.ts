@@ -24,3 +24,24 @@ export const GET_USERDATA = gql`
     }
   }
 `;
+
+export const UPDATE_USERDATA = gql`
+mutation Mutation($updateUserDataInput: UserDataInput) {
+  userData {
+    updateUserData(input: $updateUserDataInput) {
+      id
+      userId
+      phoneNumber
+      emailCv
+      citySv
+      cityEn
+      countryEn
+      countrySv
+      profileImage
+      createdAt
+      updatedAt
+      statusCode
+    }
+  }
+}`
+

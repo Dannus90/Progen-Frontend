@@ -9,7 +9,10 @@ export interface ProfileComponentStyles extends Theme {
   profileComponentStyles: CreateCSSProperties | CSSProperties;
 }
 
-export type ProfileComponentClasses = "profileWrapperStyles" | "profileFormContainer";
+export type ProfileComponentClasses =
+  | "profileWrapperStyles"
+  | "profileFormContainer"
+  | "errorLoaderWrapper";
 
 const ProfileComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -26,6 +29,13 @@ const ProfileComponentWrapper: React.FC = (): JSX.Element => {
       marginRight: "2rem",
       marginTop: isSmallScreen ? "2rem" : "0rem",
       minWidth: "416px"
+    },
+    errorLoaderWrapper: {
+      background: `${theme.custom.palette.lightBackground}`,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100%"
     }
   });
 

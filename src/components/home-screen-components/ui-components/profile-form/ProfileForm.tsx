@@ -35,14 +35,14 @@ const ProfileFormComponent: React.FC<Props> = ({
   useMemo(() => {
     if (!loading) {
       const incomingFormState: InitialFormData = {
-        firstName: profileFormData?.user.firstName,
-        lastName: profileFormData?.user.lastName,
-        email: profileFormData?.userData.emailCv,
-        phoneNumber: profileFormData?.userData.phoneNumber,
-        countrySv: profileFormData?.userData.countrySv,
-        citySv: profileFormData?.userData.citySv,
-        countryEn: profileFormData?.userData.countryEn,
-        cityEn: profileFormData?.userData.cityEn
+        firstName: profileFormData?.user.firstName ?? "",
+        lastName: profileFormData?.user.lastName ?? "",
+        email: profileFormData?.userData.emailCv ?? "",
+        phoneNumber: profileFormData?.userData.phoneNumber ?? "",
+        countrySv: profileFormData?.userData.countrySv ?? "",
+        citySv: profileFormData?.userData.citySv ?? "",
+        countryEn: profileFormData?.userData.countryEn ?? "",
+        cityEn: profileFormData?.userData.cityEn ?? ""
       };
       setFormData(incomingFormState);
     }

@@ -3,7 +3,7 @@ import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileComponentClasses } from "./index";
 import ProfileCard from "../ui-components/profile-card/index";
 import ProfileForm from "../ui-components/profile-form/index";
-import { CircularProgress, Container } from "@material-ui/core";
+import { CircularProgress, Container, Typography } from "@material-ui/core";
 import { useQuery } from "@apollo/client";
 import { GET_USERDATA } from "./gql";
 import { UserInformationResponse } from "./interfaces/profile-interfaces";
@@ -17,22 +17,36 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   const formData = data?.userData.getFullUserInformation;
 
-  return (
-    <div className={styles.profileWrapperStyles}>
-      {error && error.graphQLErrors}
-      {loading && <CircularProgress />}
-      {!loading && !error && (
-        <>
-          <Container>
-            <ProfileCard loading={loading} profileImage={formData?.userData.profileImage} />
-          </Container>
-          <Container className={styles.profileFormContainer}>
-            <ProfileForm loading={loading} formData={formData} />
-          </Container>
-        </>
-      )}
-    </div>
-  );
+  const profileContent = () => {
+    if (loading) {
+      return (
+        <div className={styles.errorLoaderWrapper}>
+          <CircularProgress size={100} />
+        </div>
+      );
+    }
+
+    if (!loading && error) {
+      return (
+        <div className={styles.errorLoaderWrapper}>
+          <Typography variant="h4">{error.graphQLErrors}</Typography>
+        </div>
+      );
+    }
+
+    return (
+      <div className={styles.profileWrapperStyles}>
+        <Container>
+          <ProfileCard loading={loading} profileImage={formData?.userData.profileImage} />
+        </Container>
+        <Container className={styles.profileFormContainer}>
+          <ProfileForm loading={loading} formData={formData} />
+        </Container>
+      </div>
+    );
+  };
+
+  return <>{profileContent()}</>;
 };
 
 export default ProfileComponent;

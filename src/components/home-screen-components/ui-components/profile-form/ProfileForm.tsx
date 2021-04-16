@@ -2,17 +2,18 @@ import React, { useMemo } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileFormComponentClasses, ProfileFormData } from "./index";
 import { useTranslation } from "react-i18next";
-import { Button, Card, CircularProgress, Container, Grid, TextField } from "@material-ui/core";
+import { Button, Card, Container, Grid, TextField } from "@material-ui/core";
 import { useForm } from "../../../../custom-hooks/UseForm";
-import { InitialFormData } from "./interfaces/profile-form-interfaces";
+import { ProfileFormDataState } from "./interfaces/profile-form-interfaces";
 
 interface Props {
   styles: ClassNameMap<ProfileFormComponentClasses>;
   loading: boolean;
+  onUpdateProfileData: (data: ProfileFormDataState) => void;
   profileFormData: ProfileFormData | undefined;
 }
 
-const initialFormState: InitialFormData = {
+const initialFormState: ProfileFormDataState = {
   firstName: "",
   lastName: "",
   email: "",
@@ -26,6 +27,7 @@ const initialFormState: InitialFormData = {
 const ProfileFormComponent: React.FC<Props> = ({
   styles,
   profileFormData,
+  onUpdateProfileData,
   loading
 }): JSX.Element => {
   const { t } = useTranslation("home");
@@ -34,7 +36,7 @@ const ProfileFormComponent: React.FC<Props> = ({
 
   useMemo(() => {
     if (!loading) {
-      const incomingFormState: InitialFormData = {
+      const incomingFormState: ProfileFormDataState = {
         firstName: profileFormData?.user.firstName ?? "",
         lastName: profileFormData?.user.lastName ?? "",
         email: profileFormData?.userData.emailCv ?? "",

@@ -3,6 +3,7 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
 import { MainTheme } from "../../../../styles/theme";
+import { ProfileFormDataState } from "./interfaces/profile-form-interfaces";
 import ProfileFormComponent from "./ProfileForm";
 
 export interface ProfileFormComponentStyles extends Theme {
@@ -39,9 +40,14 @@ export interface ProfileFormData {
 interface Props {
   loading: boolean;
   formData: ProfileFormData | undefined;
+  onUpdateProfileData: (data: ProfileFormDataState) => void;
 }
 
-const ProfileFormComponentWrapper: React.FC<Props> = ({ loading, formData }): JSX.Element => {
+const ProfileFormComponentWrapper: React.FC<Props> = ({
+  loading,
+  formData,
+  onUpdateProfileData
+}): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const profileFormComponentStyles = makeStyles({
@@ -74,7 +80,14 @@ const ProfileFormComponentWrapper: React.FC<Props> = ({ loading, formData }): JS
 
   const styles = profileFormComponentStyles();
 
-  return <ProfileFormComponent loading={loading} profileFormData={formData} styles={styles} />;
+  return (
+    <ProfileFormComponent
+      loading={loading}
+      profileFormData={formData}
+      styles={styles}
+      onUpdateProfileData={onUpdateProfileData}
+    />
+  );
 };
 
 export default ProfileFormComponentWrapper;

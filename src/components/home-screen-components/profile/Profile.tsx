@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileComponentClasses } from "./index";
 import ProfileCard from "../ui-components/profile-card/index";
@@ -9,6 +9,7 @@ import { GET_USERDATA } from "./gql";
 import { UserInformationResponse } from "./interfaces/profile-interfaces";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { useTranslation } from "react-i18next";
+import { ProfileFormDataState } from "../ui-components/profile-form/interfaces/profile-form-interfaces";
 
 interface Props {
   styles: ClassNameMap<ProfileComponentClasses>;
@@ -19,6 +20,10 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const { refetch, loading, error, data } = useQuery<UserInformationResponse>(GET_USERDATA);
 
   const formData = data?.userData.getFullUserInformation;
+
+  const onUpdateProfileData = (formData: ProfileFormDataState) => {
+    console.log("Hello!");
+  };
 
   const profileContent = () => {
     if (loading) {
@@ -55,7 +60,11 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           <ProfileCard loading={loading} profileImage={formData?.userData.profileImage} />
         </Container>
         <Container className={styles.profileFormContainer}>
-          <ProfileForm loading={loading} formData={formData} />
+          <ProfileForm
+            loading={loading}
+            formData={formData}
+            onUpdateProfileData={onUpdateProfileData}
+          />
         </Container>
       </div>
     );

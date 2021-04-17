@@ -24,6 +24,7 @@ import {
 } from "./interfaces/drawer-interfaces";
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "../../../redux/hooks/hooks";
 
 interface Props {
   styles: ClassNameMap<DrawerComponentClasses>;
@@ -43,6 +44,7 @@ const DrawerComponent: React.FC<Props> = ({
   const [t] = useTranslation("common");
   const [logoutUser] = useMutation<LogoutUserResponseBackend>(LOGOUT_USER);
   const { loading, error, data } = useQuery<PartialUserInformationResponse>(GET_USERDATA);
+  const { userDataState } = useAppSelector((state) => state);
 
   const handleLogoutUser = async () => {
     const response = await logoutUser();
@@ -71,15 +73,25 @@ const DrawerComponent: React.FC<Props> = ({
     }
   ];
 
-  const fullUsername = useMemo((): string => {
+  let fullUsername = "";
+
+  useMemo((): string => {
     const userData = data?.userData.getFullUserInformation.user;
 
     if (userData?.firstName || userData?.lastName) {
-      return `${userData?.firstName} ${userData?.lastName}`;
+      return (fullUsername = `${userData?.firstName} ${userData?.lastName}`);
     }
 
-    return "Welcome!";
+    return (fullUsername = t("drawer.welcome"));
   }, [data]);
+
+  useMemo(() => {
+    if (userDataState.firstName || userDataState.lastName) {
+      return (fullUsername = `${userDataState.firstName} ${userDataState.lastName}`);
+    }
+
+    return (fullUsername = t("drawer.welcome"));
+  }, [userDataState]);
 
   const drawerBody = (
     <>
@@ -92,7 +104,7 @@ const DrawerComponent: React.FC<Props> = ({
       )}
       {!loading && (
         <Typography className={styles.avatarName} variant="h6">
-          {error && "Welcome"}
+          {error && t("drawer.welcome")}
           {!error && fullUsername}
         </Typography>
       )}

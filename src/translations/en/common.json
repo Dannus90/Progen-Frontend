@@ -17,6 +17,9 @@
     "team": "Your team",
     "support": "Support"
   },
+  "drawer": {
+    "welcome": "Welcome"
+  },
   "topBar": {
     "menu": {
       "profile": "Profile",

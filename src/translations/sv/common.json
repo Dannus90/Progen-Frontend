@@ -17,6 +17,9 @@
     "team": "Ditt team",
     "support": "Support"
   },
+  "drawer": {
+    "welcome": "Välkommen"
+  },
   "topBar": {
     "menu": {
       "profile": "Profil",

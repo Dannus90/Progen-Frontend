@@ -32,7 +32,7 @@ export interface UpdateUserResponse {
     createdAt: Date;
     emailCv: string | null;
     id: string;
-    phoneNumber: "testmail123@gmail.com";
+    phoneNumber: string | null;
     profileImage: string | null;
     statusCode: number;
     updatedAt: Date;

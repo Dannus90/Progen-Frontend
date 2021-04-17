@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileFormComponentClasses, ProfileFormData } from "./index";
 import { useTranslation } from "react-i18next";
@@ -13,17 +13,6 @@ interface Props {
   profileFormData: ProfileFormDataState | undefined;
 }
 
-const initialFormState: ProfileFormDataState = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  phoneNumber: "",
-  countrySv: "",
-  citySv: "",
-  countryEn: "",
-  cityEn: ""
-};
-
 const ProfileFormComponent: React.FC<Props> = ({
   styles,
   profileFormData,
@@ -31,8 +20,18 @@ const ProfileFormComponent: React.FC<Props> = ({
   loading
 }): JSX.Element => {
   const { t } = useTranslation("home");
+  const [formState, setFormState] = useState<ProfileFormDataState>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    countrySv: "",
+    citySv: "",
+    countryEn: "",
+    cityEn: ""
+  });
 
-  const { formData, setFormData, handleInputChange } = useForm(initialFormState);
+  const { formData, setFormData, handleInputChange } = useForm(formState);
 
   useMemo(() => {
     if (!loading && profileFormData) {

@@ -10,3 +10,17 @@ export const LOGOUT_USER = gql`
     }
   }
 `;
+
+export const GET_USERDATA = gql`
+  query GetUserData {
+    userData {
+      getFullUserInformation {
+        user {
+          lastLogin
+          lastName
+          firstName
+        }
+      }
+    }
+  }
+`;

@@ -1,7 +1,9 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import {
   Avatar,
   Box,
+  CircularProgress,
+  Container,
   Divider,
   Drawer,
   Hidden,
@@ -13,10 +15,13 @@ import {
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ExitToAppRounded, Dashboard, Group, ContactSupportOutlined } from "@material-ui/icons";
-import React from "react";
+import React, { useMemo } from "react";
 import { DrawerComponentClasses } from ".";
-import { LOGOUT_USER } from "./gql";
-import { LogoutUserResponseBackend } from "./interfaces/drawer-interfaces";
+import { GET_USERDATA, LOGOUT_USER } from "./gql";
+import {
+  LogoutUserResponseBackend,
+  PartialUserInformationResponse
+} from "./interfaces/drawer-interfaces";
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
 import { useTranslation } from "react-i18next";
 
@@ -37,6 +42,7 @@ const DrawerComponent: React.FC<Props> = ({
   const { navigateTo } = useNavigation();
   const [t] = useTranslation("common");
   const [logoutUser] = useMutation<LogoutUserResponseBackend>(LOGOUT_USER);
+  const { loading, error, data } = useQuery<PartialUserInformationResponse>(GET_USERDATA);
 
   const handleLogoutUser = async () => {
     const response = await logoutUser();
@@ -65,13 +71,32 @@ const DrawerComponent: React.FC<Props> = ({
     }
   ];
 
+  const fullUsername = useMemo((): string => {
+    const userData = data?.userData.getFullUserInformation.user;
+
+    if (userData?.firstName || userData?.lastName) {
+      return `${userData?.firstName} ${userData?.lastName}`;
+    }
+
+    return "Welcome!";
+  }, [data]);
+
   const drawerBody = (
     <>
       <Divider />
       <Avatar className={styles.sizeAvatar} src="./assets/images/SmallProfile.jpg" />
-      <Typography className={styles.avatarName} variant="h6">
-        Daniel Persson
-      </Typography>
+      {loading && (
+        <Container className={styles.progressContainer}>
+          <CircularProgress size={30} />
+        </Container>
+      )}
+      {!loading && (
+        <Typography className={styles.avatarName} variant="h6">
+          {error && "Welcome"}
+          {!error && fullUsername}
+        </Typography>
+      )}
+
       <Typography className={styles.avatarOccupation}>Software Developer</Typography>
       <Divider />
       <List className={styles.listStyle}>

@@ -15,6 +15,7 @@ export interface DrawerComponentStyles extends Theme {
   listStyle: CreateCSSProperties | CSSProperties;
   listItemStyle: CreateCSSProperties | CSSProperties;
   boxDivider: CreateCSSProperties | CSSProperties;
+  progressContainer: CreateCSSProperties | CSSProperties;
 }
 
 export type DrawerComponentClasses =
@@ -26,7 +27,8 @@ export type DrawerComponentClasses =
   | "logoutIcon"
   | "listStyle"
   | "listItemStyle"
-  | "boxDivider";
+  | "boxDivider"
+  | "progressContainer";
 
 interface Props {
   handleDrawerToggle: () => void;
@@ -84,6 +86,11 @@ const DrawerComponentWrapper: React.FC<Props> = ({
     },
     boxDivider: {
       borderTop: theme.custom.borderColors.subtleGreyMain
+    },
+    progressContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
     }
   });
 

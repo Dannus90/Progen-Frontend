@@ -6,3 +6,15 @@ export interface LogoutUserResponseBackend {
     };
   };
 }
+
+export interface PartialUserInformationResponse {
+  userData: {
+    getFullUserInformation: {
+      user: {
+        firstName: string;
+        lastName: string;
+        lastLogin: Date;
+      };
+    };
+  };
+}

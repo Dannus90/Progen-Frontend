@@ -86,7 +86,6 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     }
 
     if ((!loading && error) || updateError) {
-      console.log(updateError);
       return (
         <div className={styles.errorLoaderWrapper}>
           <Alert

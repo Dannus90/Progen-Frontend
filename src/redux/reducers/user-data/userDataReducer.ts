@@ -25,6 +25,6 @@ export const userDataSlice = createSlice({
 
 export const { setName } = userDataSlice.actions;
 export const selectFullName = (state: RootState) =>
-  `${state.userData.firstName} ${state.userData.lastName}`;
+  `${state.userDataState.firstName} ${state.userDataState.lastName}`;
 
 export default userDataSlice.reducer;

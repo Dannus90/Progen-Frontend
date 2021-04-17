@@ -14,7 +14,7 @@ const TestScreen: React.FC<Props> = ({ styles }): JSX.Element => {
 
   return (
     <div className={styles.pageWrapperStyles}>
-      {count.counter.value}
+      {count.counterState.value}
       <button onClick={() => dispatch(increment())}>INCREMENT</button>
       <button onClick={() => dispatch(decrement())}>DECREMENT</button>
       <p>Home Screen!</p>

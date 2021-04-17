@@ -10,6 +10,8 @@ import { UpdateUserResponse, UserInformationResponse } from "./interfaces/profil
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { useTranslation } from "react-i18next";
 import { ProfileFormDataState } from "../ui-components/profile-form/interfaces/profile-form-interfaces";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
+import { setName } from "../../../redux/reducers/user-data/userDataReducer";
 
 interface Props {
   styles: ClassNameMap<ProfileComponentClasses>;
@@ -17,6 +19,7 @@ interface Props {
 
 const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const { t } = useTranslation("common");
+  const dispatch = useAppDispatch();
   const { refetch, loading, error, data } = useQuery<UserInformationResponse>(GET_USERDATA);
   const [
     updateUserData,
@@ -57,6 +60,13 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
       countryEn: userInformation?.countryEn ?? "",
       cityEn: userInformation?.cityEn ?? ""
     };
+
+    dispatch(
+      setName({
+        firstName: userInformation?.firstName ?? "",
+        lastName: userInformation?.lastName ?? ""
+      })
+    );
   }, [updatedUserDataMutation]);
 
   const onUpdateProfileData = (formData: ProfileFormDataState) => {

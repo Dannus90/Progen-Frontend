@@ -29,7 +29,7 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
   const { t } = useTranslation("common");
   const theme = useTheme<MainTheme>();
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
-  const screenSize = useMediaQuery(theme.breakpoints.up("sm"));
+  const screenSize = useMediaQuery(theme.breakpoints.up("md"));
   const [anchorEl, setAnchorEl] = React.useState<(EventTarget & HTMLButtonElement) | null>();
   const open = Boolean(anchorEl);
 

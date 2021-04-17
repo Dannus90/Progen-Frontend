@@ -42,7 +42,7 @@ const TopBarWrapper: React.FC<Props> = ({ handleDrawerToggle }): JSX.Element => 
     },
     menuButton: {
       marginRight: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
+      [theme.breakpoints.up("md")]: {
         display: "none"
       }
     },

@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Button, Card, Container, Grid, TextField } from "@material-ui/core";
 import { useForm } from "../../../../custom-hooks/UseForm";
 import { ProfileFormDataState } from "./interfaces/profile-form-interfaces";
+import { useAppSelector } from "../../../../redux/hooks/hooks";
 
 interface Props {
   styles: ClassNameMap<ProfileFormComponentClasses>;
@@ -20,18 +21,9 @@ const ProfileFormComponent: React.FC<Props> = ({
   loading
 }): JSX.Element => {
   const { t } = useTranslation("home");
-  const [formState, setFormState] = useState<ProfileFormDataState>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    countrySv: "",
-    citySv: "",
-    countryEn: "",
-    cityEn: ""
-  });
+  const { userDataState } = useAppSelector((state) => state);
 
-  const { formData, setFormData, handleInputChange } = useForm(formState);
+  const { formData, setFormData, handleInputChange } = useForm(userDataState);
 
   useMemo(() => {
     if (!loading && profileFormData) {

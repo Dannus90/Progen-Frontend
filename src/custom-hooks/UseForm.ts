@@ -2,17 +2,20 @@ import { useState } from "react";
 import { ProfileFormDataState } from "../components/home-screen-components/ui-components/profile-form/interfaces/profile-form-interfaces";
 import { LoginData } from "../components/landing-screen-components/login/interfaces/login-interfaces";
 import { RegisterFormData } from "../components/landing-screen-components/register/interfaces/register-interfaces";
+import { UserDataState } from "../redux/reducers/user-data/userDataReducer";
+
+type acceptedTypes = string | null;
 
 interface RegisterLoginProfileData {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  phoneNumber?: string;
-  countrySv?: string;
-  citySv?: string;
-  countryEn?: string;
-  cityEn?: string;
+  firstName?: acceptedTypes;
+  lastName?: acceptedTypes;
+  email?: acceptedTypes;
+  password?: acceptedTypes;
+  phoneNumber?: acceptedTypes;
+  countrySv?: acceptedTypes;
+  citySv?: acceptedTypes;
+  countryEn?: acceptedTypes;
+  cityEn?: acceptedTypes;
 }
 
 interface ReturnObject {
@@ -21,7 +24,7 @@ interface ReturnObject {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-type state = RegisterFormData | LoginData | ProfileFormDataState;
+type state = RegisterFormData | LoginData | ProfileFormDataState | UserDataState;
 
 export const useForm = (initialState: state): ReturnObject => {
   const [formData, setFormData] = useState(initialState);

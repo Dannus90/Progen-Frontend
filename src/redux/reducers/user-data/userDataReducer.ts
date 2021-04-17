@@ -1,17 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
-type acceptedTypes = string | null;
+type acceptedTypes = string | null | undefined;
 
 export interface UserDataState {
   firstName: acceptedTypes;
   lastName: acceptedTypes;
-  emailCv: acceptedTypes;
+  email: acceptedTypes;
   phoneNumber: acceptedTypes;
   countrySv: acceptedTypes;
   citySv: acceptedTypes;
   countryEn: acceptedTypes;
   cityEn: acceptedTypes;
+  beenLoaded?: boolean;
 }
 
 interface UserNameData {
@@ -22,12 +23,13 @@ interface UserNameData {
 const initialState: UserDataState = {
   firstName: "",
   lastName: "",
-  emailCv: "",
+  email: "",
   phoneNumber: "",
   countrySv: "",
   citySv: "",
   countryEn: "",
-  cityEn: ""
+  cityEn: "",
+  beenLoaded: false
 };
 
 export const userDataSlice = createSlice({
@@ -40,15 +42,25 @@ export const userDataSlice = createSlice({
       state.lastName = action.payload.lastName;
     },
     setUserData: (state, action: PayloadAction<UserDataState>) => {
-      state = action.payload
+      state.firstName = action.payload.firstName;
+      state.lastName = action.payload.lastName;
+      state.email = action.payload.email;
+      state.phoneNumber = action.payload.phoneNumber;
+      state.countrySv = action.payload.countrySv;
+      state.citySv = action.payload.citySv;
+      state.countryEn = action.payload.countryEn;
+      state.cityEn = action.payload.cityEn;
     },
+    setHasLoaded: (state) => {
+      state.beenLoaded = !state.beenLoaded;
+    }
   }
 });
 
-export const { setName } = userDataSlice.actions;
+export const { setName, setUserData, setHasLoaded } = userDataSlice.actions;
 export const selectFullName = (state: RootState): string =>
   `${state.userDataState.firstName} ${state.userDataState.lastName}`;
 
-export const selectUserData = (state: RootState): UserDataState => state.userDataState
+export const selectUserData = (state: RootState): UserDataState => state.userDataState;
 
 export default userDataSlice.reducer;

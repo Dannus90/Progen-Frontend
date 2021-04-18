@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ExitToAppRounded, Dashboard, Group, ContactSupportOutlined } from "@material-ui/icons";
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import { DrawerComponentClasses } from ".";
 import { GET_USERDATA, LOGOUT_USER } from "./gql";
 import {
@@ -182,4 +182,4 @@ const DrawerComponent: React.FC<Props> = ({
   );
 };
 
-export default DrawerComponent;
+export default React.memo(DrawerComponent);

@@ -11,12 +11,20 @@ import {
   CardMedia,
   Typography
 } from "@material-ui/core";
+import { useAppSelector } from "../../../../redux/hooks/hooks";
+import { getProfileCardState } from "./profile-card-transformers";
+import { getProfileCardDateText } from "../../../../utils/dates/date-helper";
 interface Props {
   styles: ClassNameMap<ProfileCardComponentClasses>;
 }
 
 const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
-  const [t] = useTranslation("home");
+  const [t, i18n] = useTranslation("home");
+  const { userDataState } = useAppSelector((state) => state);
+
+  const recentState = useMemo(() => {
+    return getProfileCardState(userDataState, i18n);
+  }, [userDataState, i18n.language]);
 
   return (
     <>
@@ -24,10 +32,12 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         <CardActionArea className={styles.cardActionAreaStyle}>
           <CardContent className={styles.cardContentStyle}>
             <Typography gutterBottom variant="h5" component="h2">
-              Daniel Persson
+              {recentState.userName}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              Gothenburg, Sweden
+              {recentState.city}, {recentState.country}
+              <br />
+              {getProfileCardDateText(i18n)}
             </Typography>
           </CardContent>
           <CardMedia

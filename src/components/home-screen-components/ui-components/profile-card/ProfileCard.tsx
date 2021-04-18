@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileCardComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
@@ -11,11 +11,8 @@ import {
   CardMedia,
   Typography
 } from "@material-ui/core";
-
 interface Props {
   styles: ClassNameMap<ProfileCardComponentClasses>;
-  loading: boolean;
-  profileImage: string | undefined;
 }
 
 const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {

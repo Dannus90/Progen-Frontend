@@ -9,27 +9,14 @@ import { useAppSelector } from "../../../../redux/hooks/hooks";
 
 interface Props {
   styles: ClassNameMap<ProfileFormComponentClasses>;
-  loading: boolean;
   onUpdateProfileData: (data: ProfileFormDataState) => void;
-  profileFormData: ProfileFormDataState | undefined;
 }
 
-const ProfileFormComponent: React.FC<Props> = ({
-  styles,
-  profileFormData,
-  onUpdateProfileData,
-  loading
-}): JSX.Element => {
+const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }): JSX.Element => {
   const { t } = useTranslation("home");
   const { userDataState } = useAppSelector((state) => state);
 
-  const { formData, setFormData, handleInputChange } = useForm(userDataState);
-
-  useMemo(() => {
-    if (!loading && profileFormData) {
-      setFormData(profileFormData);
-    }
-  }, [loading, profileFormData]);
+  const { formData, handleInputChange } = useForm(userDataState);
 
   const updateProfileData = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();

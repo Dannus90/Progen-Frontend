@@ -3,6 +3,7 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
 import { MainTheme } from "../../../../styles/theme";
+import { ProfileFormDataState } from "../profile-form/interfaces/profile-form-interfaces";
 import ProfileCardComponent from "./ProfileCard";
 
 export interface ProfileCardComponentStyles extends Theme {
@@ -27,12 +28,7 @@ export type ProfileCardComponentClasses =
   | "cardButtonAddImageStyles"
   | "cardButtonRemoveImageStyles";
 
-interface Props {
-  loading: boolean;
-  profileImage: string | undefined;
-}
-
-const ProfileCardComponentWrapper: React.FC<Props> = ({ loading, profileImage }): JSX.Element => {
+const ProfileCardComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const profileCardComponentStyles = makeStyles({
@@ -71,7 +67,7 @@ const ProfileCardComponentWrapper: React.FC<Props> = ({ loading, profileImage })
 
   const styles = profileCardComponentStyles();
 
-  return <ProfileCardComponent styles={styles} loading={loading} profileImage={profileImage} />;
+  return <ProfileCardComponent styles={styles} />;
 };
 
 export default ProfileCardComponentWrapper;

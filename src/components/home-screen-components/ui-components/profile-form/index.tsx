@@ -38,16 +38,10 @@ export interface ProfileFormData {
 }
 
 interface Props {
-  loading: boolean;
-  formData: ProfileFormDataState | undefined;
   onUpdateProfileData: (data: ProfileFormDataState) => void;
 }
 
-const ProfileFormComponentWrapper: React.FC<Props> = ({
-  loading,
-  formData,
-  onUpdateProfileData
-}): JSX.Element => {
+const ProfileFormComponentWrapper: React.FC<Props> = ({ onUpdateProfileData }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const profileFormComponentStyles = makeStyles({
@@ -80,14 +74,7 @@ const ProfileFormComponentWrapper: React.FC<Props> = ({
 
   const styles = profileFormComponentStyles();
 
-  return (
-    <ProfileFormComponent
-      loading={loading}
-      profileFormData={formData}
-      styles={styles}
-      onUpdateProfileData={onUpdateProfileData}
-    />
-  );
+  return <ProfileFormComponent styles={styles} onUpdateProfileData={onUpdateProfileData} />;
 };
 
 export default ProfileFormComponentWrapper;

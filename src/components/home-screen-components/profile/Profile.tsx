@@ -125,14 +125,10 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     return (
       <div className={styles.profileWrapperStyles}>
         <Container>
-          <ProfileCard loading={loading} profileImage={profileImage} />
+          <ProfileCard />
         </Container>
         <Container className={styles.profileFormContainer}>
-          <ProfileForm
-            loading={loading}
-            formData={formData}
-            onUpdateProfileData={onUpdateProfileData}
-          />
+          <ProfileForm onUpdateProfileData={onUpdateProfileData} />
         </Container>
       </div>
     );

@@ -7,5 +7,8 @@ export const routeFactory = {
   },
   home: {
     main: (): string => "/home"
+  },
+  yourTeam: {
+    main: (): string => "/your-team"
   }
 };

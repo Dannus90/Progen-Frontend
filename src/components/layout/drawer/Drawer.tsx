@@ -7,6 +7,7 @@ import {
   Divider,
   Drawer,
   Hidden,
+  Link,
   List,
   ListItem,
   ListItemIcon,
@@ -58,11 +59,13 @@ const DrawerComponent: React.FC<Props> = ({
   const listIconsUpper = [
     {
       name: "dashboard",
-      icon: <Dashboard />
+      icon: <Dashboard />,
+      navigateTo: "/home"
     },
     {
       name: "team",
-      icon: <Group />
+      icon: <Group />,
+      navigateTo: "/your-team"
     }
   ];
 
@@ -73,7 +76,7 @@ const DrawerComponent: React.FC<Props> = ({
     }
   ];
 
-  let fullUsername = "";
+  let fullUsername = `${userDataState.firstName} ${userDataState.lastName}`;
 
   useMemo((): string => {
     const userData = data?.userData.getFullUserInformation.user;
@@ -114,10 +117,12 @@ const DrawerComponent: React.FC<Props> = ({
       <List className={styles.listStyle}>
         <Box>
           {listIconsUpper.map((item) => (
-            <ListItem button key={item.name}>
-              <ListItemIcon className={styles.listItemStyle}>{item.icon}</ListItemIcon>
-              <ListItemText className={styles.listItemStyle} primary={t(`list.${item.name}`)} />
-            </ListItem>
+            <Link key={item.name} href={item.navigateTo} underline="none">
+              <ListItem button>
+                <ListItemIcon className={styles.listItemStyle}>{item.icon}</ListItemIcon>
+                <ListItemText className={styles.listItemStyle} primary={t(`list.${item.name}`)} />
+              </ListItem>
+            </Link>
           ))}
         </Box>
         <Box className={styles.boxDivider}>

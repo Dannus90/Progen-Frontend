@@ -72,7 +72,8 @@ const DrawerComponent: React.FC<Props> = ({
   const listIconsLower = [
     {
       name: "support",
-      icon: <ContactSupportOutlined />
+      icon: <ContactSupportOutlined />,
+      navigateTo: "/support"
     }
   ];
 
@@ -127,10 +128,12 @@ const DrawerComponent: React.FC<Props> = ({
         </Box>
         <Box className={styles.boxDivider}>
           {listIconsLower.map((item) => (
-            <ListItem button key={item.name}>
-              <ListItemIcon className={styles.listItemStyle}>{item.icon}</ListItemIcon>
-              <ListItemText className={styles.listItemStyle} primary={t(`list.${item.name}`)} />
-            </ListItem>
+            <Link key={item.name} href={item.navigateTo} underline="none">
+              <ListItem button>
+                <ListItemIcon className={styles.listItemStyle}>{item.icon}</ListItemIcon>
+                <ListItemText className={styles.listItemStyle} primary={t(`list.${item.name}`)} />
+              </ListItem>
+            </Link>
           ))}
         </Box>
         <Box>

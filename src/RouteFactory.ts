@@ -10,5 +10,8 @@ export const routeFactory = {
   },
   yourTeam: {
     main: (): string => "/your-team"
+  },
+  support: {
+    main: (): string => "/support"
   }
 };

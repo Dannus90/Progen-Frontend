@@ -6,3 +6,40 @@
 .draggableModalDialogContent {
   margin-top: 0.5rem;
 }
+
+// Profile modal styles.
+.profileImageUploadWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .iconWrapper {
+    cursor: pointer;
+  }
+
+  .avatarPreview {
+    height: 125px;
+    width: 125px;
+  }
+
+  .imageText {
+    margin-top: 0.8rem;
+  }
+}
+
+.inputButtonStyle {
+  border: none;
+  outline: none;
+}
+
+.buttonsWrapper {
+  display: flex;
+  width: 100%;
+}
+
+.buttonsWrapperUploaded {
+  display: flex;
+  justify-content: space-between !important;
+  width: 100%;
+}

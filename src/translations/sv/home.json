@@ -7,7 +7,8 @@
   },
   "profileCard": {
     "uploadImage": "VÄLJ PROFILBILD",
-    "removeImage": "TA BORT PROFILBILD"
+    "removeImage": "TA BORT PROFILBILD",
+    "profileUploadHeader": "Välj en profilbild för uppladdning"
   },
   "profileForm": {
     "firstName": "Förnamn",

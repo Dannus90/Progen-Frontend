@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileCardComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
@@ -14,13 +14,20 @@ import {
 import { useAppSelector } from "../../../../redux/hooks/hooks";
 import { getProfileCardState } from "./profile-card-transformers";
 import { getProfileCardDateText } from "../../../../utils/dates/date-helper";
+import ProfileImageUploadModal from "../../../common/modals/ProfileImageUploadModal";
+
 interface Props {
   styles: ClassNameMap<ProfileCardComponentClasses>;
 }
 
 const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t, i18n] = useTranslation("home");
+  const [open, setOpen] = useState<boolean>(false);
   const { userDataState } = useAppSelector((state) => state);
+
+  const handleClose = (): void => {
+    setOpen(false);
+  };
 
   const recentState = useMemo(() => {
     return getProfileCardState(userDataState, i18n);
@@ -50,13 +57,22 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           />
         </CardActionArea>
         <CardActions className={styles.cardActionsStyle}>
-          <Button size="small" color="primary" className={styles.cardButtonAddImageStyles}>
+          <Button
+            size="small"
+            color="primary"
+            className={styles.cardButtonAddImageStyles}
+            onClick={() => setOpen(true)}>
             {t("profileCard.uploadImage")}
           </Button>
           <Button size="small" className={styles.cardButtonRemoveImageStyles}>
             {t("profileCard.removeImage")}
           </Button>
         </CardActions>
+        <ProfileImageUploadModal
+          handleClose={handleClose}
+          open={open}
+          header={t("profileCard.profileUploadHeader")}
+        />
       </Card>
     </>
   );

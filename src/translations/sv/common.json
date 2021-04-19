@@ -4,7 +4,8 @@
   },
   "buttonText": {
     "close": "Stäng",
-    "tryAgain": "Försök igen"
+    "tryAgain": "Försök igen",
+    "upload": "Ladda upp"
   },
   "languagePicker": {
     "language": "Språk"

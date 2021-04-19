@@ -4,7 +4,8 @@
   },
   "buttonText": {
     "close": "Close",
-    "tryAgain": "Try Again"
+    "tryAgain": "Try Again",
+    "upload": "Upload"
   },
   "languagePicker": {
     "language": "Language"

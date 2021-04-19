@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { CloudUpload } from "@material-ui/icons";
 import styles from "./ComplementaryModalStyles.module.scss";
 import React, { useState } from "react";
-import { Avatar, Typography } from "@material-ui/core";
+import { Avatar, CircularProgress, Typography } from "@material-ui/core";
 
 interface FileState {
   uploading: boolean;
@@ -22,21 +22,35 @@ interface DraggableModalProps {
   header: string;
 }
 
+const initialState: FileState = {
+  uploading: false,
+  error: false,
+  uploaded: false,
+  image: null
+};
+
 export default function ProfileImageUploadModal({
   handleClose,
   open,
   header
 }: DraggableModalProps): JSX.Element {
   const { t } = useTranslation("common");
-  const [fileState, setFileState] = useState<FileState>({
-    uploading: false,
-    error: false,
-    uploaded: false,
-    image: null
-  });
+  const [fileState, setFileState] = useState<FileState>({ ...initialState });
 
   const handleUpload = () => {
-    console.log("TIME FOR UPLOAD!");
+    setFileState({
+      ...fileState,
+      uploading: true
+    });
+
+    try {
+      setTimeout(() => {
+        setFileState({ ...initialState });
+        handleClose();
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const onImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,10 +93,13 @@ export default function ProfileImageUploadModal({
         </DialogContent>
         <DialogActions
           className={fileState.uploaded ? styles.buttonsWrapperUploaded : styles.buttonsWrapper}>
-          {fileState.uploaded && (
+          {fileState.uploaded && !fileState.uploading && (
             <Button autoFocus onClick={() => handleUpload()} color="primary">
               {t("buttonText.upload")}
             </Button>
+          )}
+          {fileState.uploaded && fileState.uploading && (
+            <CircularProgress className={styles.circularProgress} size={20} />
           )}
           <Button autoFocus onClick={handleClose} color="secondary">
             {t("buttonText.close")}

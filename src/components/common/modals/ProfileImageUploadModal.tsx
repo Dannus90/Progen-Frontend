@@ -8,6 +8,7 @@ import { CloudUpload } from "@material-ui/icons";
 import styles from "./ComplementaryModalStyles.module.scss";
 import React, { useState } from "react";
 import { Avatar, CircularProgress, Typography } from "@material-ui/core";
+import { uploadImage } from "../../../api/api-calls";
 
 interface FileState {
   uploading: boolean;
@@ -37,17 +38,23 @@ export default function ProfileImageUploadModal({
   const { t } = useTranslation("common");
   const [fileState, setFileState] = useState<FileState>({ ...initialState });
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
+    if (!fileState.image) {
+      return;
+    }
+
     setFileState({
       ...fileState,
       uploading: true
     });
 
     try {
-      setTimeout(() => {
-        setFileState({ ...initialState });
-        handleClose();
-      }, 1000);
+      const formData = new FormData();
+      formData.append("file", fileState.image[0]);
+      await uploadImage(formData);
+
+      setFileState({ ...initialState });
+      handleClose();
     } catch (err) {
       console.error(err);
     }

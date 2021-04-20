@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ExitToAppRounded, Dashboard, Group, ContactSupportOutlined } from "@material-ui/icons";
-import React, { memo, useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { DrawerComponentClasses } from ".";
 import { GET_USERDATA, LOGOUT_USER } from "./gql";
 import {
@@ -45,6 +45,7 @@ const DrawerComponent: React.FC<Props> = ({
   const [t] = useTranslation("common");
   const [logoutUser] = useMutation<LogoutUserResponseBackend>(LOGOUT_USER);
   const { loading, error, data } = useQuery<PartialUserInformationResponse>(GET_USERDATA);
+  const [profileImage, setProfileImage] = useState<string>("");
   const { userDataState } = useAppSelector((state) => state);
 
   const handleLogoutUser = async () => {
@@ -81,6 +82,7 @@ const DrawerComponent: React.FC<Props> = ({
 
   useMemo((): string => {
     const userData = data?.userData.getFullUserInformation.user;
+    setProfileImage(data ? data?.userData.getFullUserInformation.userData.profileImage : "");
 
     if (userData?.firstName || userData?.lastName) {
       return (fullUsername = `${userData?.firstName} ${userData?.lastName}`);
@@ -97,10 +99,14 @@ const DrawerComponent: React.FC<Props> = ({
     return (fullUsername = t("drawer.welcome"));
   }, [userDataState]);
 
+  const resolveProfileImage = (): string => {
+    return profileImage ? profileImage : "./assets/images/personPlaceholder.png";
+  };
+
   const drawerBody = (
     <>
       <Divider />
-      <Avatar className={styles.sizeAvatar} src="./assets/images/SmallProfile.jpg" />
+      <Avatar className={styles.sizeAvatar} src={resolveProfileImage()} />
       {loading && (
         <Container className={styles.progressContainer}>
           <CircularProgress size={30} />

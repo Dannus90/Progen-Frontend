@@ -12,6 +12,7 @@ export interface UserDataState {
   citySv: acceptedTypes;
   countryEn: acceptedTypes;
   cityEn: acceptedTypes;
+  profileImage: acceptedTypes;
   beenLoaded?: boolean;
 }
 
@@ -29,6 +30,7 @@ const initialState: UserDataState = {
   citySv: "",
   countryEn: "",
   cityEn: "",
+  profileImage: "",
   beenLoaded: false
 };
 
@@ -50,6 +52,7 @@ export const userDataSlice = createSlice({
       state.citySv = action.payload.citySv;
       state.countryEn = action.payload.countryEn;
       state.cityEn = action.payload.cityEn;
+      state.profileImage = action.payload.profileImage;
     },
     setHasLoaded: (state) => {
       state.beenLoaded = !state.beenLoaded;

@@ -33,6 +33,12 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     return getProfileCardState(userDataState, i18n);
   }, [userDataState, i18n.language]);
 
+  const resolveProfileImage = (): string => {
+    return userDataState.profileImage
+      ? userDataState.profileImage
+      : "./assets/images/personPlaceholder.png";
+  };
+
   return (
     <>
       <Card className={styles.profileCardWrapperStyles}>
@@ -52,7 +58,7 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             alt="Profile image"
             height="140"
             className={styles.profileImageStyle}
-            image="./assets/images/SmallProfile.jpg"
+            image={resolveProfileImage()}
             title="Contemplative Reptile"
           />
         </CardActionArea>

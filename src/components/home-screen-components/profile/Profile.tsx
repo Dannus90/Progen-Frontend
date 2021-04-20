@@ -31,11 +31,9 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   }>(UPDATE_USERDATA);
 
   let formData: ProfileFormDataState;
-  let profileImage: string | undefined;
 
   useMemo(() => {
     const userInformation = data?.userData.getFullUserInformation;
-    profileImage = data?.userData.getFullUserInformation.userData.profileImage;
     if (userInformation && !updatedUserDataMutation && !userDataState.beenLoaded) {
       formData = {
         firstName: userInformation?.user.firstName ?? "",
@@ -45,7 +43,8 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         countrySv: userInformation?.userData.countrySv ?? "",
         citySv: userInformation?.userData.citySv ?? "",
         countryEn: userInformation?.userData.countryEn ?? "",
-        cityEn: userInformation?.userData.cityEn ?? ""
+        cityEn: userInformation?.userData.cityEn ?? "",
+        profileImage: userInformation?.userData.profileImage ?? ""
       };
 
       dispatch(setUserData(formData));
@@ -64,7 +63,8 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         countrySv: userInformation?.countrySv ?? "",
         citySv: userInformation?.citySv ?? "",
         countryEn: userInformation?.countryEn ?? "",
-        cityEn: userInformation?.cityEn ?? ""
+        cityEn: userInformation?.cityEn ?? "",
+        profileImage: userInformation.profileImage ?? ""
       };
 
       dispatch(setUserData(formData));

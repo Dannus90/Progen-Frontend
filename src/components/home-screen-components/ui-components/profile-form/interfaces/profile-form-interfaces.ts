@@ -7,4 +7,5 @@ export interface ProfileFormDataState {
   citySv: string | undefined;
   countryEn: string | undefined;
   cityEn: string | undefined;
+  profileImage: string | undefined;
 }

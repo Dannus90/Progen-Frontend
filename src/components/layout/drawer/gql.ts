@@ -20,6 +20,9 @@ export const GET_USERDATA = gql`
           lastName
           firstName
         }
+        userData {
+          profileImage
+        }
       }
     }
   }

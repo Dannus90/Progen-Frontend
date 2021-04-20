@@ -17,6 +17,7 @@ export const GET_USERDATA = gql`
           countrySv
           countryEn
           profileImage
+          profileImagePublicId
           updatedAt
           createdAt
         }
@@ -40,6 +41,7 @@ export const UPDATE_USERDATA = gql`
         countryEn
         countrySv
         profileImage
+        profileImagePublicId
         createdAt
         updatedAt
         statusCode

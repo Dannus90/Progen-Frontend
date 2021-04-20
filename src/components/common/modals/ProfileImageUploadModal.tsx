@@ -9,6 +9,8 @@ import styles from "./ComplementaryModalStyles.module.scss";
 import React, { useState } from "react";
 import { Avatar, CircularProgress, Typography } from "@material-ui/core";
 import { uploadImage } from "../../../api/api-calls";
+import { useAppDispatch } from "../../../redux/hooks/hooks";
+import { setProfileImageData } from "../../../redux/reducers/user-data/userDataReducer";
 
 interface FileState {
   uploading: boolean;
@@ -37,6 +39,7 @@ export default function ProfileImageUploadModal({
 }: ProfileModalProps): JSX.Element {
   const { t } = useTranslation("common");
   const [fileState, setFileState] = useState<FileState>({ ...initialState });
+  const dispatch = useAppDispatch();
 
   const handleUpload = async () => {
     if (!fileState.image) {
@@ -51,7 +54,9 @@ export default function ProfileImageUploadModal({
     try {
       const formData = new FormData();
       formData.append("file", fileState.image[0]);
-      await uploadImage(formData);
+      const res = await uploadImage(formData);
+
+      dispatch(setProfileImageData(res.data));
 
       setFileState({ ...initialState });
       handleClose();

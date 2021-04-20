@@ -13,6 +13,7 @@ export interface UserDataState {
   countryEn: acceptedTypes;
   cityEn: acceptedTypes;
   profileImage: acceptedTypes;
+  publicId: acceptedTypes;
   beenLoaded?: boolean;
 }
 
@@ -31,8 +32,14 @@ const initialState: UserDataState = {
   countryEn: "",
   cityEn: "",
   profileImage: "",
+  publicId: "",
   beenLoaded: false
 };
+
+interface ImageState {
+  profileImagePublicId: string | null;
+  profileImage: string | null;
+}
 
 export const userDataSlice = createSlice({
   name: "userData",
@@ -53,6 +60,11 @@ export const userDataSlice = createSlice({
       state.countryEn = action.payload.countryEn;
       state.cityEn = action.payload.cityEn;
       state.profileImage = action.payload.profileImage;
+      state.publicId = action.payload.publicId;
+    },
+    setProfileImageData: (state, action: PayloadAction<ImageState>) => {
+      state.profileImage = action.payload.profileImage;
+      state.publicId = action.payload.profileImagePublicId;
     },
     setHasLoaded: (state) => {
       state.beenLoaded = !state.beenLoaded;
@@ -60,7 +72,7 @@ export const userDataSlice = createSlice({
   }
 });
 
-export const { setName, setUserData, setHasLoaded } = userDataSlice.actions;
+export const { setName, setUserData, setHasLoaded, setProfileImageData } = userDataSlice.actions;
 export const selectFullName = (state: RootState): string =>
   `${state.userDataState.firstName} ${state.userDataState.lastName}`;
 

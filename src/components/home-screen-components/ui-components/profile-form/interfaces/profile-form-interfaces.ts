@@ -8,4 +8,5 @@ export interface ProfileFormDataState {
   countryEn: string | undefined;
   cityEn: string | undefined;
   profileImage: string | undefined;
+  publicId: string | undefined;
 }

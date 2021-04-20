@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileFormComponentClasses, ProfileFormData } from "./index";
 import { useTranslation } from "react-i18next";

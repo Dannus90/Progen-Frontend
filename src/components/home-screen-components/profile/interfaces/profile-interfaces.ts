@@ -14,6 +14,7 @@ export interface UserInformationResponse {
         countrySv?: string;
         countryEn?: string;
         profileImage?: string;
+        profileImagePublicId?: string;
         updatedAt: Date;
         createdAt: Date;
       };
@@ -34,6 +35,7 @@ export interface UpdateUserResponse {
     id: string;
     phoneNumber: string | null;
     profileImage: string | null;
+    profileImagePublicId: string | null;
     statusCode: number;
     updatedAt: Date;
     userId: string;

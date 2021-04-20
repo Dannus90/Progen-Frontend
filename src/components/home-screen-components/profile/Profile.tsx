@@ -44,7 +44,8 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         citySv: userInformation?.userData.citySv ?? "",
         countryEn: userInformation?.userData.countryEn ?? "",
         cityEn: userInformation?.userData.cityEn ?? "",
-        profileImage: userInformation?.userData.profileImage ?? ""
+        profileImage: userInformation?.userData.profileImage ?? "",
+        publicId: userInformation?.userData.profileImagePublicId ?? ""
       };
 
       dispatch(setUserData(formData));
@@ -64,7 +65,8 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         citySv: userInformation?.citySv ?? "",
         countryEn: userInformation?.countryEn ?? "",
         cityEn: userInformation?.cityEn ?? "",
-        profileImage: userInformation.profileImage ?? ""
+        profileImage: userInformation.profileImage ?? "",
+        publicId: userInformation?.profileImagePublicId ?? ""
       };
 
       dispatch(setUserData(formData));

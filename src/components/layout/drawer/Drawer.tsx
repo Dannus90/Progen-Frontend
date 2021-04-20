@@ -92,6 +92,10 @@ const DrawerComponent: React.FC<Props> = ({
   }, [data]);
 
   useMemo(() => {
+    if (userDataState.profileImage) {
+      setProfileImage(userDataState.profileImage);
+    }
+
     if (userDataState.firstName || userDataState.lastName) {
       return (fullUsername = `${userDataState.firstName} ${userDataState.lastName}`);
     }

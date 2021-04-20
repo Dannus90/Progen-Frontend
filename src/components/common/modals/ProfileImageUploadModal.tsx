@@ -16,7 +16,7 @@ interface FileState {
   image: FileList | null;
 }
 
-interface DraggableModalProps {
+interface ProfileModalProps {
   handleClose: () => void;
   open: boolean;
   header: string;
@@ -33,7 +33,7 @@ export default function ProfileImageUploadModal({
   handleClose,
   open,
   header
-}: DraggableModalProps): JSX.Element {
+}: ProfileModalProps): JSX.Element {
   const { t } = useTranslation("common");
   const [fileState, setFileState] = useState<FileState>({ ...initialState });
 

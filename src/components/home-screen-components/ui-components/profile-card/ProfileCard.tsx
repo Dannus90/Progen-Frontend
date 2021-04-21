@@ -15,6 +15,7 @@ import { useAppSelector } from "../../../../redux/hooks/hooks";
 import { getProfileCardState } from "./profile-card-transformers";
 import { getProfileCardDateText } from "../../../../utils/dates/date-helper";
 import ProfileImageUploadModal from "../../../common/modals/ProfileImageUploadModal";
+import ConfirmProfileImageDeletionModal from "../../../common/modals/ConfirmDeletionModal";
 
 interface Props {
   styles: ClassNameMap<ProfileCardComponentClasses>;
@@ -24,9 +25,14 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t, i18n] = useTranslation("home");
   const [open, setOpen] = useState<boolean>(false);
   const { userDataState } = useAppSelector((state) => state);
+  const [deleteOpen, setDeleteOpen] = useState<boolean>(false);
 
   const handleClose = (): void => {
     setOpen(false);
+  };
+
+  const handleDeleteClose = (): void => {
+    setDeleteOpen(false);
   };
 
   const recentState = useMemo(() => {
@@ -70,7 +76,10 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             onClick={() => setOpen(true)}>
             {t("profileCard.uploadImage")}
           </Button>
-          <Button size="small" className={styles.cardButtonRemoveImageStyles}>
+          <Button
+            size="small"
+            className={styles.cardButtonRemoveImageStyles}
+            onClick={() => setDeleteOpen(true)}>
             {t("profileCard.removeImage")}
           </Button>
         </CardActions>
@@ -78,6 +87,11 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           handleClose={handleClose}
           open={open}
           header={t("profileCard.profileUploadHeader")}
+        />
+        <ConfirmProfileImageDeletionModal
+          handleClose={handleDeleteClose}
+          open={deleteOpen}
+          header={t("profileCard.deleteImageHeader")}
         />
       </Card>
     </>

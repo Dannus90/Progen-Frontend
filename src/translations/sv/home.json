@@ -8,7 +8,9 @@
   "profileCard": {
     "uploadImage": "VÄLJ PROFILBILD",
     "removeImage": "TA BORT PROFILBILD",
-    "profileUploadHeader": "Välj en profilbild för uppladdning"
+    "profileUploadHeader": "Välj en profilbild för uppladdning",
+    "uploadFail": "Försök igen",
+    "deleteImageHeader": "Vill du verkligen ta bort din profilbild?"
   },
   "profileForm": {
     "firstName": "Förnamn",

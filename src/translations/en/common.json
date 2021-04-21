@@ -5,7 +5,8 @@
   "buttonText": {
     "close": "Close",
     "tryAgain": "Try Again",
-    "upload": "Upload"
+    "upload": "Upload",
+    "deleteImage": "Delete"
   },
   "languagePicker": {
     "language": "Language"
@@ -26,5 +27,6 @@
       "profile": "Profile",
       "account": "Account"
     }
-  }
+  },
+  "deleteProfileImageError": "There is no image to delete."
 }

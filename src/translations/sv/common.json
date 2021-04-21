@@ -5,7 +5,8 @@
   "buttonText": {
     "close": "Stäng",
     "tryAgain": "Försök igen",
-    "upload": "Ladda upp"
+    "upload": "Ladda upp",
+    "deleteImage": "Ta bort"
   },
   "languagePicker": {
     "language": "Språk"
@@ -26,5 +27,6 @@
       "profile": "Profil",
       "account": "Konto"
     }
-  }
+  },
+  "deleteProfileImageError": "Det finns ingen profilbild att ta bort."
 }

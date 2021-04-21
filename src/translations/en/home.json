@@ -8,7 +8,9 @@
   "profileCard": {
     "uploadImage": "UPLOAD PROFILE PICTURE",
     "removeImage": "REMOVE PROFILE PICTURE",
-    "profileUploadHeader": "Choose a profile image for upload"
+    "profileUploadHeader": "Choose a profile image for upload",
+    "uploadFail": "Try again",
+    "deleteImageHeader": "Do you really want to remove your profile image"
   },
   "profileForm": {
     "firstName": "First name",

@@ -44,7 +44,6 @@ interface ImageState {
 export const userDataSlice = createSlice({
   name: "userData",
   initialState,
-  // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     setName: (state, action: PayloadAction<UserNameData>) => {
       state.firstName = action.payload.firstName;

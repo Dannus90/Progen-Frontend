@@ -11,10 +11,11 @@ import { Avatar, CircularProgress, Typography } from "@material-ui/core";
 import { uploadImage } from "../../../api/api-calls";
 import { useAppDispatch } from "../../../redux/hooks/hooks";
 import { setProfileImageData } from "../../../redux/reducers/user-data/userDataReducer";
+import { Alert } from "@material-ui/lab";
 
 interface FileState {
   uploading: boolean;
-  error: boolean;
+  error: null | string;
   uploaded: boolean;
   image: FileList | null;
 }
@@ -27,7 +28,7 @@ interface ProfileModalProps {
 
 const initialState: FileState = {
   uploading: false,
-  error: false,
+  error: null,
   uploaded: false,
   image: null
 };
@@ -37,7 +38,7 @@ export default function ProfileImageUploadModal({
   open,
   header
 }: ProfileModalProps): JSX.Element {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("home");
   const [fileState, setFileState] = useState<FileState>({ ...initialState });
   const dispatch = useAppDispatch();
 
@@ -61,7 +62,7 @@ export default function ProfileImageUploadModal({
       setFileState({ ...initialState });
       handleClose();
     } catch (err) {
-      console.error(err);
+      setFileState({ ...initialState, error: err.response.data.message || err.message });
     }
   };
 
@@ -71,6 +72,10 @@ export default function ProfileImageUploadModal({
       uploaded: true,
       image: e.target.files
     });
+  };
+
+  const removeUploadError = (): void => {
+    setFileState({ ...fileState, error: null });
   };
 
   return (
@@ -104,17 +109,27 @@ export default function ProfileImageUploadModal({
           </div>
         </DialogContent>
         <DialogActions
-          className={fileState.uploaded ? styles.buttonsWrapperUploaded : styles.buttonsWrapper}>
-          {fileState.uploaded && !fileState.uploading && (
+          className={
+            fileState.uploaded || fileState.error
+              ? styles.buttonsWrapperUploaded
+              : styles.buttonsWrapper
+          }>
+          {fileState.error && (
+            <Alert onClose={() => removeUploadError()} severity="error">
+              <p>{t("profileCard.uploadFail")}</p>
+              <p>{fileState.error}</p>
+            </Alert>
+          )}
+          {fileState.uploaded && !fileState.uploading && !fileState.error && (
             <Button autoFocus onClick={() => handleUpload()} color="primary">
-              {t("buttonText.upload")}
+              {t("common:buttonText.upload")}
             </Button>
           )}
-          {fileState.uploaded && fileState.uploading && (
+          {fileState.uploaded && fileState.uploading && !fileState.error && (
             <CircularProgress className={styles.circularProgress} size={20} />
           )}
           <Button autoFocus onClick={handleClose} color="secondary">
-            {t("buttonText.close")}
+            {t("common:buttonText.close")}
           </Button>
         </DialogActions>
       </Dialog>

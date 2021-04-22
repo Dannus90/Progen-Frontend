@@ -1,6 +1,6 @@
 import React from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { ProfileFormComponentClasses, ProfileFormData } from "./index";
+import { ProfileFormComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
 import { Button, Card, Container, Grid, TextField } from "@material-ui/core";
 import { useForm } from "../../../../custom-hooks/UseForm";

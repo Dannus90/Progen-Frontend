@@ -1,0 +1,10 @@
+{
+  "accountPasswordForm": {
+    "newPassword": "New password",
+    "oldPassword": "Current password"
+  },
+  "accountEmailForm": {
+    "email": "New email",
+    "password": "Current password"
+  }
+}

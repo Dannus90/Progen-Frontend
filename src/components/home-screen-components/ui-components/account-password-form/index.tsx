@@ -7,9 +7,10 @@ import AccountPasswordFormComponent from "./AccountPasswordForm";
 
 export interface AccountEmailFormComponentStyles extends Theme {
   accountPasswordFormWrapperStyles: CreateCSSProperties | CSSProperties;
+  formStyle: CreateCSSProperties | CSSProperties;
 }
 
-export type AccountPasswordFormComponentClasses = "accountPasswordFormWrapperStyles";
+export type AccountPasswordFormComponentClasses = "accountPasswordFormWrapperStyles" | "formStyle";
 
 const AccountPasswordFormComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -18,6 +19,9 @@ const AccountPasswordFormComponentWrapper: React.FC = (): JSX.Element => {
     accountPasswordFormWrapperStyles: {
       width: "385px",
       borderRadius: "15px"
+    },
+    formStyle: {
+      padding: "1rem"
     }
   });
 

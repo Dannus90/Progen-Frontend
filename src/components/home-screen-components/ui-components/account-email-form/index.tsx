@@ -7,9 +7,10 @@ import AccountEmailFormComponent from "./AccountEmailForm";
 
 export interface AccountEmailFormComponentStyles extends Theme {
   accountEmailFormWrapperStyles: CreateCSSProperties | CSSProperties;
+  formStyle: CreateCSSProperties | CSSProperties;
 }
 
-export type AccountEmailFormComponentClasses = "accountEmailFormWrapperStyles";
+export type AccountEmailFormComponentClasses = "accountEmailFormWrapperStyles" | "formStyle";
 
 const AccountEmailFormComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -18,6 +19,9 @@ const AccountEmailFormComponentWrapper: React.FC = (): JSX.Element => {
     accountEmailFormWrapperStyles: {
       width: "385px",
       borderRadius: "15px"
+    },
+    formStyle: {
+      padding: "1rem"
     }
   });
 

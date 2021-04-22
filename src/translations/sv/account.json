@@ -1,10 +1,12 @@
 {
   "accountPasswordForm": {
     "newPassword": "Nytt lösenord",
-    "oldPassword": "Nuvarande lösenord"
+    "oldPassword": "Nuvarande lösenord",
+    "header": "Välj nytt lösenord"
   },
   "accountEmailForm": {
     "email": "Ny email",
-    "password": "Nuvarande lösenord"
+    "password": "Nuvarande lösenord",
+    "header": "Välj ny email"
   }
 }

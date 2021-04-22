@@ -2,7 +2,7 @@ import React from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountEmailFormComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
-import { Card, Grid, TextField } from "@material-ui/core";
+import { Card, Container, Grid, TextField } from "@material-ui/core";
 import { UseAccountForm } from "../../../../custom-hooks/UseAccountForm";
 
 interface Props {
@@ -28,6 +28,9 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
   return (
     <>
       <Card className={styles.accountEmailFormWrapperStyles}>
+        <Container className={styles.headerWrapper}>
+          <h4 className={styles.headerStyles}>{t("accountEmailForm.header")}</h4>{" "}
+        </Container>
         <form onSubmit={updateProfileData}>
           <Grid container spacing={3} className={styles.formStyle}>
             <Grid item xs={12} sm={12}>

@@ -1,10 +1,12 @@
 {
   "accountPasswordForm": {
     "newPassword": "New password",
-    "oldPassword": "Current password"
+    "oldPassword": "Current password",
+    "header": "Choose a new password"
   },
   "accountEmailForm": {
     "email": "New email",
-    "password": "Current password"
+    "password": "Current password",
+    "header": "Choose a new email"
   }
 }

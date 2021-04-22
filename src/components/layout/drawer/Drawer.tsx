@@ -47,6 +47,9 @@ const DrawerComponent: React.FC<Props> = ({
   const { loading, error, data } = useQuery<PartialUserInformationResponse>(GET_USERDATA);
   const [profileImage, setProfileImage] = useState<string>("");
   const { userDataState } = useAppSelector((state) => state);
+  const initialData = data?.userData.getFullUserInformation.user;
+  const initialName = `${initialData?.firstName} ${initialData?.lastName}`;
+  const [fullUsername, setFullUsername] = useState<string>(initialName);
 
   const handleLogoutUser = async () => {
     const response = await logoutUser();
@@ -78,17 +81,15 @@ const DrawerComponent: React.FC<Props> = ({
     }
   ];
 
-  let fullUsername = `${userDataState.firstName} ${userDataState.lastName}`;
-
-  useMemo((): string => {
+  useMemo((): void => {
     const userData = data?.userData.getFullUserInformation.user;
     setProfileImage(data ? data?.userData.getFullUserInformation.userData.profileImage : "");
 
     if (userData?.firstName || userData?.lastName) {
-      return (fullUsername = `${userData?.firstName} ${userData?.lastName}`);
+      return setFullUsername(`${userData?.firstName} ${userData?.lastName}`);
     }
 
-    return (fullUsername = t("drawer.welcome"));
+    return setFullUsername(t("drawer.welcome"));
   }, [data]);
 
   useMemo(() => {
@@ -99,10 +100,10 @@ const DrawerComponent: React.FC<Props> = ({
     }
 
     if (userDataState.firstName || userDataState.lastName) {
-      return (fullUsername = `${userDataState.firstName} ${userDataState.lastName}`);
+      return setFullUsername(`${userDataState.firstName} ${userDataState.lastName}`);
     }
 
-    return (fullUsername = t("drawer.welcome"));
+    return setFullUsername(t("drawer.welcome"));
   }, [userDataState]);
 
   const resolveProfileImage = (): string => {

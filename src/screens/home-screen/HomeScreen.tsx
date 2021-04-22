@@ -42,11 +42,10 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
   };
 
   useMemo(() => {
-    console.log(currentTab);
-    if (generalState.accountClicked) {
+    if (generalState.accountClicked && generalState.accountClicked) {
       setCurrentTab(1);
     }
-  }, [generalState.accountClicked]);
+  }, [generalState.accountClicked === true]);
 
   const handleTabChange = (_: any, newValue: number) => {
     setCurrentTab(newValue);

@@ -7,10 +7,10 @@ import SupportScreen from "./screens/support-screen/index";
 
 export const AuthRoutes: React.FC = () => {
   return (
-    <Router>
+    <>
       <Route exact path={routeFactory.home.main()} component={() => <HomeScreen />} />
       <Route exact path={routeFactory.yourTeam.main()} component={() => <YourTeamScreen />} />
       <Route exact path={routeFactory.support.main()} component={() => <SupportScreen />} />
-    </Router>
+    </>
   );
 };

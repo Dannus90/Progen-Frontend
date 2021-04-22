@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, Router } from "react-router-dom";
 import { routeFactory } from "./RouteFactory";
 import LandingScreen from "./screens/landing-screen/index";
 import { AuthRoutes } from "./AuthRoutes";
@@ -8,34 +8,35 @@ import AuthWrapper from "./auth/AuthWrapper";
 
 export const ApplicationRoutes: React.FC = () => {
   return (
-    <Router>
-      <Switch>
-        <Route
-          exact
-          path={routeFactory.appRoot()}
-          component={() => <LandingScreen componentToDisplay="login" />}
-        />
-        <Route
-          exact
-          path={routeFactory.auth.login()}
-          component={() => <LandingScreen componentToDisplay="login" />}
-        />
-        <Route
-          exact
-          path={routeFactory.auth.register()}
-          component={() => <LandingScreen componentToDisplay="register" />}
-        />
-        <Route
-          exact
-          path={routeFactory.auth.forgotPassword()}
-          component={() => <LandingScreen componentToDisplay="reset-password" />}
-        />
-        <Layout>
-          <AuthWrapper>
-            <AuthRoutes />
-          </AuthWrapper>
-        </Layout>
-      </Switch>
-    </Router>
+    <Switch>
+      <Route
+        exact
+        path={routeFactory.appRoot()}
+        component={() => <LandingScreen componentToDisplay="login" />}
+      />
+      <Route
+        exact
+        path={routeFactory.auth.login()}
+        component={() => <LandingScreen componentToDisplay="login" />}
+      />
+      <Route
+        exact
+        path={routeFactory.auth.register()}
+        component={() => <LandingScreen componentToDisplay="register" />}
+      />
+      <Route
+        exact
+        path={routeFactory.auth.forgotPassword()}
+        component={() => <LandingScreen componentToDisplay="reset-password" />}
+      />
+      <Layout>
+        <AuthWrapper>
+          <AuthRoutes />
+        </AuthWrapper>
+      </Layout>
+    </Switch>
   );
 };
+function createBrowserHistory() {
+  throw new Error("Function not implemented.");
+}

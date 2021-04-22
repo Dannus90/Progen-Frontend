@@ -18,7 +18,9 @@ import { TopBarClasses } from ".";
 import useComponentVisible from "../../../custom-hooks/UseComponentVisible";
 import LanguagePicker from "../../common/language-picker/index";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { accountClicked } from "../../../redux/reducers/user-data/generalReducer";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
@@ -32,6 +34,8 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
   const screenSize = useMediaQuery(theme.breakpoints.up("md"));
   const [anchorEl, setAnchorEl] = React.useState<(EventTarget & HTMLButtonElement) | null>();
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleDisplayLanguagePicker = (): void => {
     setIsComponentVisible((prev) => !prev);
@@ -42,6 +46,8 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
   };
 
   const handleClose = () => {
+    history.push("/home");
+    dispatch(accountClicked(true));
     setAnchorEl(null);
   };
 

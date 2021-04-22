@@ -13,8 +13,8 @@ export const generalSlice = createSlice({
   name: "general",
   initialState,
   reducers: {
-    accountClicked: (state: GeneralState, action: PayloadAction<GeneralState>) => {
-      state.accountClicked = !state.accountClicked;
+    accountClicked: (state: GeneralState, action: PayloadAction<boolean>) => {
+      state.accountClicked = action.payload;
     }
   }
 });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { HomeScreenClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AppBar, Tab, Tabs } from "@material-ui/core";
@@ -8,6 +8,9 @@ import Profile from "../../components/home-screen-components/profile/index";
 import CreateCv from "../../components/home-screen-components/create-cv/index";
 import CvInformation from "../../components/home-screen-components/cv-information/index";
 import Account from "../../components/home-screen-components/account/index";
+import { useAppSelector } from "../../redux/hooks/hooks";
+import { useDispatch } from "react-redux";
+import { accountClicked } from "../../redux/reducers/user-data/generalReducer";
 
 interface Props {
   styles: ClassNameMap<HomeScreenClasses>;
@@ -21,6 +24,8 @@ interface TabProps {
 const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
   const { t } = useTranslation("home");
   const [currentTab, setCurrentTab] = useState(0);
+  const { generalState } = useAppSelector((state) => state);
+  const dispatch = useDispatch();
 
   const getTabProps = (index: number): TabProps => {
     return {
@@ -35,6 +40,13 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
       index
     };
   };
+
+  useMemo(() => {
+    console.log(currentTab);
+    if (generalState.accountClicked) {
+      setCurrentTab(1);
+    }
+  }, [generalState.accountClicked]);
 
   const handleTabChange = (_: any, newValue: number) => {
     setCurrentTab(newValue);

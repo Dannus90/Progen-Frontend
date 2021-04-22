@@ -75,7 +75,7 @@ export default function ProfileImageUploadModal({
   };
 
   const removeUploadError = (): void => {
-    setFileState({ ...fileState, error: null });
+    setFileState({ ...initialState, error: null });
   };
 
   return (

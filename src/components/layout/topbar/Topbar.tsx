@@ -92,6 +92,7 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
               vertical: "top",
               horizontal: "right"
             }}
+            className={styles.menu}
             open={open}
             onClose={handleClose}>
             <MenuItem onClick={handleClose}>{t("topBar.menu.profile")}</MenuItem>

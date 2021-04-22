@@ -20,7 +20,8 @@ export type TopBarClasses =
   | "menuButton"
   | "languageProfileContainer"
   | "languageIcon"
-  | "proGenSignature";
+  | "proGenSignature"
+  | "menu";
 
 interface Props {
   handleDrawerToggle: () => void;
@@ -60,6 +61,10 @@ const TopBarWrapper: React.FC<Props> = ({ handleDrawerToggle }): JSX.Element => 
     },
     proGenSignature: {
       color: theme.custom.palette.lightBackground.main
+    },
+    menu: {
+      marginTop: theme.customSpacings.l,
+      marginLeft: "0.75rem"
     }
   });
 

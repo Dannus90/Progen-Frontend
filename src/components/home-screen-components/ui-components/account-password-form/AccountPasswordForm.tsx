@@ -53,7 +53,6 @@ const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element 
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("accountPasswordForm.newPassword")}
-                autoFocus
                 size="small"
                 fullWidth
               />

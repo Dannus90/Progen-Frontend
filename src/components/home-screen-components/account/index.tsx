@@ -8,13 +8,9 @@ import AccountComponent from "./Account";
 export interface AccountComponentStyles extends Theme {
   accountComponentStyles: CreateCSSProperties | CSSProperties;
   formsContainer: CreateCSSProperties | CSSProperties;
-  informationContainer: CreateCSSProperties | CSSProperties;
 }
 
-export type AccountComponentClasses =
-  | "accountWrapperStyles"
-  | "formsContainer"
-  | "informationContainer";
+export type AccountComponentClasses = "accountWrapperStyles" | "formsContainer";
 
 const AccountComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -29,11 +25,6 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-between"
-    },
-    informationContainer: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
     }
   });
 

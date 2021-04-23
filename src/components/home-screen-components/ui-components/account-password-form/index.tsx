@@ -10,13 +10,19 @@ export interface AccountEmailFormComponentStyles extends Theme {
   formStyle: CreateCSSProperties | CSSProperties;
   headerWrapper: CreateCSSProperties | CSSProperties;
   headerStyles: CreateCSSProperties | CSSProperties;
+  cardActionsStyle: CreateCSSProperties | CSSProperties;
+  cardButtonSubmitStyles: CreateCSSProperties | CSSProperties;
+  cardButtonClearStyles: CreateCSSProperties | CSSProperties;
 }
 
 export type AccountPasswordFormComponentClasses =
   | "accountPasswordFormWrapperStyles"
   | "formStyle"
   | "headerWrapper"
-  | "headerStyles";
+  | "headerStyles"
+  | "cardActionsStyle"
+  | "cardButtonSubmitStyles"
+  | "cardButtonClearStyles";
 
 const AccountPasswordFormComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -25,7 +31,8 @@ const AccountPasswordFormComponentWrapper: React.FC = (): JSX.Element => {
     accountPasswordFormWrapperStyles: {
       width: "auto",
       borderRadius: "15px",
-      marginLeft: "1rem"
+      marginLeft: "1rem",
+      minWidth: "250px"
     },
     formStyle: {
       padding: "1rem"
@@ -40,6 +47,16 @@ const AccountPasswordFormComponentWrapper: React.FC = (): JSX.Element => {
       color: theme.custom.palette.textVariantDark.medium,
       margin: "auto",
       fontSize: "1.2rem"
+    },
+    cardActionsStyle: {
+      padding: "1rem"
+    },
+    cardButtonSubmitStyles: {
+      width: "50%"
+    },
+    cardButtonClearStyles: {
+      width: "50%",
+      color: theme.custom.palette.lightBackground.main
     }
   });
 

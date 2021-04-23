@@ -2,11 +2,15 @@
   "accountPasswordForm": {
     "newPassword": "Nytt lösenord",
     "oldPassword": "Nuvarande lösenord",
-    "header": "Välj nytt lösenord"
+    "header": "Välj nytt lösenord",
+    "submit": "Skicka",
+    "clearFields": "Rensa"
   },
   "accountEmailForm": {
     "email": "Ny email",
     "password": "Nuvarande lösenord",
-    "header": "Välj ny email"
+    "header": "Välj ny email",
+    "submit": "Skicka",
+    "clearFields": "Rensa"
   }
 }

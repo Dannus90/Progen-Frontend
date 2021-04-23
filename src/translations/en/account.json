@@ -2,11 +2,15 @@
   "accountPasswordForm": {
     "newPassword": "New password",
     "oldPassword": "Current password",
-    "header": "Choose a new password"
+    "header": "Choose a new password",
+    "submit": "Submit",
+    "clearFields": "Clear Form"
   },
   "accountEmailForm": {
     "email": "New email",
     "password": "Current password",
-    "header": "Choose a new email"
+    "header": "Choose a new email",
+    "submit": "Submit",
+    "clearFields": "Clear Form"
   }
 }

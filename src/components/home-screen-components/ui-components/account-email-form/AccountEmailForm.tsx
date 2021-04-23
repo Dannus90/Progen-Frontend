@@ -2,7 +2,7 @@ import React from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountEmailFormComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
-import { Card, Container, Grid, TextField } from "@material-ui/core";
+import { Button, Card, CardActions, Container, Grid, TextField } from "@material-ui/core";
 import { UseAccountForm } from "../../../../custom-hooks/UseAccountForm";
 
 interface Props {
@@ -14,15 +14,21 @@ interface FormState {
   email: string;
 }
 
+const initialFormState: FormState = {
+  password: "",
+  email: ""
+};
+
 const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t, i18n] = useTranslation("account");
-  const { formData, handleInputChange } = UseAccountForm({
-    password: "",
-    email: ""
-  });
+  const { formData, handleInputChange, setFormData } = UseAccountForm({ ...initialFormState });
 
-  const updateProfileData = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleUpdateEmail = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+  };
+
+  const clearFormFields = (): void => {
+    setFormData({ ...initialFormState });
   };
 
   return (
@@ -31,7 +37,7 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
         <Container className={styles.headerWrapper}>
           <h4 className={styles.headerStyles}>{t("accountEmailForm.header")}</h4>{" "}
         </Container>
-        <form onSubmit={updateProfileData}>
+        <form onSubmit={handleUpdateEmail}>
           <Grid container spacing={3} className={styles.formStyle}>
             <Grid item xs={12} sm={12}>
               <TextField
@@ -65,6 +71,24 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
               />
             </Grid>
           </Grid>
+          <CardActions className={styles.cardActionsStyle}>
+            <Button
+              size="small"
+              color="primary"
+              className={styles.cardButtonSubmitStyles}
+              type="submit"
+              variant="contained">
+              {t("accountEmailForm.submit")}
+            </Button>
+            <Button
+              size="small"
+              className={styles.cardButtonClearStyles}
+              variant="contained"
+              color="secondary"
+              onClick={() => clearFormFields()}>
+              {t("accountEmailForm.clearFields")}
+            </Button>
+          </CardActions>
         </form>
       </Card>
     </>

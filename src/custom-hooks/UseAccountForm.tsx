@@ -5,7 +5,7 @@ type acceptedTypes = string | null;
 interface AccountFormData {
   oldPassword?: acceptedTypes;
   newPassword?: acceptedTypes;
-  email?: acceptedTypes;
+  newEmail?: acceptedTypes;
   password?: acceptedTypes;
 }
 

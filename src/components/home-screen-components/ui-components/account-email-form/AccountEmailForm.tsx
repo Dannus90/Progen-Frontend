@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountEmailFormComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
-import { Button, Card, CardActions, Container, Grid, TextField } from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardActions,
+  CircularProgress,
+  Container,
+  Grid,
+  TextField
+} from "@material-ui/core";
 import { UseAccountForm } from "../../../../custom-hooks/UseAccountForm";
+import { CHANGE_EMAIL } from "./gql";
+import { ChangeEmailInput, ChangeEmailResponse } from "./interfaces/email-form-interfaces";
+import { useMutation } from "@apollo/client";
+import { Alert } from "@material-ui/lab";
 
 interface Props {
   styles: ClassNameMap<AccountEmailFormComponentClasses>;
@@ -11,25 +23,57 @@ interface Props {
 
 interface FormState {
   password: string;
-  email: string;
+  newEmail: string;
 }
 
 const initialFormState: FormState = {
   password: "",
-  email: ""
+  newEmail: ""
 };
 
 const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t, i18n] = useTranslation("account");
   const { formData, handleInputChange, setFormData } = UseAccountForm({ ...initialFormState });
+  const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
+  const [changeEmail, { error, loading, data }] = useMutation<{
+    authentication: ChangeEmailResponse;
+    changeEmailInput: ChangeEmailInput;
+  }>(CHANGE_EMAIL, {
+    variables: {
+      changeEmailInput: {
+        newEmail: formData.newEmail,
+        password: formData.password
+      }
+    }
+  });
 
-  const handleUpdateEmail = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
+  const removeErrorDisplay = (): void => {
+    setDisplayErrorMessage(false);
   };
 
   const clearFormFields = (): void => {
     setFormData({ ...initialFormState });
   };
+
+  const handleUpdateEmail = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+
+    try {
+      await changeEmail();
+      clearFormFields();
+    } catch (err) {
+      setDisplayErrorMessage(true);
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    setDisplayErrorMessage(true);
+
+    return () => {
+      setDisplayErrorMessage(false);
+    };
+  }, [error]);
 
   return (
     <>
@@ -41,10 +85,10 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
           <Grid container spacing={3} className={styles.formStyle}>
             <Grid item xs={12} sm={12}>
               <TextField
-                id="email"
+                id="newEmail"
                 aria-describedby="my-helper-text"
-                name="email"
-                value={formData.email}
+                name="newEmail"
+                value={formData.newEmail}
                 variant="outlined"
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
@@ -71,6 +115,16 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
               />
             </Grid>
           </Grid>
+          {displayErrorMessage && error && (
+            <Alert
+              className={`${styles.alertStyle}`}
+              onClose={() => removeErrorDisplay()}
+              severity="error">
+              {error?.graphQLErrors.map(
+                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              )}
+            </Alert>
+          )}
           <CardActions className={styles.cardActionsStyle}>
             <Button
               size="small"
@@ -78,7 +132,11 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
               className={styles.cardButtonSubmitStyles}
               type="submit"
               variant="contained">
-              {t("accountEmailForm.submit")}
+              {loading ? (
+                <CircularProgress size={20} color="inherit" />
+              ) : (
+                t("accountEmailForm.submit")
+              )}
             </Button>
             <Button
               size="small"

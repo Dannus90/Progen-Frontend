@@ -13,6 +13,7 @@ export interface AccountEmailFormComponentStyles extends Theme {
   cardActionsStyle: CreateCSSProperties | CSSProperties;
   cardButtonSubmitStyles: CreateCSSProperties | CSSProperties;
   cardButtonClearStyles: CreateCSSProperties | CSSProperties;
+  alertStyle: CreateCSSProperties | CSSProperties;
 }
 
 export type AccountEmailFormComponentClasses =
@@ -22,7 +23,8 @@ export type AccountEmailFormComponentClasses =
   | "headerStyles"
   | "cardActionsStyle"
   | "cardButtonSubmitStyles"
-  | "cardButtonClearStyles";
+  | "cardButtonClearStyles"
+  | "alertStyle";
 
 const AccountEmailFormComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -59,6 +61,16 @@ const AccountEmailFormComponentWrapper: React.FC = (): JSX.Element => {
     cardButtonClearStyles: {
       width: "50%",
       color: theme.custom.palette.lightBackground.main
+    },
+    alertStyle: {
+      height: "auto",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "0px 10px",
+      margin: "0px 16px",
+      fontSize: "14px",
+      marginBottom: `${theme.customSpacings.xxxs}`
     }
   });
 

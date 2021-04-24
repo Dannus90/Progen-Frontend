@@ -45,6 +45,15 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
       : "./assets/images/personPlaceholder.png";
   };
 
+  const displayLivingPlace = (): string => {
+    if (recentState.city && recentState.country)
+      return `${recentState.city}, ${recentState.country}`;
+    if (recentState.city) return `${recentState.city}`;
+    if (recentState.country) return `${recentState.country}`;
+
+    return "";
+  };
+
   return (
     <>
       <Card className={styles.profileCardWrapperStyles}>
@@ -54,8 +63,8 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
               {recentState.userName}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {recentState.city}, {recentState.country}
-              <br />
+              {displayLivingPlace()}
+              {displayLivingPlace() && <br />}
               {getProfileCardDateText(i18n)}
             </Typography>
           </CardContent>

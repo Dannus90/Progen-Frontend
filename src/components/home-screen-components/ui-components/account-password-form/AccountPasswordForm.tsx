@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountPasswordFormComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
-import { Button, Card, CardActions, Container, Grid, TextField } from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardActions,
+  CircularProgress,
+  Container,
+  Grid,
+  TextField
+} from "@material-ui/core";
 import { UseAccountForm } from "../../../../custom-hooks/UseAccountForm";
 import { useMutation } from "@apollo/client";
 import {
@@ -142,7 +150,11 @@ const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element 
               className={styles.cardButtonSubmitStyles}
               type="submit"
               variant="contained">
-              {t("accountEmailForm.submit")}
+              {loading ? (
+                <CircularProgress size={20} color="inherit" />
+              ) : (
+                t("accountPasswordForm.submit")
+              )}
             </Button>
             <Button
               size="small"
@@ -150,7 +162,7 @@ const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element 
               variant="contained"
               color="secondary"
               onClick={() => clearFormFields()}>
-              {t("accountEmailForm.clearFields")}
+              {t("accountPasswordForm.clearFields")}
             </Button>
           </CardActions>
         </form>

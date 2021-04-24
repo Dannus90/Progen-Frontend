@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Router } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { routeFactory } from "./RouteFactory";
 import LandingScreen from "./screens/landing-screen/index";
 import { AuthRoutes } from "./AuthRoutes";
@@ -37,6 +37,3 @@ export const ApplicationRoutes: React.FC = () => {
     </Switch>
   );
 };
-function createBrowserHistory() {
-  throw new Error("Function not implemented.");
-}

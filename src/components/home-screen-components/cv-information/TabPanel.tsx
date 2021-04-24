@@ -7,7 +7,7 @@ interface Props {
   index: number;
 }
 
-export const TabPanel: React.FC<Props> = ({ children, value, index, ...rest }) => {
+export const TabPanel: React.FC<Props> = ({ children, value, index, ...rest }): JSX.Element => {
   return (
     <div
       role="tabpanel"

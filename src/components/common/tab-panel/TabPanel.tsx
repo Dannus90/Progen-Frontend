@@ -7,7 +7,7 @@ interface TabPanelProps {
   value: number;
 }
 
-export const TabPanel = (props: TabPanelProps) => {
+export const TabPanel = (props: TabPanelProps): JSX.Element => {
   const { children, value, index, ...other } = props;
 
   return (

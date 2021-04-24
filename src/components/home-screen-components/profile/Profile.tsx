@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ProfileComponentClasses } from "./index";
 import ProfileCard from "../ui-components/profile-card/index";
@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { ProfileFormDataState } from "../ui-components/profile-form/interfaces/profile-form-interfaces";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
 import { setHasLoaded, setUserData } from "../../../redux/reducers/user-data/userDataReducer";
+import { profileClicked } from "../../../redux/reducers/user-data/generalReducer";
 
 interface Props {
   styles: ClassNameMap<ProfileComponentClasses>;
@@ -29,6 +30,12 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     userData: UpdateUserResponse;
     updateUserDataInput: ProfileFormDataState;
   }>(UPDATE_USERDATA);
+
+  useEffect(() => {
+    return () => {
+      dispatch(profileClicked(false));
+    };
+  }, []);
 
   let formData: ProfileFormDataState;
 

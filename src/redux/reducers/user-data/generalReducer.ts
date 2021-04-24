@@ -3,10 +3,12 @@ import { RootState } from "../../store";
 
 export interface GeneralState {
   accountClicked: boolean;
+  profileClicked: boolean;
 }
 
 const initialState: GeneralState = {
-  accountClicked: false
+  accountClicked: false,
+  profileClicked: false
 };
 
 export const generalSlice = createSlice({
@@ -15,12 +17,16 @@ export const generalSlice = createSlice({
   reducers: {
     accountClicked: (state: GeneralState, action: PayloadAction<boolean>) => {
       state.accountClicked = action.payload;
+    },
+    profileClicked: (state: GeneralState, action: PayloadAction<boolean>) => {
+      state.profileClicked = action.payload;
     }
   }
 });
 
-export const { accountClicked } = generalSlice.actions;
+export const { accountClicked, profileClicked } = generalSlice.actions;
 export const accountIsClicked = (state: RootState): boolean => state.generalState.accountClicked;
+export const profileIsClicked = (state: RootState): boolean => state.generalState.profileClicked;
 
 export const selectUserData = (state: RootState): GeneralState => state.generalState;
 

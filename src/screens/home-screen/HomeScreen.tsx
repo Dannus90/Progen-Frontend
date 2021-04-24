@@ -9,8 +9,6 @@ import CreateCv from "../../components/home-screen-components/create-cv/index";
 import CvInformation from "../../components/home-screen-components/cv-information/index";
 import Account from "../../components/home-screen-components/account/index";
 import { useAppSelector } from "../../redux/hooks/hooks";
-import { useDispatch } from "react-redux";
-import { accountClicked } from "../../redux/reducers/user-data/generalReducer";
 
 interface Props {
   styles: ClassNameMap<HomeScreenClasses>;
@@ -25,7 +23,6 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
   const { t } = useTranslation("home");
   const [currentTab, setCurrentTab] = useState(0);
   const { generalState } = useAppSelector((state) => state);
-  const dispatch = useDispatch();
 
   const getTabProps = (index: number): TabProps => {
     return {
@@ -46,6 +43,12 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
       setCurrentTab(1);
     }
   }, [generalState.accountClicked === true]);
+
+  useMemo(() => {
+    if (generalState.profileClicked && generalState.profileClicked) {
+      setCurrentTab(0);
+    }
+  }, [generalState.profileClicked === true]);
 
   const handleTabChange = (_: any, newValue: number) => {
     setCurrentTab(newValue);

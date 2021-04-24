@@ -20,7 +20,7 @@ import LanguagePicker from "../../common/language-picker/index";
 import { useTranslation } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { accountClicked } from "../../../redux/reducers/user-data/generalReducer";
+import { accountClicked, profileClicked } from "../../../redux/reducers/user-data/generalReducer";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
@@ -45,9 +45,19 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
+    setAnchorEl(null);
+  };
+
+  const handleCloseAccount = (): void => {
     history.push("/home");
     dispatch(accountClicked(true));
+    setAnchorEl(null);
+  };
+
+  const handleCloseProfile = (): void => {
+    history.push("/home");
+    dispatch(profileClicked(true));
     setAnchorEl(null);
   };
 
@@ -101,8 +111,8 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
             className={styles.menu}
             open={open}
             onClose={handleClose}>
-            <MenuItem onClick={handleClose}>{t("topBar.menu.profile")}</MenuItem>
-            <MenuItem onClick={handleClose}>{t("topBar.menu.account")}</MenuItem>
+            <MenuItem onClick={handleCloseProfile}>{t("topBar.menu.profile")}</MenuItem>
+            <MenuItem onClick={handleCloseAccount}>{t("topBar.menu.account")}</MenuItem>
           </Menu>
         </div>
       </Toolbar>

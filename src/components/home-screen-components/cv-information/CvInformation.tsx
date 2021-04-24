@@ -5,6 +5,12 @@ import { Paper, Tab, Tabs } from "@material-ui/core";
 import { TabPanel, a11yProps } from "./TabPanel";
 import TabsDivider from "../ui-components/cv-information-screen-components/cv-information-tabs-divider/index";
 import { useTranslation } from "react-i18next";
+import AboutMe from "../ui-components/cv-information-screen-components/about-me/index";
+import WorkExperience from "../ui-components/cv-information-screen-components/work-experience/index";
+import Education from "../ui-components/cv-information-screen-components/education/index";
+import Skills from "../ui-components/cv-information-screen-components/skills/index";
+import CertificatesLicenses from "../ui-components/cv-information-screen-components/certificates-licenses/index";
+import Other from "../ui-components/cv-information-screen-components/other/index";
 
 interface Props {
   styles: ClassNameMap<CvInformationComponentClasses>;
@@ -74,22 +80,22 @@ const CvInformationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           />
         </Tabs>
         <TabPanel value={value} index={0}>
-          Item One
+          <AboutMe />
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Two
+          <WorkExperience />
         </TabPanel>
         <TabPanel value={value} index={4}>
-          Item Three
+          <Education />
         </TabPanel>
         <TabPanel value={value} index={6}>
-          Item Four
+          <Skills />
         </TabPanel>
         <TabPanel value={value} index={8}>
-          Item Five
+          <CertificatesLicenses />
         </TabPanel>
         <TabPanel value={value} index={10}>
-          Item Six
+          <Other />
         </TabPanel>
       </Paper>
     </div>

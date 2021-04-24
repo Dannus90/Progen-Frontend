@@ -3,7 +3,6 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
 import { MainTheme } from "../../../../styles/theme";
-import { ProfileFormDataState } from "../profile-form/interfaces/profile-form-interfaces";
 import ProfileCardComponent from "./ProfileCard";
 
 export interface ProfileCardComponentStyles extends Theme {

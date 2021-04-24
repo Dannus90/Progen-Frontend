@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountPasswordFormComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
 import { Button, Card, CardActions, Container, Grid, TextField } from "@material-ui/core";
 import { UseAccountForm } from "../../../../custom-hooks/UseAccountForm";
+import { useMutation } from "@apollo/client";
+import { ChangePasswordInput, ChangePasswordResponse } from "./interfaces/change-password-interfaces";
+import { CHANGE_PASSWORD } from "./gql";
+import { Alert } from "@material-ui/lab";
 
 interface Props {
   styles: ClassNameMap<AccountPasswordFormComponentClasses>;
@@ -21,18 +25,56 @@ const initialFormState: FormState = {
 
 const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t, i18n] = useTranslation("account");
+  const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
   const { formData, setFormData, handleInputChange } = UseAccountForm({
     oldPassword: "",
     newPassword: ""
   });
-
-  const handleUpdatePassword = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-  };
+  const [changePassword, { error, loading, data }] = useMutation<{
+    authentication: ChangePasswordResponse;
+    changePasswordInput: ChangePasswordInput;
+  }>(CHANGE_PASSWORD, {
+    variables: {
+      changePasswordInput: {
+        newPassword: formData.newPassword,
+        oldPassword: formData.oldPassword
+      }
+    }
+  });
 
   const clearFormFields = (): void => {
     setFormData({ ...initialFormState });
   };
+
+
+  const removeAlertDisplay = (): void => {
+    setDisplayAlertMessage(false);
+  };
+
+  const handleUpdatePassword = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+
+    try {
+      await changePassword();
+      setDisplayAlertMessage(true);
+      clearFormFields();
+
+      setTimeout(() => {
+        setDisplayAlertMessage(false);
+      }, 2000);
+    } catch (err) {
+      setDisplayAlertMessage(true);
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    setDisplayAlertMessage(true);
+
+    return () => {
+      setDisplayAlertMessage(false);
+    };
+  }, [error]);
 
   return (
     <>
@@ -73,6 +115,24 @@ const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element 
               />
             </Grid>
           </Grid>
+          {displayAlertMessage && data && (
+            <Alert
+              className={`${styles.alertStyle}`}
+              onClose={() => removeAlertDisplay()}
+              severity="success">
+              {t("accountEmailForm.successfulUpdate")}
+            </Alert>
+          )}
+          {displayAlertMessage && error && (
+            <Alert
+              className={`${styles.alertStyle}`}
+              onClose={() => removeAlertDisplay()}
+              severity="error">
+              {error?.graphQLErrors.map(
+                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              )}
+            </Alert>
+          )}
           <CardActions className={styles.cardActionsStyle}>
             <Button
               size="small"

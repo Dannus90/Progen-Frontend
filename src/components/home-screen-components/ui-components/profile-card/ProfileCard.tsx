@@ -60,7 +60,7 @@ const ProfileCardComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         <CardActionArea className={styles.cardActionAreaStyle}>
           <CardContent className={styles.cardContentStyle}>
             <Typography gutterBottom variant="h5" component="h2">
-              {recentState.userName}
+              {recentState.username}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {displayLivingPlace()}

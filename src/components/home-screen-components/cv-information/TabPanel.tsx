@@ -24,7 +24,12 @@ export const TabPanel: React.FC<Props> = ({ children, value, index, ...rest }): 
   );
 };
 
-export const a11yProps = (index: number) => {
+interface ReturnObject {
+  id: string;
+  "aria-controls": string;
+}
+
+export const a11yProps = (index: number): ReturnObject => {
   return {
     id: `vertical-tab-${index}`,
     "aria-controls": `vertical-tabpanel-${index}`

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ResetPassword = () => {
+const ResetPassword = (): JSX.Element => {
   return <div></div>;
 };
 

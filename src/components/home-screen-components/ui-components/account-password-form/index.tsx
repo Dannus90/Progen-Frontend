@@ -1,4 +1,4 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
@@ -26,12 +26,13 @@ export type AccountPasswordFormComponentClasses =
 
 const AccountPasswordFormComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
+  const smallScreen = useMediaQuery("(max-width:700px)");
 
   const accountPasswordFormComponentStyles = makeStyles({
     accountPasswordFormWrapperStyles: {
       width: "auto",
       borderRadius: "15px",
-      marginLeft: "1rem",
+      marginLeft: smallScreen ? "0rem" : "1rem",
       minWidth: "250px"
     },
     formStyle: {

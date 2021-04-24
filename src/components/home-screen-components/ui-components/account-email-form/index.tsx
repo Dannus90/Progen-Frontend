@@ -1,4 +1,4 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
@@ -26,12 +26,14 @@ export type AccountEmailFormComponentClasses =
 
 const AccountEmailFormComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
+  const smallScreen = useMediaQuery("(max-width:700px)");
 
   const accountEmailFormComponentStyles = makeStyles({
     accountEmailFormWrapperStyles: {
       width: "auto",
       borderRadius: "15px",
-      marginRight: "1rem",
+      marginRight: smallScreen ? "0rem" : "1rem",
+      marginBottom: smallScreen ? "1.75rem" : "0rem",
       minWidth: "250px"
     },
     formStyle: {

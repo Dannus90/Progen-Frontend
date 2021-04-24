@@ -1,4 +1,4 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
@@ -14,6 +14,7 @@ export type AccountComponentClasses = "accountWrapperStyles" | "formsContainer";
 
 const AccountComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
+  const smallScreen = useMediaQuery("(max-width:700px)");
 
   const accountComponentStyles = makeStyles({
     accountWrapperStyles: {
@@ -23,7 +24,7 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
     },
     formsContainer: {
       display: "flex",
-      flexDirection: "row",
+      flexDirection: smallScreen ? "column" : "row",
       justifyContent: "space-between"
     }
   });

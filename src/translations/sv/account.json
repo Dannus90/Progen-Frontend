@@ -14,5 +14,6 @@
     "submit": "Skicka",
     "clearFields": "Rensa",
     "successfulUpdate": "Din email är uppdaterad"
-  }
+  },
+  "authCredentialsHeader" : "Ändra dina inloggningsuppgifter"
 }

@@ -14,5 +14,6 @@
     "submit": "Submit",
     "clearFields": "Clear Form",
     "successfulUpdate": "Email updated successfully"
-  }
+  },
+  "authCredentialsHeader" : "Change your authentication credentials"
 }

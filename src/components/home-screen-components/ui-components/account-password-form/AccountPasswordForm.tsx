@@ -27,7 +27,7 @@ const initialFormState: FormState = {
 };
 
 const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
-  const [t, i18n] = useTranslation("account");
+  const [t] = useTranslation("account");
   const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
   const { formData, setFormData, handleInputChange } = UseAccountForm({
     oldPassword: "",

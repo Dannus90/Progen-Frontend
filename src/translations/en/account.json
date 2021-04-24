@@ -4,7 +4,8 @@
     "oldPassword": "Current password",
     "header": "Choose a new password",
     "submit": "Submit",
-    "clearFields": "Clear Form"
+    "clearFields": "Clear Form",
+    "successfulUpdate": "Password updated successfully"
   },
   "accountEmailForm": {
     "email": "New email",

@@ -5,7 +5,10 @@ import { useTranslation } from "react-i18next";
 import { Button, Card, CardActions, Container, Grid, TextField } from "@material-ui/core";
 import { UseAccountForm } from "../../../../custom-hooks/UseAccountForm";
 import { useMutation } from "@apollo/client";
-import { ChangePasswordInput, ChangePasswordResponse } from "./interfaces/change-password-interfaces";
+import {
+  ChangePasswordInput,
+  ChangePasswordResponse
+} from "./interfaces/change-password-interfaces";
 import { CHANGE_PASSWORD } from "./gql";
 import { Alert } from "@material-ui/lab";
 
@@ -45,7 +48,6 @@ const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element 
   const clearFormFields = (): void => {
     setFormData({ ...initialFormState });
   };
-
 
   const removeAlertDisplay = (): void => {
     setDisplayAlertMessage(false);
@@ -120,7 +122,7 @@ const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element 
               className={`${styles.alertStyle}`}
               onClose={() => removeAlertDisplay()}
               severity="success">
-              {t("accountEmailForm.successfulUpdate")}
+              {t("accountPasswordForm.successfulUpdate")}
             </Alert>
           )}
           {displayAlertMessage && error && (

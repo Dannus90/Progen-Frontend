@@ -4,7 +4,8 @@
     "oldPassword": "Nuvarande lösenord",
     "header": "Välj nytt lösenord",
     "submit": "Skicka",
-    "clearFields": "Rensa"
+    "clearFields": "Rensa",
+    "successfulUpdate": "Ditt lösenord är uppdaterat"
   },
   "accountEmailForm": {
     "email": "Ny email",

@@ -1,0 +1,10 @@
+{
+  "tabs": {
+    "about": "About me",
+    "workExperience": "Work experience",
+    "education": "Education",
+    "skills": "Skills",
+    "certificatesLicences": "Certificates/Licences",
+    "otherCompetences": "Other"
+  }
+}

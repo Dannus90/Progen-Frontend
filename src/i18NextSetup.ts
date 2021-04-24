@@ -10,6 +10,8 @@ import homeSv from "./translations/sv/home.json";
 import homeEn from "./translations/en/home.json";
 import accountSv from "./translations/sv/account.json";
 import accountEn from "./translations/en/account.json";
+import cvInformationSv from "./translations/sv/cv-information.json";
+import cvInformationEn from "./translations/en/cv-information.json";
 
 // https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-react-app-with-react-i18next
 // READ MORE ABOUT SWITCHING LANGUAGES ETC
@@ -23,14 +25,16 @@ i18next.init({
       register: registerEn,
       login: loginEn,
       home: homeEn,
-      account: accountEn
+      account: accountEn,
+      cvInformation: cvInformationEn
     },
     sv: {
       common: commonSv,
       register: registerSv,
       login: loginSv,
       home: homeSv,
-      account: accountSv
+      account: accountSv,
+      cvInformation: cvInformationSv
     }
   },
   supportedLngs: ["sv", "en"]

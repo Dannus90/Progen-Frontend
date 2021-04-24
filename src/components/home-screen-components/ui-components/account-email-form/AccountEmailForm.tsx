@@ -34,7 +34,7 @@ const initialFormState: FormState = {
 const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t, i18n] = useTranslation("account");
   const { formData, handleInputChange, setFormData } = UseAccountForm({ ...initialFormState });
-  const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
+  const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
   const [changeEmail, { error, loading, data }] = useMutation<{
     authentication: ChangeEmailResponse;
     changeEmailInput: ChangeEmailInput;
@@ -47,8 +47,8 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
     }
   });
 
-  const removeErrorDisplay = (): void => {
-    setDisplayErrorMessage(false);
+  const removeAlertDisplay = (): void => {
+    setDisplayAlertMessage(false);
   };
 
   const clearFormFields = (): void => {
@@ -60,18 +60,23 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
 
     try {
       await changeEmail();
+      setDisplayAlertMessage(true);
       clearFormFields();
+
+      setTimeout(() => {
+        setDisplayAlertMessage(false);
+      }, 2000);
     } catch (err) {
-      setDisplayErrorMessage(true);
+      setDisplayAlertMessage(true);
       console.error(err.message);
     }
   };
 
   useEffect(() => {
-    setDisplayErrorMessage(true);
+    setDisplayAlertMessage(true);
 
     return () => {
-      setDisplayErrorMessage(false);
+      setDisplayAlertMessage(false);
     };
   }, [error]);
 
@@ -115,10 +120,18 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
               />
             </Grid>
           </Grid>
-          {displayErrorMessage && error && (
+          {displayAlertMessage && data && (
             <Alert
               className={`${styles.alertStyle}`}
-              onClose={() => removeErrorDisplay()}
+              onClose={() => removeAlertDisplay()}
+              severity="success">
+              {t("accountEmailForm.successfulUpdate")}
+            </Alert>
+          )}
+          {displayAlertMessage && error && (
+            <Alert
+              className={`${styles.alertStyle}`}
+              onClose={() => removeAlertDisplay()}
               severity="error">
               {error?.graphQLErrors.map(
                 (err) => `${err.extensions?.exception.statusCode} ${error?.message}`

@@ -11,6 +11,7 @@
     "password": "Current password",
     "header": "Choose a new email",
     "submit": "Submit",
-    "clearFields": "Clear Form"
+    "clearFields": "Clear Form",
+    "successfulUpdate": "Email updated successfully"
   }
 }

@@ -11,6 +11,7 @@
     "password": "Nuvarande lösenord",
     "header": "Välj ny email",
     "submit": "Skicka",
-    "clearFields": "Rensa"
+    "clearFields": "Rensa",
+    "successfulUpdate": "Din email är uppdaterad"
   }
 }

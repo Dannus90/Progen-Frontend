@@ -41,38 +41,46 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   return (
     <div className={styles.aboutMeWrapperStyles}>
-      <form>
-        <Container className={styles.aboutMeTextContainer}>
-          <Typography>{t("aboutMe.presentationSv")}</Typography>
-          <TextareaAutosize
-            rowsMin={10}
-            aria-label="empty textarea"
-            placeholder={t("aboutMe.presentationSv")}
-          />
-          <Button
-            size="small"
-            className={styles.cardButtonClearStyles}
-            variant="contained"
-            color="secondary"
-            onClick={() => clearSwedishFormFields()}>
-            {t("aboutMe.clearFields")}
-          </Button>
-        </Container>
-        <Container className={styles.aboutMeTextContainer}>
-          <Typography>{t("aboutMe.presentationEn")}</Typography>
-          <TextareaAutosize
-            rowsMin={10}
-            aria-label="empty textarea"
-            placeholder={t("aboutMe.presentationEn")}
-          />
-          <Button
-            size="small"
-            className={styles.cardButtonClearStyles}
-            variant="contained"
-            color="secondary"
-            onClick={() => clearEnglishFormFields()}>
-            {t("aboutMe.clearFields")}
-          </Button>
+      <form className={styles.formStyle}>
+        <Container className={styles.formContainerWrapper}>
+          <Container className={styles.aboutMeTextContainer}>
+            <Typography>{t("aboutMe.presentationSv")}</Typography>
+            <TextareaAutosize
+              className={styles.textAreaStyle}
+              value={formData.presentationSv}
+              onChange={handleInputChange}
+              name="presentationSv"
+              aria-label="Presentation sv"
+              placeholder={t("aboutMe.presentationSv")}
+            />
+            <Button
+              size="small"
+              className={styles.cardButtonClearStyles}
+              variant="contained"
+              color="secondary"
+              onClick={() => clearSwedishFormFields()}>
+              {t("aboutMe.clearFields")}
+            </Button>
+          </Container>
+          <Container className={styles.aboutMeTextContainer}>
+            <Typography>{t("aboutMe.presentationEn")}</Typography>
+            <TextareaAutosize
+              className={styles.textAreaStyle}
+              value={formData.presentationEn}
+              onChange={handleInputChange}
+              name="presentationEn"
+              aria-label="Presentation En"
+              placeholder={t("aboutMe.presentationEn")}
+            />
+            <Button
+              size="small"
+              className={styles.cardButtonClearStyles}
+              variant="contained"
+              color="secondary"
+              onClick={() => clearEnglishFormFields()}>
+              {t("aboutMe.clearFields")}
+            </Button>
+          </Container>
         </Container>
         <Button
           size="small"
@@ -81,10 +89,10 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           type="submit"
           variant="contained">
           {/*           {loading ? (
-            <CircularProgress size={20} color="inherit" />
-          ) : (
-            t("accountPasswordForm.submit")
-          )} */}
+              <CircularProgress size={20} color="inherit" />
+            ) : (
+              t("accountPasswordForm.submit")
+            )} */}
           {t("aboutMe.submit")}
         </Button>
       </form>

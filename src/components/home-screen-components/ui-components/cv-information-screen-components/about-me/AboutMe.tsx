@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AboutMeComponentClasses } from "./index";
 import {
@@ -10,6 +10,12 @@ import {
 } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import { UsePresentationForm } from "../../../../../custom-hooks/UsePresentationForm";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_USER_PRESENTATION, UPDATE_USER_PRESENTATION } from "./gql";
+import {
+  UpdateUserPresentationInput,
+  UserPresentationResponse
+} from "./interfaces/about-me-interfaces";
 
 interface Props {
   styles: ClassNameMap<AboutMeComponentClasses>;
@@ -30,6 +36,14 @@ const initialFormState: FormState = {
 const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const { setFormData, formData, handleInputChange } = UsePresentationForm({ ...initialFormState });
+  const { error, data } = useQuery<UserPresentationResponse>(GET_USER_PRESENTATION);
+  const [
+    updateUserPresentation,
+    { loading: userPresentationLoading, error: updateError, data: updatedPresentationDataMutation }
+  ] = useMutation<{
+    userData: UserPresentationResponse;
+    updateUserPresentationInput: UpdateUserPresentationInput;
+  }>(UPDATE_USER_PRESENTATION);
 
   const clearSwedishFormFields = (): void => {
     setFormData({ ...formData, presentationSv: "" });
@@ -41,7 +55,25 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    updateUserPresentation({
+      variables: {
+        updateUserPresentationInput: {
+          id: formData.id,
+          presentationSv: formData.presentationSv,
+          presentationEn: formData.presentationEn
+        }
+      }
+    });
   };
+
+  useMemo(() => {
+    const userPresention = data?.userPresentation.getUserPresentation.userPresentation;
+    setFormData({
+      id: userPresention?.id,
+      presentationEn: userPresention?.presentationEn,
+      presentationSv: userPresention?.presentationSv
+    });
+  }, [data]);
 
   return (
     <div className={styles.aboutMeWrapperStyles}>
@@ -96,12 +128,11 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           className={styles.cardButtonSubmitStyles}
           type="submit"
           variant="contained">
-          {/*           {loading ? (
-              <CircularProgress size={20} color="inherit" />
-            ) : (
-              t("accountPasswordForm.submit")
-            )} */}
-          {t("aboutMe.submit")}
+          {userPresentationLoading ? (
+            <CircularProgress size={20} color="inherit" />
+          ) : (
+            t("aboutMe.submit")
+          )}
         </Button>
       </form>
     </div>

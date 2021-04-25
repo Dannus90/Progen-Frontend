@@ -39,45 +39,52 @@ const CvInformationComponentWrapper: React.FC = (): JSX.Element => {
       backgroundColor: theme.palette.background.paper,
       display: "flex",
       height: "auto",
-      borderBottomLeftRadius: "25px",
-      borderTopLeftRadius: "25px"
+      padding: "1rem"
     },
     tabStyleTop: {
       border: `1px solid ${theme.palette.secondary.main}`,
-      borderBottomLeftRadius: "0px",
-      borderTopLeftRadius: "25px",
+      borderRadius: "100px",
+      width: "90%",
+      margin: "auto",
       boxShadow: "2px 2px 10px -5px rgb(0 0 0 / 75%);"
     },
     tabStyleTopSelected: {
       border: `1px solid ${theme.landingScreenBackground}`,
+      borderRadius: "100px",
+      width: "90%",
+      margin: "auto",
       background: `${theme.landingScreenBackground}`,
       boxShadow: "2px 2px 10px -5px rgb(0 0 0 / 75%);",
-      color: "#fff",
-      borderBottomLeftRadius: "0px",
-      borderTopLeftRadius: "25px"
+      color: "#fff"
     },
     tabStyleBottom: {
       border: `1px solid ${theme.palette.secondary.main}`,
-      borderBottomLeftRadius: "25px",
-      borderTopLeftRadius: "0px",
+      borderRadius: "100px",
+      width: "90%",
+      margin: "auto",
       boxShadow: "2px 2px 10px -5px rgb(0 0 0 / 75%);"
     },
     tabStyleBottomSelected: {
       border: `1px solid ${theme.landingScreenBackground}`,
+      borderRadius: "100px",
+      width: "90%",
+      margin: "auto",
       background: `${theme.landingScreenBackground}`,
       boxShadow: "2px 2px 10px -5px rgb(0 0 0 / 75%);",
-      color: "#fff",
-      borderBottomLeftRadius: "25px",
-      borderTopLeftRadius: "0px"
+      color: "#fff"
     },
     tabStyleCentral: {
-      borderTop: `1px solid ${theme.palette.secondary.main}`,
-      borderBottom: `1px solid ${theme.palette.secondary.main}`,
-      borderRight: `1px solid ${theme.palette.secondary.main}`,
-      boxShadow: "2px 2px 10px -5px rgb(0 0 0 / 75%);"
+      border: `1px solid ${theme.palette.secondary.main}`,
+      boxShadow: "2px 2px 10px -5px rgb(0 0 0 / 75%);",
+      borderRadius: "100px",
+      width: "90%",
+      margin: "auto"
     },
     tabStyleCentralSelected: {
       borderTop: `1px solid ${theme.landingScreenBackground}`,
+      borderRadius: "100px",
+      width: "90%",
+      margin: "auto",
       borderBottom: `1px solid ${theme.landingScreenBackground}`,
       boxShadow: "2px 2px 10px -5px rgb(0 0 0 / 75%);",
       background: `${theme.landingScreenBackground}`,

@@ -10,7 +10,7 @@
   "aboutMe": {
     "presentationSv": "Swedish presentation text",
     "presentationEn": "English presentation text",
-    "clearFields": "Clear Presentations",
+    "clearFields": "Clear Presentation",
     "submit": "Save Presentations"
   }
 }

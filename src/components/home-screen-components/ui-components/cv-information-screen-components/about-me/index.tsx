@@ -13,6 +13,7 @@ export interface AboutMeComponentStyles extends Theme {
   formStyle: CreateCSSProperties | CSSProperties;
   formContainerWrapper: CreateCSSProperties | CSSProperties;
   textAreaStyle: CreateCSSProperties | CSSProperties;
+  presentationHeader: CreateCSSProperties | CSSProperties;
 }
 
 export type AboutMeComponentClasses =
@@ -22,7 +23,8 @@ export type AboutMeComponentClasses =
   | "cardButtonClearStyles"
   | "formStyle"
   | "formContainerWrapper"
-  | "textAreaStyle";
+  | "textAreaStyle"
+  | "presentationHeader";
 
 const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -51,15 +53,25 @@ const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
       alignItems: "center",
       marginBottom: theme.customSpacings.s
     },
-    cardButtonSubmitStyles: {},
+    cardButtonSubmitStyles: {
+      width: "40%"
+    },
     cardButtonClearStyles: {
       color: theme.custom.palette.lightBackground.main
     },
+    presentationHeader: {
+      marginBottom: theme.customSpacings.xs,
+      fontSize: "1.2rem"
+    },
     textAreaStyle: {
-      minWidth: "300px",
+      minWidth: "25vw",
       minHeight: "300px",
       resize: "none",
-      marginBottom: theme.customSpacings.s
+      marginBottom: theme.customSpacings.s,
+      border: "2px solid #cccccc",
+      padding: "5px",
+      fontFamily: "Tahoma, sans-serif",
+      borderRadius: "3px"
     }
   });
 

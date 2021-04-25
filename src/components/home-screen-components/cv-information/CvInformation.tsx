@@ -11,6 +11,7 @@ import Education from "../ui-components/cv-information-screen-components/educati
 import Skills from "../ui-components/cv-information-screen-components/skills/index";
 import CertificatesLicenses from "../ui-components/cv-information-screen-components/certificates-licenses/index";
 import Other from "../ui-components/cv-information-screen-components/other/index";
+import "./CvInformation.css";
 
 interface Props {
   styles: ClassNameMap<CvInformationComponentClasses>;
@@ -31,7 +32,7 @@ const CvInformationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           orientation="vertical"
           variant="standard"
           value={value}
-          style={{ width: 300 }}
+          style={{ minWidth: 250 }}
           onChange={handleTabChange}
           aria-label="Vertical tabs">
           <Tab

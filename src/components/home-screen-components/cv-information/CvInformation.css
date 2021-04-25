@@ -1,0 +1,13 @@
+.PrivateTabIndicator-vertical-63 {
+  height: 15px !important;
+  width: 15px !important;
+  border-radius: 50px !important;
+  margin-top: 0.95rem !important;
+  right: 3px !important;
+}
+
+/* NOT TARGETING CORRECTLY ATM. */
+.MuiTabs-flexContainer .PrivateTabIndicator-colorSecondary-62 {
+  background-color: none !important;
+  background: linear-gradient(#102927,  #445E93) !important;
+}

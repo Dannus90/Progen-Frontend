@@ -16,7 +16,7 @@ const CvInformationTabsDividerComponentWrapper: React.FC = (): JSX.Element => {
   const cvInformationTabsDividerComponentStyles = makeStyles({
     CvInformationTabsDividerStyles: {
       backgroundColor: `${theme.palette.secondary.main}`,
-      minHeight: `calc(100vh / 10)`,
+      minHeight: `calc(100vh / 11)`,
       width: "1px"
     }
   });

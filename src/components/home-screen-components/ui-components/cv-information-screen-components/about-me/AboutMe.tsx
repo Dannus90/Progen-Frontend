@@ -39,12 +39,18 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     setFormData({ ...formData, presentationEn: "" });
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+  };
+
   return (
     <div className={styles.aboutMeWrapperStyles}>
-      <form className={styles.formStyle}>
+      <form className={styles.formStyle} onSubmit={handleSubmit}>
         <Container className={styles.formContainerWrapper}>
           <Container className={styles.aboutMeTextContainer}>
-            <Typography>{t("aboutMe.presentationSv")}</Typography>
+            <Typography className={styles.presentationHeader}>
+              {t("aboutMe.presentationSv")}
+            </Typography>
             <TextareaAutosize
               className={styles.textAreaStyle}
               value={formData.presentationSv}
@@ -63,7 +69,9 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             </Button>
           </Container>
           <Container className={styles.aboutMeTextContainer}>
-            <Typography>{t("aboutMe.presentationEn")}</Typography>
+            <Typography className={styles.presentationHeader}>
+              {t("aboutMe.presentationEn")}
+            </Typography>
             <TextareaAutosize
               className={styles.textAreaStyle}
               value={formData.presentationEn}

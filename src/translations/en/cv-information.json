@@ -11,6 +11,7 @@
     "presentationSv": "Swedish presentation text",
     "presentationEn": "English presentation text",
     "clearFields": "Clear Presentation",
-    "submit": "Save Presentations"
+    "submit": "Save Presentations",
+    "successfulUpdate": "Presentation updated successfully"
   }
 }

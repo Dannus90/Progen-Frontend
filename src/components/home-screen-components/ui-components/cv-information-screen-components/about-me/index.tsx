@@ -14,6 +14,7 @@ export interface AboutMeComponentStyles extends Theme {
   formContainerWrapper: CreateCSSProperties | CSSProperties;
   textAreaStyle: CreateCSSProperties | CSSProperties;
   presentationHeader: CreateCSSProperties | CSSProperties;
+  alertStyle: CreateCSSProperties | CSSProperties;
 }
 
 export type AboutMeComponentClasses =
@@ -24,7 +25,8 @@ export type AboutMeComponentClasses =
   | "formStyle"
   | "formContainerWrapper"
   | "textAreaStyle"
-  | "presentationHeader";
+  | "presentationHeader"
+  | "alertStyle";
 
 const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -72,6 +74,16 @@ const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
       padding: "5px",
       fontFamily: "Tahoma, sans-serif",
       borderRadius: "3px"
+    },
+    alertStyle: {
+      height: "auto",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "0px 10px",
+      margin: "0px 16px",
+      fontSize: "14px",
+      marginBottom: `${theme.customSpacings.xs}`
     }
   });
 

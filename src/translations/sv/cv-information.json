@@ -11,6 +11,7 @@
     "presentationSv": "Svensk presentationstext",
     "presentationEn": "Engelsk presentationstext",
     "clearFields": "Rensa presentation",
-    "submit": "Spara presentationer"
+    "submit": "Spara presentationer",
+    "successfulUpdate": "Presentationen uppdaterades framgångsrikt"
   }
 }

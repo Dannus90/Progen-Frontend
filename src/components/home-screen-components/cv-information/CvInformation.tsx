@@ -31,6 +31,7 @@ const CvInformationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           orientation="vertical"
           variant="standard"
           value={value}
+          style={{ width: 300 }}
           onChange={handleTabChange}
           aria-label="Vertical tabs">
           <Tab

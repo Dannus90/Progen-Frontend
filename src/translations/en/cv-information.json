@@ -6,5 +6,11 @@
     "skills": "Skills",
     "certificatesLicences": "Certificates/Licences",
     "otherCompetences": "Other"
+  },
+  "aboutMe": {
+    "presentationSv": "Swedish presentation text",
+    "presentationEn": "English presentation text",
+    "clearFields": "Clear Presentations",
+    "submit": "Save Presentations"
   }
 }

@@ -6,5 +6,11 @@
     "skills": "Färdigheter",
     "certificatesLicences": "Certifikat/Licenser",
     "otherCompetences": "Övrigt"
+  },
+  "aboutMe": {
+    "presentationSv": "Svensk presentationstext",
+    "presentationEn": "Engelsk presentationstext",
+    "clearFields": "Rensa presentation",
+    "submit": "Spara presentationer"
   }
 }

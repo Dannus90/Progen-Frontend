@@ -33,10 +33,9 @@ const CvInformationComponentWrapper: React.FC = (): JSX.Element => {
 
   const createCvInformationComponentStyles = makeStyles({
     cvInformationWrapperStyles: {
-      background: `${theme.custom.palette.lightBackground}`
+      background: `${theme.custom.palette.lightBackground.main}`
     },
     tabsWrapper: {
-      flexGrow: 1,
       backgroundColor: theme.palette.background.paper,
       display: "flex",
       height: "auto",

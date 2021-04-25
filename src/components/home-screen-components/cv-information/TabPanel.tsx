@@ -13,6 +13,7 @@ export const TabPanel: React.FC<Props> = ({ children, value, index, ...rest }): 
       role="tabpanel"
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
+      style={{ width: "100%" }}
       aria-labelledby={`vertical-tab-${index}`}
       {...rest}>
       {value === index && (

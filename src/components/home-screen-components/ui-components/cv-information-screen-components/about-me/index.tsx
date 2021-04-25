@@ -7,16 +7,34 @@ import AboutMeComponent from "./AboutMe";
 
 export interface AboutMeComponentStyles extends Theme {
   aboutMeWrapperStyles: CreateCSSProperties | CSSProperties;
+  aboutMeTextContainer: CreateCSSProperties | CSSProperties;
+  cardButtonSubmitStyles: CreateCSSProperties | CSSProperties;
+  cardButtonClearStyles: CreateCSSProperties | CSSProperties;
 }
 
-export type AboutMeComponentClasses = "aboutMeWrapperStyles";
+export type AboutMeComponentClasses =
+  | "aboutMeWrapperStyles"
+  | "aboutMeTextContainer"
+  | "cardButtonSubmitStyles"
+  | "cardButtonClearStyles";
 
 const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const aboutMeComponentStyles = makeStyles({
     aboutMeWrapperStyles: {
-      backgroundColor: "red"
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center"
+    },
+    aboutMeTextContainer: {
+      display: "flex",
+      flexDirection: "column"
+    },
+    cardButtonSubmitStyles: {},
+    cardButtonClearStyles: {
+      color: theme.custom.palette.lightBackground.main
     }
   });
 

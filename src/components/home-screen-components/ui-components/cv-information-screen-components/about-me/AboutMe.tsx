@@ -70,7 +70,7 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
       });
       setDisplayAlertMessage(true);
 
-      setTimeout(() => {
+      setTimeout((): void => {
         setDisplayAlertMessage(false);
       }, 3000);
     } catch (err) {

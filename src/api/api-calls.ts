@@ -15,8 +15,8 @@ export const PROGEN_API_URL = `${process.env.REACT_APP_PROGEN_API_URL}/${API_V1}
 // Image related methods.
 const USER_BASE = "user/userdata";
 
-export const uploadImage = (body: FormData) =>
+export const uploadImage = (body: FormData): Promise<any> =>
   fetchPut(`${PROGEN_API_URL}/${USER_BASE}/profile-image`, "PUT", body);
 
-export const deleteImage = (publicId: string) =>
+export const deleteImage = (publicId: string): Promise<any> =>
   fetchDelete(`${PROGEN_API_URL}/${USER_BASE}/profile-image/${publicId}`, "DELETE");

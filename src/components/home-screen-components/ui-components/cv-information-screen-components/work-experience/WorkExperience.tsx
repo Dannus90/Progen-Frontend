@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { WorkExperienceComponentClasses } from "./index";
-import { Button, Container, Typography } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import WorkExperienceModal from "./work-experience-modal/index";
+import { useQuery } from "@apollo/client";
+import { GET_WORK_EXPERIENCES } from "./gql";
+import {
+  GetWorkExperienceResponse,
+  GetWorkExperiencesResponse
+} from "./interfaces/work-experience-interfaces";
+import WorkExperienceDisplay from "./work-experience-display/index";
 
 interface Props {
   styles: ClassNameMap<WorkExperienceComponentClasses>;
@@ -12,7 +19,11 @@ interface Props {
 const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const [createOpen, setCreateOpen] = useState<boolean>(false);
+  const [experienceData, setExperienceData] = useState<Array<GetWorkExperienceResponse>>([]);
   const [editOpen, setEditOpen] = useState<boolean>(false);
+  const { error, loading, data } = useQuery<GetWorkExperiencesResponse>(GET_WORK_EXPERIENCES);
+
+  console.log(data?.workExperience.getWorkExperiences.workExperiences);
 
   const handleCreateModalClose = (): void => {
     setCreateOpen(false);
@@ -21,6 +32,12 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const handleEditModalClose = (): void => {
     setEditOpen(false);
   };
+
+  useMemo(() => {
+    if (data?.workExperience.getWorkExperiences.workExperiences) {
+      setExperienceData(data?.workExperience.getWorkExperiences.workExperiences);
+    }
+  }, [data]);
 
   return (
     <div className={styles.workExperienceWrapperStyles}>
@@ -42,34 +59,10 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         />
       </Container>
       <Container>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
-        <Typography>WorkExperiences here!</Typography>
+        {experienceData &&
+          experienceData.map((ed) => {
+            return <WorkExperienceDisplay key={ed.id} workExperienceData={ed} />;
+          })}
       </Container>
     </div>
   );

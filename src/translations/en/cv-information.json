@@ -18,6 +18,13 @@
     "createNew": "Add work experience",
     "modal": {
       "createNew": "Create new work experience"
+    },
+    "workExperienceDisplay": {
+      "employmentRate": {
+        "FullTime": "Full time",
+        "PartTime": "Part time",
+        "Internship": "Internship"
+      }
     }
   }
 }

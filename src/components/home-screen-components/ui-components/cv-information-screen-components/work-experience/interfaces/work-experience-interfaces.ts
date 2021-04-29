@@ -1,14 +1,14 @@
 export interface WorkExperienceInput {
-  employmentRate: string | null;
-  companyName: string | null;
-  roleSv: string | null;
-  roleEn: string | null;
-  descriptionSv: string | null;
-  descriptionEn: string | null;
-  citySv: string | null;
-  cityEn: string | null;
-  countrySv: string | null;
-  countryEn: string | null;
+  employmentRate: string;
+  companyName: string;
+  roleSv: string;
+  roleEn: string;
+  descriptionSv: string;
+  descriptionEn: string;
+  citySv: string;
+  cityEn: string;
+  countrySv: string;
+  countryEn: string;
   dateStarted: Date | null;
   dateEnded: Date | null;
 }
@@ -24,4 +24,32 @@ export interface WorkExperience extends WorkExperienceInput {
 export interface WorkExperienceResponse {
   workExperienceId: string;
   statusCode: number;
+}
+
+export interface GetWorkExperiencesResponse {
+  workExperience: {
+    getWorkExperiences: {
+      statusCode: number;
+      workExperiences: Array<GetWorkExperienceResponse>;
+    };
+  };
+}
+
+export interface GetWorkExperienceResponse {
+  id: string;
+  userId: string;
+  employmentRate: string;
+  companyName: string;
+  roleSv: string;
+  roleEn: string;
+  descriptionSv: string;
+  descriptionEn: string;
+  citySv: string;
+  cityEn: string;
+  countrySv: string;
+  countryEn: string;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  dateStarted: Date | null;
+  dateEnded: Date | null;
 }

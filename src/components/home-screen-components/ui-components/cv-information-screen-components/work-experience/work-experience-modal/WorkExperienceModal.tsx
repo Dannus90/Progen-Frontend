@@ -68,16 +68,19 @@ const WorkExperienceModal: React.FC<Props> = ({
     createWorkExperienceInput: WorkExperienceInput;
   }>(CREATE_WORK_EXPERIENCE);
 
-  const handleCreateWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleCreateWorkExperience = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-
-    createWorkExperience({
-      variables: {
-        createWorkExperienceInput: {
-          ...formData
+    try {
+      createWorkExperience({
+        variables: {
+          createWorkExperienceInput: {
+            ...formData
+          }
         }
-      }
-    });
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleEditWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -93,6 +96,10 @@ const WorkExperienceModal: React.FC<Props> = ({
       setDisplayAlertMessage(true);
     }
   }, [error]);
+
+  useMemo(() => {
+    console.log(createData);
+  }, [createData]);
 
   return (
     <Dialog
@@ -131,10 +138,10 @@ const WorkExperienceModal: React.FC<Props> = ({
                 value={formData.employmentRate}
                 label={t("workExperienceForm.employmentRate.header")}
                 onChange={handleInputChange}>
-                <MenuItem value={"Full time"}>
+                <MenuItem value={"FullTime"}>
                   {t("workExperienceForm.employmentRate.fullTime")}
                 </MenuItem>
-                <MenuItem value={"Part time"}>
+                <MenuItem value={"PartTime"}>
                   {t("workExperienceForm.employmentRate.partTime")}
                 </MenuItem>
                 <MenuItem value={"Internship"}>

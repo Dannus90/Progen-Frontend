@@ -25,7 +25,8 @@ const WorkExperienceComponentWrapper: React.FC = (): JSX.Element => {
     },
     createWorkExperienceButton: {
       width: "50%",
-      minWidth: "350px"
+      minWidth: "350px",
+      marginBottom: theme.customSpacings.m
     },
     createWorkExperienceButtonContainer: {
       display: "flex",

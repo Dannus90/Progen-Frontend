@@ -18,6 +18,13 @@
     "createNew": "Lägg till arbetslivserfarenhet",
     "modal": {
       "createNew": "Skapa ny arbetslivserfarenhet"
+    },
+    "workExperienceDisplay": {
+      "employmentRate": {
+        "FullTime": "Heltid",
+        "PartTime": "Deltid",
+        "Internship": "Praktik"
+      }
     }
   }  
 }

@@ -28,5 +28,25 @@
       "account": "Konto"
     }
   },
-  "deleteProfileImageError": "Det finns ingen profilbild att ta bort."
+  "deleteProfileImageError": "Det finns ingen profilbild att ta bort.",
+  "workExperienceForm": {
+    "companyName": "Företagsnamn",
+    "employmentRate": {
+      "header": "Form av anställning",
+      "fullTime": "Heltid",
+      "partTime": "Deltid",
+      "internShip": "Praktik"
+    },
+    "roleSv": "Roll på svenska",
+    "roleEn": "Roll på engelska",
+    "descriptionSv": "Beskrivning på svenska",
+    "descriptionEn": "Beskrivning på engelska",
+    "citySv": "Stad på svenska",
+    "cityEn": "Stad på engelska",
+    "countrySv": "Land på svenska",
+    "countryEn": "Land på engelska",
+    "saveWorkExperience": "Spara arbetslivserfarenhet",
+    "dateStarted": "Startdatum",
+    "dateEnded": "Slutdatum"
+  }
 }

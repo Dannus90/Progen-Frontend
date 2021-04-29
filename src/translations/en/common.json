@@ -28,5 +28,25 @@
       "account": "Account"
     }
   },
-  "deleteProfileImageError": "There is no image to delete."
+  "deleteProfileImageError": "There is no image to delete.",
+  "workExperienceForm": {
+    "companyName": "Company name",
+    "employmentRate": {
+      "header": "Type of employment",
+      "fullTime": "Full time",
+      "partTime": "Part time",
+      "internShip": "Internship"
+    },
+    "roleSv": "Role in swedish",
+    "roleEn": "Role in english",
+    "descriptionSv": "Description in swedish",
+    "descriptionEn": "Description in english",
+    "citySv": "City in swedish",
+    "cityEn": "City in english",
+    "countrySv": "Country in swedish",
+    "countryEn": "Country in english",
+    "saveWorkExperience": "Save workexperience",
+    "dateStarted": "Date started",
+    "dateEnded": "Date ended"
+  }
 }

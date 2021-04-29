@@ -7,16 +7,29 @@ import WorkExperience from "./WorkExperience";
 
 export interface SWorkExperienceComponentStyles extends Theme {
   workExperienceWrapperStyles: CreateCSSProperties | CSSProperties;
+  createWorkExperienceButton: CreateCSSProperties | CSSProperties;
+  createWorkExperienceButtonContainer: CreateCSSProperties | CSSProperties;
 }
 
-export type WorkExperienceComponentClasses = "workExperienceWrapperStyles";
+export type WorkExperienceComponentClasses =
+  | "workExperienceWrapperStyles"
+  | "createWorkExperienceButton"
+  | "createWorkExperienceButtonContainer";
 
 const WorkExperienceComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const workExperienceComponentStyles = makeStyles({
     workExperienceWrapperStyles: {
-      backgroundColor: "red"
+      margin: "auto"
+    },
+    createWorkExperienceButton: {
+      width: "50%",
+      minWidth: "350px"
+    },
+    createWorkExperienceButtonContainer: {
+      display: "flex",
+      justifyContent: "center"
     }
   });
 

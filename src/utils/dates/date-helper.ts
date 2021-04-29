@@ -74,3 +74,14 @@ export const getProfileCardDateText = (i18n: i18n): string => {
     i18n.language === "en" ? getCurrentMonth().enMonth : getCurrentMonth().svMonth
   } ${getCurrentYear()}`;
 };
+
+export const getDateStandardFormat = (): string => {
+  const date = new Date();
+  const dd = String(date.getDate()).padStart(2, "0");
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const yyyy = date.getFullYear();
+
+  const today = yyyy + "-" + mm + "-" + dd;
+
+  return today;
+};

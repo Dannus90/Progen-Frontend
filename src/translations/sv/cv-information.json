@@ -13,5 +13,11 @@
     "clearFields": "Rensa presentation",
     "submit": "Spara presentationer",
     "successfulUpdate": "Presentationen uppdaterades framgångsrikt"
-  }
+  },
+  "workExperience": {
+    "createNew": "Lägg till arbetslivserfarenhet",
+    "modal": {
+      "createNew": "Skapa ny arbetslivserfarenhet"
+    }
+  }  
 }

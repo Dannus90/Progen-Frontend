@@ -13,5 +13,11 @@
     "clearFields": "Clear Presentation",
     "submit": "Save Presentations",
     "successfulUpdate": "Presentation updated successfully"
+  },
+  "workExperience": {
+    "createNew": "Add work experience",
+    "modal": {
+      "createNew": "Create new work experience"
+    }
   }
 }

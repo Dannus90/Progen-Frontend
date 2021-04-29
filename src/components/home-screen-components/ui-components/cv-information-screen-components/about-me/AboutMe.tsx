@@ -162,7 +162,7 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             className={`${styles.alertStyle}`}
             onClose={() => removeAlertDisplay()}
             severity="error">
-            {error?.graphQLErrors.map(
+            {updateError?.graphQLErrors.map(
               (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
             )}
           </Alert>

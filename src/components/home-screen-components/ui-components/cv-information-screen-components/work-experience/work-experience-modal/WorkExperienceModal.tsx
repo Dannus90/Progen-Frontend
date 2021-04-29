@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { WorkExperienceModalComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
 import {
   Button,
+  CircularProgress,
   Container,
   Dialog,
   DialogActions,
@@ -15,10 +16,16 @@ import {
   TextField,
   Typography
 } from "@material-ui/core";
-import { WorkExperienceInput } from "../interfaces/work-experience-interfaces";
+import {
+  WorkExperienceInput,
+  WorkExperienceResponse
+} from "../interfaces/work-experience-interfaces";
 import { useWorkExperienceForm } from "../../../../../../custom-hooks/UseWorkExperienceForm";
 import Select from "@material-ui/core/Select";
 import { getDateStandardFormat } from "../../../../../../utils/dates/date-helper";
+import { useMutation } from "@apollo/client";
+import { CREATE_WORK_EXPERIENCE } from "./gql";
+import { Alert } from "@material-ui/lab";
 
 interface Props {
   styles: ClassNameMap<WorkExperienceModalComponentClasses>;
@@ -38,7 +45,8 @@ const WorkExperienceModal: React.FC<Props> = ({
   header
 }): JSX.Element => {
   const [t] = useTranslation("common");
-  const { formData, setFormData, handleInputChange } = useWorkExperienceForm(
+  const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
+  const { formData, handleInputChange } = useWorkExperienceForm(
     workExperience ?? {
       companyName: "",
       cityEn: "",
@@ -55,15 +63,36 @@ const WorkExperienceModal: React.FC<Props> = ({
     }
   );
 
+  const [createWorkExperience, { data: createData, loading: createLoading, error }] = useMutation<{
+    userData: WorkExperienceResponse;
+    createWorkExperienceInput: WorkExperienceInput;
+  }>(CREATE_WORK_EXPERIENCE);
+
   const handleCreateWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    console.log(formData);
+    createWorkExperience({
+      variables: {
+        createWorkExperienceInput: {
+          ...formData
+        }
+      }
+    });
   };
 
   const handleEditWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
   };
+
+  const removeAlertDisplay = (): void => {
+    setDisplayAlertMessage(false);
+  };
+
+  useMemo(() => {
+    if (error) {
+      setDisplayAlertMessage(true);
+    }
+  }, [error]);
 
   return (
     <Dialog
@@ -260,9 +289,37 @@ const WorkExperienceModal: React.FC<Props> = ({
               </Typography>
             </Grid>
           </Grid>
-          <Container className={styles.submitButton}>
-            <Button type="submit" color="primary" variant="contained">
-              {t("workExperienceForm.saveWorkExperience")}
+          {error && displayAlertMessage && (
+            <Alert
+              className={`${styles.alertStyle}`}
+              onClose={() => removeAlertDisplay()}
+              severity="error">
+              {error?.graphQLErrors.map(
+                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              )}
+            </Alert>
+          )}
+          {error && displayAlertMessage && (
+            <Alert
+              className={`${styles.alertStyle}`}
+              onClose={() => removeAlertDisplay()}
+              severity="error">
+              {error?.graphQLErrors.map(
+                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              )}
+            </Alert>
+          )}
+          <Container className={styles.submitButtonWrapper}>
+            <Button
+              type="submit"
+              color="primary"
+              variant="contained"
+              className={styles.submitButton}>
+              {createLoading ? (
+                <CircularProgress size={21} color="inherit" />
+              ) : (
+                t("workExperienceForm.saveWorkExperience")
+              )}
             </Button>
           </Container>
         </form>

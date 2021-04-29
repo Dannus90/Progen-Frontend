@@ -14,6 +14,8 @@ export interface WorkExperienceModalComponentStyles extends Theme {
   textAreaStyle: CreateCSSProperties | CSSProperties;
   selectStyle: CreateCSSProperties | CSSProperties;
   leaveEmpty: CreateCSSProperties | CSSProperties;
+  alertStyle: CreateCSSProperties | CSSProperties;
+  submitButtonWrapper: CreateCSSProperties | CSSProperties;
 }
 
 interface Props {
@@ -31,7 +33,9 @@ export type WorkExperienceModalComponentClasses =
   | "submitButton"
   | "textAreaStyle"
   | "selectStyle"
-  | "leaveEmpty";
+  | "leaveEmpty"
+  | "alertStyle"
+  | "submitButtonWrapper";
 
 const WorkExperienceModalComponentWrapper: React.FC<Props> = ({
   isCreate,
@@ -54,8 +58,11 @@ const WorkExperienceModalComponentWrapper: React.FC<Props> = ({
     formStyle: {
       padding: "1rem"
     },
-    submitButton: {
+    submitButtonWrapper: {
       padding: "1.25rem 1rem"
+    },
+    submitButton: {
+      width: "300px"
     },
     textAreaStyle: {
       minHeight: "300px",
@@ -75,6 +82,16 @@ const WorkExperienceModalComponentWrapper: React.FC<Props> = ({
       marginLeft: "0.3rem",
       marginTop: "0.2rem",
       color: theme.custom.palette.textVariantGrey.main
+    },
+    alertStyle: {
+      height: "auto",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "0px 10px",
+      margin: "0px 16px",
+      fontSize: "14px",
+      marginBottom: `${theme.customSpacings.xs}`
     }
   });
 

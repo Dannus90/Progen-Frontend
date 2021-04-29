@@ -20,3 +20,8 @@ export interface WorkExperience extends WorkExperienceInput {
   updatedAt: string;
   statusCode: number;
 }
+
+export interface WorkExperienceResponse {
+  workExperienceId: string;
+  statusCode: number;
+}

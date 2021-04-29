@@ -47,6 +47,7 @@
     "countryEn": "Country in english",
     "saveWorkExperience": "Save workexperience",
     "dateStarted": "Date started",
-    "dateEnded": "Date ended"
+    "dateEnded": "Date ended",
+    "leaveEmpty": "Leave empty if ongoing"
   }
 }

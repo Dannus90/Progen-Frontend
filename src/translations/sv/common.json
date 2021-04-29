@@ -47,6 +47,7 @@
     "countryEn": "Land på engelska",
     "saveWorkExperience": "Spara arbetslivserfarenhet",
     "dateStarted": "Startdatum",
-    "dateEnded": "Slutdatum"
+    "dateEnded": "Slutdatum",
+    "leaveEmpty": "Skriv inget datum om pågående"
   }
 }

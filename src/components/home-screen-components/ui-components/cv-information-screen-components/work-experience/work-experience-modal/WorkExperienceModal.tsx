@@ -12,7 +12,8 @@ import {
   Grid,
   MenuItem,
   TextareaAutosize,
-  TextField
+  TextField,
+  Typography
 } from "@material-ui/core";
 import { WorkExperienceInput } from "../interfaces/work-experience-interfaces";
 import { useWorkExperienceForm } from "../../../../../../custom-hooks/UseWorkExperienceForm";
@@ -56,6 +57,8 @@ const WorkExperienceModal: React.FC<Props> = ({
 
   const handleCreateWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+
+    console.log(formData);
   };
 
   const handleEditWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -243,7 +246,6 @@ const WorkExperienceModal: React.FC<Props> = ({
                 aria-describedby="form-data"
                 name="dateEnded"
                 type="date"
-                defaultValue={getDateStandardFormat()}
                 value={formData.dateEnded}
                 variant="outlined"
                 onChange={handleInputChange}
@@ -253,6 +255,9 @@ const WorkExperienceModal: React.FC<Props> = ({
                 size="small"
                 fullWidth
               />
+              <Typography className={styles.leaveEmpty}>
+                {t("workExperienceForm.leaveEmpty")}
+              </Typography>
             </Grid>
           </Grid>
           <Container className={styles.submitButton}>

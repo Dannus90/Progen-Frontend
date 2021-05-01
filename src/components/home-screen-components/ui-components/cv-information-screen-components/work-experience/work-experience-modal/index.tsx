@@ -3,7 +3,7 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
 import { MainTheme } from "../../../../../../styles/theme";
-import { WorkExperience } from "../interfaces/work-experience-interfaces";
+import { EditWorkExperienceData } from "../interfaces/work-experience-interfaces";
 import WorkExperienceModal from "./WorkExperienceModal";
 
 export interface WorkExperienceModalComponentStyles extends Theme {
@@ -20,7 +20,7 @@ export interface WorkExperienceModalComponentStyles extends Theme {
 
 interface Props {
   isCreate: boolean;
-  workExperience?: WorkExperience;
+  workExperience?: EditWorkExperienceData;
   handleClose: () => void;
   open: boolean;
   header: string;

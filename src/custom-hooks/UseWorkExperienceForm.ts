@@ -7,9 +7,7 @@ interface ReturnObject {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
-type NewType = WorkExperienceInput;
-
-type state = NewType;
+type state = WorkExperienceInput;
 
 export const useWorkExperienceForm = (initialState: state): ReturnObject => {
   const [formData, setFormData] = useState(initialState);

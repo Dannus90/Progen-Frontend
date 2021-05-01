@@ -17,7 +17,8 @@
   "workExperience": {
     "createNew": "Add work experience",
     "modal": {
-      "createNew": "Create new work experience"
+      "createNew": "Create new work experience",
+      "edit": "Add or remove work experience"
     },
     "workExperienceDisplay": {
       "employmentRate": {

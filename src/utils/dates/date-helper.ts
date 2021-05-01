@@ -86,7 +86,7 @@ export const getDateStandardFormat = (): string => {
   return today;
 };
 
-export const transformDate = (date: Date | null): string => {
+export const transformDate = (date: Date | null | string): string => {
   if (!date) return "-";
   return date.toString().substr(0, 10);
 };

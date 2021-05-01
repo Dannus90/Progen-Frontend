@@ -17,6 +17,7 @@ import {
   Typography
 } from "@material-ui/core";
 import {
+  EditWorkExperienceData,
   WorkExperienceInput,
   WorkExperienceResponse
 } from "../interfaces/work-experience-interfaces";
@@ -30,7 +31,7 @@ import { Alert } from "@material-ui/lab";
 interface Props {
   styles: ClassNameMap<WorkExperienceModalComponentClasses>;
   isCreate: boolean;
-  workExperience?: WorkExperienceInput;
+  workExperience?: EditWorkExperienceData;
   handleClose: () => void;
   open: boolean;
   header: string;
@@ -46,6 +47,7 @@ const WorkExperienceModal: React.FC<Props> = ({
 }): JSX.Element => {
   const [t] = useTranslation("common");
   const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
+
   const { formData, handleInputChange } = useWorkExperienceForm(
     workExperience ?? {
       companyName: "",
@@ -62,6 +64,8 @@ const WorkExperienceModal: React.FC<Props> = ({
       dateStarted: null
     }
   );
+
+  console.log(formData);
 
   const [createWorkExperience, { data: createData, loading: createLoading, error }] = useMutation<{
     userData: WorkExperienceResponse;
@@ -96,10 +100,6 @@ const WorkExperienceModal: React.FC<Props> = ({
       setDisplayAlertMessage(true);
     }
   }, [error]);
-
-  useMemo(() => {
-    console.log(createData);
-  }, [createData]);
 
   return (
     <Dialog

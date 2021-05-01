@@ -1,5 +1,5 @@
 export interface WorkExperienceInput {
-  id?: string;
+  workExperienceId?: string;
   userId?: string;
   employmentRate: string;
   companyName: string;

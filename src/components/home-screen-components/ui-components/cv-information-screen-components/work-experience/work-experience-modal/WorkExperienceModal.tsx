@@ -25,7 +25,7 @@ import { useWorkExperienceForm } from "../../../../../../custom-hooks/UseWorkExp
 import Select from "@material-ui/core/Select";
 import { getDateStandardFormat } from "../../../../../../utils/dates/date-helper";
 import { useMutation } from "@apollo/client";
-import { CREATE_WORK_EXPERIENCE, DELETE_WORK_EXPERIENCE } from "./gql";
+import { CREATE_WORK_EXPERIENCE, DELETE_WORK_EXPERIENCE, UPDATE_WORK_EXPERIENCE } from "./gql";
 import { Alert } from "@material-ui/lab";
 import { notifyWorkExperienceAdded } from "../../../../../../redux/reducers/work-experience/actions";
 import { useAppDispatch } from "../../../../../../redux/hooks/hooks";
@@ -67,9 +67,25 @@ const WorkExperienceModal: React.FC<Props> = ({
   const dispatch = useAppDispatch();
 
   const { formData, setFormData, handleInputChange } = useWorkExperienceForm(
-    workExperience ?? {
-      ...initialFormState
-    }
+    workExperience
+      ? {
+          workExperienceId: workExperience.id,
+          cityEn: workExperience.cityEn,
+          citySv: workExperience.citySv,
+          companyName: workExperience.companyName,
+          countryEn: workExperience.countryEn,
+          countrySv: workExperience.countrySv,
+          dateEnded: workExperience.dateEnded,
+          dateStarted: workExperience.dateStarted,
+          descriptionEn: workExperience.descriptionEn,
+          descriptionSv: workExperience.descriptionSv,
+          employmentRate: workExperience.employmentRate,
+          roleEn: workExperience.roleEn,
+          roleSv: workExperience.roleSv
+        }
+      : {
+          ...initialFormState
+        }
   );
 
   const [createWorkExperience, { loading: createLoading, error }] = useMutation<{
@@ -83,9 +99,9 @@ const WorkExperienceModal: React.FC<Props> = ({
   }>(DELETE_WORK_EXPERIENCE);
 
   const [updateWorkExperience, { loading: updateLoading, error: updateError }] = useMutation<{
-    deleteWorkExperience: WorkExperienceResponse;
-    deleteWorkExperienceInput: WorkExperienceInput;
-  }>(DELETE_WORK_EXPERIENCE);
+    updateWorkExperience: WorkExperienceResponse;
+    updateWorkExperienceInput: WorkExperienceInput;
+  }>(UPDATE_WORK_EXPERIENCE);
 
   const handleCreateWorkExperience = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
@@ -113,7 +129,7 @@ const WorkExperienceModal: React.FC<Props> = ({
       deleteWorkExperience({
         variables: {
           deleteWorkExperienceInput: {
-            workExperienceId: formData.id
+            workExperienceId: formData.workExperienceId
           }
         }
       });
@@ -128,18 +144,17 @@ const WorkExperienceModal: React.FC<Props> = ({
 
   const handleEditWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    console.log(formData);
     try {
       updateWorkExperience({
         variables: {
-          createWorkExperienceInput: {
+          updateWorkExperienceInput: {
             ...formData
           }
         }
       });
 
       dispatch(notifyWorkExperienceAdded());
-
-      setFormData({ ...initialFormState });
 
       handleClose();
     } catch (err) {

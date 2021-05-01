@@ -82,7 +82,7 @@ const WorkExperienceModal: React.FC<Props> = ({
     deleteWorkExperienceInput: WorkExperienceInput;
   }>(DELETE_WORK_EXPERIENCE);
 
-  const [updateWorkExperience, { loading: updateLoading, error: UpdateError }] = useMutation<{
+  const [updateWorkExperience, { loading: updateLoading, error: updateError }] = useMutation<{
     deleteWorkExperience: WorkExperienceResponse;
     deleteWorkExperienceInput: WorkExperienceInput;
   }>(DELETE_WORK_EXPERIENCE);
@@ -152,10 +152,10 @@ const WorkExperienceModal: React.FC<Props> = ({
   };
 
   useMemo(() => {
-    if (error) {
+    if (error || updateError || deleteError) {
       setDisplayAlertMessage(true);
     }
-  }, [error]);
+  }, [error, updateError, deleteError]);
 
   return (
     <Dialog
@@ -372,13 +372,23 @@ const WorkExperienceModal: React.FC<Props> = ({
               )}
             </Alert>
           )}
+          {updateError && displayAlertMessage && (
+            <Alert
+              className={`${styles.alertStyle}`}
+              onClose={() => removeAlertDisplay()}
+              severity="error">
+              {updateError?.graphQLErrors.map(
+                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              )}
+            </Alert>
+          )}
           <Container className={styles.submitButtonWrapper}>
             <Button
               type="submit"
               color="primary"
               variant="contained"
               className={styles.submitButton}>
-              {createLoading ? (
+              {createLoading || updateLoading ? (
                 <CircularProgress size={21} color="inherit" />
               ) : isCreate ? (
                 t("workExperienceForm.saveWorkExperience")

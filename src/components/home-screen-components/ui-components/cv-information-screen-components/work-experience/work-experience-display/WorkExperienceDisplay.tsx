@@ -20,13 +20,16 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
   styles,
   workExperienceData
 }): JSX.Element => {
-  const [t, i18next] = useTranslation("cvInformation");
+  const [t, i18n] = useTranslation("cvInformation");
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
 
-  const lng = i18next.language === "sv";
-  const city = lng ? workExperienceData.citySv : workExperienceData.cityEn;
-  const role = lng ? workExperienceData.roleSv : workExperienceData.roleEn;
-  const description = lng ? workExperienceData.descriptionSv : workExperienceData.descriptionEn;
+  const citySv = workExperienceData.citySv;
+  const roleSv = workExperienceData.roleSv;
+  const descriptionSv = workExperienceData.descriptionSv;
+
+  const cityEn = workExperienceData.cityEn;
+  const roleEn = workExperienceData.roleEn;
+  const descriptionEn = workExperienceData.descriptionEn;
 
   const resolveDate = (): string => {
     return `${transformDate(workExperienceData.dateStarted)} - ${transformDate(
@@ -42,32 +45,64 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
   editData.dateStarted = transformDate(editData.dateStarted);
   editData.dateEnded = transformDate(editData.dateEnded);
 
+  const resolveEmploymentRateForLanguage = (employmentRate: string, language: string) => {
+    if (language === "sv") {
+      if (employmentRate === "FullTime") return "Heltid";
+      if (employmentRate === "PartTime") return "Deltid";
+
+      return "Praktik";
+    } else {
+      if (employmentRate === "FullTime") return "Full time";
+      if (employmentRate === "PartTime") return "Part time";
+
+      return "Internship";
+    }
+  };
+
   return (
     <div className={styles.workExperienceDisplayWrapperStyles}>
-      <div className={styles.headingIconWrapper}>
-        <Typography className={styles.company}>{workExperienceData.companyName}</Typography>
-        <EditIcon
-          color="action"
-          className={styles.editIcon}
-          onClick={() => setEditModalOpen(true)}
+      <div>
+        <Typography className={styles.versionHeader}>
+          {t("workExperience.modal.swedishVersion")}
+        </Typography>
+        <div className={styles.headingIconWrapper}>
+          <Typography className={styles.company}>{workExperienceData.companyName}</Typography>
+        </div>
+        <Typography className={styles.role}>{roleSv}</Typography>
+        <Typography className={styles.employmentRate}>
+          {resolveEmploymentRateForLanguage(workExperienceData.employmentRate, "sv")}
+        </Typography>
+        <Typography className={styles.date}>{resolveDate()}</Typography>
+        <Typography className={styles.city}>{citySv}</Typography>
+        <Typography className={styles.description}>{descriptionSv}</Typography>
+      </div>
+      <div>
+        <Typography className={styles.versionHeader}>
+          {t("workExperience.modal.englishVersion")}
+        </Typography>
+        <div className={styles.headingIconWrapper}>
+          <Typography className={styles.company}>{workExperienceData.companyName}</Typography>
+          <EditIcon
+            color="action"
+            className={styles.editIcon}
+            onClick={() => setEditModalOpen(true)}
+          />
+        </div>
+        <Typography className={styles.role}>{roleEn}</Typography>
+        <Typography className={styles.employmentRate}>
+          {resolveEmploymentRateForLanguage(workExperienceData.employmentRate, "en")}
+        </Typography>
+        <Typography className={styles.date}>{resolveDate()}</Typography>
+        <Typography className={styles.city}>{cityEn}</Typography>
+        <Typography className={styles.description}>{descriptionEn}</Typography>
+        <WorkExperienceModal
+          isCreate={false}
+          handleClose={handleEditModalClose}
+          open={editModalOpen}
+          header={t("workExperience.modal.edit")}
+          workExperience={editData as EditWorkExperienceData}
         />
       </div>
-      <Typography className={styles.role}>{role}</Typography>
-      <Typography className={styles.employmentRate}>
-        {t(
-          `workExperience.workExperienceDisplay.employmentRate.${workExperienceData.employmentRate}`
-        )}
-      </Typography>
-      <Typography className={styles.date}>{resolveDate()}</Typography>
-      <Typography className={styles.city}>{city}</Typography>
-      <Typography className={styles.description}>{description}</Typography>
-      <WorkExperienceModal
-        isCreate={false}
-        handleClose={handleEditModalClose}
-        open={editModalOpen}
-        header={t("workExperience.modal.edit")}
-        workExperience={editData as EditWorkExperienceData}
-      />
     </div>
   );
 };

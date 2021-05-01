@@ -16,6 +16,7 @@ export interface WorkExperienceDisplayComponentStyles extends Theme {
   description: CreateCSSProperties | CSSProperties;
   headingIconWrapper: CreateCSSProperties | CSSProperties;
   editIcon: CreateCSSProperties | CSSProperties;
+  versionHeader: CreateCSSProperties | CSSProperties;
 }
 
 export type WorkExperienceDisplayComponentClasses =
@@ -27,7 +28,8 @@ export type WorkExperienceDisplayComponentClasses =
   | "date"
   | "description"
   | "headingIconWrapper"
-  | "editIcon";
+  | "editIcon"
+  | "versionHeader";
 
 interface Props {
   workExperienceData: GetWorkExperienceResponse;
@@ -37,7 +39,18 @@ const WorkExperienceComponentWrapper: React.FC<Props> = ({ workExperienceData })
   const theme = useTheme<MainTheme>();
 
   const workExperienceComponentStyles = makeStyles({
-    workExperienceDisplayWrapperStyles: {},
+    workExperienceDisplayWrapperStyles: {
+      display: "flex",
+      flexDirection: "row",
+      borderBottom: theme.custom.borderColors.subtleGreyMain,
+      marginBottom: theme.customSpacings.m,
+      paddingBottom: theme.customSpacings.xs
+    },
+    versionHeader: {
+      fontSize: "1.3rem",
+      fontWeight: "bold",
+      marginBottom: "0.5rem"
+    },
     company: {
       fontWeight: "bold",
       marginBottom: "0.25rem"

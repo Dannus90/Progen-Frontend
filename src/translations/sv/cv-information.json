@@ -18,7 +18,9 @@
     "createNew": "Lägg till arbetslivserfarenhet",
     "modal": {
       "createNew": "Skapa ny arbetslivserfarenhet",
-      "edit": "Ändra eller ta bort arbetslivserfarenhet"
+      "edit": "Ändra eller ta bort arbetslivserfarenhet",
+      "swedishVersion": "Svensk version",
+      "englishVersion": "Engelsk version"
     },
     "workExperienceDisplay": {
       "employmentRate": {

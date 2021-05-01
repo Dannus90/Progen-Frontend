@@ -18,7 +18,9 @@
     "createNew": "Add work experience",
     "modal": {
       "createNew": "Create new work experience",
-      "edit": "Add or remove work experience"
+      "edit": "Add or remove work experience",
+      "swedishVersion": "Swedish version",
+      "englishVersion": "English version"
     },
     "workExperienceDisplay": {
       "employmentRate": {

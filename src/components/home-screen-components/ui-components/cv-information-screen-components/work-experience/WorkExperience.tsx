@@ -11,6 +11,7 @@ import {
   GetWorkExperiencesResponse
 } from "./interfaces/work-experience-interfaces";
 import WorkExperienceDisplay from "./work-experience-display/index";
+import { useAppSelector } from "../../../../../redux/hooks/hooks";
 
 interface Props {
   styles: ClassNameMap<WorkExperienceComponentClasses>;
@@ -20,11 +21,18 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const [createOpen, setCreateOpen] = useState<boolean>(false);
   const [experienceData, setExperienceData] = useState<Array<GetWorkExperienceResponse>>([]);
-  const { error, loading, data } = useQuery<GetWorkExperiencesResponse>(GET_WORK_EXPERIENCES);
+  const { workExperience } = useAppSelector((state) => state);
+  const { refetch, error, loading, data } = useQuery<GetWorkExperiencesResponse>(
+    GET_WORK_EXPERIENCES
+  );
 
   const handleCreateModalClose = (): void => {
     setCreateOpen(false);
   };
+
+  useMemo(() => {
+    refetch();
+  }, [workExperience]);
 
   useMemo(() => {
     if (data?.workExperience.getWorkExperiences.workExperiences) {

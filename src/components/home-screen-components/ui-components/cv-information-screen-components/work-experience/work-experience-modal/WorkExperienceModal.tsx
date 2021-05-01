@@ -27,6 +27,8 @@ import { getDateStandardFormat } from "../../../../../../utils/dates/date-helper
 import { useMutation } from "@apollo/client";
 import { CREATE_WORK_EXPERIENCE, DELETE_WORK_EXPERIENCE } from "./gql";
 import { Alert } from "@material-ui/lab";
+import { notifyWorkExperienceAdded } from "../../../../../../redux/reducers/work-experience/actions";
+import { useAppDispatch } from "../../../../../../redux/hooks/hooks";
 
 interface Props {
   styles: ClassNameMap<WorkExperienceModalComponentClasses>;
@@ -36,6 +38,21 @@ interface Props {
   open: boolean;
   header: string;
 }
+
+const initialFormState = {
+  companyName: "",
+  cityEn: "",
+  citySv: "",
+  countryEn: "",
+  countrySv: "",
+  descriptionSv: "",
+  descriptionEn: "",
+  roleSv: "",
+  roleEn: "",
+  employmentRate: "",
+  dateEnded: null,
+  dateStarted: null
+};
 
 const WorkExperienceModal: React.FC<Props> = ({
   styles,
@@ -47,21 +64,11 @@ const WorkExperienceModal: React.FC<Props> = ({
 }): JSX.Element => {
   const [t] = useTranslation("common");
   const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const { formData, handleInputChange } = useWorkExperienceForm(
+  const { formData, setFormData, handleInputChange } = useWorkExperienceForm(
     workExperience ?? {
-      companyName: "",
-      cityEn: "",
-      citySv: "",
-      countryEn: "",
-      countrySv: "",
-      descriptionSv: "",
-      descriptionEn: "",
-      roleSv: "",
-      roleEn: "",
-      employmentRate: "",
-      dateEnded: null,
-      dateStarted: null
+      ...initialFormState
     }
   );
 
@@ -86,6 +93,10 @@ const WorkExperienceModal: React.FC<Props> = ({
         }
       });
 
+      dispatch(notifyWorkExperienceAdded());
+
+      setFormData({ ...initialFormState });
+
       handleClose();
     } catch (err) {
       console.error(err);
@@ -101,6 +112,10 @@ const WorkExperienceModal: React.FC<Props> = ({
           }
         }
       });
+
+      dispatch(notifyWorkExperienceAdded());
+
+      handleClose();
     } catch (err) {
       console.error(err);
     }
@@ -325,12 +340,12 @@ const WorkExperienceModal: React.FC<Props> = ({
               )}
             </Alert>
           )}
-          {error && displayAlertMessage && (
+          {deleteError && displayAlertMessage && (
             <Alert
               className={`${styles.alertStyle}`}
               onClose={() => removeAlertDisplay()}
               severity="error">
-              {error?.graphQLErrors.map(
+              {deleteError?.graphQLErrors.map(
                 (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
               )}
             </Alert>
@@ -353,10 +368,13 @@ const WorkExperienceModal: React.FC<Props> = ({
         </form>
       </DialogContent>
       <DialogActions className={isCreate ? styles.closeButtonWrapper : styles.buttonsContainer}>
-        {!isCreate && (
+        {!isCreate && !deleteLoading && (
           <Button autoFocus onClick={handleDeleteWorkExperience} color="secondary">
             {t("buttonText.delete")}
           </Button>
+        )}
+        {!isCreate && deleteLoading && (
+          <CircularProgress size={21} color="inherit" style={{ marginLeft: "5px" }} />
         )}
         <Button autoFocus onClick={handleClose} color="secondary">
           {t("buttonText.close")}

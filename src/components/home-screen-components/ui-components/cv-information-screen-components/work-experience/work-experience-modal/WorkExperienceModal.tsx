@@ -72,13 +72,18 @@ const WorkExperienceModal: React.FC<Props> = ({
     }
   );
 
-  const [createWorkExperience, { data: createData, loading: createLoading, error }] = useMutation<{
-    userData: WorkExperienceResponse;
+  const [createWorkExperience, { loading: createLoading, error }] = useMutation<{
+    createWorkExperience: WorkExperienceResponse;
     createWorkExperienceInput: WorkExperienceInput;
   }>(CREATE_WORK_EXPERIENCE);
 
   const [deleteWorkExperience, { loading: deleteLoading, error: deleteError }] = useMutation<{
-    userData: WorkExperienceResponse;
+    deleteWorkExperience: WorkExperienceResponse;
+    deleteWorkExperienceInput: WorkExperienceInput;
+  }>(DELETE_WORK_EXPERIENCE);
+
+  const [updateWorkExperience, { loading: updateLoading, error: UpdateError }] = useMutation<{
+    deleteWorkExperience: WorkExperienceResponse;
     deleteWorkExperienceInput: WorkExperienceInput;
   }>(DELETE_WORK_EXPERIENCE);
 
@@ -123,6 +128,23 @@ const WorkExperienceModal: React.FC<Props> = ({
 
   const handleEditWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    try {
+      updateWorkExperience({
+        variables: {
+          createWorkExperienceInput: {
+            ...formData
+          }
+        }
+      });
+
+      dispatch(notifyWorkExperienceAdded());
+
+      setFormData({ ...initialFormState });
+
+      handleClose();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const removeAlertDisplay = (): void => {

@@ -21,3 +21,31 @@ export const DELETE_WORK_EXPERIENCE = gql`
     }
   }
 `;
+
+export const UPDATE_WORK_EXPERIENCE = gql`
+  mutation Mutation($updateWorkExperienceInput: UpdateWorkExperienceInput!) {
+    workExperience {
+      updateWorkExperience(input: $updateWorkExperienceInput) {
+        workExperience {
+          id
+          userId
+          employmentRate
+          companyName
+          roleSv
+          roleEn
+          descriptionSv
+          descriptionEn
+          citySv
+          cityEn
+          countrySv
+          countryEn
+          dateStarted
+          dateEnded
+          createdAt
+          updatedAt
+          statusCode
+        }
+      }
+    }
+  }
+`;

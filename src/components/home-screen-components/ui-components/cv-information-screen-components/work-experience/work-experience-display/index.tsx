@@ -14,6 +14,8 @@ export interface WorkExperienceDisplayComponentStyles extends Theme {
   city: CreateCSSProperties | CSSProperties;
   date: CreateCSSProperties | CSSProperties;
   description: CreateCSSProperties | CSSProperties;
+  headingIconWrapper: CreateCSSProperties | CSSProperties;
+  editIcon: CreateCSSProperties | CSSProperties;
 }
 
 export type WorkExperienceDisplayComponentClasses =
@@ -23,7 +25,9 @@ export type WorkExperienceDisplayComponentClasses =
   | "employmentRate"
   | "city"
   | "date"
-  | "description";
+  | "description"
+  | "headingIconWrapper"
+  | "editIcon";
 
 interface Props {
   workExperienceData: GetWorkExperienceResponse;
@@ -37,6 +41,23 @@ const WorkExperienceComponentWrapper: React.FC<Props> = ({ workExperienceData })
     company: {
       fontWeight: "bold",
       marginBottom: "0.25rem"
+    },
+    headingIconWrapper: {
+      display: "flex",
+      justifyContent: "space-between"
+    },
+    editIcon: {
+      cursor: "pointer",
+      borderRadius: "100px",
+      width: "25px",
+      height: "25px",
+      transition: "background-color 0.2s ease-in-out",
+      "&:hover": {
+        backgroundColor: "rgba(238, 238, 238, 1)"
+      },
+      "&:active": {
+        transform: "scale(0.975)"
+      }
     },
     role: {
       color: theme.custom.palette.textVariantDark.main

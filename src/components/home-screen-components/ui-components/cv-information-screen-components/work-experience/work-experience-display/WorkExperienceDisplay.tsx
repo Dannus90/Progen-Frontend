@@ -5,6 +5,7 @@ import { GetWorkExperienceResponse } from "../interfaces/work-experience-interfa
 import { Typography } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import { transformDate } from "../../../../../../utils/dates/date-helper";
+import EditIcon from "@material-ui/icons/Edit";
 
 interface Props {
   styles: ClassNameMap<WorkExperienceDisplayComponentClasses>;
@@ -28,9 +29,14 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
     )}`;
   };
 
+  console.log(workExperienceData);
+
   return (
     <div className={styles.workExperienceDisplayWrapperStyles}>
-      <Typography className={styles.company}>{workExperienceData.companyName}</Typography>
+      <div className={styles.headingIconWrapper}>
+        <Typography className={styles.company}>{workExperienceData.companyName}</Typography>
+        <EditIcon color="action" className={styles.editIcon} />
+      </div>
       <Typography className={styles.role}>{role}</Typography>
       <Typography className={styles.employmentRate}>
         {t(

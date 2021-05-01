@@ -77,17 +77,17 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
         <Typography className={styles.description}>{descriptionSv}</Typography>
       </div>
       <div>
-        <Typography className={styles.versionHeader}>
-          {t("workExperience.modal.englishVersion")}
-        </Typography>
         <div className={styles.headingIconWrapper}>
-          <Typography className={styles.company}>{workExperienceData.companyName}</Typography>
+          <Typography className={styles.versionHeader}>
+            {t("workExperience.modal.englishVersion")}
+          </Typography>
           <EditIcon
             color="action"
             className={styles.editIcon}
             onClick={() => setEditModalOpen(true)}
           />
         </div>
+        <Typography className={styles.company}>{workExperienceData.companyName}</Typography>
         <Typography className={styles.role}>{roleEn}</Typography>
         <Typography className={styles.employmentRate}>
           {resolveEmploymentRateForLanguage(workExperienceData.employmentRate, "en")}

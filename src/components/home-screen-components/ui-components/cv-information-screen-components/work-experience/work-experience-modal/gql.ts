@@ -10,3 +10,14 @@ export const CREATE_WORK_EXPERIENCE = gql`
     }
   }
 `;
+
+export const DELETE_WORK_EXPERIENCE = gql`
+  mutation Mutation($deleteWorkExperienceInput: DeleteWorkExperienceInput!) {
+    workExperience {
+      deleteWorkExperience(input: $deleteWorkExperienceInput) {
+        workExperienceId
+        statusCode
+      }
+    }
+  }
+`;

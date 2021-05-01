@@ -25,7 +25,7 @@ import { useWorkExperienceForm } from "../../../../../../custom-hooks/UseWorkExp
 import Select from "@material-ui/core/Select";
 import { getDateStandardFormat } from "../../../../../../utils/dates/date-helper";
 import { useMutation } from "@apollo/client";
-import { CREATE_WORK_EXPERIENCE } from "./gql";
+import { CREATE_WORK_EXPERIENCE, DELETE_WORK_EXPERIENCE } from "./gql";
 import { Alert } from "@material-ui/lab";
 
 interface Props {
@@ -70,6 +70,11 @@ const WorkExperienceModal: React.FC<Props> = ({
     createWorkExperienceInput: WorkExperienceInput;
   }>(CREATE_WORK_EXPERIENCE);
 
+  const [deleteWorkExperience, { loading: deleteLoading, error: deleteError }] = useMutation<{
+    userData: WorkExperienceResponse;
+    deleteWorkExperienceInput: WorkExperienceInput;
+  }>(DELETE_WORK_EXPERIENCE);
+
   const handleCreateWorkExperience = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     try {
@@ -77,6 +82,22 @@ const WorkExperienceModal: React.FC<Props> = ({
         variables: {
           createWorkExperienceInput: {
             ...formData
+          }
+        }
+      });
+
+      handleClose();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeleteWorkExperience = async (): Promise<void> => {
+    try {
+      deleteWorkExperience({
+        variables: {
+          deleteWorkExperienceInput: {
+            workExperienceId: formData.id
           }
         }
       });
@@ -333,7 +354,7 @@ const WorkExperienceModal: React.FC<Props> = ({
       </DialogContent>
       <DialogActions className={isCreate ? styles.closeButtonWrapper : styles.buttonsContainer}>
         {!isCreate && (
-          <Button autoFocus onClick={handleClose} color="secondary">
+          <Button autoFocus onClick={handleDeleteWorkExperience} color="secondary">
             {t("buttonText.delete")}
           </Button>
         )}

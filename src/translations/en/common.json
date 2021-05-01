@@ -6,7 +6,8 @@
     "close": "Close",
     "tryAgain": "Try Again",
     "upload": "Upload",
-    "deleteImage": "Delete"
+    "deleteImage": "Delete",
+    "delete": "Delete"
   },
   "languagePicker": {
     "language": "Language"
@@ -48,6 +49,7 @@
     "saveWorkExperience": "Save workexperience",
     "dateStarted": "Date started",
     "dateEnded": "Date ended",
-    "leaveEmpty": "Leave empty if ongoing"
+    "leaveEmpty": "Leave empty if ongoing",
+    "updateWorkExperience": "Update workexperience"
   }
 }

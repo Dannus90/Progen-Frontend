@@ -56,7 +56,7 @@ export interface GetWorkExperienceResponse {
   dateEnded: Date | null | string;
 }
 
-export interface EditWorkExperienceData{
+export interface EditWorkExperienceData {
   id: string;
   userId: string;
   employmentRate: string;

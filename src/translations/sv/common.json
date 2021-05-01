@@ -6,7 +6,8 @@
     "close": "Stäng",
     "tryAgain": "Försök igen",
     "upload": "Ladda upp",
-    "deleteImage": "Ta bort"
+    "deleteImage": "Ta bort",
+    "delete": "Ta bort"
   },
   "languagePicker": {
     "language": "Språk"
@@ -48,6 +49,7 @@
     "saveWorkExperience": "Spara arbetslivserfarenhet",
     "dateStarted": "Startdatum",
     "dateEnded": "Slutdatum",
-    "leaveEmpty": "Skriv inget datum om pågående"
+    "leaveEmpty": "Skriv inget datum om pågående",
+    "updateWorkExperience": "Updatera arbetslivserfarenhet"
   }
 }

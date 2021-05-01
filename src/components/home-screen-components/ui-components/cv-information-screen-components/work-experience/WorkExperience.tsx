@@ -20,17 +20,10 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const [createOpen, setCreateOpen] = useState<boolean>(false);
   const [experienceData, setExperienceData] = useState<Array<GetWorkExperienceResponse>>([]);
-  const [editOpen, setEditOpen] = useState<boolean>(false);
   const { error, loading, data } = useQuery<GetWorkExperiencesResponse>(GET_WORK_EXPERIENCES);
-
-  console.log(data?.workExperience.getWorkExperiences.workExperiences);
 
   const handleCreateModalClose = (): void => {
     setCreateOpen(false);
-  };
-
-  const handleEditModalClose = (): void => {
-    setEditOpen(false);
   };
 
   useMemo(() => {

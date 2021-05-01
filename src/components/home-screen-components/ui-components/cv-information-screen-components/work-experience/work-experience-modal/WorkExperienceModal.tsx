@@ -65,8 +65,6 @@ const WorkExperienceModal: React.FC<Props> = ({
     }
   );
 
-  console.log(formData);
-
   const [createWorkExperience, { data: createData, loading: createLoading, error }] = useMutation<{
     userData: WorkExperienceResponse;
     createWorkExperienceInput: WorkExperienceInput;
@@ -324,14 +322,21 @@ const WorkExperienceModal: React.FC<Props> = ({
               className={styles.submitButton}>
               {createLoading ? (
                 <CircularProgress size={21} color="inherit" />
-              ) : (
+              ) : isCreate ? (
                 t("workExperienceForm.saveWorkExperience")
+              ) : (
+                t("workExperienceForm.updateWorkExperience")
               )}
             </Button>
           </Container>
         </form>
       </DialogContent>
-      <DialogActions className={styles.closeButtonWrapper}>
+      <DialogActions className={isCreate ? styles.closeButtonWrapper : styles.buttonsContainer}>
+        {!isCreate && (
+          <Button autoFocus onClick={handleClose} color="secondary">
+            {t("buttonText.delete")}
+          </Button>
+        )}
         <Button autoFocus onClick={handleClose} color="secondary">
           {t("buttonText.close")}
         </Button>

@@ -16,6 +16,7 @@ export interface WorkExperienceModalComponentStyles extends Theme {
   leaveEmpty: CreateCSSProperties | CSSProperties;
   alertStyle: CreateCSSProperties | CSSProperties;
   submitButtonWrapper: CreateCSSProperties | CSSProperties;
+  buttonsContainer: CreateCSSProperties | CSSProperties;
 }
 
 interface Props {
@@ -35,7 +36,8 @@ export type WorkExperienceModalComponentClasses =
   | "selectStyle"
   | "leaveEmpty"
   | "alertStyle"
-  | "submitButtonWrapper";
+  | "submitButtonWrapper"
+  | "buttonsContainer";
 
 const WorkExperienceModalComponentWrapper: React.FC<Props> = ({
   isCreate,
@@ -54,6 +56,10 @@ const WorkExperienceModalComponentWrapper: React.FC<Props> = ({
     closeButtonWrapper: {
       display: "flex",
       justifyContent: "flex-end"
+    },
+    buttonsContainer: {
+      display: "flex",
+      justifyContent: "space-between"
     },
     formStyle: {
       padding: "1rem"

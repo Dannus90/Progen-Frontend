@@ -54,7 +54,7 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
         <Typography className={styles.subject}>{subjectAreaSv}</Typography>
         {editData.grade && (
           <Typography className={styles.grade}>
-            {t("education.modal.grade")}
+            {"Betyg"}
             {": "}
             {editData.grade}
           </Typography>
@@ -81,7 +81,7 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
         <Typography className={styles.subject}>{subjectAreaEn}</Typography>
         {editData.grade && (
           <Typography className={styles.grade}>
-            {t("education.modal.grade")}
+            {"Grade"}
             {": "}
             {editData.grade}
           </Typography>

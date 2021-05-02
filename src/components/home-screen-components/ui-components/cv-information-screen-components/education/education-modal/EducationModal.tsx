@@ -108,7 +108,7 @@ const EducationModal: React.FC<Props> = ({
   const handleCreateEducation = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     try {
-      createEducation({
+      await createEducation({
         variables: {
           createEducationInput: {
             ...formData
@@ -128,7 +128,7 @@ const EducationModal: React.FC<Props> = ({
 
   const handleDeleteEducation = async (): Promise<void> => {
     try {
-      deleteEducation({
+      await deleteEducation({
         variables: {
           deleteEducationInput: {
             educationId: formData.educationId
@@ -144,10 +144,10 @@ const EducationModal: React.FC<Props> = ({
     }
   };
 
-  const handleEditEducation = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleEditEducation = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     try {
-      updateEducation({
+      await updateEducation({
         variables: {
           updateEducationInput: {
             ...formData

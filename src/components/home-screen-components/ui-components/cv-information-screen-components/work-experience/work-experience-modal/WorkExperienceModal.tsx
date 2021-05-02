@@ -106,7 +106,7 @@ const WorkExperienceModal: React.FC<Props> = ({
   const handleCreateWorkExperience = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     try {
-      createWorkExperience({
+      await createWorkExperience({
         variables: {
           createWorkExperienceInput: {
             ...formData
@@ -126,7 +126,7 @@ const WorkExperienceModal: React.FC<Props> = ({
 
   const handleDeleteWorkExperience = async (): Promise<void> => {
     try {
-      deleteWorkExperience({
+      await deleteWorkExperience({
         variables: {
           deleteWorkExperienceInput: {
             workExperienceId: formData.workExperienceId
@@ -142,10 +142,10 @@ const WorkExperienceModal: React.FC<Props> = ({
     }
   };
 
-  const handleEditWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleEditWorkExperience = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     try {
-      updateWorkExperience({
+      await updateWorkExperience({
         variables: {
           updateWorkExperienceInput: {
             ...formData

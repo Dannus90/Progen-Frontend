@@ -6,10 +6,7 @@ import { useTranslation } from "react-i18next";
 import WorkExperienceModal from "./work-experience-modal/index";
 import { useQuery } from "@apollo/client";
 import { GET_WORK_EXPERIENCES } from "./gql";
-import {
-  GetWorkExperienceResponse,
-  GetWorkExperiencesResponse
-} from "./interfaces/work-experience-interfaces";
+import { GetWorkExperiencesResponse } from "./interfaces/work-experience-interfaces";
 import WorkExperienceDisplay from "./work-experience-display/index";
 import { useAppSelector } from "../../../../../redux/hooks/hooks";
 import { Alert } from "@material-ui/lab";

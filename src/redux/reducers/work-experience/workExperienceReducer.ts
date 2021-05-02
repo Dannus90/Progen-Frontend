@@ -1,21 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface WorkExperienceState {
-  workExperienceAdded: boolean;
+  workExperienceModified: boolean;
 }
 
 const initialState: WorkExperienceState = {
-  workExperienceAdded: false
+  workExperienceModified: false
 };
 
-export const userDataSlice = createSlice({
+export const workExperienceSlice = createSlice({
   name: "workExperience",
   initialState,
   reducers: {
-    notifyWorkExperienceAdded: (state) => {
-      state.workExperienceAdded = !state.workExperienceAdded;
+    notifyWorkExperienceModified: (state) => {
+      state.workExperienceModified = !state.workExperienceModified;
     }
   }
 });
 
-export default userDataSlice.reducer;
+export default workExperienceSlice.reducer;

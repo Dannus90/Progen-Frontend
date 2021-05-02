@@ -3,14 +3,14 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
 import { MainTheme } from "../../../../../../styles/theme";
-import { GetWorkExperienceResponse } from "../interfaces/work-experience-interfaces";
-import WorkExperienceDisplayComponent from "./WorkExperienceDisplay";
+import { GetEducationResponse } from "../interfaces/education-interfaces";
+import EducationDisplayComponent from "./EducationDisplay";
 
-export interface WorkExperienceDisplayComponentStyles extends Theme {
-  workExperienceDisplayWrapperStyles: CreateCSSProperties | CSSProperties;
-  company: CreateCSSProperties | CSSProperties;
-  role: CreateCSSProperties | CSSProperties;
-  employmentRate: CreateCSSProperties | CSSProperties;
+export interface EducationDisplayComponentStyles extends Theme {
+  educationDisplayWrapperStyles: CreateCSSProperties | CSSProperties;
+  education: CreateCSSProperties | CSSProperties;
+  exam: CreateCSSProperties | CSSProperties;
+  grade: CreateCSSProperties | CSSProperties;
   city: CreateCSSProperties | CSSProperties;
   date: CreateCSSProperties | CSSProperties;
   description: CreateCSSProperties | CSSProperties;
@@ -19,11 +19,11 @@ export interface WorkExperienceDisplayComponentStyles extends Theme {
   versionHeader: CreateCSSProperties | CSSProperties;
 }
 
-export type WorkExperienceDisplayComponentClasses =
-  | "workExperienceDisplayWrapperStyles"
-  | "company"
-  | "role"
-  | "employmentRate"
+export type EducationDisplayComponentClasses =
+  | "educationDisplayWrapperStyles"
+  | "education"
+  | "exam"
+  | "grade"
   | "city"
   | "date"
   | "description"
@@ -32,16 +32,14 @@ export type WorkExperienceDisplayComponentClasses =
   | "versionHeader";
 
 interface Props {
-  workExperienceData: GetWorkExperienceResponse;
+  educationData: GetEducationResponse;
 }
 
-const WorkExperienceDisplayComponentWrapper: React.FC<Props> = ({
-  workExperienceData
-}): JSX.Element => {
+const EducationDisplayComponentWrapper: React.FC<Props> = ({ educationData }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
-  const workExperienceComponentStyles = makeStyles({
-    workExperienceDisplayWrapperStyles: {
+  const educationComponentStyles = makeStyles({
+    educationDisplayWrapperStyles: {
       display: "flex",
       flexDirection: "row",
       borderBottom: theme.custom.borderColors.subtleGreyMain,
@@ -53,7 +51,7 @@ const WorkExperienceDisplayComponentWrapper: React.FC<Props> = ({
       fontWeight: "bold",
       marginBottom: "0.5rem"
     },
-    company: {
+    education: {
       fontWeight: "bold",
       marginBottom: "0.25rem"
     },
@@ -74,10 +72,10 @@ const WorkExperienceDisplayComponentWrapper: React.FC<Props> = ({
         transform: "scale(0.975)"
       }
     },
-    role: {
+    exam: {
       color: theme.custom.palette.textVariantDark.main
     },
-    employmentRate: {
+    grade: {
       color: theme.custom.palette.textVariantDark.main,
       fontSize: "0.90rem"
     },
@@ -97,9 +95,9 @@ const WorkExperienceDisplayComponentWrapper: React.FC<Props> = ({
     }
   });
 
-  const styles = workExperienceComponentStyles();
+  const styles = educationComponentStyles();
 
-  return <WorkExperienceDisplayComponent workExperienceData={workExperienceData} styles={styles} />;
+  return <EducationDisplayComponent educationData={educationData} styles={styles} />;
 };
 
-export default WorkExperienceDisplayComponentWrapper;
+export default EducationDisplayComponentWrapper;

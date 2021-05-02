@@ -27,7 +27,7 @@ import { getDateStandardFormat } from "../../../../../../utils/dates/date-helper
 import { useMutation } from "@apollo/client";
 import { CREATE_WORK_EXPERIENCE, DELETE_WORK_EXPERIENCE, UPDATE_WORK_EXPERIENCE } from "./gql";
 import { Alert } from "@material-ui/lab";
-import { notifyWorkExperienceAdded } from "../../../../../../redux/reducers/work-experience/actions";
+import { notifyWorkExperienceModified } from "../../../../../../redux/reducers/work-experience/actions";
 import { useAppDispatch } from "../../../../../../redux/hooks/hooks";
 
 interface Props {
@@ -114,7 +114,7 @@ const WorkExperienceModal: React.FC<Props> = ({
         }
       });
 
-      dispatch(notifyWorkExperienceAdded());
+      dispatch(notifyWorkExperienceModified());
 
       setFormData({ ...initialFormState });
 
@@ -134,7 +134,7 @@ const WorkExperienceModal: React.FC<Props> = ({
         }
       });
 
-      dispatch(notifyWorkExperienceAdded());
+      dispatch(notifyWorkExperienceModified());
 
       handleClose();
     } catch (err) {
@@ -154,7 +154,7 @@ const WorkExperienceModal: React.FC<Props> = ({
         }
       });
 
-      dispatch(notifyWorkExperienceAdded());
+      dispatch(notifyWorkExperienceModified());
 
       handleClose();
     } catch (err) {

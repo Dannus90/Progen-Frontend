@@ -19,7 +19,6 @@ import { getDateStandardFormat } from "../../../../../../utils/dates/date-helper
 import { useMutation } from "@apollo/client";
 import { CREATE_EDUCATION, DELETE_EDUCATION, UPDATE_EDUCATION } from "./gql";
 import { Alert } from "@material-ui/lab";
-import { notifyWorkExperienceAdded } from "../../../../../../redux/reducers/work-experience/actions";
 import { useAppDispatch } from "../../../../../../redux/hooks/hooks";
 import {
   DeleteEducationInput,
@@ -29,6 +28,7 @@ import {
   EducationResponse
 } from "../interfaces/education-interfaces";
 import { useEducationForm } from "../../../../../../custom-hooks/UseEducationForm";
+import { notifyEducationModified } from "../../../../../../redux/reducers/education/actions";
 
 interface Props {
   styles: ClassNameMap<EducationModalComponentClasses>;
@@ -116,7 +116,7 @@ const EducationModal: React.FC<Props> = ({
         }
       });
 
-      dispatch(notifyWorkExperienceAdded());
+      dispatch(notifyEducationModified());
 
       setFormData({ ...initialFormState });
 
@@ -126,7 +126,7 @@ const EducationModal: React.FC<Props> = ({
     }
   };
 
-  const handleDeleteWorkExperience = async (): Promise<void> => {
+  const handleDeleteEducation = async (): Promise<void> => {
     try {
       deleteEducation({
         variables: {
@@ -136,7 +136,7 @@ const EducationModal: React.FC<Props> = ({
         }
       });
 
-      dispatch(notifyWorkExperienceAdded());
+      dispatch(notifyEducationModified());
 
       handleClose();
     } catch (err) {
@@ -149,13 +149,13 @@ const EducationModal: React.FC<Props> = ({
     try {
       updateEducation({
         variables: {
-          updateWorkExperienceInput: {
+          updateEducationInput: {
             ...formData
           }
         }
       });
 
-      dispatch(notifyWorkExperienceAdded());
+      dispatch(notifyEducationModified());
 
       handleClose();
     } catch (err) {
@@ -428,7 +428,7 @@ const EducationModal: React.FC<Props> = ({
       </DialogContent>
       <DialogActions className={isCreate ? styles.closeButtonWrapper : styles.buttonsContainer}>
         {!isCreate && !deleteLoading && (
-          <Button autoFocus onClick={handleDeleteWorkExperience} color="secondary">
+          <Button autoFocus onClick={handleDeleteEducation} color="secondary">
             {t("buttonText.delete")}
           </Button>
         )}

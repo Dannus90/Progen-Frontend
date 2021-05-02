@@ -1,3 +1,3 @@
-import { userDataSlice } from "./workExperienceReducer";
+import { workExperienceSlice } from "./workExperienceReducer";
 
-export const { notifyWorkExperienceAdded } = userDataSlice.actions;
+export const { notifyWorkExperienceModified } = workExperienceSlice.actions;

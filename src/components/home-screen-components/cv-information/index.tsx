@@ -33,7 +33,8 @@ const CvInformationComponentWrapper: React.FC = (): JSX.Element => {
 
   const createCvInformationComponentStyles = makeStyles({
     cvInformationWrapperStyles: {
-      background: `${theme.custom.palette.lightBackground.main}`
+      background: `${theme.custom.palette.lightBackground.main}`,
+      minWidth: "800px"
     },
     tabsWrapper: {
       backgroundColor: theme.palette.background.paper,

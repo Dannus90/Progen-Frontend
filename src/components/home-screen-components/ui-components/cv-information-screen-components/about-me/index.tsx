@@ -1,4 +1,4 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
@@ -30,6 +30,10 @@ export type AboutMeComponentClasses =
 
 const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
+  const mediumScreen = useMediaQuery("(max-width:1480px)");
+  const smallScreen = useMediaQuery("(max-width:1080px)");
+  const xSmallScreen = useMediaQuery("(max-width:1020px)");
+  const xxSmallScreen = useMediaQuery("(max-width:960px)");
 
   const aboutMeComponentStyles = makeStyles({
     aboutMeWrapperStyles: {
@@ -40,7 +44,8 @@ const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
     },
     aboutMeTextContainer: {
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
+      marginBottom: mediumScreen ? "1rem" : "0rem"
     },
     formStyle: {
       display: "flex",
@@ -50,7 +55,7 @@ const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
     },
     formContainerWrapper: {
       display: "flex",
-      flexDirection: "row",
+      flexDirection: mediumScreen ? "column" : "row",
       justifyContent: "center",
       alignItems: "center",
       marginBottom: theme.customSpacings.s
@@ -66,7 +71,15 @@ const AboutMeComponentWrapper: React.FC = (): JSX.Element => {
       fontSize: "1.2rem"
     },
     textAreaStyle: {
-      minWidth: "25vw",
+      minWidth: xxSmallScreen
+        ? "400px"
+        : xSmallScreen
+        ? "33vw"
+        : smallScreen
+        ? "37vw"
+        : mediumScreen
+        ? "40vw"
+        : "25vw",
       minHeight: "300px",
       resize: "none",
       marginBottom: theme.customSpacings.s,

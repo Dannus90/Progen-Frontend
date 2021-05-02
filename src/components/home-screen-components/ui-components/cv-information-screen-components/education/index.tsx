@@ -7,16 +7,27 @@ import EducationComponent from "./Education";
 
 export interface EducationComponentStyles extends Theme {
   educationWrapperStyles: CreateCSSProperties | CSSProperties;
+  createEducationButton: CreateCSSProperties | CSSProperties;
+  createEducationButtonContainer: CreateCSSProperties | CSSProperties;
 }
 
-export type EducationComponentClasses = "educationWrapperStyles";
+export type EducationComponentClasses = "educationWrapperStyles" | "createEducationButton" | "createEducationButtonContainer";
 
 const EducationComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const educationComponentStyles = makeStyles({
     educationWrapperStyles: {
-      backgroundColor: "red"
+      margin: "auto"
+    },
+    createEducationButton: {
+      width: "50%",
+      minWidth: "350px",
+      marginBottom: theme.customSpacings.m
+    },
+    createEducationButtonContainer: {
+      display: "flex",
+      justifyContent: "center"
     }
   });
 

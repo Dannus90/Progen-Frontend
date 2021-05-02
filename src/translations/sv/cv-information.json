@@ -29,5 +29,11 @@
         "Internship": "Praktik"
       }
     }
-  }  
+  },
+  "education": {
+    "createNew": "Lägg till utbildning",
+    "modal": {
+      "createNew": "Skapa ny utbildning"
+    }
+  }
 }

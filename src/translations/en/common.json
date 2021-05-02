@@ -51,5 +51,23 @@
     "dateEnded": "Date ended",
     "leaveEmpty": "Leave empty if ongoing",
     "updateWorkExperience": "Update workexperience"
+  },
+  "educationForm": {
+    "educationName": "School/Education name",
+    "examName": "Exam name",
+    "subjectAreaSv": "Subject area in swedish",
+    "subjectAreaEn": "Subject area in english",
+    "grade": "Grade",
+    "descriptionSv": "Description in swedish",
+    "descriptionEn": "Description in english",
+    "citySv": "City in swedish",
+    "cityEn": "City in english",
+    "countrySv": "Country in swedish",
+    "countryEn": "Country in english",
+    "dateStarted": "Start date",
+    "dateEnded": "End Date",
+    "saveEducation": "Save education",
+    "updateEducation": "Update education",
+    "leaveEmpty": "Leave empty if ongoing"
   }
 }

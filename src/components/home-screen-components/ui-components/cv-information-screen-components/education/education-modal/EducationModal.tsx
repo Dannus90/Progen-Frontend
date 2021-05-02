@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { EducationModalComponentClasses, WorkExperienceModalComponentClasses } from "./index";
+import { EducationModalComponentClasses } from "./index";
 import { useTranslation } from "react-i18next";
 import {
   Button,
@@ -11,25 +11,23 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
-  MenuItem,
   TextareaAutosize,
   TextField,
   Typography
 } from "@material-ui/core";
-import {
-  EditWorkExperienceData,
-  WorkExperienceInput,
-  WorkExperienceResponse
-} from "../interfaces/work-experience-interfaces";
-import { useWorkExperienceForm } from "../../../../../../custom-hooks/UseWorkExperienceForm";
-import Select from "@material-ui/core/Select";
 import { getDateStandardFormat } from "../../../../../../utils/dates/date-helper";
 import { useMutation } from "@apollo/client";
-import { CREATE_WORK_EXPERIENCE, DELETE_WORK_EXPERIENCE, UPDATE_WORK_EXPERIENCE } from "./gql";
+import { CREATE_EDUCATION, DELETE_EDUCATION, UPDATE_EDUCATION } from "./gql";
 import { Alert } from "@material-ui/lab";
 import { notifyWorkExperienceAdded } from "../../../../../../redux/reducers/work-experience/actions";
 import { useAppDispatch } from "../../../../../../redux/hooks/hooks";
-import { EditEducationData } from "../interfaces/education-interfaces";
+import {
+  DeleteEducationInput,
+  EditEducationData,
+  EditEducationInput,
+  EducationInput,
+  EducationResponse
+} from "../interfaces/education-interfaces";
 import { useEducationForm } from "../../../../../../custom-hooks/UseEducationForm";
 
 interface Props {
@@ -84,7 +82,7 @@ const EducationModal: React.FC<Props> = ({
           countrySv: educationData.countrySv,
           descriptionSv: educationData.descriptionSv,
           descriptionEn: educationData.descriptionEn,
-          dateEnded: educationData.dateEnded
+          dateEnded: educationData.dateEnded,
           dateStarted: educationData.dateStarted
         }
       : {
@@ -92,25 +90,25 @@ const EducationModal: React.FC<Props> = ({
         }
   );
 
-  const [createWorkExperience, { loading: createLoading, error }] = useMutation<{
-    createWorkExperience: WorkExperienceResponse;
-    createWorkExperienceInput: WorkExperienceInput;
-  }>(CREATE_WORK_EXPERIENCE);
+  const [createEducation, { loading: createLoading, error }] = useMutation<{
+    createWorkExperience: EducationResponse;
+    createEducationInput: EducationInput;
+  }>(CREATE_EDUCATION);
 
-  const [deleteWorkExperience, { loading: deleteLoading, error: deleteError }] = useMutation<{
-    deleteWorkExperience: WorkExperienceResponse;
-    deleteWorkExperienceInput: WorkExperienceInput;
-  }>(DELETE_WORK_EXPERIENCE);
+  const [deleteEducation, { loading: deleteLoading, error: deleteError }] = useMutation<{
+    deleteEducation: EducationResponse;
+    deleteEducationInput: DeleteEducationInput;
+  }>(DELETE_EDUCATION);
 
-  const [updateWorkExperience, { loading: updateLoading, error: updateError }] = useMutation<{
-    updateWorkExperience: WorkExperienceResponse;
-    updateWorkExperienceInput: WorkExperienceInput;
-  }>(UPDATE_WORK_EXPERIENCE);
+  const [updateEducation, { loading: updateLoading, error: updateError }] = useMutation<{
+    updateEducation: EditEducationData;
+    updateEducationInput: EditEducationInput;
+  }>(UPDATE_EDUCATION);
 
-  const handleCreateWorkExperience = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleCreateEducation = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     try {
-      createWorkExperience({
+      createEducation({
         variables: {
           createWorkExperienceInput: {
             ...formData
@@ -130,10 +128,10 @@ const EducationModal: React.FC<Props> = ({
 
   const handleDeleteWorkExperience = async (): Promise<void> => {
     try {
-      deleteWorkExperience({
+      deleteEducation({
         variables: {
-          deleteWorkExperienceInput: {
-            workExperienceId: formData.workExperienceId
+          updateEducationInput: {
+            educationId: formData.educationId
           }
         }
       });
@@ -146,11 +144,10 @@ const EducationModal: React.FC<Props> = ({
     }
   };
 
-  const handleEditWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleEditEducation = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    console.log(formData);
     try {
-      updateWorkExperience({
+      updateEducation({
         variables: {
           updateWorkExperienceInput: {
             ...formData
@@ -186,7 +183,7 @@ const EducationModal: React.FC<Props> = ({
         {header}
       </DialogTitle>
       <DialogContent>
-        <form onSubmit={isCreate ? handleCreateWorkExperience : handleEditWorkExperience}>
+        <form onSubmit={isCreate ? handleCreateEducation : handleEditEducation}>
           <Grid container spacing={3} className={styles.formStyle}>
             <Grid item xs={12} sm={12}>
               <TextField
@@ -198,58 +195,71 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("workExperienceForm.companyName")}
+                label={t("educationForm.educationName")}
                 autoFocus
                 size="small"
                 fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={12}>
-              <Select
-                labelId="employmentRate"
-                id="employmentRate"
-                name="employmentRate"
-                className={styles.selectStyle}
-                value={formData.employmentRate}
-                label={t("workExperienceForm.employmentRate.header")}
-                onChange={handleInputChange}>
-                <MenuItem value={"FullTime"}>
-                  {t("workExperienceForm.employmentRate.fullTime")}
-                </MenuItem>
-                <MenuItem value={"PartTime"}>
-                  {t("workExperienceForm.employmentRate.partTime")}
-                </MenuItem>
-                <MenuItem value={"Internship"}>
-                  {t("workExperienceForm.employmentRate.internShip")}
-                </MenuItem>
-              </Select>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  id="examName"
+                  aria-describedby="form-data"
+                  name="examName"
+                  value={formData.examName}
+                  variant="outlined"
+                  onChange={handleInputChange}
+                  inputProps={{ style: { fontSize: 14 } }}
+                  InputLabelProps={{ style: { fontSize: 14 } }}
+                  label={t("educationForm.examName")}
+                  autoFocus
+                  size="small"
+                  fullWidth
+                />
+              </Grid>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                id="roleSv"
+                id="subjectAreaSv"
                 aria-describedby="form-data"
-                name="roleSv"
-                value={formData.roleSv}
+                name="subjectAreaSv"
+                value={formData.subjectAreaSv}
                 variant="outlined"
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("workExperienceForm.roleSv")}
+                label={t("educationForm.subjectAreaSv")}
                 size="small"
                 fullWidth
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                id="roleEn"
+                id="subjectAreaEn"
                 aria-describedby="form-data"
-                name="roleEn"
-                value={formData.roleEn}
+                name="subjectAreaEn"
+                value={formData.subjectAreaEn}
                 variant="outlined"
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("workExperienceForm.roleEn")}
+                label={t("educationForm.subjectAreaEn")}
+                size="small"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="grade"
+                aria-describedby="form-data"
+                name="grade"
+                value={formData.grade}
+                variant="outlined"
+                onChange={handleInputChange}
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
+                label={t("educationForm.grade")}
                 size="small"
                 fullWidth
               />
@@ -261,7 +271,7 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 name="descriptionSv"
                 aria-label="Presentation sv"
-                placeholder={t("workExperienceForm.descriptionSv")}
+                placeholder={t("educationForm.descriptionSv")}
               />
             </Grid>
             <Grid item xs={12} sm={12}>
@@ -271,7 +281,7 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 name="descriptionEn"
                 aria-label="Presentation en"
-                placeholder={t("workExperienceForm.descriptionEn")}
+                placeholder={t("educationForm.descriptionEn")}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -284,7 +294,7 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("workExperienceForm.citySv")}
+                label={t("educationForm.citySv")}
                 size="small"
                 fullWidth
               />
@@ -299,7 +309,7 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("workExperienceForm.cityEn")}
+                label={t("educationForm.cityEn")}
                 size="small"
                 fullWidth
               />
@@ -314,7 +324,7 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("workExperienceForm.countrySv")}
+                label={t("educationForm.countrySv")}
                 size="small"
                 fullWidth
               />
@@ -329,7 +339,7 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("workExperienceForm.countryEn")}
+                label={t("educationForm.countryEn")}
                 size="small"
                 fullWidth
               />
@@ -346,7 +356,7 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 }, shrink: true }}
-                label={t("workExperienceForm.dateStarted")}
+                label={t("educationForm.dateStarted")}
                 size="small"
                 fullWidth
               />
@@ -362,13 +372,11 @@ const EducationModal: React.FC<Props> = ({
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 }, shrink: true }}
-                label={t("workExperienceForm.dateEnded")}
+                label={t("educationForm.dateEnded")}
                 size="small"
                 fullWidth
               />
-              <Typography className={styles.leaveEmpty}>
-                {t("workExperienceForm.leaveEmpty")}
-              </Typography>
+              <Typography className={styles.leaveEmpty}>{t("educationForm.leaveEmpty")}</Typography>
             </Grid>
           </Grid>
           {error && displayAlertMessage && (
@@ -410,9 +418,9 @@ const EducationModal: React.FC<Props> = ({
               {createLoading || updateLoading ? (
                 <CircularProgress size={21} color="inherit" />
               ) : isCreate ? (
-                t("workExperienceForm.saveWorkExperience")
+                t("educationForm.saveEducation")
               ) : (
-                t("workExperienceForm.updateWorkExperience")
+                t("educationForm.updateEducation")
               )}
             </Button>
           </Container>

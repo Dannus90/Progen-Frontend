@@ -29,5 +29,11 @@
         "Internship": "Internship"
       }
     }
+  },
+  "education": {
+    "createNew": "Add education",
+    "modal": {
+      "createNew": "Create new education"
+    }
   }
 }

@@ -51,5 +51,23 @@
     "dateEnded": "Slutdatum",
     "leaveEmpty": "Skriv inget datum om pågående",
     "updateWorkExperience": "Updatera arbetslivserfarenhet"
+  },
+  "educationForm": {
+    "educationName": "Skol-/Utbildningsnamn",
+    "examName": "Examen",
+    "subjectAreaSv": "Ämnesområde på svenska",
+    "subjectAreaEn": "Ämnesområde på engelska",
+    "grade": "Betyg",
+    "descriptionSv": "Beskrivning på svenska",
+    "descriptionEn": "Beskrivning på engelska",
+    "citySv": "Stad på svenska",
+    "cityEn": "Stad på engelska",
+    "countrySv": "Land på svenska",
+    "countryEn": "Land på engelska",
+    "dateStarted": "Startdatum",
+    "dateEnded": "Slutdatum",
+    "saveEducation": "Spara utbildning",
+    "updateEducation": "Updatera utbildning",
+    "leaveEmpty": "Skriv inget datum om pågående"
   }
 }

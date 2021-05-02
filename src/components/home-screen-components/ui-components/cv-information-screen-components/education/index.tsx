@@ -11,7 +11,10 @@ export interface EducationComponentStyles extends Theme {
   createEducationButtonContainer: CreateCSSProperties | CSSProperties;
 }
 
-export type EducationComponentClasses = "educationWrapperStyles" | "createEducationButton" | "createEducationButtonContainer";
+export type EducationComponentClasses =
+  | "educationWrapperStyles"
+  | "createEducationButton"
+  | "createEducationButtonContainer";
 
 const EducationComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();

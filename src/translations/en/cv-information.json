@@ -33,7 +33,11 @@
   "education": {
     "createNew": "Add education",
     "modal": {
-      "createNew": "Create new education"
+      "createNew": "Create new education",
+      "edit": "Add or remove work education",
+      "swedishVersion": "Swedish version",
+      "englishVersion": "English version",
+      "grade": "Grade"
     }
   }
 }

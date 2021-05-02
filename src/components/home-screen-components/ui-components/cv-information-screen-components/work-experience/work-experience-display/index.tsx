@@ -17,6 +17,7 @@ export interface WorkExperienceDisplayComponentStyles extends Theme {
   headingIconWrapper: CreateCSSProperties | CSSProperties;
   editIcon: CreateCSSProperties | CSSProperties;
   versionHeader: CreateCSSProperties | CSSProperties;
+  workExperienceContainer: CreateCSSProperties | CSSProperties;
 }
 
 export type WorkExperienceDisplayComponentClasses =
@@ -29,7 +30,8 @@ export type WorkExperienceDisplayComponentClasses =
   | "description"
   | "headingIconWrapper"
   | "editIcon"
-  | "versionHeader";
+  | "versionHeader"
+  | "workExperienceContainer";
 
 interface Props {
   workExperienceData: GetWorkExperienceResponse;
@@ -48,13 +50,17 @@ const WorkExperienceDisplayComponentWrapper: React.FC<Props> = ({
       marginBottom: theme.customSpacings.m,
       paddingBottom: theme.customSpacings.xs
     },
+    workExperienceContainer: {
+      width: "50%"
+    },
     versionHeader: {
-      fontSize: "1.3rem",
+      fontSize: "1.3em",
       fontWeight: "bold",
       marginBottom: "0.5rem"
     },
     company: {
       fontWeight: "bold",
+      fontSize: "1.1rem",
       marginBottom: "0.25rem"
     },
     headingIconWrapper: {

@@ -43,7 +43,7 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
 
   return (
     <div className={styles.educationDisplayWrapperStyles}>
-      <div>
+      <div className={styles.educationContainer}>
         <Typography className={styles.versionHeader}>
           {t("education.modal.swedishVersion")}
         </Typography>
@@ -52,13 +52,20 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
         </div>
         <Typography className={styles.exam}>{editData.examName}</Typography>
         <Typography className={styles.subject}>{subjectAreaSv}</Typography>
-        <Typography className={styles.grade}>{editData.grade}</Typography>
+        {editData.grade && (
+          <Typography className={styles.grade}>
+            {t("education.modal.grade")}
+            {": "}
+            {editData.grade}
+          </Typography>
+        )}
         <Typography className={styles.date}>{resolveDate()}</Typography>
-        <Typography className={styles.country}>{countrySv}</Typography>
-        <Typography className={styles.city}>{citySv}</Typography>
+        <Typography className={styles.location}>
+          {countrySv}, {citySv}
+        </Typography>
         <Typography className={styles.description}>{descriptionSv}</Typography>
       </div>
-      <div>
+      <div className={styles.educationContainer}>
         <div className={styles.headingIconWrapper}>
           <Typography className={styles.versionHeader}>
             {t("education.modal.englishVersion")}
@@ -72,16 +79,23 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
         <Typography className={styles.education}>{editData.educationName}</Typography>
         <Typography className={styles.exam}>{editData.examName}</Typography>
         <Typography className={styles.subject}>{subjectAreaEn}</Typography>
-        <Typography className={styles.grade}>{editData.grade}</Typography>
+        {editData.grade && (
+          <Typography className={styles.grade}>
+            {t("education.modal.grade")}
+            {": "}
+            {editData.grade}
+          </Typography>
+        )}
         <Typography className={styles.date}>{resolveDate()}</Typography>
-        <Typography className={styles.country}>{countryEn}</Typography>
-        <Typography className={styles.city}>{cityEn}</Typography>
+        <Typography className={styles.location}>
+          {countryEn}, {cityEn}
+        </Typography>
         <Typography className={styles.description}>{descriptionEn}</Typography>
         <EducationModal
           isCreate={false}
           handleClose={handleEditModalClose}
           open={editModalOpen}
-          header={t("workExperience.modal.edit")}
+          header={t("education.modal.edit")}
           educationData={editData as EditEducationData}
         />
       </div>

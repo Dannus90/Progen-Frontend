@@ -144,7 +144,6 @@ const WorkExperienceModal: React.FC<Props> = ({
 
   const handleEditWorkExperience = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    console.log(formData);
     try {
       updateWorkExperience({
         variables: {

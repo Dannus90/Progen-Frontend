@@ -52,7 +52,7 @@ const initialFormState = {
   descriptionSv: "",
   descriptionEn: "",
   dateEnded: null,
-  dateStarted: null
+  dateStarted: getDateStandardFormat()
 };
 
 const EducationModal: React.FC<Props> = ({
@@ -91,7 +91,7 @@ const EducationModal: React.FC<Props> = ({
   );
 
   const [createEducation, { loading: createLoading, error }] = useMutation<{
-    createWorkExperience: EducationResponse;
+    createEducation: EducationResponse;
     createEducationInput: EducationInput;
   }>(CREATE_EDUCATION);
 
@@ -110,7 +110,7 @@ const EducationModal: React.FC<Props> = ({
     try {
       createEducation({
         variables: {
-          createWorkExperienceInput: {
+          createEducationInput: {
             ...formData
           }
         }
@@ -130,7 +130,7 @@ const EducationModal: React.FC<Props> = ({
     try {
       deleteEducation({
         variables: {
-          updateEducationInput: {
+          deleteEducationInput: {
             educationId: formData.educationId
           }
         }
@@ -350,7 +350,6 @@ const EducationModal: React.FC<Props> = ({
                 aria-describedby="form-data"
                 name="dateStarted"
                 type="date"
-                defaultValue={getDateStandardFormat()}
                 value={formData.dateStarted}
                 variant="outlined"
                 onChange={handleInputChange}

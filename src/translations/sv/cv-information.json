@@ -33,7 +33,11 @@
   "education": {
     "createNew": "Lägg till utbildning",
     "modal": {
-      "createNew": "Skapa ny utbildning"
+      "createNew": "Skapa ny utbildning",
+      "edit": "Ändra eller ta bort utbildning",
+      "swedishVersion": "Svensk version",
+      "englishVersion": "Engelsk version",
+      "grade": "Betyg"
     }
   }
 }

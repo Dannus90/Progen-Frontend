@@ -61,7 +61,7 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
 
   return (
     <div className={styles.workExperienceDisplayWrapperStyles}>
-      <div>
+      <div className={styles.workExperienceContainer}>
         <Typography className={styles.versionHeader}>
           {t("workExperience.modal.swedishVersion")}
         </Typography>
@@ -76,7 +76,7 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
         <Typography className={styles.city}>{citySv}</Typography>
         <Typography className={styles.description}>{descriptionSv}</Typography>
       </div>
-      <div>
+      <div className={styles.workExperienceContainer}>
         <div className={styles.headingIconWrapper}>
           <Typography className={styles.versionHeader}>
             {t("workExperience.modal.englishVersion")}

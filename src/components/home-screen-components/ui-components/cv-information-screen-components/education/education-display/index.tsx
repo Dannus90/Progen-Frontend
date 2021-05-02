@@ -11,14 +11,14 @@ export interface EducationDisplayComponentStyles extends Theme {
   education: CreateCSSProperties | CSSProperties;
   exam: CreateCSSProperties | CSSProperties;
   grade: CreateCSSProperties | CSSProperties;
-  city: CreateCSSProperties | CSSProperties;
   date: CreateCSSProperties | CSSProperties;
   description: CreateCSSProperties | CSSProperties;
   headingIconWrapper: CreateCSSProperties | CSSProperties;
   editIcon: CreateCSSProperties | CSSProperties;
   versionHeader: CreateCSSProperties | CSSProperties;
-  country: CreateCSSProperties | CSSProperties;
+  location: CreateCSSProperties | CSSProperties;
   subject: CreateCSSProperties | CSSProperties;
+  educationContainer: CreateCSSProperties | CSSProperties;
 }
 
 export type EducationDisplayComponentClasses =
@@ -26,14 +26,14 @@ export type EducationDisplayComponentClasses =
   | "education"
   | "exam"
   | "grade"
-  | "city"
   | "date"
   | "description"
   | "headingIconWrapper"
   | "editIcon"
   | "versionHeader"
-  | "country"
-  | "subject";
+  | "location"
+  | "subject"
+  | "educationContainer";
 
 interface Props {
   educationData: GetEducationResponse;
@@ -46,9 +46,13 @@ const EducationDisplayComponentWrapper: React.FC<Props> = ({ educationData }): J
     educationDisplayWrapperStyles: {
       display: "flex",
       flexDirection: "row",
+      justifyContent: "space-between",
       borderBottom: theme.custom.borderColors.subtleGreyMain,
       marginBottom: theme.customSpacings.m,
       paddingBottom: theme.customSpacings.xs
+    },
+    educationContainer: {
+      width: "50%"
     },
     versionHeader: {
       fontSize: "1.3rem",
@@ -57,6 +61,7 @@ const EducationDisplayComponentWrapper: React.FC<Props> = ({ educationData }): J
     },
     education: {
       fontWeight: "bold",
+      fontSize: "1.1rem",
       marginBottom: "0.25rem"
     },
     headingIconWrapper: {
@@ -83,20 +88,13 @@ const EducationDisplayComponentWrapper: React.FC<Props> = ({ educationData }): J
       color: theme.custom.palette.textVariantDark.main,
       fontSize: "0.90rem"
     },
-    city: {
-      color: theme.custom.palette.textVariantDark.medium,
-      fontSize: "0.85rem",
-      marginBottom: "0.5rem"
-    },
-    country: {
+    location: {
       color: theme.custom.palette.textVariantDark.medium,
       fontSize: "0.85rem",
       marginBottom: "0.5rem"
     },
     subject: {
-      color: theme.custom.palette.textVariantDark.medium,
-      fontSize: "0.85rem",
-      marginBottom: "0.5rem"
+      color: theme.custom.palette.textVariantDark.main
     },
     date: {
       color: theme.custom.palette.textVariantDark.medium,

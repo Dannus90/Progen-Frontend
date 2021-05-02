@@ -27,7 +27,7 @@ const EducationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   useMemo(() => {
     refetch();
-  }, [education]);
+  }, [education.educationModified]);
 
   useMemo(() => {
     if (data?.education.getEducations.educations) {

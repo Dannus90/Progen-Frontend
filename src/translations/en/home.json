@@ -23,5 +23,6 @@
     "profileInformation": "Profile information",
     "profileText": "Your profile information can be edited down belown",
     "saveSettings": "SAVE PROFILE"
-  }
+  },
+  "exportCv": "Export CV"
 }

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { HomeScreenClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { AppBar, Tab, Tabs } from "@material-ui/core";
+import { AppBar, Button, Tab, Tabs } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import { TabPanel } from "../../components/common/tab-panel/TabPanel";
 import Profile from "../../components/home-screen-components/profile/index";
@@ -65,6 +65,9 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
           <Tab label={t("tabs.account")} {...getTabProps(1)} />
           <Tab label={t("tabs.baseCv")} {...getTabProps(2)} />
         </Tabs>
+        <Button className={styles.exportCvButton} variant="contained" color="primary">
+          {t("exportCv")}
+        </Button>
       </AppBar>
       <TabPanel {...getTabPanelProps(currentTab, 0)}>
         <Profile />

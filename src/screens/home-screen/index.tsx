@@ -8,9 +8,10 @@ import HomeScreen from "./HomeScreen";
 export interface HomeScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
   tabsStyle: CreateCSSProperties | CSSProperties;
+  exportCvButton: CreateCSSProperties | CSSProperties;
 }
 
-export type HomeScreenClasses = "pageWrapperStyles" | "tabsStyle";
+export type HomeScreenClasses = "pageWrapperStyles" | "tabsStyle" | "exportCvButton";
 
 const HomeScreenWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -27,7 +28,15 @@ const HomeScreenWrapper: React.FC = (): JSX.Element => {
     tabsStyle: {
       boxShadow: "none",
       borderBottom: `${theme.custom.borderColors.subtleGreyMain}`,
-      color: `${theme.custom.palette.textVariantDark.dark}`
+      color: `${theme.custom.palette.textVariantDark.dark}`,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center"
+    },
+    exportCvButton: {
+      height: "30px",
+      marginRight: theme.customSpacings.xs
     }
   });
 

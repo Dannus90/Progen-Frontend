@@ -39,6 +39,21 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     }
   }, [workExperience.workExperienceModified]);
 
+  let sortedWorkExperiences = data?.workExperience.getWorkExperiences.workExperiences;
+
+  if (sortedWorkExperiences) {
+    sortedWorkExperiences = [...sortedWorkExperiences].sort((a, b) => {
+      if (a.dateStarted && b.dateStarted) {
+        if (a.dateStarted < b.dateStarted) return -1;
+        if (a.dateStarted > b.dateStarted) return 1;
+
+        return 0;
+      }
+
+      return 0;
+    });
+  }
+
   return (
     <div className={styles.workExperienceWrapperStyles}>
       <Container className={styles.createWorkExperienceButtonContainer}>
@@ -75,8 +90,8 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
       )}
       {!loading && !error && data && (
         <Container>
-          {data.workExperience.getWorkExperiences.workExperiences &&
-            data.workExperience.getWorkExperiences.workExperiences.map((ed) => {
+          {!!sortedWorkExperiences &&
+            sortedWorkExperiences.map((ed) => {
               return <WorkExperienceDisplay key={ed.id} workExperienceData={ed} />;
             })}
         </Container>

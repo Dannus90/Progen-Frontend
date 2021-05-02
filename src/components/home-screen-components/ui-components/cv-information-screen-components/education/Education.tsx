@@ -34,6 +34,21 @@ const EducationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     }
   }, [education.educationModified]);
 
+  let sortedEducations = data?.education.getEducations.educations;
+
+  if (sortedEducations) {
+    sortedEducations = [...sortedEducations].sort((a, b) => {
+      if (a.dateStarted && b.dateStarted) {
+        if (a.dateStarted < b.dateStarted) return -1;
+        if (a.dateStarted > b.dateStarted) return 1;
+
+        return 0;
+      }
+
+      return 0;
+    });
+  }
+
   return (
     <div className={styles.educationWrapperStyles}>
       <Container className={styles.createEducationButtonContainer}>

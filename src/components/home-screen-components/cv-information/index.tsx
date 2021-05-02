@@ -5,7 +5,7 @@ import React, { CSSProperties } from "react";
 import { MainTheme } from "../../../styles/theme";
 import CvInformation from "./CvInformation";
 
-export interface CvInforrmationComponentStyles extends Theme {
+export interface CvInformationComponentStyles extends Theme {
   cvInformationComponentStyles: CreateCSSProperties | CSSProperties;
   tabStyleTop: CreateCSSProperties | CSSProperties;
   tabStyleBottom: CreateCSSProperties | CSSProperties;

@@ -5,7 +5,6 @@ import { AppBar, Tab, Tabs } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import { TabPanel } from "../../components/common/tab-panel/TabPanel";
 import Profile from "../../components/home-screen-components/profile/index";
-import CreateCv from "../../components/home-screen-components/create-cv/index";
 import CvInformation from "../../components/home-screen-components/cv-information/index";
 import Account from "../../components/home-screen-components/account/index";
 import { useAppSelector } from "../../redux/hooks/hooks";
@@ -65,7 +64,6 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
           <Tab label={t("tabs.profile")} {...getTabProps(0)} />
           <Tab label={t("tabs.account")} {...getTabProps(1)} />
           <Tab label={t("tabs.baseCv")} {...getTabProps(2)} />
-          <Tab label={t("tabs.createCv")} {...getTabProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel {...getTabPanelProps(currentTab, 0)}>
@@ -76,9 +74,6 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
       </TabPanel>
       <TabPanel {...getTabPanelProps(currentTab, 2)}>
         <CvInformation />
-      </TabPanel>
-      <TabPanel {...getTabPanelProps(currentTab, 3)}>
-        <CreateCv />
       </TabPanel>
     </div>
   );

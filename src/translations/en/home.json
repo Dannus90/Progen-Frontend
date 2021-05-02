@@ -2,8 +2,7 @@
   "tabs": {
     "profile": "Profile",
     "account": "Account",
-    "baseCv": "CV Information",
-    "createCv": "Create CV"
+    "baseCv": "CV"
   },
   "profileCard": {
     "uploadImage": "UPLOAD PROFILE PICTURE",

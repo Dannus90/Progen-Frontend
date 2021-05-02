@@ -2,8 +2,7 @@
   "tabs": {
       "profile": "Profil",
       "account": "Konto",
-      "baseCv": "CV Information",
-      "createCv": "Skapa CV"
+      "baseCv": "CV"
   },
   "profileCard": {
     "uploadImage": "VÄLJ PROFILBILD",

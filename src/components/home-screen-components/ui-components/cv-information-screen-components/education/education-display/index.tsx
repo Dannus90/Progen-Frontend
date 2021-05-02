@@ -17,6 +17,8 @@ export interface EducationDisplayComponentStyles extends Theme {
   headingIconWrapper: CreateCSSProperties | CSSProperties;
   editIcon: CreateCSSProperties | CSSProperties;
   versionHeader: CreateCSSProperties | CSSProperties;
+  country: CreateCSSProperties | CSSProperties;
+  subject: CreateCSSProperties | CSSProperties;
 }
 
 export type EducationDisplayComponentClasses =
@@ -29,7 +31,9 @@ export type EducationDisplayComponentClasses =
   | "description"
   | "headingIconWrapper"
   | "editIcon"
-  | "versionHeader";
+  | "versionHeader"
+  | "country"
+  | "subject";
 
 interface Props {
   educationData: GetEducationResponse;
@@ -80,6 +84,16 @@ const EducationDisplayComponentWrapper: React.FC<Props> = ({ educationData }): J
       fontSize: "0.90rem"
     },
     city: {
+      color: theme.custom.palette.textVariantDark.medium,
+      fontSize: "0.85rem",
+      marginBottom: "0.5rem"
+    },
+    country: {
+      color: theme.custom.palette.textVariantDark.medium,
+      fontSize: "0.85rem",
+      marginBottom: "0.5rem"
+    },
+    subject: {
       color: theme.custom.palette.textVariantDark.medium,
       fontSize: "0.85rem",
       marginBottom: "0.5rem"

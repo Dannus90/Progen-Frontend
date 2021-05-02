@@ -51,8 +51,10 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
           <Typography className={styles.education}>{editData.educationName}</Typography>
         </div>
         <Typography className={styles.exam}>{editData.examName}</Typography>
+        <Typography className={styles.subject}>{subjectAreaSv}</Typography>
         <Typography className={styles.grade}>{editData.grade}</Typography>
         <Typography className={styles.date}>{resolveDate()}</Typography>
+        <Typography className={styles.country}>{countrySv}</Typography>
         <Typography className={styles.city}>{citySv}</Typography>
         <Typography className={styles.description}>{descriptionSv}</Typography>
       </div>
@@ -69,8 +71,10 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
         </div>
         <Typography className={styles.education}>{editData.educationName}</Typography>
         <Typography className={styles.exam}>{editData.examName}</Typography>
+        <Typography className={styles.subject}>{subjectAreaEn}</Typography>
         <Typography className={styles.grade}>{editData.grade}</Typography>
         <Typography className={styles.date}>{resolveDate()}</Typography>
+        <Typography className={styles.country}>{countryEn}</Typography>
         <Typography className={styles.city}>{cityEn}</Typography>
         <Typography className={styles.description}>{descriptionEn}</Typography>
         <EducationModal

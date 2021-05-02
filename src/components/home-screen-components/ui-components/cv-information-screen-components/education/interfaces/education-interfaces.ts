@@ -62,6 +62,7 @@ export interface EditEducationInput {
 
 export interface GetEducationResponse {
   id: string;
+  userId: string;
   educationName: string;
   examName: string;
   subjectAreaSv: string;
@@ -77,4 +78,13 @@ export interface GetEducationResponse {
   updatedAt: Date | string;
   dateStarted: string | null;
   dateEnded: string | null;
+}
+
+export interface GetEducationsResponse {
+  education: {
+    getEducations: {
+      statusCode: number;
+      educations: Array<GetEducationResponse>;
+    };
+  };
 }

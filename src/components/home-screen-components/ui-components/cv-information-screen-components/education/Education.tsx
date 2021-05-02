@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { EducationComponentClasses } from "./index";
-import { Button, Container } from "@material-ui/core";
+import { Button, CircularProgress, Container } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import EducationModal from "./education-modal/index";
 import { useAppSelector } from "../../../../../redux/hooks/hooks";
@@ -9,6 +9,8 @@ import { GetEducationResponse, GetEducationsResponse } from "./interfaces/educat
 import { useQuery } from "@apollo/client";
 import { GET_EDUCATIONS } from "./gql";
 import EducationDisplay from "./education-display/index";
+import { Alert } from "@material-ui/lab";
+import CachedIcon from "@material-ui/icons/Cached";
 
 interface Props {
   styles: ClassNameMap<EducationComponentClasses>;
@@ -54,12 +56,29 @@ const EducationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           header={t("education.modal.createNew")}
         />
       </Container>
-      <Container>
-        {educationData &&
-          educationData.map((ed) => {
-            return <EducationDisplay key={ed.id} educationData={ed} />;
-          })}
-      </Container>
+      {error && (
+        <Alert
+          className={`${styles.alertStyle}`}
+          icon={<CachedIcon onClick={() => refetch()} className={styles.refetchIcon} />}
+          severity="error">
+          {error?.graphQLErrors.map(
+            (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+          )}
+        </Alert>
+      )}
+      {loading && (
+        <Container className={styles.loaderContainer}>
+          <CircularProgress size={50} />
+        </Container>
+      )}
+      {!loading && !error && (
+        <Container>
+          {educationData &&
+            educationData.map((ed) => {
+              return <EducationDisplay key={ed.id} educationData={ed} />;
+            })}
+        </Container>
+      )}
     </div>
   );
 };

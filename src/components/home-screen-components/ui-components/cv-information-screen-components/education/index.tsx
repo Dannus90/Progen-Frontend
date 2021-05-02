@@ -9,12 +9,18 @@ export interface EducationComponentStyles extends Theme {
   educationWrapperStyles: CreateCSSProperties | CSSProperties;
   createEducationButton: CreateCSSProperties | CSSProperties;
   createEducationButtonContainer: CreateCSSProperties | CSSProperties;
+  alertStyle: CreateCSSProperties | CSSProperties;
+  refetchIcon: CreateCSSProperties | CSSProperties;
+  loaderContainer: CreateCSSProperties | CSSProperties;
 }
 
 export type EducationComponentClasses =
   | "educationWrapperStyles"
   | "createEducationButton"
-  | "createEducationButtonContainer";
+  | "createEducationButtonContainer"
+  | "alertStyle"
+  | "refetchIcon"
+  | "loaderContainer";
 
 const EducationComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -31,6 +37,28 @@ const EducationComponentWrapper: React.FC = (): JSX.Element => {
     createEducationButtonContainer: {
       display: "flex",
       justifyContent: "center"
+    },
+    alertStyle: {
+      height: "auto",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      padding: "0px 10px",
+      fontSize: "14px",
+      marginBottom: `${theme.customSpacings.s}`
+    },
+    refetchIcon: {
+      cursor: "pointer",
+      transition: "scale 0.2s ease-in-out, rotate 0.2s ease-in-out",
+      "&:active": {
+        transform: "scale(0.95) rotate(50deg)"
+      }
+    },
+    loaderContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "55vh"
     }
   });
 

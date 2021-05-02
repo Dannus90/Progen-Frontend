@@ -22,7 +22,6 @@ interface Props {
 const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const [createOpen, setCreateOpen] = useState<boolean>(false);
-  const [experienceData, setExperienceData] = useState<Array<GetWorkExperienceResponse>>([]);
   const { workExperience } = useAppSelector((state) => state);
   const { refetch, error, loading, data } = useQuery<GetWorkExperiencesResponse>(
     GET_WORK_EXPERIENCES
@@ -39,12 +38,6 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
       console.error(err);
     }
   }, [workExperience.workExperienceModified]);
-
-  useMemo(() => {
-    if (data?.workExperience.getWorkExperiences.workExperiences) {
-      setExperienceData(data?.workExperience.getWorkExperiences.workExperiences);
-    }
-  }, [data?.workExperience.getWorkExperiences.workExperiences]);
 
   return (
     <div className={styles.workExperienceWrapperStyles}>
@@ -80,10 +73,10 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           <CircularProgress size={50} />
         </Container>
       )}
-      {!loading && !error && (
+      {!loading && !error && data && (
         <Container>
-          {experienceData &&
-            experienceData.map((ed) => {
+          {data.workExperience.getWorkExperiences.workExperiences &&
+            data.workExperience.getWorkExperiences.workExperiences.map((ed) => {
               return <WorkExperienceDisplay key={ed.id} workExperienceData={ed} />;
             })}
         </Container>

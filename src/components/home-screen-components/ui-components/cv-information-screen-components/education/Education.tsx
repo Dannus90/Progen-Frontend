@@ -20,22 +20,19 @@ const EducationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const [createOpen, setCreateOpen] = useState<boolean>(false);
   const { education } = useAppSelector((state) => state);
-  const [educationData, setEducationData] = useState<Array<GetEducationResponse>>([]);
   const { refetch, error, loading, data } = useQuery<GetEducationsResponse>(GET_EDUCATIONS);
 
   const handleCreateModalClose = (): void => {
     setCreateOpen(false);
   };
 
-  useMemo(() => {
-    refetch();
-  }, [education.educationModified]);
-
-  useMemo(() => {
-    if (data?.education.getEducations.educations) {
-      setEducationData(data.education.getEducations.educations);
+  useMemo(async () => {
+    try {
+      await refetch();
+    } catch (err) {
+      console.error(err);
     }
-  }, [data]);
+  }, [education.educationModified]);
 
   return (
     <div className={styles.educationWrapperStyles}>
@@ -71,10 +68,10 @@ const EducationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           <CircularProgress size={50} />
         </Container>
       )}
-      {!loading && !error && (
+      {!loading && !error && data && (
         <Container>
-          {educationData &&
-            educationData.map((ed) => {
+          {data?.education.getEducations.educations &&
+            data?.education.getEducations.educations.map((ed) => {
               return <EducationDisplay key={ed.id} educationData={ed} />;
             })}
         </Container>

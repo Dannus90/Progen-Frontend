@@ -26,10 +26,12 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
   const citySv = workExperienceData.citySv;
   const roleSv = workExperienceData.roleSv;
   const descriptionSv = workExperienceData.descriptionSv;
+  const countrySv = workExperienceData.countrySv;
 
   const cityEn = workExperienceData.cityEn;
   const roleEn = workExperienceData.roleEn;
   const descriptionEn = workExperienceData.descriptionEn;
+  const countryEn = workExperienceData.countryEn;
 
   const resolveDate = (): string => {
     return `${transformDate(workExperienceData.dateStarted)} - ${transformDate(
@@ -73,7 +75,9 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
           {resolveEmploymentRateForLanguage(workExperienceData.employmentRate, "sv")}
         </Typography>
         <Typography className={styles.date}>{resolveDate()}</Typography>
-        <Typography className={styles.city}>{citySv}</Typography>
+        <Typography className={styles.cityCountry}>
+          {citySv}, {countrySv}
+        </Typography>
         <Typography className={styles.description}>{descriptionSv}</Typography>
       </div>
       <div className={styles.workExperienceContainer}>
@@ -93,7 +97,9 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
           {resolveEmploymentRateForLanguage(workExperienceData.employmentRate, "en")}
         </Typography>
         <Typography className={styles.date}>{resolveDate()}</Typography>
-        <Typography className={styles.city}>{cityEn}</Typography>
+        <Typography className={styles.cityCountry}>
+          {cityEn}, {countryEn}
+        </Typography>
         <Typography className={styles.description}>{descriptionEn}</Typography>
         <WorkExperienceModal
           isCreate={false}

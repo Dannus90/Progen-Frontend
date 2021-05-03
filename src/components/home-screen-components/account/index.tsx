@@ -38,7 +38,7 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
       margin: "1.5rem",
       marginTop: "0rem",
       marginBottom: theme.customSpacings.m,
-      background: `${theme.landingScreenBackground}`
+      background: `#fff`
     },
     formsContainer: {
       display: "flex",
@@ -48,8 +48,7 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
     accountHeaderContainer: {},
     accountHeader: {
       textAlign: "center",
-      fontSize: "1.5rem",
-      color: "#fff"
+      fontSize: "1.5rem"
     }
   });
 

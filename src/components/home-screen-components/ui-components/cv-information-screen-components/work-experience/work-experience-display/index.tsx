@@ -11,7 +11,7 @@ export interface WorkExperienceDisplayComponentStyles extends Theme {
   company: CreateCSSProperties | CSSProperties;
   role: CreateCSSProperties | CSSProperties;
   employmentRate: CreateCSSProperties | CSSProperties;
-  city: CreateCSSProperties | CSSProperties;
+  cityCountry: CreateCSSProperties | CSSProperties;
   date: CreateCSSProperties | CSSProperties;
   description: CreateCSSProperties | CSSProperties;
   headingIconWrapper: CreateCSSProperties | CSSProperties;
@@ -25,7 +25,7 @@ export type WorkExperienceDisplayComponentClasses =
   | "company"
   | "role"
   | "employmentRate"
-  | "city"
+  | "cityCountry"
   | "date"
   | "description"
   | "headingIconWrapper"
@@ -87,7 +87,7 @@ const WorkExperienceDisplayComponentWrapper: React.FC<Props> = ({
       color: theme.custom.palette.textVariantDark.main,
       fontSize: "0.90rem"
     },
-    city: {
+    cityCountry: {
       color: theme.custom.palette.textVariantDark.medium,
       fontSize: "0.85rem",
       marginBottom: "0.5rem"

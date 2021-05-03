@@ -40,8 +40,10 @@ interface Props {
 }
 
 const initialFormState = {
-  educationName: "",
-  examName: "",
+  educationNameSv: "",
+  educationNameEn: "",
+  examNameSv: "",
+  examNameEn: "",
   subjectAreaSv: "",
   subjectAreaEn: "",
   grade: "",
@@ -71,8 +73,10 @@ const EducationModal: React.FC<Props> = ({
     educationData
       ? {
           educationId: educationData.id,
-          educationName: educationData.educationName,
-          examName: educationData.examName,
+          educationNameSv: educationData.educationNameSv,
+          educationNameEn: educationData.educationNameEn,
+          examNameSv: educationData.examNameSv,
+          examNameEn: educationData.examNameEn,
           subjectAreaSv: educationData.subjectAreaSv,
           subjectAreaEn: educationData.subjectAreaEn,
           grade: educationData.grade,
@@ -185,39 +189,69 @@ const EducationModal: React.FC<Props> = ({
       <DialogContent>
         <form onSubmit={isCreate ? handleCreateEducation : handleEditEducation}>
           <Grid container spacing={3} className={styles.formStyle}>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
-                id="educationName"
+                id="educationNameSv"
                 aria-describedby="form-data"
-                name="educationName"
-                value={formData.educationName}
+                name="educationNameSv"
+                value={formData.educationNameSv}
                 variant="outlined"
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
-                label={t("educationForm.educationName")}
+                label={t("educationForm.educationNameSv")}
                 autoFocus
                 size="small"
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12} sm={12}>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  id="examName"
-                  aria-describedby="form-data"
-                  name="examName"
-                  value={formData.examName}
-                  variant="outlined"
-                  onChange={handleInputChange}
-                  inputProps={{ style: { fontSize: 14 } }}
-                  InputLabelProps={{ style: { fontSize: 14 } }}
-                  label={t("educationForm.examName")}
-                  autoFocus
-                  size="small"
-                  fullWidth
-                />
-              </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="educationNameEn"
+                aria-describedby="form-data"
+                name="educationNameEn"
+                value={formData.educationNameEn}
+                variant="outlined"
+                onChange={handleInputChange}
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
+                label={t("educationForm.educationNameEn")}
+                autoFocus
+                size="small"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="examNameSv"
+                aria-describedby="form-data"
+                name="examNameSv"
+                value={formData.examNameSv}
+                variant="outlined"
+                onChange={handleInputChange}
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
+                label={t("educationForm.examNameSv")}
+                autoFocus
+                size="small"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                id="examNameEn"
+                aria-describedby="form-data"
+                name="examNameEn"
+                value={formData.examNameEn}
+                variant="outlined"
+                onChange={handleInputChange}
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
+                label={t("educationForm.examNameEn")}
+                autoFocus
+                size="small"
+                fullWidth
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField

@@ -5,7 +5,7 @@ import { Button, CircularProgress, Container } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import EducationModal from "./education-modal/index";
 import { useAppSelector } from "../../../../../redux/hooks/hooks";
-import { GetEducationResponse, GetEducationsResponse } from "./interfaces/education-interfaces";
+import { GetEducationsResponse } from "./interfaces/education-interfaces";
 import { useQuery } from "@apollo/client";
 import { GET_EDUCATIONS } from "./gql";
 import EducationDisplay from "./education-display/index";

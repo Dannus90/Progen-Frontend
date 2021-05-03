@@ -1,7 +1,9 @@
 export interface EditEducationData {
   id: string;
-  educationName: string;
-  examName: string;
+  educationNameSv: string;
+  educationNameEn: string;
+  examNameSv: string;
+  examNameEn: string;
   subjectAreaSv: string;
   subjectAreaEn: string;
   grade: string;
@@ -19,8 +21,10 @@ export interface EditEducationData {
 
 export interface EducationInput {
   educationId?: string;
-  educationName: string;
-  examName: string;
+  educationNameSv: string;
+  educationNameEn: string;
+  examNameSv: string;
+  examNameEn: string;
   subjectAreaSv: string;
   subjectAreaEn: string;
   grade: string;
@@ -45,8 +49,10 @@ export interface DeleteEducationInput {
 
 export interface EditEducationInput {
   educationId: string;
-  educationName: string;
-  examName: string;
+  educationNameSv: string;
+  educationNameEn: string;
+  examNameSv: string;
+  examNameEn: string;
   subjectAreaSv: string;
   subjectAreaEn: string;
   grade: string;
@@ -63,8 +69,10 @@ export interface EditEducationInput {
 export interface GetEducationResponse {
   id: string;
   userId: string;
-  educationName: string;
-  examName: string;
+  educationNameSv: string;
+  educationNameEn: string;
+  examNameSv: string;
+  examNameEn: string;
   subjectAreaSv: string;
   subjectAreaEn: string;
   grade: string;

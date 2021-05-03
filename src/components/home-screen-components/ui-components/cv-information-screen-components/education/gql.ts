@@ -8,8 +8,10 @@ export const GET_EDUCATIONS = gql`
         educations {
           id
           userId
-          educationName
-          examName
+          educationNameSv
+          educationNameEn
+          examNameSv
+          examNameEn
           subjectAreaSv
           subjectAreaEn
           descriptionSv

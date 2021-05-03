@@ -30,8 +30,10 @@ export const UPDATE_EDUCATION = gql`
         education {
           id
           userId
-          educationName
-          examName
+          educationNameSv
+          educationNameEn
+          examNameSv
+          examNameEn
           subjectAreaSv
           subjectAreaEn
           descriptionSv

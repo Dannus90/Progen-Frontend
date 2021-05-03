@@ -6,6 +6,8 @@ type HttpMethods = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 const { accessToken } = getToken();
 const auth = `Bearer ${accessToken}`;
 
+console.log(accessToken);
+
 const headerOptionsAuth = (authorization: string) => {
   return {
     headers: {

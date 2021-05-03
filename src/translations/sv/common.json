@@ -53,8 +53,10 @@
     "updateWorkExperience": "Updatera arbetslivserfarenhet"
   },
   "educationForm": {
-    "educationName": "Skol-/Utbildningsnamn",
-    "examName": "Examen",
+    "educationNameSv": "Skol/-utbildningsnamn på svenska",
+    "educationNameEn": "Skol/-utbildningsnamn på engelska",
+    "examNameSv": "Examen på svenska",
+    "examNameEn": "Examen på engelska",
     "subjectAreaSv": "Ämnesområde på svenska",
     "subjectAreaEn": "Ämnesområde på engelska",
     "grade": "Betyg",

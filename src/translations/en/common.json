@@ -53,8 +53,10 @@
     "updateWorkExperience": "Update workexperience"
   },
   "educationForm": {
-    "educationName": "School/Education name",
-    "examName": "Exam name",
+    "educationNameSv": "School/Education name in swedish",
+    "educationNameEn": "School/Education name in english",
+    "examNameSv": "Exam name in swedish",
+    "examNameEn": "Exam name in english",
     "subjectAreaSv": "Subject area in swedish",
     "subjectAreaEn": "Subject area in english",
     "grade": "Grade",

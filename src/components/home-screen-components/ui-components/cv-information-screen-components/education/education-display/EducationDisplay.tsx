@@ -14,18 +14,22 @@ interface Props {
 }
 
 const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): JSX.Element => {
-  const [t, i18n] = useTranslation("cvInformation");
+  const [t] = useTranslation("cvInformation");
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
 
   const citySv = educationData.citySv;
   const countrySv = educationData.countrySv;
   const subjectAreaSv = educationData.subjectAreaSv;
   const descriptionSv = educationData.descriptionSv;
+  const educationNameSv = educationData.educationNameSv;
+  const examNameSv = educationData.examNameSv;
 
   const cityEn = educationData.cityEn;
   const countryEn = educationData.countryEn;
   const subjectAreaEn = educationData.subjectAreaEn;
   const descriptionEn = educationData.descriptionEn;
+  const educationNameEn = educationData.educationNameEn;
+  const examNameEn = educationData.educationNameSv;
 
   const resolveDate = (): string => {
     return `${transformDate(educationData.dateStarted)} - ${transformDate(
@@ -48,9 +52,9 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
           {t("education.modal.swedishVersion")}
         </Typography>
         <div className={styles.headingIconWrapper}>
-          <Typography className={styles.education}>{editData.educationName}</Typography>
+          <Typography className={styles.education}>{educationNameSv}</Typography>
         </div>
-        <Typography className={styles.exam}>{editData.examName}</Typography>
+        <Typography className={styles.exam}>{examNameSv}</Typography>
         <Typography className={styles.subject}>{subjectAreaSv}</Typography>
         {editData.grade && (
           <Typography className={styles.grade}>
@@ -76,8 +80,8 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
             onClick={() => setEditModalOpen(true)}
           />
         </div>
-        <Typography className={styles.education}>{editData.educationName}</Typography>
-        <Typography className={styles.exam}>{editData.examName}</Typography>
+        <Typography className={styles.education}>{educationNameEn}</Typography>
+        <Typography className={styles.exam}>{examNameEn}</Typography>
         <Typography className={styles.subject}>{subjectAreaEn}</Typography>
         {editData.grade && (
           <Typography className={styles.grade}>

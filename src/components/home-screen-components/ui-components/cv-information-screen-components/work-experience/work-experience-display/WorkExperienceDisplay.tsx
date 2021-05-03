@@ -20,7 +20,7 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
   styles,
   workExperienceData
 }): JSX.Element => {
-  const [t, i18n] = useTranslation("cvInformation");
+  const [t] = useTranslation("cvInformation");
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
 
   const citySv = workExperienceData.citySv;

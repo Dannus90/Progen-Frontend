@@ -5,7 +5,7 @@ export interface GeneralState {
   profileClicked: boolean;
 }
 
-const initialState: GeneralState = {
+export const initialState: GeneralState = {
   accountClicked: false,
   profileClicked: false
 };

@@ -19,7 +19,7 @@ interface Props {
 const EducationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const [createOpen, setCreateOpen] = useState<boolean>(false);
-  const { education } = useAppSelector((state) => state);
+  const { educationState } = useAppSelector((state) => state);
   const { refetch, error, loading, data } = useQuery<GetEducationsResponse>(GET_EDUCATIONS);
 
   const handleCreateModalClose = (): void => {
@@ -32,7 +32,7 @@ const EducationComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     } catch (err) {
       console.error(err);
     }
-  }, [education.educationModified]);
+  }, [educationState.educationModified]);
 
   let sortedEducations = data?.education.getEducations.educations;
 

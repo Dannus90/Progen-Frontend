@@ -5,18 +5,18 @@ import { workExperienceSlice, initialState } from "../workExperienceReducer";
 describe("WorkExperience Redux", () => {
   describe("WorkExperience redux setup is correct", () => {
     it("Is defined correctly", () => {
-      expect(rootReducer.education).toBeDefined();
+      expect(rootReducer.workExperienceState).toBeDefined();
       expect(workExperienceSlice.name).toBe("workExperience");
     })
   })
 
   describe("It updates workexperience modified state correctly", () => {
     it("Toggles between true and false correctly", () => {
-      const state = rootReducer.workExperience(initialState, notifyWorkExperienceModified())
+      const state = rootReducer.workExperienceState(initialState, notifyWorkExperienceModified())
 
       expect(state.workExperienceModified).toBe(true);
 
-      const updatedState = rootReducer.workExperience(state, notifyWorkExperienceModified())
+      const updatedState = rootReducer.workExperienceState(state, notifyWorkExperienceModified())
       expect(updatedState.workExperienceModified).toBe(false);
     })
   })

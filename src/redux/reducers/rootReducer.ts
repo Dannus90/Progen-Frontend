@@ -8,6 +8,6 @@ export const rootReducer = {
   counterState: counterReducer,
   userDataState: userDataReducer,
   generalState: generalReducer,
-  workExperience: workExperienceReducer,
-  education: educationReducer
+  workExperienceState: workExperienceReducer,
+  educationState: educationReducer
 };

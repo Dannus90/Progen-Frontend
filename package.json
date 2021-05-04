@@ -36,8 +36,7 @@
     "build": "react-scripts build",
     "formatlint:fix": "eslint --fix . && prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "lint:fix": "eslint --fix .",
-    "test": "react-scripts test",
-    "test:watch": "jest --watch"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [

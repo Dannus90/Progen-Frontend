@@ -11,8 +11,8 @@ import { Alert, AlertTitle } from "@material-ui/lab";
 import { useTranslation } from "react-i18next";
 import { ProfileFormDataState } from "../ui-components/profile-form/interfaces/profile-form-interfaces";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
-import { setHasLoaded, setUserData } from "../../../redux/reducers/user-data/userDataReducer";
-import { profileClicked } from "../../../redux/reducers/user-data/generalReducer";
+import { profileClicked } from "../../../redux/reducers/general-reducer/actions";
+import { setHasLoaded, setUserData } from "../../../redux/reducers/user-data/actions";
 
 interface Props {
   styles: ClassNameMap<ProfileComponentClasses>;

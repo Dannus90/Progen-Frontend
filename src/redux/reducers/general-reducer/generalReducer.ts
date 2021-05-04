@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
 
 export interface GeneralState {
   accountClicked: boolean;
@@ -23,11 +22,5 @@ export const generalSlice = createSlice({
     }
   }
 });
-
-export const { accountClicked, profileClicked } = generalSlice.actions;
-export const accountIsClicked = (state: RootState): boolean => state.generalState.accountClicked;
-export const profileIsClicked = (state: RootState): boolean => state.generalState.profileClicked;
-
-export const selectUserData = (state: RootState): GeneralState => state.generalState;
 
 export default generalSlice.reducer;

@@ -4,7 +4,7 @@ export interface WorkExperienceState {
   workExperienceModified: boolean;
 }
 
-const initialState: WorkExperienceState = {
+export const initialState: WorkExperienceState = {
   workExperienceModified: false
 };
 

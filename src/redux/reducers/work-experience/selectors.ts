@@ -1,4 +1,4 @@
 import { RootState } from "../../store";
 
-export const dataAddedOrDeleted = (state: RootState): boolean =>
+export const workExperiencedataAddedOrDeleted = (state: RootState): boolean =>
   state.workExperience.workExperienceModified;

@@ -21,7 +21,7 @@ interface UserNameData {
   lastName: acceptedTypes;
 }
 
-const initialState: UserDataState = {
+export const initialState: UserDataState = {
   firstName: "",
   lastName: "",
   email: "",

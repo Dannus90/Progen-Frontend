@@ -7,18 +7,17 @@ describe("Education Redux", () => {
     it("Is defined correctly", () => {
       expect(rootReducer.educationState).toBeDefined();
       expect(educationSlice.name).toBe("education");
-
-    })
-  })
+    });
+  });
 
   describe("It updates education modified state correctly", () => {
     it("Toggles between true and false correctly", () => {
-      const state = rootReducer.educationState(initialState, notifyEducationModified())
+      const state = rootReducer.educationState(initialState, notifyEducationModified());
 
       expect(state.educationModified).toBe(true);
 
-      const updatedState = rootReducer.educationState(state, notifyEducationModified())
+      const updatedState = rootReducer.educationState(state, notifyEducationModified());
       expect(updatedState.educationModified).toBe(false);
-    })
-  })
-})
+    });
+  });
+});

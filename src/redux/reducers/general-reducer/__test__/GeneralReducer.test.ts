@@ -7,28 +7,28 @@ describe("General Redux", () => {
     it("Is defined correctly", () => {
       expect(rootReducer.generalState).toBeDefined();
       expect(generalSlice.name).toBe("general");
-    })
-  })
+    });
+  });
 
   describe("It updates general account clicked state correctly", () => {
     it("Toggles between true and false correctly", () => {
-      const state = rootReducer.generalState(initialState, accountClicked(true))
+      const state = rootReducer.generalState(initialState, accountClicked(true));
 
       expect(state.accountClicked).toBe(true);
 
-      const updatedState = rootReducer.generalState(state, accountClicked(false))
+      const updatedState = rootReducer.generalState(state, accountClicked(false));
       expect(updatedState.accountClicked).toBe(false);
-    })
-  })
+    });
+  });
 
   describe("It updates general profile clicked state correctly", () => {
     it("Toggles between true and false correctly", () => {
-      const state = rootReducer.generalState(initialState, profileClicked(true))
+      const state = rootReducer.generalState(initialState, profileClicked(true));
 
       expect(state.profileClicked).toBe(true);
 
-      const updatedState = rootReducer.generalState(state, profileClicked(false))
+      const updatedState = rootReducer.generalState(state, profileClicked(false));
       expect(updatedState.profileClicked).toBe(false);
-    })
-  })
-})
+    });
+  });
+});

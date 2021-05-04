@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface WorkExperienceState {
+export interface EducationState {
   educationModified: boolean;
 }
 
-const initialState: WorkExperienceState = {
+export const initialState: EducationState = {
   educationModified: false
 };
 

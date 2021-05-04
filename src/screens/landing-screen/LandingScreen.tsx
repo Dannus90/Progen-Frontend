@@ -8,7 +8,11 @@ interface Props {
 }
 
 const LandingScreen: React.FC<Props> = ({ styles, children }): JSX.Element => {
-  return <div className={styles.pageWrapperStyles}>{children}</div>;
+  return (
+    <div className={styles.pageWrapperStyles} data-testid="login-wrapper">
+      {children}
+    </div>
+  );
 };
 
 export default LandingScreen;

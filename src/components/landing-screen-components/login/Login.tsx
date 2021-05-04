@@ -82,7 +82,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
   }, [data]);
 
   return (
-    <Paper elevation={2} className={`${styles.loginPaper}`}>
+    <Paper elevation={2} className={`${styles.loginPaper}`} data-testid="login-page">
       <Container maxWidth="sm" className={`${styles.loginContainer}`}>
         <Typography component="h1" variant="h6" className={`${styles.headingStyle}`}>
           {t("form.header")}

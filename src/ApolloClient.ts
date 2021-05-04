@@ -2,20 +2,21 @@ import { ApolloClient, ApolloLink, createHttpLink, InMemoryCache } from "@apollo
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import { getNewToken, getToken, setTokens } from "./utils/auth-helper";
+import fetch from "cross-fetch";
 
 // More information regarding auth handling -> https://www.apollographql.com/docs/react/networking/authentication/#header
 const { REACT_APP_PROGEN_GRAPHQL_URL } = process.env;
 
 const httpLink = createHttpLink({
-  uri: REACT_APP_PROGEN_GRAPHQL_URL
+  uri: REACT_APP_PROGEN_GRAPHQL_URL,
+  fetch
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
+  // Get the authentication token from local storage if it exists
   const tokenData = getToken();
-  // return the headers to the context so httpLink can read them
+  // Return the headers to the context so httpLink can read them
 
-  console.log(tokenData);
   return {
     headers: {
       ...headers,

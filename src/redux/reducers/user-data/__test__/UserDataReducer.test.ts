@@ -1,7 +1,7 @@
 import { userDataSlice, initialState } from "./../userDataReducer";
 import { rootReducer } from "../../rootReducer";
 
-import { setProfileImageData, setUserData } from "../actions";
+import { setHasLoaded, setName, setProfileImageData, setUserData } from "../actions";
 import { selectUserData } from "../selectors";
 
 describe("UserData Redux", () => {
@@ -54,6 +54,32 @@ describe("UserData Redux", () => {
           publicId: state.publicId
         })
       );
+    });
+  });
+
+  describe("Sets name correctly", () => {
+    it("Correctly updates the name", () => {
+      const nameData = {
+        firstName: "Testname",
+        lastName: "Testname2"
+      };
+      const state = rootReducer.userDataState(initialState, setName(nameData));
+     
+      expect(state.firstName).toEqual("Testname");
+      expect(state.lastName).toEqual("Testname2");
+    });
+  });
+
+  describe("Sets loading correctly", () => {
+    it("Correctly updates the loading state", () => {
+      const state = rootReducer.userDataState(initialState, setHasLoaded());
+     
+      expect(state.beenLoaded).toEqual(true);
+
+      const updatedState = rootReducer.userDataState(state, setHasLoaded());
+
+      expect(updatedState.beenLoaded).toEqual(false);
+
     });
   });
 });

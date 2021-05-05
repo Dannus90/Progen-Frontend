@@ -8,7 +8,10 @@
       "es5",
       "es6"
     ],
-    "typeRoots": ["node_modules/@types", "src/config"],
+    "typeRoots": [
+      "node_modules/@types",
+      "src/config"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -18,7 +21,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "react-jsx",
     "experimentalDecorators": true,
     "noImplicitAny": true,

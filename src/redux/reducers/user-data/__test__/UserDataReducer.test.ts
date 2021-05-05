@@ -1,8 +1,8 @@
-import { userDataSlice } from './../userDataReducer';
+import { userDataSlice, initialState } from "./../userDataReducer";
 import { rootReducer } from "../../rootReducer";
-import { initialState } from "../userDataReducer";
-import { setProfileImageData, setUserData } from '../actions';
-import { selectUserData } from '../selectors';
+
+import { setProfileImageData, setUserData } from "../actions";
+import { selectUserData } from "../selectors";
 
 describe("UserData Redux", () => {
   describe("User data redux setup is correct", () => {
@@ -14,7 +14,10 @@ describe("UserData Redux", () => {
 
   describe("Set profile image action is working", () => {
     it("Correctly updates the state", () => {
-      const state = rootReducer.userDataState(initialState, setProfileImageData({ profileImagePublicId: "testId", profileImage: "testUrl"}));
+      const state = rootReducer.userDataState(
+        initialState,
+        setProfileImageData({ profileImagePublicId: "testId", profileImage: "testUrl" })
+      );
 
       expect(state.profileImage).toBe("testUrl");
       expect(state.publicId).toBe("testId");
@@ -35,22 +38,24 @@ describe("UserData Redux", () => {
         profileImage: "testImage",
         publicId: "wrtwert23452345345",
         beenLoaded: true
-      }
+      };
       const state = rootReducer.userDataState(initialState, setUserData(stateForUpdate));
 
-      expect(JSON.stringify(stateForUpdate)).toEqual(JSON.stringify({
-        firstName: "Testname",
-        lastName: "Testname2",
-        email: "persson.daniel.1990@gmail.com",
-        phoneNumber: "073-3249826",
-        countrySv: "Sverige",
-        citySv: "Göteborg",
-        countryEn: "Sweden",
-        cityEn: "Gothenburg",
-        profileImage: "testImage",
-        publicId: "wrtwert23452345345",
-        beenLoaded: true
-      }))
+      expect(JSON.stringify(stateForUpdate)).toEqual(
+        JSON.stringify({
+          firstName: "Testname",
+          lastName: "Testname2",
+          email: "persson.daniel.1990@gmail.com",
+          phoneNumber: "073-3249826",
+          countrySv: "Sverige",
+          citySv: "Göteborg",
+          countryEn: "Sweden",
+          cityEn: "Gothenburg",
+          profileImage: "testImage",
+          publicId: "wrtwert23452345345",
+          beenLoaded: true
+        })
+      );
     });
   });
 });

@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountComponentClasses } from "./index";
 import { useDispatch } from "react-redux";
-import { accountClicked } from "../../../redux/reducers/user-data/generalReducer";
 import { Card, Container, Typography } from "@material-ui/core";
 import AccountEmailForm from "../ui-components/account-email-form/index";
 import AccountPasswordForm from "../ui-components/account-password-form/index";
 import { useTranslation } from "react-i18next";
+import { accountClicked } from "../../../redux/reducers/general-reducer/actions";
 
 interface Props {
   styles: ClassNameMap<AccountComponentClasses>;

@@ -20,7 +20,7 @@ import LanguagePicker from "../../common/language-picker/index";
 import { useTranslation } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { accountClicked, profileClicked } from "../../../redux/reducers/user-data/generalReducer";
+import { accountClicked, profileClicked } from "../../../redux/reducers/general-reducer/actions";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;

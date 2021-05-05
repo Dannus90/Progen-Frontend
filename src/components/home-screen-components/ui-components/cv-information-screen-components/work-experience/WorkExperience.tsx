@@ -19,7 +19,7 @@ interface Props {
 const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const [createOpen, setCreateOpen] = useState<boolean>(false);
-  const { workExperience } = useAppSelector((state) => state);
+  const { workExperienceState } = useAppSelector((state) => state);
   const { refetch, error, loading, data } = useQuery<GetWorkExperiencesResponse>(
     GET_WORK_EXPERIENCES
   );
@@ -34,7 +34,7 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     } catch (err) {
       console.error(err);
     }
-  }, [workExperience.workExperienceModified]);
+  }, [workExperienceState.workExperienceModified]);
 
   let sortedWorkExperiences = data?.workExperience.getWorkExperiences.workExperiences;
 

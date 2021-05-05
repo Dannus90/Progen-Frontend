@@ -10,8 +10,8 @@ import React, { useState } from "react";
 import { Avatar, CircularProgress, Typography } from "@material-ui/core";
 import { uploadImage } from "../../../api/api-calls";
 import { useAppDispatch } from "../../../redux/hooks/hooks";
-import { setProfileImageData } from "../../../redux/reducers/user-data/userDataReducer";
 import { Alert } from "@material-ui/lab";
+import { setProfileImageData } from "../../../redux/reducers/user-data/actions";
 
 interface FileState {
   uploading: boolean;

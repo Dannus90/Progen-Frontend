@@ -1,3 +1,6 @@
+import { RootState } from "../../store";
+import { UserDataState } from "./userDataReducer";
+
 export const selectFullName = (state: RootState): string =>
   `${state.userDataState.firstName} ${state.userDataState.lastName}`;
 

@@ -8,8 +8,8 @@ import { useState } from "react";
 import { CircularProgress } from "@material-ui/core";
 import { deleteImage } from "../../../api/api-calls";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
-import { setProfileImageData } from "../../../redux/reducers/user-data/userDataReducer";
 import { Alert } from "@material-ui/lab";
+import { setProfileImageData } from "../../../redux/reducers/user-data/actions";
 
 type DeleteState = {
   error: null | string;

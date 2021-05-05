@@ -10,10 +10,6 @@ before_script:
 
 stages:
   - audit
-  - build
-  - lint
-  - test
-  - production
 
 script:
   - echo "Audit Stage"
@@ -24,26 +20,3 @@ audit:
 
 script:
     - echo "Build stage"
-
-build: 
-  stage: build
-  - npm install
-  - npm build
-  artifacts:
-    paths:
-      - build/
-
-  script:
-  - echo "Deploying to production server"
-
-  deploy: 
-  stage: production
-  script:
-  - npm install
-  - npm run build
-  - rm -rf public
-  - mv build public
-  artifacts:
-    paths:
-    - public
-

@@ -1,8 +1,6 @@
 import * as React from "react";
 import { cleanup, render, RenderResult } from "@testing-library/react";
 import LandingScreen from "../index";
-import Login from "../../../components/landing-screen-components/login/Login";
-import { makeStyles } from "@material-ui/core";
 
 let documentBody: RenderResult;
 

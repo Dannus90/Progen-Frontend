@@ -22,8 +22,8 @@ build:
   stage: build
   script:
     - rm -rf node_modules
-    - npm install
-    - npm run build
+    - yarn install
+    - yarn build
   artifacts:
     paths:
       - build/
@@ -31,8 +31,9 @@ build:
 deploy:
   stage: production
   script:
-    - npm install
-    - npm run build
+    - rm -rf node_modules
+    - yarn install
+    - yarn build
     - rm -rf public
     - mv build public
   artifacts:

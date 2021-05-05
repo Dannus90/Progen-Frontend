@@ -1,9 +1,5 @@
 image: node@latest
 
-  cache:
-    paths:
-      - node_modules/
-
   before_script:
     - rm -rf build # remove the existing build
     - CI=false npm install # install required packages
@@ -12,16 +8,24 @@ image: node@latest
     - build
     - lint
     - test
-    - deploy
+    - production
 
     script:
     - echo "Build stage"
 
     build: 
       stage: build
+      - npm install
+      - npm build
+      artifacts:
+        paths:
+         - build/
+
+    script:
+    - echo "Deploying to production server"
 
     deploy: 
-      stage: deploy
+      stage: production
       script:
       - npm install
       - npm run build

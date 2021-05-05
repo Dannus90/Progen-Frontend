@@ -12,8 +12,6 @@ export interface CertificatesLicensesComponentStyles extends Theme {
 export type CertificatesLicensesComponentClasses = "certificatesLicensesWrapperStyles";
 
 const CertificatesLicensesComponentWrapper: React.FC = (): JSX.Element => {
-  const theme = useTheme<MainTheme>();
-
   const certificatesLicensesComponentStyles = makeStyles({
     certificatesLicensesWrapperStyles: {
       backgroundColor: "red"

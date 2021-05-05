@@ -12,8 +12,6 @@ export interface SkillsComponentStyles extends Theme {
 export type SkillsComponentClasses = "skillsWrapperStyles";
 
 const SkillsComponentWrapper: React.FC = (): JSX.Element => {
-  const theme = useTheme<MainTheme>();
-
   const skillsComponentStyles = makeStyles({
     skillsWrapperStyles: {
       backgroundColor: "red"

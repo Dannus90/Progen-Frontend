@@ -12,8 +12,6 @@ export interface OtherComponentStyles extends Theme {
 export type OtherComponentClasses = "otherWrapperStyles";
 
 const OtherComponentWrapper: React.FC = (): JSX.Element => {
-  const theme = useTheme<MainTheme>();
-
   const otherComponentStyles = makeStyles({
     otherWrapperStyles: {
       backgroundColor: "red"

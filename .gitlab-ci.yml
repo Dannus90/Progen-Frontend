@@ -18,7 +18,7 @@ stages:
 audit:
   stage: audit
   script:
-    - npm audit
+    - yarn audit
 
 build:
   stage: build

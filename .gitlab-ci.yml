@@ -9,33 +9,41 @@ before_script:
   - CI=false npm install # install required packages
 
 stages:
+  - audit
   - build
   - lint
   - test
   - production
 
 script:
-- echo "Build stage"
+  - echo "Audit Stage"
 
-build: 
-  stage: build
-  - npm install
-  - npm build
-  artifacts:
-    paths:
-      - build/
+audit: 
+    stage: audit
+    script: npm audit
 
 script:
-- echo "Deploying to production server"
+    - echo "Build stage"
 
-deploy: 
-  stage: production
-  script:
-  - npm install
-  - npm run build
-  - rm -rf public
-  - mv build public
-  artifacts:
-    paths:
-    - public
+build: 
+    stage: build
+    - npm install
+    - npm build
+    artifacts:
+      paths:
+        - build/
+
+    script:
+    - echo "Deploying to production server"
+
+    deploy: 
+    stage: production
+    script:
+    - npm install
+    - npm run build
+    - rm -rf public
+    - mv build public
+    artifacts:
+      paths:
+      - public
 

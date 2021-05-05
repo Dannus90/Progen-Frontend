@@ -6,11 +6,12 @@ cache:
 
 before_script:
   - rm -rf build # remove the existing build
-  - CI=false npm install # install required packages
 
 stages:
   - audit
   - build
+  - lint
+  - test
   - production
 
 audit:
@@ -27,6 +28,16 @@ build:
   artifacts:
     paths:
       - build/
+
+lint:
+  stage: lint
+  script:
+    - yarn lint:ci
+
+test:
+  stage: test
+  script:
+    - yarn test:ci
 
 deploy:
   stage: production

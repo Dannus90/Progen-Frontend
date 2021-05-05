@@ -1,18 +1,24 @@
-import { setTokens } from './../auth-helper';
-import { getToken } from "../auth-helper";
-import { createDate, getCurrentMonth, getDate, getDateStandardFormat, getProfileCardDateText, transformDate } from '../dates/date-helper';
+import { setTokens, getToken } from "./../auth-helper";
+
+import {
+  createDate,
+  getCurrentMonth,
+  getDate,
+  getDateStandardFormat,
+  transformDate
+} from "../dates/date-helper";
 
 describe("Token management works", () => {
   describe("Set and retrieve token from localstorage works", () => {
     it("Is works correclty", () => {
-      const tokenData = getToken()
+      const tokenData = getToken();
 
       expect(tokenData).toBe(undefined);
-      
+
       const newTokenData = {
         accessToken: "wrwqettqwegqwetqwetqwet",
         refreshToken: "4wergwrgqwrogwergwerg"
-      }
+      };
 
       setTokens(newTokenData);
       const updatedTokenData = getToken();
@@ -28,7 +34,7 @@ describe("Date helper works", () => {
     it("Is works", () => {
       const currentDate = getDateStandardFormat();
 
-      expect(currentDate.includes((new Date().getFullYear().toString()))).toBe(true);
+      expect(currentDate.includes(new Date().getFullYear().toString())).toBe(true);
       expect(currentDate.includes(String(new Date().getMonth() + 1).padStart(2, "0"))).toBe(true);
       expect(currentDate.includes(String(new Date().getDate()).padStart(2, "0"))).toBe(true);
     });
@@ -71,4 +77,3 @@ describe("Date helper works", () => {
     });
   });
 });
-

@@ -1,6 +1,6 @@
 {
   "appStates": {
-      "generalLoading": "Loading..."
+    "generalLoading": "Loading..."
   },
   "buttonText": {
     "close": "Close",

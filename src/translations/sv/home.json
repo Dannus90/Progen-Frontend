@@ -1,8 +1,8 @@
 {
   "tabs": {
-      "profile": "Profil",
-      "account": "Konto",
-      "baseCv": "CV"
+    "profile": "Profil",
+    "account": "Konto",
+    "baseCv": "CV"
   },
   "profileCard": {
     "uploadImage": "VÄLJ PROFILBILD",

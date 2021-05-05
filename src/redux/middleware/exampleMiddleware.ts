@@ -1,10 +1,11 @@
-import { Middleware } from "redux";
+/* import { Middleware } from "redux";
 
 import { RootState } from "../store";
 
 export const exampleMiddleware: Middleware<
-  {}, // Most middleware do not modify the dispatch return value
+  Record<string, unknown>, // Most middleware do not modify the dispatch return value
   RootState
 > = (storeApi) => (next) => (action) => {
   const state = storeApi.getState(); // correctly typed as RootState
 };
+ */

@@ -1,17 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "es5",
-      "es6"
-    ],
-    "typeRoots": [
-      "node_modules/@types",
-      "src/config"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext", "es5", "es6"],
+    "typeRoots": ["node_modules/@types", "src/config"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -30,12 +21,6 @@
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

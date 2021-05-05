@@ -26,24 +26,24 @@ script:
     - echo "Build stage"
 
 build: 
-    stage: build
-    - npm install
-    - npm build
-    artifacts:
-      paths:
-        - build/
+  stage: build
+  - npm install
+  - npm build
+  artifacts:
+    paths:
+      - build/
 
-    script:
-    - echo "Deploying to production server"
+  script:
+  - echo "Deploying to production server"
 
-    deploy: 
-    stage: production
-    script:
-    - npm install
-    - npm run build
-    - rm -rf public
-    - mv build public
-    artifacts:
-      paths:
-      - public
+  deploy: 
+  stage: production
+  script:
+  - npm install
+  - npm run build
+  - rm -rf public
+  - mv build public
+  artifacts:
+    paths:
+    - public
 

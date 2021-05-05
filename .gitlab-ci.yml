@@ -10,6 +10,8 @@ before_script:
 
 stages:
   - audit
+  - build
+  - production
 
 script:
   - echo "Audit Stage"
@@ -17,7 +19,7 @@ script:
 audit: 
     stage: audit
     script: 
-        - npm audit
+    - npm audit
 
 script:
     - echo "Build stage"

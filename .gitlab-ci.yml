@@ -6,6 +6,7 @@ cache:
 
 before_script:
   - rm -rf build # remove the existing build
+  - CI=false yarn install # install required packages
 
 stages:
   - audit

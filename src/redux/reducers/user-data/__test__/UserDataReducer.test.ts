@@ -36,24 +36,22 @@ describe("UserData Redux", () => {
         countryEn: "Sweden",
         cityEn: "Gothenburg",
         profileImage: "testImage",
-        publicId: "wrtwert23452345345",
-        beenLoaded: true
+        publicId: "wrtwert23452345345"
       };
       const state = rootReducer.userDataState(initialState, setUserData(stateForUpdate));
-
+     
       expect(JSON.stringify(stateForUpdate)).toEqual(
         JSON.stringify({
-          firstName: "Testname",
-          lastName: "Testname2",
-          email: "persson.daniel.1990@gmail.com",
-          phoneNumber: "073-3249826",
-          countrySv: "Sverige",
-          citySv: "Göteborg",
-          countryEn: "Sweden",
-          cityEn: "Gothenburg",
-          profileImage: "testImage",
-          publicId: "wrtwert23452345345",
-          beenLoaded: true
+          firstName:  state.firstName,
+          lastName: state.lastName,
+          email: state.email,
+          phoneNumber: state.phoneNumber,
+          countrySv: state.countrySv,
+          citySv: state.citySv,
+          countryEn: state.countryEn,
+          cityEn: state.cityEn,
+          profileImage: state.profileImage,
+          publicId: state.publicId
         })
       );
     });

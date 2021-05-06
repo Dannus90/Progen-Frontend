@@ -37,6 +37,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "formatlint:fix": "eslint --fix . && prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "heroku-postbuild": "npm run build",
     "lint:ci": "eslint --fix . && prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
     "lint:fix": "eslint --fix .",
     "test": "jest",

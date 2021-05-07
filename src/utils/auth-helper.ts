@@ -7,13 +7,16 @@ interface TokenData {
 }
 
 export const getToken = (): TokenData => {
-  let tokenData;
+  let tokenData: TokenData | undefined;
   const retrievedData = localStorage.getItem("tokenData");
   if (retrievedData) {
     tokenData = JSON.parse(retrievedData);
   }
 
-  return tokenData;
+  return {
+    accessToken: tokenData?.accessToken ?? "",
+    refreshToken: tokenData?.refreshToken ?? ""
+  };
 };
 
 export const setTokens = (tokenData: TokenData): void => {

@@ -39,5 +39,11 @@
       "englishVersion": "Engelsk version",
       "grade": "Betyg"
     }
+  },
+  "otherInformation": {
+    "mainHeader": "Övrig information",
+    "drivingLicensesEn": "Körkort på engelska",
+    "drivingLicensesSv": "Körkort på svenska",
+    "clearDrivingLicenseFields": "Rensa körkorts information"
   }
 }

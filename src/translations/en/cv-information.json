@@ -39,5 +39,11 @@
       "englishVersion": "English version",
       "grade": "Grade"
     }
+  },
+  "otherInformation": {
+    "mainHeader": "Other information",
+    "drivingLicensesEn": "Driving Licenses in english",
+    "drivingLicensesSv": "Driving Licenses in swedish",
+    "clearDrivingLicenseFields": "Clear driving license information"
   }
 }

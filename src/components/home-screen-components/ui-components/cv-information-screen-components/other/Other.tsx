@@ -139,7 +139,7 @@ const OtherComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             className={`${styles.alertStyle}`}
             onClose={() => removeAlertDisplay()}
             severity="success">
-            {t("aboutMe.successfulUpdate")}
+            {t("otherInformation.successfulUpdate")}
           </Alert>
         )}
         {displayAlertMessage && error && (
@@ -171,7 +171,7 @@ const OtherComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           {userPresentationLoading ? (
             <CircularProgress size={20} color="inherit" />
           ) : (
-            t("aboutMe.submit")
+            t("otherInformation.submit")
           )}
         </Button>
       </form>

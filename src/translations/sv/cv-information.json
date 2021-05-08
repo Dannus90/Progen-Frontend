@@ -44,6 +44,8 @@
     "mainHeader": "Övrig information",
     "drivingLicensesEn": "Körkort på engelska",
     "drivingLicensesSv": "Körkort på svenska",
-    "clearDrivingLicenseFields": "Rensa körkorts information"
+    "clearDrivingLicenseFields": "Rensa körkorts information",
+    "submit": "Spara körkortsinformation",
+    "successfulUpdate": "Körkortsinformationen uppdaterades framgångsrikt"
   }
 }

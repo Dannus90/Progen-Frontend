@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { OtherComponentClasses } from "./index";
 import {
@@ -83,6 +83,15 @@ const OtherComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const clearEnglishFormFields = (): void => {
     setFormData({ ...formData, drivingLicenseEn: "" });
   };
+
+  useMemo(() => {
+    const otherInformation = data?.otherInformation.getOtherInformation.otherInformation;
+    setFormData({
+      id: otherInformation?.id,
+      drivingLicenseEn: otherInformation?.drivingLicenseEn,
+      drivingLicenseSv: otherInformation?.drivingLicenseSv
+    });
+  }, [data]);
 
   return (
     <div className={styles.otherWrapperStyles}>

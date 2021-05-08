@@ -4,14 +4,14 @@ export interface UpdateOtherInformationInput {
 }
 
 export interface OtherInformationResponse {
-  otherInformatiion: {
+  otherInformation: {
     getOtherInformation: {
       statusCode: number;
       otherInformation: {
         id: string;
         userId: string;
-        driverLicenseSv: string;
-        driverLicenseEn: string;
+        drivingLicenseSv: string;
+        drivingLicenseEn: string;
         createdAt: string;
         updatedAt: string;
       };

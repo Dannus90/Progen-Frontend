@@ -1,5 +1,4 @@
-.PrivateTabIndicator-vertical-65,
-.PrivateTabIndicator-colorSecondary-94 {
+div.MuiTabs-root.MuiTabs-vertical > div > span {
   height: 15px !important;
   width: 15px !important;
   border-radius: 50px !important;

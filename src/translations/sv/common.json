@@ -71,5 +71,11 @@
     "saveEducation": "Spara utbildning",
     "updateEducation": "Updatera utbildning",
     "leaveEmpty": "Skriv inget datum om pågående"
+  },
+  "languagesForm": {
+    "languageSv": "Språk på svenska",
+    "languageEn": "Språk på engelska",
+    "saveLanguage": "Spara språk",
+    "updateLanguage": "Update språk"
   }
 }

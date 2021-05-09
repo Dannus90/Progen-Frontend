@@ -71,5 +71,11 @@
     "saveEducation": "Save education",
     "updateEducation": "Update education",
     "leaveEmpty": "Leave empty if ongoing"
+  },
+  "languagesForm": {
+    "languageSv": "Language in swedish",
+    "languageEn": "Language in english",
+    "saveLanguage": "Save language",
+    "updateLanguage": "Update language"
   }
 }

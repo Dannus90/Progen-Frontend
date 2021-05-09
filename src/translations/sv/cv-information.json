@@ -50,6 +50,14 @@
     "clearDrivingLicenseFields": "Rensa körkorts information",
     "submit": "Spara körkortsinformation",
     "successfulUpdate": "Körkortsinformationen uppdaterades framgångsrikt",
-    "languagesHeader": "Språk"
+    "languagesHeader": "Språk",
+    "createLanguageHeader": "Skapa ett nytt språk",
+    "language": {
+      "modal": {
+        "languageSwedish": "Språk på svenska",
+        "languageEnglish": "Språk på engelska",
+        "edit": "Ändra eller ta bort språk"
+      }
+    }
   }
 }

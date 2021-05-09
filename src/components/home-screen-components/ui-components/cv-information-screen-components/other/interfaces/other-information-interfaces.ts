@@ -18,3 +18,19 @@ export interface OtherInformationResponse {
     };
   };
 }
+
+export interface GetLanguageResponse {
+  id: string;
+  userId: string;
+  languageSv: string;
+  languageEn: string;
+}
+
+export interface GetLanguagesResponse {
+  language: {
+    getLanguages: {
+      statusCode: number;
+      languages: Array<GetLanguageResponse>;
+    };
+  };
+}

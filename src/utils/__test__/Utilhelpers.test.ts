@@ -13,7 +13,7 @@ describe("Token management works", () => {
     it("Is works correclty", () => {
       const tokenData = getToken();
 
-      expect(tokenData).toStrictEqual({"accessToken": "", "refreshToken": ""});
+      expect(tokenData).toStrictEqual({ accessToken: "", refreshToken: "" });
 
       const newTokenData = {
         accessToken: "wrwqettqwegqwetqwetqwet",

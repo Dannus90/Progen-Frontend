@@ -7,7 +7,7 @@ import { LanguageData } from "../interfaces/languages-interfaces";
 import LanguagesModal from "./LanguagesModal";
 
 export interface LanguageModalComponentStyles extends Theme {
-  workExperienceWrapperStyles: CreateCSSProperties | CSSProperties;
+  languageModalWrapperStyles: CreateCSSProperties | CSSProperties;
   closeButtonWrapper: CreateCSSProperties | CSSProperties;
   formStyle: CreateCSSProperties | CSSProperties;
   submitButton: CreateCSSProperties | CSSProperties;
@@ -48,7 +48,7 @@ const LanguageModalComponentWrapper: React.FC<Props> = ({
 }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
-  const workExperienceModalComponentStyles = makeStyles({
+  const languageModalComponentStyles = makeStyles({
     languageModalWrapperStyles: {
       margin: "auto",
       minWidth: "400px"
@@ -101,7 +101,7 @@ const LanguageModalComponentWrapper: React.FC<Props> = ({
     }
   });
 
-  const styles = workExperienceModalComponentStyles();
+  const styles = languageModalComponentStyles();
 
   return (
     <LanguagesModal

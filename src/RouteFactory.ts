@@ -13,5 +13,11 @@ export const routeFactory = {
   },
   support: {
     main: (): string => "/support"
+  },
+  cvPrintSv: {
+    main: (): string => "/cv-print-sv"
+  },
+  cvPrintEn: {
+    main: (): string => "/cv-print-en"
   }
 };

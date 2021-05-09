@@ -40,12 +40,16 @@
       "grade": "Grade"
     }
   },
+  "languages": {
+    "mainHeader": "Languages"
+  },
   "otherInformation": {
     "mainHeader": "Other information",
     "drivingLicensesEn": "Driving Licenses in english",
     "drivingLicensesSv": "Driving Licenses in swedish",
     "clearDrivingLicenseFields": "Clear driving license information",
     "submit": "Save driving license information",
-    "successfulUpdate": "Driving license information updated successfully"
+    "successfulUpdate": "Driving license information updated successfully",
+    "languagesHeader": "Languages"
   }
 }

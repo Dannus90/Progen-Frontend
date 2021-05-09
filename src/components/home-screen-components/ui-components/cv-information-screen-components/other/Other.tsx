@@ -13,6 +13,7 @@ import { UseOtherInformationForm } from "../../../../../custom-hooks/UseOtherInf
 import { Alert } from "@material-ui/lab";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_OTHER_INFORMATION, UPDATE_OTHER_INFORMATION } from "./gql";
+import Languages from "./languages/index";
 import {
   OtherInformationResponse,
   UpdateOtherInformationInput
@@ -184,6 +185,7 @@ const OtherComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           )}
         </Button>
       </form>
+      <Languages />
     </div>
   );
 };

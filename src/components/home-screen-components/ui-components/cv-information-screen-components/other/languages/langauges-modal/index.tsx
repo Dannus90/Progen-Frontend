@@ -2,12 +2,12 @@ import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
-import { MainTheme } from "../../../../../../styles/theme";
-import { EditWorkExperienceData } from "../interfaces/work-experience-interfaces";
-import WorkExperienceModal from "./WorkExperienceModal";
+import { MainTheme } from "../../../../../../../styles/theme";
+import { LanguageData } from "../interfaces/languages-interfaces";
+import LanguagesModal from "./LanguagesModal";
 
-export interface WorkExperienceModalComponentStyles extends Theme {
-  workExperienceModalWrapperStyles: CreateCSSProperties | CSSProperties;
+export interface LanguageModalComponentStyles extends Theme {
+  workExperienceWrapperStyles: CreateCSSProperties | CSSProperties;
   closeButtonWrapper: CreateCSSProperties | CSSProperties;
   formStyle: CreateCSSProperties | CSSProperties;
   submitButton: CreateCSSProperties | CSSProperties;
@@ -21,14 +21,14 @@ export interface WorkExperienceModalComponentStyles extends Theme {
 
 interface Props {
   isCreate: boolean;
-  workExperience?: EditWorkExperienceData;
+  language?: LanguageData;
   handleClose: () => void;
   open: boolean;
   header: string;
 }
 
-export type WorkExperienceModalComponentClasses =
-  | "workExperienceModalWrapperStyles"
+export type LanguageModalComponentClasses =
+  | "languageModalWrapperStyles"
   | "closeButtonWrapper"
   | "formStyle"
   | "submitButton"
@@ -39,9 +39,9 @@ export type WorkExperienceModalComponentClasses =
   | "submitButtonWrapper"
   | "buttonsContainer";
 
-const WorkExperienceModalComponentWrapper: React.FC<Props> = ({
+const LanguageModalComponentWrapper: React.FC<Props> = ({
   isCreate,
-  workExperience,
+  language,
   handleClose,
   open,
   header
@@ -49,7 +49,7 @@ const WorkExperienceModalComponentWrapper: React.FC<Props> = ({
   const theme = useTheme<MainTheme>();
 
   const workExperienceModalComponentStyles = makeStyles({
-    workExperienceModalWrapperStyles: {
+    languageModalWrapperStyles: {
       margin: "auto",
       minWidth: "400px"
     },
@@ -104,15 +104,15 @@ const WorkExperienceModalComponentWrapper: React.FC<Props> = ({
   const styles = workExperienceModalComponentStyles();
 
   return (
-    <WorkExperienceModal
+    <LanguagesModal
       header={header}
       open={open}
       handleClose={handleClose}
       isCreate={isCreate}
-      workExperience={workExperience}
+      language={language}
       styles={styles}
     />
   );
 };
 
-export default WorkExperienceModalComponentWrapper;
+export default LanguageModalComponentWrapper;

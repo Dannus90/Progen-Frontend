@@ -40,12 +40,16 @@
       "grade": "Betyg"
     }
   },
+  "languages": {
+    "mainHeader": "Språk"
+  },
   "otherInformation": {
     "mainHeader": "Övrig information",
     "drivingLicensesEn": "Körkort på engelska",
     "drivingLicensesSv": "Körkort på svenska",
     "clearDrivingLicenseFields": "Rensa körkorts information",
     "submit": "Spara körkortsinformation",
-    "successfulUpdate": "Körkortsinformationen uppdaterades framgångsrikt"
+    "successfulUpdate": "Körkortsinformationen uppdaterades framgångsrikt",
+    "languagesHeader": "Språk"
   }
 }

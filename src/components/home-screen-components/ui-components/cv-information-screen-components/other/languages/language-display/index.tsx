@@ -1,8 +1,6 @@
 import { makeStyles, Theme } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
-import { MainTheme } from "../../../../../../../styles/theme";
 import { GetLanguageResponse } from "../../interfaces/other-information-interfaces";
 import LanguageDisplayComponent from "../language-display/LanguageDisplay";
 

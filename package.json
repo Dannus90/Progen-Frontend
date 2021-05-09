@@ -28,6 +28,7 @@
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-to-print": "^2.12.4",
     "redux": "^4.0.5",
     "sass": "1.32.8",
     "serve": "^11.3.2",

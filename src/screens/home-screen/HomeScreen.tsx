@@ -7,6 +7,7 @@ import { TabPanel } from "../../components/common/tab-panel/TabPanel";
 import Profile from "../../components/home-screen-components/profile/index";
 import CvInformation from "../../components/home-screen-components/cv-information/index";
 import Account from "../../components/home-screen-components/account/index";
+import CvModal from "../../components/home-screen-components/ui-components/cv-modal/index";
 import { useAppSelector } from "../../redux/hooks/hooks";
 
 interface Props {
@@ -21,6 +22,7 @@ interface TabProps {
 const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
   const { t } = useTranslation("home");
   const [currentTab, setCurrentTab] = useState(0);
+  const [cvModalOpen, setCvModalOpen] = useState(false);
   const { generalState } = useAppSelector((state) => state);
 
   const getTabProps = (index: number): TabProps => {
@@ -53,6 +55,14 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
     setCurrentTab(newValue);
   };
 
+  const handleCvModalOpen = () => {
+    setCvModalOpen(true);
+  };
+
+  const handleCvModalClose = () => {
+    setCvModalOpen(false);
+  };
+
   return (
     <div className={styles.pageWrapperStyles}>
       <AppBar color="transparent" position="static" className={styles.tabsStyle}>
@@ -65,7 +75,11 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
           <Tab label={t("tabs.account")} {...getTabProps(1)} />
           <Tab label={t("tabs.baseCv")} {...getTabProps(2)} />
         </Tabs>
-        <Button className={styles.exportCvButton} variant="contained" color="primary">
+        <Button
+          onClick={handleCvModalOpen}
+          className={styles.exportCvButton}
+          variant="contained"
+          color="primary">
           {t("exportCv")}
         </Button>
       </AppBar>
@@ -78,6 +92,7 @@ const HomeScreen: React.FC<Props> = ({ styles }): JSX.Element => {
       <TabPanel {...getTabPanelProps(currentTab, 2)}>
         <CvInformation />
       </TabPanel>
+      <CvModal handleClose={handleCvModalClose} open={cvModalOpen} />
     </div>
   );
 };

@@ -77,5 +77,14 @@
     "languageEn": "Language in english",
     "saveLanguage": "Save language",
     "updateLanguage": "Update language"
+  },
+  "cvModal": {
+    "title": "Print cv",
+    "mainContent": "Chose down below which language you would like to print out in.",
+    "swedishCv": "Cv in swedish",
+    "englishCv": "Cv in english"
+  },
+  "printCv": {
+    "printCv": "Print cv"
   }
 }

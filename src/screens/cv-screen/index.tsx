@@ -9,9 +9,10 @@ export interface CvScreenStyles extends Theme {
   pageWrapperStyles: CreateCSSProperties | CSSProperties;
   tabsStyle: CreateCSSProperties | CSSProperties;
   exportCvButton: CreateCSSProperties | CSSProperties;
+  printButton: CreateCSSProperties | CSSProperties;
 }
 
-export type CvScreenClasses = "cvScreenWrapperStyles";
+export type CvScreenClasses = "cvScreenWrapperStyles" | "printButton";
 
 export enum CvTypes {
   English = "English",
@@ -19,7 +20,7 @@ export enum CvTypes {
 }
 
 interface Props {
-  cvVersion: CvTypes
+  cvVersion: CvTypes;
 }
 
 const CvScreenWrapper: React.FC<Props> = ({ cvVersion }): JSX.Element => {
@@ -32,7 +33,11 @@ const CvScreenWrapper: React.FC<Props> = ({ cvVersion }): JSX.Element => {
       minHeight: "calc(100vh - 52px)",
       marginTop: "52px",
       width: smallScreen ? "100vw" : "calc(100vw - 240px)",
-      marginLeft: smallScreen ? "0px" : "240px"
+      marginLeft: smallScreen ? "0px" : "240px",
+      padding: "1rem"
+    },
+    printButton: {
+      marginBottom: theme.customSpacings.s
     }
   });
 

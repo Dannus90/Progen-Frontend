@@ -77,5 +77,14 @@
     "languageEn": "Språk på engelska",
     "saveLanguage": "Spara språk",
     "updateLanguage": "Update språk"
+  },
+  "cvModal": {
+    "title": "Skriv ut cv",
+    "mainContent": "Välj nedan på vilket språk som du vill skriva ut ditt cv.",
+    "swedishCv": "Cv på svenska",
+    "englishCv": "Cv på engelska"
+  },
+  "printCv": {
+    "printCv": "Skriv ut cv"
   }
 }

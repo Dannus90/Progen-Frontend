@@ -12,8 +12,16 @@ export const AuthRoutes: React.FC = () => {
       <Route exact path={routeFactory.home.main()} component={() => <HomeScreen />} />
       <Route exact path={routeFactory.yourTeam.main()} component={() => <YourTeamScreen />} />
       <Route exact path={routeFactory.support.main()} component={() => <SupportScreen />} />
-      <Route exact path={routeFactory.cvPrintSv.main()} component={() => <CvScreen cvVersion={CvTypes.Swedish} />} />
-      <Route exact path={routeFactory.cvPrintEn.main()} component={() => <CvScreen cvVersion={CvTypes.English} />} />
+      <Route
+        exact
+        path={routeFactory.cvPrintSv.main()}
+        component={() => <CvScreen cvVersion={CvTypes.Swedish} />}
+      />
+      <Route
+        exact
+        path={routeFactory.cvPrintEn.main()}
+        component={() => <CvScreen cvVersion={CvTypes.English} />}
+      />
     </>
   );
 };

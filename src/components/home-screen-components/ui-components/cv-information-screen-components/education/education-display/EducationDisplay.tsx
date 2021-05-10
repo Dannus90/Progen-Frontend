@@ -14,7 +14,7 @@ interface Props {
 }
 
 const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): JSX.Element => {
-  const [t] = useTranslation("cvInformation");
+  const [t, i18n] = useTranslation("cvInformation");
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
 
   const citySv = educationData.citySv;
@@ -32,6 +32,12 @@ const EducationDisplayComponent: React.FC<Props> = ({ styles, educationData }): 
   const examNameEn = educationData.educationNameSv;
 
   const resolveDate = (): string => {
+    if (educationData.dateEnded === "0001-01-01T00:00:00") {
+      const lng = i18n.language;
+
+      return `${transformDate(educationData.dateStarted)} - ${lng === "sv" ? "Nu" : "Now"}`;
+    }
+
     return `${transformDate(educationData.dateStarted)} - ${transformDate(
       educationData.dateEnded
     )}`;

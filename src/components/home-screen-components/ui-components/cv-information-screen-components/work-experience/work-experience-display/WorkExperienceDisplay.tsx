@@ -20,7 +20,7 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
   styles,
   workExperienceData
 }): JSX.Element => {
-  const [t] = useTranslation("cvInformation");
+  const [t, i18n] = useTranslation("cvInformation");
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
 
   const citySv = workExperienceData.citySv;
@@ -34,6 +34,12 @@ const WorkExperienceDisplayComponent: React.FC<Props> = ({
   const countryEn = workExperienceData.countryEn;
 
   const resolveDate = (): string => {
+    if (workExperienceData.dateEnded === "0001-01-01T00:00:00") {
+      const lng = i18n.language;
+
+      return `${transformDate(workExperienceData.dateStarted)} - ${lng === "sv" ? "Nu" : "Now"}`;
+    }
+
     return `${transformDate(workExperienceData.dateStarted)} - ${transformDate(
       workExperienceData.dateEnded
     )}`;

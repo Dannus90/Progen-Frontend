@@ -51,7 +51,7 @@ const initialFormState = {
   roleEn: "",
   employmentRate: "",
   dateEnded: null,
-  dateStarted: null
+  dateStarted: getDateStandardFormat()
 };
 
 const WorkExperienceModal: React.FC<Props> = ({
@@ -335,7 +335,6 @@ const WorkExperienceModal: React.FC<Props> = ({
                 aria-describedby="form-data"
                 name="dateStarted"
                 type="date"
-                defaultValue={getDateStandardFormat()}
                 value={formData.dateStarted}
                 variant="outlined"
                 onChange={handleInputChange}

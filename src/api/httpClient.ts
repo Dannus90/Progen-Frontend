@@ -7,13 +7,13 @@ type Token = string;
 let token: Token = "";
 const { accessToken } = getToken();
 token = accessToken ?? "";
+let auth = `Bearer ${token}`;
 
-export const invokeAccessToken = () => {
+export const invokeAccessToken = (): void => {
   const { accessToken } = getToken();
   token = accessToken ?? "";
+  auth = `Bearer ${token}`;
 };
-
-const auth = `Bearer ${token}`;
 
 const headerOptionsAuth = (authorization: string) => {
   return {

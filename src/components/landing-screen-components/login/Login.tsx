@@ -59,7 +59,6 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
 
     await loginUser();
 
-    invokeAccessToken();
     setLoginDisabled(true);
     setTimeout(() => {
       setLoginDisabled(false);
@@ -78,6 +77,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
     if (data) {
       const { accessToken, refreshToken } = data.authentication.loginUser;
       setTokens({ accessToken, refreshToken });
+      invokeAccessToken();
       setTimeout(() => {
         navigateTo("/home");
       }, 1000);

@@ -12,7 +12,7 @@ import LanguageIcon from "@material-ui/icons/Language";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountCircle } from "@material-ui/icons";
 import MenuIcon from "@material-ui/icons/Menu";
-import React from "react";
+import React, { useState } from "react";
 import { MainTheme } from "../../../styles/theme";
 import { TopBarClasses } from ".";
 import useComponentVisible from "../../../custom-hooks/UseComponentVisible";
@@ -21,6 +21,10 @@ import { useTranslation } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { accountClicked, profileClicked } from "../../../redux/reducers/general-reducer/actions";
+import { useNavigation } from "../../../custom-hooks/UseNavigation";
+import { LogoutUserResponseBackend } from "../drawer/interfaces/drawer-interfaces";
+import { LOGOUT_USER } from "../drawer/gql";
+import { useMutation } from "@apollo/client";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
@@ -28,11 +32,13 @@ interface Props {
 }
 
 const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element => {
+  const { navigateTo } = useNavigation();
   const { t } = useTranslation("common");
+  const [logoutUser] = useMutation<LogoutUserResponseBackend>(LOGOUT_USER);
   const theme = useTheme<MainTheme>();
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const screenSize = useMediaQuery(theme.breakpoints.up("md"));
-  const [anchorEl, setAnchorEl] = React.useState<(EventTarget & HTMLButtonElement) | null>();
+  const [anchorEl, setAnchorEl] = useState<(EventTarget & HTMLButtonElement) | null>();
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -58,6 +64,16 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
   const handleCloseProfile = (): void => {
     history.push("/home");
     dispatch(profileClicked(true));
+    setAnchorEl(null);
+  };
+
+  const handleLogout = async (): Promise<void> => {
+    const response = await logoutUser();
+    if (response.data === null && response.errors) {
+      return;
+    }
+
+    navigateTo("/login");
     setAnchorEl(null);
   };
 
@@ -113,6 +129,7 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
             onClose={handleClose}>
             <MenuItem onClick={handleCloseProfile}>{t("topBar.menu.profile")}</MenuItem>
             <MenuItem onClick={handleCloseAccount}>{t("topBar.menu.account")}</MenuItem>
+            <MenuItem onClick={handleLogout}>{t("topBar.menu.logout")}</MenuItem>
           </Menu>
         </div>
       </Toolbar>

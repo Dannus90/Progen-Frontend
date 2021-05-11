@@ -154,6 +154,21 @@ const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }):
                   fullWidth
                 />
               </Grid>
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  id="workTitle"
+                  aria-describedby="my-helper-text"
+                  name="workTitle"
+                  value={formData.workTitle}
+                  variant="outlined"
+                  onChange={handleInputChange}
+                  inputProps={{ style: { fontSize: 14 } }}
+                  InputLabelProps={{ style: { fontSize: 14 } }}
+                  label={t("profileForm.workTitle")}
+                  size="small"
+                  fullWidth
+                />
+              </Grid>
             </Grid>
             <Container className={styles.submitButton}>
               <Button type="submit" color="primary" variant="contained">

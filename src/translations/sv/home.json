@@ -22,7 +22,8 @@
     "cityEn": "Stad på engelska",
     "profileInformation": "Profil information",
     "profileText": "Din profilinformatiion kan ändras nedan",
-    "saveSettings": "SPARA PROFIL"
+    "saveSettings": "SPARA PROFIL",
+    "workTitle": "Arbetsbefattning"
   },
   "exportCv": "Exportera CV"
 }

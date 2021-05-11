@@ -26,7 +26,8 @@
   "topBar": {
     "menu": {
       "profile": "Profil",
-      "account": "Konto"
+      "account": "Konto",
+      "logout": "Logga ut"
     }
   },
   "deleteProfileImageError": "Det finns ingen profilbild att ta bort.",

@@ -15,6 +15,7 @@ export interface UserInformationResponse {
         countryEn?: string;
         profileImage?: string;
         profileImagePublicId?: string;
+        workTitle?: string;
         updatedAt: Date;
         createdAt: Date;
       };
@@ -36,6 +37,7 @@ export interface UpdateUserResponse {
     phoneNumber: string | null;
     profileImage: string | null;
     profileImagePublicId: string | null;
+    workTitle: string | null;
     statusCode: number;
     updatedAt: Date;
     userId: string;

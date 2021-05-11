@@ -22,7 +22,8 @@
     "cityEn": "City in english",
     "profileInformation": "Profile information",
     "profileText": "Your profile information can be edited down belown",
-    "saveSettings": "SAVE PROFILE"
+    "saveSettings": "SAVE PROFILE",
+    "workTitle": "Job title"
   },
   "exportCv": "Export CV"
 }

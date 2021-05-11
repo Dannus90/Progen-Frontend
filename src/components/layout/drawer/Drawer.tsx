@@ -48,8 +48,11 @@ const DrawerComponent: React.FC<Props> = ({
   const [profileImage, setProfileImage] = useState<string>("");
   const { userDataState } = useAppSelector((state) => state);
   const initialData = data?.userData.getFullUserInformation.user;
+  const initialUserData = data?.userData.getFullUserInformation.userData;
   const initialName = `${initialData?.firstName} ${initialData?.lastName}`;
+  const initialWorkTitle = `${initialUserData?.workTitle ?? ""}`;
   const [fullUsername, setFullUsername] = useState<string>(initialName);
+  const [workTitle, setWorkTitle] = useState<string>(initialWorkTitle);
 
   const handleLogoutUser = async () => {
     const response = await logoutUser();
@@ -83,7 +86,7 @@ const DrawerComponent: React.FC<Props> = ({
 
   useMemo((): void => {
     const userData = data?.userData.getFullUserInformation.user;
-    setProfileImage(data ? data?.userData.getFullUserInformation.userData.profileImage : "");
+    setProfileImage(data?.userData.getFullUserInformation.userData.profileImage ?? "");
 
     if (userData?.firstName || userData?.lastName) {
       return setFullUsername(`${userData?.firstName} ${userData?.lastName}`);
@@ -97,6 +100,12 @@ const DrawerComponent: React.FC<Props> = ({
       setProfileImage(userDataState.profileImage);
     } else {
       setProfileImage("");
+    }
+
+    if (userDataState.workTitle) {
+      setWorkTitle(userDataState.workTitle);
+    } else {
+      setWorkTitle("");
     }
 
     if (userDataState.firstName || userDataState.lastName) {
@@ -126,7 +135,7 @@ const DrawerComponent: React.FC<Props> = ({
         </Typography>
       )}
 
-      <Typography className={styles.avatarOccupation}>Software Developer</Typography>
+      <Typography className={styles.avatarOccupation}>{workTitle}</Typography>
       <Divider />
       <List className={styles.listStyle}>
         <Box>

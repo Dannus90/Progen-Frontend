@@ -16,7 +16,8 @@ export interface PartialUserInformationResponse {
         lastLogin: Date;
       };
       userData: {
-        profileImage: string;
+        profileImage?: string;
+        workTitle?: string;
       };
     };
   };

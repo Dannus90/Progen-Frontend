@@ -154,17 +154,32 @@ const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }):
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
-                  id="workTitle"
+                  id="workTitleSv"
                   aria-describedby="my-helper-text"
-                  name="workTitle"
-                  value={formData.workTitle}
+                  name="workTitleSv"
+                  value={formData.workTitleSv}
                   variant="outlined"
                   onChange={handleInputChange}
                   inputProps={{ style: { fontSize: 14 } }}
                   InputLabelProps={{ style: { fontSize: 14 } }}
-                  label={t("profileForm.workTitle")}
+                  label={t("profileForm.workTitleSv")}
+                  size="small"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  id="workTitleEn"
+                  aria-describedby="my-helper-text"
+                  name="workTitleEn"
+                  value={formData.workTitleEn}
+                  variant="outlined"
+                  onChange={handleInputChange}
+                  inputProps={{ style: { fontSize: 14 } }}
+                  InputLabelProps={{ style: { fontSize: 14 } }}
+                  label={t("profileForm.workTitleEn")}
                   size="small"
                   fullWidth
                 />

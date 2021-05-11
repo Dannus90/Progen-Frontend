@@ -11,6 +11,7 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
+  makeStyles,
   MenuItem,
   TextareaAutosize,
   TextField,
@@ -54,6 +55,12 @@ const initialFormState = {
   dateStarted: getDateStandardFormat()
 };
 
+const useStyles = makeStyles({
+  root: {
+    padding: "0.6rem 1.2rem"
+  }
+});
+
 const WorkExperienceModal: React.FC<Props> = ({
   styles,
   isCreate,
@@ -65,6 +72,7 @@ const WorkExperienceModal: React.FC<Props> = ({
   const [t] = useTranslation("common");
   const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
   const dispatch = useAppDispatch();
+  const classes = useStyles();
 
   const { formData, setFormData, handleInputChange } = useWorkExperienceForm(
     workExperience
@@ -204,9 +212,12 @@ const WorkExperienceModal: React.FC<Props> = ({
                 labelId="employmentRate"
                 id="employmentRate"
                 name="employmentRate"
+                variant="outlined"
+                classes={{
+                  root: classes.root
+                }}
                 className={styles.selectStyle}
                 value={formData.employmentRate}
-                label={t("workExperienceForm.employmentRate.header")}
                 onChange={handleInputChange}>
                 <MenuItem value={"FullTime"}>
                   {t("workExperienceForm.employmentRate.fullTime")}

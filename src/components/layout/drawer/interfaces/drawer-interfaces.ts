@@ -17,7 +17,8 @@ export interface PartialUserInformationResponse {
       };
       userData: {
         profileImage?: string;
-        workTitle?: string;
+        workTitleSv?: string;
+        workTitleEn?: string;
       };
     };
   };

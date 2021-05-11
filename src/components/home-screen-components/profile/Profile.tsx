@@ -53,7 +53,8 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         cityEn: userInformation?.userData.cityEn ?? "",
         profileImage: userInformation?.userData.profileImage ?? "",
         publicId: userInformation?.userData.profileImagePublicId ?? "",
-        workTitle: userInformation?.userData.workTitle ?? ""
+        workTitleSv: userInformation?.userData.workTitleSv ?? "",
+        workTitleEn: userInformation?.userData.workTitleEn ?? ""
       };
 
       dispatch(setUserData(formData));
@@ -75,7 +76,8 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         cityEn: userInformation?.cityEn ?? "",
         profileImage: userInformation.profileImage ?? "",
         publicId: userInformation?.profileImagePublicId ?? "",
-        workTitle: userInformation?.workTitle ?? ""
+        workTitleSv: userInformation?.workTitleSv ?? "",
+        workTitleEn: userInformation?.workTitleEn ?? ""
       };
 
       dispatch(setUserData(formData));
@@ -94,7 +96,8 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           cityEn: formData.cityEn,
           countryEn: formData.countryEn,
           countrySv: formData.countrySv,
-          workTitle: formData.workTitle
+          workTitleSv: formData.workTitleSv,
+          workTitleEn: formData.workTitleEn
         }
       }
     });

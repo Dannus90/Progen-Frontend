@@ -16,7 +16,8 @@ interface RegisterLoginProfileData {
   citySv?: acceptedTypes;
   countryEn?: acceptedTypes;
   cityEn?: acceptedTypes;
-  workTitle?: acceptedTypes;
+  workTitleSv?: acceptedTypes;
+  workTitleEn?: acceptedTypes;
 }
 
 interface ReturnObject {

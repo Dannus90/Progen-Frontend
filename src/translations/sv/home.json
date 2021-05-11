@@ -23,7 +23,8 @@
     "profileInformation": "Profil information",
     "profileText": "Din profilinformatiion kan ändras nedan",
     "saveSettings": "SPARA PROFIL",
-    "workTitle": "Arbetsbefattning"
+    "workTitleSv": "Arbetsbefattning svenska",
+    "workTitleEn": "Arbetsbefattning engelska"
   },
   "exportCv": "Exportera CV"
 }

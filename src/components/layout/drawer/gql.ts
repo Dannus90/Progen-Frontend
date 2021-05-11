@@ -22,7 +22,8 @@ export const GET_USERDATA = gql`
         }
         userData {
           profileImage
-          workTitle
+          workTitleSv
+          workTitleEn
         }
       }
     }

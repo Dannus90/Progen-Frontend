@@ -6,4 +6,5 @@ export const selectFullName = (state: RootState): string =>
 
 export const selectUserData = (state: RootState): UserDataState => state.userDataState;
 
-export const selectWorkTitle = (state: RootState): string => `${state.userDataState.workTitle}`;
+export const selectWorkTitleSv = (state: RootState): string => `${state.userDataState.workTitleSv}`;
+export const selectWorkTitleEn = (state: RootState): string => `${state.userDataState.workTitleEn}`;

@@ -13,7 +13,8 @@ export interface UserDataState {
   cityEn: acceptedTypes;
   profileImage: acceptedTypes;
   publicId: acceptedTypes;
-  workTitle: acceptedTypes;
+  workTitleSv: acceptedTypes;
+  workTitleEn: acceptedTypes;
   beenLoaded?: boolean;
 }
 
@@ -33,7 +34,8 @@ export const initialState: UserDataState = {
   cityEn: "",
   profileImage: "",
   publicId: "",
-  workTitle: "",
+  workTitleSv: "",
+  workTitleEn: "",
   beenLoaded: false
 };
 
@@ -59,7 +61,8 @@ export const userDataSlice = createSlice({
       state.citySv = action.payload.citySv;
       state.countryEn = action.payload.countryEn;
       state.cityEn = action.payload.cityEn;
-      state.workTitle = action.payload.workTitle;
+      state.workTitleSv = action.payload.workTitleSv;
+      state.workTitleEn = action.payload.workTitleEn;
       state.profileImage = action.payload.profileImage;
       state.publicId = action.payload.publicId;
     },

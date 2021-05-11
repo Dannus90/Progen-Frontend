@@ -42,15 +42,18 @@ const DrawerComponent: React.FC<Props> = ({
   mobileOpen
 }): JSX.Element => {
   const { navigateTo } = useNavigation();
-  const [t] = useTranslation("common");
+  const [t, i18n] = useTranslation("common");
   const [logoutUser] = useMutation<LogoutUserResponseBackend>(LOGOUT_USER);
   const { loading, error, data } = useQuery<PartialUserInformationResponse>(GET_USERDATA);
+  const lng = i18n.language;
   const [profileImage, setProfileImage] = useState<string>("");
   const { userDataState } = useAppSelector((state) => state);
   const initialData = data?.userData.getFullUserInformation.user;
   const initialUserData = data?.userData.getFullUserInformation.userData;
   const initialName = `${initialData?.firstName} ${initialData?.lastName}`;
-  const initialWorkTitle = `${initialUserData?.workTitle ?? ""}`;
+  const initialWorkTitle = `${
+    lng === "sv" ? initialUserData?.workTitleSv ?? "" : initialUserData?.workTitleEn ?? ""
+  }`;
   const [fullUsername, setFullUsername] = useState<string>(initialName);
   const [workTitle, setWorkTitle] = useState<string>(initialWorkTitle);
 
@@ -102,9 +105,15 @@ const DrawerComponent: React.FC<Props> = ({
       setProfileImage("");
     }
 
-    if (userDataState.workTitle) {
-      setWorkTitle(userDataState.workTitle);
-    } else {
+    console.log(lng);
+
+    if (userDataState.workTitleSv && lng === "sv") setWorkTitle(userDataState.workTitleSv);
+    if (userDataState.workTitleEn && lng === "en") setWorkTitle(userDataState.workTitleEn);
+
+    if (
+      (!userDataState.workTitleSv && lng === "sv") ||
+      (!userDataState.workTitleEn && lng === "en")
+    ) {
       setWorkTitle("");
     }
 
@@ -113,7 +122,7 @@ const DrawerComponent: React.FC<Props> = ({
     }
 
     return setFullUsername(t("drawer.welcome"));
-  }, [userDataState]);
+  }, [userDataState, lng]);
 
   const resolveProfileImage = (): string => {
     return profileImage ? profileImage : "./assets/images/personPlaceholder.png";

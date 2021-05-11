@@ -14,6 +14,8 @@ export const GET_FULL_CV_INFORMATION = gql`
           cityEn
           countrySv
           countryEn
+          workTitleSv
+          workTitleEn
           profileImage
         }
         otherInformation {

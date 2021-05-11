@@ -2,9 +2,18 @@ import axios from "axios";
 import { getToken } from "../utils/auth-helper";
 
 type HttpMethods = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+type Token = string;
 
+let token: Token = "";
 const { accessToken } = getToken();
-const auth = `Bearer ${accessToken}`;
+token = accessToken ?? "";
+
+export const invokeAccessToken = () => {
+  const { accessToken } = getToken();
+  token = accessToken ?? "";
+};
+
+const auth = `Bearer ${token}`;
 
 const headerOptionsAuth = (authorization: string) => {
   return {

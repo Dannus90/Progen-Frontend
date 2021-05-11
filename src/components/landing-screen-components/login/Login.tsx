@@ -19,6 +19,7 @@ import { useForm } from "../../../custom-hooks/UseForm";
 import { LoginData, LoginResponse } from "./interfaces/login-interfaces";
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
 import { setTokens } from "../../../utils/auth-helper";
+import { invokeAccessToken } from "../../../api/httpClient";
 
 interface Props {
   styles: ClassNameMap<RegisterComponentClasses>;
@@ -47,7 +48,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
     }
   });
 
-  const handleLoginUser = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleLoginUser = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     // Prevent resubmitting.
     if (loginDisabled) {
@@ -56,7 +57,9 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
 
     setDisplayErrorMessage(false);
 
-    loginUser();
+    await loginUser();
+
+    invokeAccessToken();
     setLoginDisabled(true);
     setTimeout(() => {
       setLoginDisabled(false);

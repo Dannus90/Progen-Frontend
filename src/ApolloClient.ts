@@ -3,6 +3,7 @@ import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import { getNewToken, getToken, setTokens } from "./utils/auth-helper";
 import fetch from "cross-fetch";
+import { invokeAccessToken } from "./api/httpClient";
 
 // More information regarding auth handling -> https://www.apollographql.com/docs/react/networking/authentication/#header
 const { REACT_APP_PROGEN_GRAPHQL_URL } = process.env;
@@ -45,6 +46,7 @@ const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) 
               const { accessToken, refreshToken } = res.data?.authentication.refreshToken;
 
               setTokens({ accessToken, refreshToken });
+              invokeAccessToken();
 
               const oldHeaders = operation.getContext().headers;
               operation.setContext({

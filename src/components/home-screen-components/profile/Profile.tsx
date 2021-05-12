@@ -119,7 +119,7 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             className={`${styles.alertStyle}`}
             severity="error"
             action={
-              <Button color="primary" variant="contained" size="small" onClick={() => refetch}>
+              <Button color="primary" variant="contained" size="small" onClick={() => refetch()}>
                 {t("buttonText.tryAgain")}
               </Button>
             }>

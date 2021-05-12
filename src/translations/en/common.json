@@ -87,5 +87,8 @@
   },
   "printCv": {
     "printCv": "Print cv"
+  },
+  "fullCvInformation": {
+    "loadFail": "Failed loading cv information"
   }
 }

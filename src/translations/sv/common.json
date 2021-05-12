@@ -87,5 +87,8 @@
   },
   "printCv": {
     "printCv": "Skriv ut cv"
+  },
+  "fullCvInformation": {
+    "loadFail": "Kunde inte ladda cv information"
   }
 }

@@ -27,6 +27,8 @@ declare module "@material-ui/core/styles/createMuiTheme" {
       };
       borderColors: {
         subtleGreyMain: string;
+        subtleGreyMedium: string;
+        subtleGreyFat: string;
       };
     };
   }
@@ -56,6 +58,8 @@ declare module "@material-ui/core/styles/createMuiTheme" {
       };
       borderColors: {
         subtleGreyMain?: string;
+        subtleGreyMedium?: string;
+        subtleGreyFat?: string;
       };
     };
   }

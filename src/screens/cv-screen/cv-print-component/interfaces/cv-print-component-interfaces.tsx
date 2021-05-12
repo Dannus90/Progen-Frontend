@@ -130,5 +130,3 @@ type OtherInformationData = {
 type UserPresentationData = {
   presentation: string;
 };
-
-

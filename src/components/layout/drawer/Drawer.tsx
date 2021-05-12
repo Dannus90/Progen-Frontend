@@ -105,8 +105,6 @@ const DrawerComponent: React.FC<Props> = ({
       setProfileImage("");
     }
 
-    console.log(lng);
-
     if (userDataState.workTitleSv && lng === "sv") setWorkTitle(userDataState.workTitleSv);
     if (userDataState.workTitleEn && lng === "en") setWorkTitle(userDataState.workTitleEn);
 

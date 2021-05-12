@@ -59,7 +59,9 @@ export const overrides = createMuiTheme({
       }
     },
     borderColors: {
-      subtleGreyMain: `1px solid ${defaultColors.subtleBorderColorGrey}`
+      subtleGreyMain: `1px solid ${defaultColors.subtleBorderColorGrey}`,
+      subtleGreyMedium: `2px solid ${defaultColors.subtleBorderColorGrey}`,
+      subtleGreyFat: `3px solid ${defaultColors.subtleBorderColorGrey}`
     }
   },
   overrides: {

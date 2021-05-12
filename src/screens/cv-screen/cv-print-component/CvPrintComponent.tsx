@@ -6,11 +6,12 @@ import { useQuery } from "@apollo/client";
 import { GET_FULL_CV_INFORMATION } from "./gql";
 import {
   CvLanguageBasedData,
-  GetFullCvInformationResponse,
+  GetFullCvInformationResponse
 } from "./interfaces/cv-print-component-interfaces";
 import { getEnglishData, getSwedishData } from "./transformers";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { useTranslation } from "react-i18next";
+import CvDisplay from "./cv-display/index";
 
 interface Props {
   styles: ClassNameMap<CvPrintComponentClasses>;
@@ -68,7 +69,10 @@ const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
 
   return (
     <div className={styles.cvPrintComponentWrapperStyles}>
-      <Paper className={styles.cvPaperWrapperStyles}>{isSwedishCv ? "hej" : "hejdå"}</Paper>
+      <Paper className={styles.cvPaperWrapperStyles}>
+        {isSwedishCv && swedishData && <CvDisplay data={swedishData} />}
+        {!isSwedishCv && englishData && <CvDisplay data={englishData} />}
+      </Paper>
     </div>
   );
 };

@@ -76,114 +76,59 @@ type UserPresentation = {
   presentationEn: string;
 };
 
-export interface SwedishData {
-  educations: Array<EducationSv | undefined>;
-  workExperiences: Array<WorkExperienceSv | undefined>;
-  fullUserInformation: FullUserInformationSv;
-  languages: Array<LanguageSv | undefined>;
-  otherInformation: OtherInformationSv;
-  userPresentation: UserPresentationSv;
+export interface CvLanguageBasedData {
+  educations: Array<EducationData | undefined>;
+  workExperiences: Array<WorkExperienceData | undefined>;
+  fullUserInformation: FullUserInformationData;
+  languages: Array<LanguageData | undefined>;
+  otherInformation: OtherInformationData;
+  userPresentation: UserPresentationData;
 }
 
-export interface EnglishData {
-  educations: Array<EducationEn | undefined>;
-  workExperiences: Array<WorkExperienceEn | undefined>;
-  fullUserInformation: FullUserInformationEn;
-  languages: Array<LanguageEn | undefined>;
-  otherInformation: OtherInformationEn;
-  userPresentation: UserPresentationEn;
-}
-
-type EducationSv = {
-  citySv: string;
-  countrySv: string;
-  descriptionSv: string;
-  educationNameSv: string;
-  examNameSv: string;
+type EducationData = {
+  city: string;
+  country: string;
+  description: string;
+  educationName: string;
+  examName: string;
   grade: string;
-  subjectAreaSv: string;
+  subjectArea: string;
   dateStarted: Date | string;
   dateEnded: Date | string;
 };
 
-type WorkExperienceSv = {
-  citySv: string;
+type WorkExperienceData = {
+  city: string;
   companyName: string;
-  countrySv: string;
-  descriptionSv: string;
+  country: string;
+  description: string;
   employmentRate: string;
-  roleSv: string;
-  dateStarted: Date | string;
+  role: string;
   dateEnded: Date | string;
 };
 
-type FullUserInformationSv = {
-  citySv: string;
-  countrySv: string;
+type FullUserInformationData = {
+  city: string;
+  country: string;
   emailCv: string;
   firstName: string;
   lastName: string;
   id: string;
   phoneNumber: string;
   profileImage: string;
-  workTitleSv: string;
+  workTitle: string;
 };
 
-type LanguageSv = {
-  languageSv: string;
+type LanguageData = {
+  language: string;
 };
 
-type OtherInformationSv = {
-  drivingLicenseSv: string;
+type OtherInformationData = {
+  drivingLicense: string;
 };
 
-type UserPresentationSv = {
-  presentationSv: string;
+type UserPresentationData = {
+  presentation: string;
 };
 
-type EducationEn = {
-  cityEn: string;
-  countryEn: string;
-  descriptionEn: string;
-  educationNameEn: string;
-  examNameEn: string;
-  grade: string;
-  subjectAreaEn: string;
-  dateStarted: Date | string;
-  dateEnded: Date | string;
-};
 
-type WorkExperienceEn = {
-  cityEn: string;
-  companyName: string;
-  countryEn: string;
-  descriptionEn: string;
-  employmentRate: string;
-  roleEn: string;
-  dateStarted: Date | string;
-  dateEnded: Date | string;
-};
-
-type FullUserInformationEn = {
-  cityEn: string;
-  countryEn: string;
-  emailCv: string;
-  firstName: string;
-  lastName: string;
-  id: string;
-  phoneNumber: string;
-  profileImage: string;
-  workTitleEn: string;
-};
-
-type LanguageEn = {
-  languageEn: string;
-};
-
-type OtherInformationEn = {
-  drivingLicenseEn: string;
-};
-
-type UserPresentationEn = {
-  presentationEn: string;
-};

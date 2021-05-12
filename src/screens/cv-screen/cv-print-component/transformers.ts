@@ -1,10 +1,9 @@
 import {
-  EnglishData,
+  CvLanguageBasedData,
   GetFullCvInformationResponse,
-  SwedishData
 } from "./interfaces/cv-print-component-interfaces";
 
-export const getSwedishData = (fullResponse: GetFullCvInformationResponse): SwedishData => {
+export const getSwedishData = (fullResponse: GetFullCvInformationResponse): CvLanguageBasedData => {
   const data = fullResponse.fullCvInformation.getFullCvInformation;
   return {
     userPresentation: {
@@ -63,7 +62,7 @@ export const getSwedishData = (fullResponse: GetFullCvInformationResponse): Swed
   };
 };
 
-export const getEnglishData = (fullResponse: GetFullCvInformationResponse): EnglishData => {
+export const getEnglishData = (fullResponse: GetFullCvInformationResponse): CvLanguageBasedData => {
   const data = fullResponse.fullCvInformation.getFullCvInformation;
   return {
     userPresentation: {

@@ -5,9 +5,8 @@ import { Button, CircularProgress, Paper } from "@material-ui/core";
 import { useQuery } from "@apollo/client";
 import { GET_FULL_CV_INFORMATION } from "./gql";
 import {
-  EnglishData,
+  CvLanguageBasedData,
   GetFullCvInformationResponse,
-  SwedishData
 } from "./interfaces/cv-print-component-interfaces";
 import { getEnglishData, getSwedishData } from "./transformers";
 import { Alert, AlertTitle } from "@material-ui/lab";
@@ -24,8 +23,8 @@ const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
   const { refetch, loading, error, data } = useQuery<GetFullCvInformationResponse>(
     GET_FULL_CV_INFORMATION
   );
-  const [swedishData, setSwedishData] = useState<SwedishData>();
-  const [englishData, setEnglishData] = useState<EnglishData>();
+  const [swedishData, setSwedishData] = useState<CvLanguageBasedData>();
+  const [englishData, setEnglishData] = useState<CvLanguageBasedData>();
 
   useMemo(() => {
     if (data) {

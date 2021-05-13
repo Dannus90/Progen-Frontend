@@ -89,6 +89,10 @@
     "printCv": "Skriv ut cv"
   },
   "fullCvInformation": {
-    "loadFail": "Kunde inte ladda cv information"
+    "loadFail": "Kunde inte ladda cv information",
+    "generateCv": {
+      "contact": "Kontakt",
+      "workExperience": "Arbetslivserfarenhet"
+    }
   }
 }

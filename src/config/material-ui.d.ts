@@ -17,6 +17,7 @@ declare module "@material-ui/core/styles/createMuiTheme" {
         textVariantGrey: {
           main: string;
           light: string;
+          dark: string;
         };
         listItemStyle: {
           main: string;
@@ -48,6 +49,7 @@ declare module "@material-ui/core/styles/createMuiTheme" {
         textVariantGrey?: {
           main?: string;
           light?: string;
+          dark?: string;
         };
         listItemStyle: {
           main?: string;

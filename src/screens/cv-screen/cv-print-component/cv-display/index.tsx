@@ -11,25 +11,40 @@ export interface CvDisplayComponentStyles extends Theme {
   cvDisplayComponentWrapperStyles: CreateCSSProperties | CSSProperties;
   imageContactInfoContainer: CreateCSSProperties | CSSProperties;
   sizeAvatar: CreateCSSProperties | CSSProperties;
-  contactInformation: CreateCSSProperties | CSSProperties;
-  avatarWorkTitleWrapper: CreateCSSProperties | CSSProperties;
+  avatarWorkTitleContainer: CreateCSSProperties | CSSProperties;
   workTitle: CreateCSSProperties | CSSProperties;
-  sideInformationWrapper: CreateCSSProperties | CSSProperties;
+  sideInformationContainer: CreateCSSProperties | CSSProperties;
   name: CreateCSSProperties | CSSProperties;
-  fullNameWrapper: CreateCSSProperties | CSSProperties;
+  fullNameContainer: CreateCSSProperties | CSSProperties;
   mainContent: CreateCSSProperties | CSSProperties;
+  userPresentationContainer: CreateCSSProperties | CSSProperties;
+  userPresentationText: CreateCSSProperties | CSSProperties;
+  contactInformationContainer: CreateCSSProperties | CSSProperties;
+  contactInformationHeader: CreateCSSProperties | CSSProperties;
+  phoneNumberContainer: CreateCSSProperties | CSSProperties;
+  phoneNumber: CreateCSSProperties | CSSProperties;
+  iconStyle: CreateCSSProperties | CSSProperties;
+  workExperiencesContainer: CreateCSSProperties | CSSProperties;
 }
 
 export type CvDisplayComponentClasses =
   | "cvDisplayComponentWrapperStyles"
   | "sizeAvatar"
-  | "contactInformation"
-  | "avatarWorkTitleWrapper"
+  | "avatarWorkTitleContainer"
   | "workTitle"
-  | "sideInformationWrapper"
+  | "sideInformationContainer"
   | "name"
-  | "fullNameWrapper"
-  | "mainContent";
+  | "fullNameContainer"
+  | "mainContent"
+  | "userPresentationContainer"
+  | "userPresentationText"
+  | "contactInformationContainer"
+  | "contactInformationHeader"
+  | "iconContactContainer"
+  | "contactInfo"
+  | "iconStyle"
+  | "workExperiencesContainer"
+  | "workExperienceHeader";
 
 export enum CvTypes {
   English = "English",
@@ -38,9 +53,10 @@ export enum CvTypes {
 
 interface Props {
   data: CvLanguageBasedData;
+  isSwedishCv: boolean;
 }
 
-const CvDisplayComponentWrapper: React.FC<Props> = ({ data }): JSX.Element => {
+const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const cvDisplayComponentWrapperStyles = makeStyles({
@@ -51,9 +67,9 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data }): JSX.Element => {
       flexDirection: "row",
       fontFamily: "Roboto"
     },
-    sideInformationWrapper: {
+    sideInformationContainer: {
       flex: 1,
-      borderRight: theme.custom.borderColors.subtleGreyMedium
+      borderRight: theme.custom.borderColors.subtleGreyMain
     },
     mainContent: {
       flex: 2
@@ -63,19 +79,15 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data }): JSX.Element => {
       width: "200px",
       boxShadow: "0px 0px 2px 0px rgb(0 0 0 / 15%)"
     },
-    contactInformation: {
-      padding: "2rem",
-      border: theme.custom.borderColors.subtleGreyFat
-    },
-    avatarWorkTitleWrapper: {
+    avatarWorkTitleContainer: {
       display: "flex",
       justifyContent: "center",
       flexDirection: "column",
       alignItems: "center",
       borderBottom: theme.custom.borderColors.subtleGreyMain,
-      paddingBottom: "1.5rem"
+      paddingBottom: theme.customSpacings.l
     },
-    fullNameWrapper: {
+    fullNameContainer: {
       marginTop: theme.customSpacings.s
     },
     name: {
@@ -87,13 +99,49 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data }): JSX.Element => {
     workTitle: {
       fontSize: "1.2rem",
       textAlign: "center",
-      color: theme.custom.palette.textVariantGrey.main
+      color: theme.custom.palette.textVariantGrey.main,
+      marginTop: theme.customSpacings.xxs
+    },
+    userPresentationContainer: {
+      margin: `${theme.customSpacings.l} ${theme.customSpacings.xs}`,
+      paddingBottom: theme.customSpacings.l,
+      borderBottom: theme.custom.borderColors.subtleGreyMain
+    },
+    userPresentationText: {
+      color: theme.custom.palette.textVariantGrey.dark
+    },
+    contactInformationContainer: {
+      margin: `${theme.customSpacings.l} ${theme.customSpacings.xs}`
+    },
+    contactInformationHeader: {
+      fontSize: "1.4rem",
+      marginBottom: theme.customSpacings.xs
+    },
+    iconContactContainer: {
+      display: "flex",
+      marginBottom: theme.customSpacings.xxs
+    },
+    contactInfo: {
+      fontSize: "1rem",
+      color: theme.custom.palette.textVariantGrey.dark
+    },
+    iconStyle: {
+      marginRight: theme.customSpacings.xs,
+      backgroundColor: theme.custom.palette.textVariantDark.medium,
+      color: "#fff",
+      borderRadius: "50%",
+      padding: "0.2rem"
+    },
+    workExperiencesContainer: {},
+    workExperienceHeader: {
+      fontSize: "1.6rem",
+      marginBottom: theme.customSpacings.s
     }
   });
 
   const styles = cvDisplayComponentWrapperStyles();
 
-  return <CvDisplayComponent styles={styles} data={data} />;
+  return <CvDisplayComponent styles={styles} data={data} isSwedishCv={isSwedishCv} />;
 };
 
 export default CvDisplayComponentWrapper;

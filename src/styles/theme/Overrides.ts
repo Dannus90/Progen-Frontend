@@ -18,6 +18,7 @@ const defaultColors = {
   textColorDarkMedium: "#3A3B3F",
   textColorGreyPrimary: "#909090",
   textColorGreyLight: "#9EA0A5",
+  textColorGreyDark: "#4c4e4f",
   lightBackgroundPrimary: "#fff",
   subtleBorderColorGrey: "#E4E7EB",
   listItemStyleMain: "#66788A",
@@ -49,7 +50,8 @@ export const overrides = createMuiTheme({
       },
       textVariantGrey: {
         main: defaultColors.textColorGreyPrimary,
-        light: defaultColors.textColorGreyLight
+        light: defaultColors.textColorGreyLight,
+        dark: defaultColors.textColorGreyDark
       },
       listItemStyle: {
         main: defaultColors.listItemStyleMain

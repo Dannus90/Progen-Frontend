@@ -89,6 +89,10 @@
     "printCv": "Print cv"
   },
   "fullCvInformation": {
-    "loadFail": "Failed loading cv information"
+    "loadFail": "Failed loading cv information",
+    "generateCv": {
+      "contact": "Contact",
+      "workExperiences": "Work experience"
+    }
   }
 }

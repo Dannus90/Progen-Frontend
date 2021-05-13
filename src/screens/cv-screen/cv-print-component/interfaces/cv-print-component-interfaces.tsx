@@ -5,10 +5,10 @@ export interface GetFullCvInformationResponse {
 }
 
 export interface FullCvInformation {
-  educations: Array<Education | undefined>;
-  workExperiences: Array<WorkExperience | undefined>;
+  educations: Array<Education>;
+  workExperiences: Array<WorkExperience>;
   fullUserInformation: FullUserInformation;
-  languages: Array<Language | undefined>;
+  languages: Array<Language>;
   otherInformation: OtherInformation;
   userPresentation: UserPresentation;
 }
@@ -77,15 +77,15 @@ type UserPresentation = {
 };
 
 export interface CvLanguageBasedData {
-  educations: Array<EducationData | undefined>;
-  workExperiences: Array<WorkExperienceData | undefined>;
+  educations: Array<EducationData>;
+  workExperiences: Array<WorkExperienceData>;
   fullUserInformation: FullUserInformationData;
-  languages: Array<LanguageData | undefined>;
+  languages: Array<LanguageData>;
   otherInformation: OtherInformationData;
   userPresentation: UserPresentationData;
 }
 
-type EducationData = {
+export type EducationData = {
   city: string;
   country: string;
   description: string;
@@ -97,17 +97,18 @@ type EducationData = {
   dateEnded: Date | string;
 };
 
-type WorkExperienceData = {
+export type WorkExperienceData = {
   city: string;
   companyName: string;
   country: string;
   description: string;
   employmentRate: string;
   role: string;
+  dateStarted: Date | string;
   dateEnded: Date | string;
 };
 
-type FullUserInformationData = {
+export type FullUserInformationData = {
   city: string;
   country: string;
   emailCv: string;
@@ -119,14 +120,14 @@ type FullUserInformationData = {
   workTitle: string;
 };
 
-type LanguageData = {
+export type LanguageData = {
   language: string;
 };
 
-type OtherInformationData = {
+export type OtherInformationData = {
   drivingLicense: string;
 };
 
-type UserPresentationData = {
+export type UserPresentationData = {
   presentation: string;
 };

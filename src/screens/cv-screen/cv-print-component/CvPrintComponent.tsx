@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { CvPrintComponentClasses, CvTypes } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { Button, CircularProgress, Paper } from "@material-ui/core";
@@ -20,7 +20,7 @@ interface Props {
 
 const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
   const isSwedishCv = cvVersion === CvTypes.Swedish;
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
   const { refetch, loading, error, data } = useQuery<GetFullCvInformationResponse>(
     GET_FULL_CV_INFORMATION
   );
@@ -70,8 +70,8 @@ const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
   return (
     <div className={styles.cvPrintComponentWrapperStyles}>
       <Paper className={styles.cvPaperWrapperStyles}>
-        {isSwedishCv && swedishData && <CvDisplay data={swedishData} />}
-        {!isSwedishCv && englishData && <CvDisplay data={englishData} />}
+        {isSwedishCv && swedishData && <CvDisplay data={swedishData} isSwedishCv={isSwedishCv} />}
+        {!isSwedishCv && englishData && <CvDisplay data={englishData} isSwedishCv={isSwedishCv} />}
       </Paper>
     </div>
   );

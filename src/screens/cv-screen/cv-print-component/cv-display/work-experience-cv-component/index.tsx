@@ -35,10 +35,12 @@ export type WorkExperienceCvComponentClasses =
 
 interface Props {
   workExperienceData: WorkExperienceData;
+  isSwedishCv: boolean;
 }
 
 const workExperienceComponentWrapperStyles: React.FC<Props> = ({
-  workExperienceData
+  workExperienceData,
+  isSwedishCv
 }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
@@ -94,7 +96,7 @@ const workExperienceComponentWrapperStyles: React.FC<Props> = ({
       fontSize: "0.85rem"
     },
     description: {
-      color: theme.custom.palette.textVariantDark.main,
+      color: theme.custom.palette.textVariantGrey.dark,
       fontSize: "0.95rem",
       marginBottom: "1rem"
     }
@@ -102,7 +104,13 @@ const workExperienceComponentWrapperStyles: React.FC<Props> = ({
 
   const styles = workExperienceComponentStyles();
 
-  return <WorkExperienceCvComponent workExperienceData={workExperienceData} styles={styles} />;
+  return (
+    <WorkExperienceCvComponent
+      isSwedishCv={isSwedishCv}
+      workExperienceData={workExperienceData}
+      styles={styles}
+    />
+  );
 };
 
 export default workExperienceComponentWrapperStyles;

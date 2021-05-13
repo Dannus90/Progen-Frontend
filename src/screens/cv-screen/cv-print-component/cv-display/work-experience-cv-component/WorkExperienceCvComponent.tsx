@@ -9,13 +9,16 @@ import { transformDate } from "../../../../../utils/dates/date-helper";
 interface Props {
   styles: ClassNameMap<WorkExperienceCvComponentClasses>;
   workExperienceData: WorkExperienceData;
+  isSwedishCv: boolean;
 }
 
 const WorkExperienceCvComponent: React.FC<Props> = ({
   styles,
-  workExperienceData
+  workExperienceData,
+  isSwedishCv
 }): JSX.Element => {
   const [t, i18n] = useTranslation("cvInformation");
+  const lng = i18n.language;
 
   const citySv = workExperienceData.city;
   const roleSv = workExperienceData.role;
@@ -24,9 +27,7 @@ const WorkExperienceCvComponent: React.FC<Props> = ({
 
   const resolveDate = (): string => {
     if (workExperienceData.dateEnded === "0001-01-01T00:00:00") {
-      const lng = i18n.language;
-
-      return `${transformDate(workExperienceData.dateStarted)} - ${lng === "sv" ? "Nu" : "Now"}`;
+      return `${transformDate(workExperienceData.dateStarted)} - ${isSwedishCv ? "Nu" : "Now"}`;
     }
 
     return `${transformDate(workExperienceData.dateStarted)} - ${transformDate(
@@ -34,13 +35,14 @@ const WorkExperienceCvComponent: React.FC<Props> = ({
     )}`;
   };
 
-  const resolveEmploymentRateForLanguage = (employmentRate: string, language: string) => {
-    if (language === "sv") {
+  const resolveEmploymentRateForLanguage = (employmentRate: string) => {
+    if (isSwedishCv) {
       if (employmentRate === "FullTime") return "Heltid";
       if (employmentRate === "PartTime") return "Deltid";
 
       return "Praktik";
     } else {
+      console.log(employmentRate === "FullTime");
       if (employmentRate === "FullTime") return "Full time";
       if (employmentRate === "PartTime") return "Part time";
 
@@ -56,7 +58,7 @@ const WorkExperienceCvComponent: React.FC<Props> = ({
         </div>
         <Typography className={styles.role}>{roleSv}</Typography>
         <Typography className={styles.employmentRate}>
-          {resolveEmploymentRateForLanguage(workExperienceData.employmentRate, "sv")}
+          {resolveEmploymentRateForLanguage(workExperienceData.employmentRate)}
         </Typography>
         <Typography className={styles.date}>{resolveDate()}</Typography>
         <Typography className={styles.cityCountry}>

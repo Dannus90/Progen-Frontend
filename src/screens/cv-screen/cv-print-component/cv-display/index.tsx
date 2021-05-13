@@ -25,6 +25,8 @@ export interface CvDisplayComponentStyles extends Theme {
   phoneNumber: CreateCSSProperties | CSSProperties;
   iconStyle: CreateCSSProperties | CSSProperties;
   workExperiencesContainer: CreateCSSProperties | CSSProperties;
+  workExperienceEducationHeader: CreateCSSProperties | CSSProperties;
+  workExperienceWrapper: CreateCSSProperties | CSSProperties;
 }
 
 export type CvDisplayComponentClasses =
@@ -43,8 +45,9 @@ export type CvDisplayComponentClasses =
   | "iconContactContainer"
   | "contactInfo"
   | "iconStyle"
-  | "workExperiencesContainer"
-  | "workExperienceHeader";
+  | "workExperienceHeader"
+  | "educationHeader"
+  | "workExperienceWrapper";
 
 export enum CvTypes {
   English = "English",
@@ -132,10 +135,17 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
       borderRadius: "50%",
       padding: "0.2rem"
     },
-    workExperiencesContainer: {},
     workExperienceHeader: {
       fontSize: "1.6rem",
       marginBottom: theme.customSpacings.s
+    },
+    educationHeader: {
+      fontSize: "1.6rem",
+      marginBottom: theme.customSpacings.s,
+      marginTop: theme.customSpacings.m
+    },
+    workExperienceWrapper: {
+      borderBottom: theme.custom.borderColors.subtleGreyMain
     }
   });
 

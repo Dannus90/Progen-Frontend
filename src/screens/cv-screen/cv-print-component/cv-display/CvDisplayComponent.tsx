@@ -8,6 +8,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import WorkExperienceCvComponent from "./work-experience-cv-component/index";
+import EducationCvComponent from "./education-cv-component/index";
 
 interface Props {
   styles: ClassNameMap<CvDisplayComponentClasses>;
@@ -97,12 +98,26 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
       </Container>
       <Container className={styles.mainContent}>
         {data.workExperiences.length && (
-          <div className={styles.workExperiencesContainer}>
+          <div className={styles.workExperienceWrapper}>
             <Typography className={styles.workExperienceHeader}>
               {isSwedishCv ? "Arbetslivserfarenhet".toUpperCase() : "Work experience".toUpperCase()}
             </Typography>
             {sortedWorkExperiences.map((we, index) => (
-              <WorkExperienceCvComponent workExperienceData={we} key={index} />
+              <WorkExperienceCvComponent
+                isSwedishCv={isSwedishCv}
+                workExperienceData={we}
+                key={index}
+              />
+            ))}
+          </div>
+        )}
+        {data.educations.length && (
+          <div>
+            <Typography className={styles.educationHeader}>
+              {isSwedishCv ? "Utbildning".toUpperCase() : "Education".toUpperCase()}
+            </Typography>
+            {sortedEducations.map((ed, index) => (
+              <EducationCvComponent isSwedishCv={isSwedishCv} educationData={ed} key={index} />
             ))}
           </div>
         )}

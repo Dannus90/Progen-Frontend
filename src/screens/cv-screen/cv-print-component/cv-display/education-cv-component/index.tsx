@@ -50,7 +50,8 @@ const EducationCvComponentWrapper: React.FC<Props> = ({
       flexDirection: "row",
       justifyContent: "space-between",
       marginBottom: theme.customSpacings.xs,
-      paddingBottom: theme.customSpacings.xs
+      paddingBottom: theme.customSpacings.xs,
+      pageBreakInside: "avoid"
     },
     educationContainer: {
       width: "100%"

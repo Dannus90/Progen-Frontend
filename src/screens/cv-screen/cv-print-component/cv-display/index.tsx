@@ -189,7 +189,8 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
       marginTop: theme.customSpacings.m
     },
     otherInformationContainer: {
-      marginTop: theme.customSpacings.m
+      marginTop: theme.customSpacings.m,
+      pageBreakInside: "avoid"
     },
     playArrowStyle: {
       color: "#a61e1e",

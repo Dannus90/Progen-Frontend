@@ -47,7 +47,8 @@ const workExperienceComponentWrapperStyles: React.FC<Props> = ({
   const workExperienceComponentStyles = makeStyles({
     workExperienceCvComponentWrapperStyles: {
       marginBottom: theme.customSpacings.xs,
-      paddingBottom: theme.customSpacings.xs
+      paddingBottom: theme.customSpacings.xs,
+      pageBreakInside: "avoid"
     },
     workExperienceContainer: {
       width: "100%"

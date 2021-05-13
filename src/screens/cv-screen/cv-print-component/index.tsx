@@ -32,10 +32,11 @@ const CvPrintComponentWrapper: React.FC<Props> = ({ cvVersion }): JSX.Element =>
 
   const cvPrintComponentStyles = makeStyles({
     cvPrintComponentWrapperStyles: {
-      background: `#fff`
+      background: `#fff`,
+      width: "840px"
     },
     cvPaperWrapperStyles: {
-      width: "100%",
+      width: "840px",
       minHeight: "100vh",
       padding: theme.customSpacings.m,
       paddingBottom: "2rem"

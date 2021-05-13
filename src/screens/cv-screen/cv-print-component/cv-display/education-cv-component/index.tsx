@@ -49,7 +49,7 @@ const EducationCvComponentWrapper: React.FC<Props> = ({
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-between",
-      marginBottom: theme.customSpacings.m,
+      marginBottom: theme.customSpacings.xs,
       paddingBottom: theme.customSpacings.xs
     },
     educationContainer: {

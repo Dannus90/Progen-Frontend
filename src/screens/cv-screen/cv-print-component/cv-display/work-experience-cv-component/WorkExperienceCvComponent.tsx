@@ -1,7 +1,6 @@
 import React from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { Typography } from "@material-ui/core";
-import { useTranslation } from "react-i18next";
 import { WorkExperienceData } from "../../interfaces/cv-print-component-interfaces";
 import { WorkExperienceCvComponentClasses } from ".";
 import { transformDate } from "../../../../../utils/dates/date-helper";
@@ -17,9 +16,6 @@ const WorkExperienceCvComponent: React.FC<Props> = ({
   workExperienceData,
   isSwedishCv
 }): JSX.Element => {
-  const [t, i18n] = useTranslation("cvInformation");
-  const lng = i18n.language;
-
   const citySv = workExperienceData.city;
   const roleSv = workExperienceData.role;
   const descriptionSv = workExperienceData.description;

@@ -24,7 +24,11 @@ const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
 
   return (
     <div className={styles.cvScreenWrapperStyles}>
-      <ReactToPrint trigger={cvToPrint} content={() => printComponentRef.current} />
+      <ReactToPrint
+        trigger={cvToPrint}
+        content={() => printComponentRef.current}
+        documentTitle=""
+      />
       <div ref={printComponentRef}>
         <CvPrintComponent cvVersion={cvVersion} />
       </div>

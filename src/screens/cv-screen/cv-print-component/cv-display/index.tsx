@@ -27,6 +27,14 @@ export interface CvDisplayComponentStyles extends Theme {
   workExperiencesContainer: CreateCSSProperties | CSSProperties;
   workExperienceEducationHeader: CreateCSSProperties | CSSProperties;
   workExperienceWrapper: CreateCSSProperties | CSSProperties;
+  educationsContainer: CreateCSSProperties | CSSProperties;
+  playArrowStyle: CreateCSSProperties | CSSProperties;
+  otherInformationContainer: CreateCSSProperties | CSSProperties;
+  otherInformationHeader: CreateCSSProperties | CSSProperties;
+  languagesHeader: CreateCSSProperties | CSSProperties;
+  languageList: CreateCSSProperties | CSSProperties;
+  languagesContainer: CreateCSSProperties | CSSProperties;
+  drivingLicencesHeader: CreateCSSProperties | CSSProperties;
 }
 
 export type CvDisplayComponentClasses =
@@ -47,7 +55,15 @@ export type CvDisplayComponentClasses =
   | "iconStyle"
   | "workExperienceHeader"
   | "educationHeader"
-  | "workExperienceWrapper";
+  | "workExperienceWrapper"
+  | "educationsContainer"
+  | "playArrowStyle"
+  | "otherInformationContainer"
+  | "otherInformationHeader"
+  | "languagesHeader"
+  | "languageList"
+  | "languagesContainer"
+  | "drivingLicencesHeader";
 
 export enum CvTypes {
   English = "English",
@@ -72,7 +88,7 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     },
     sideInformationContainer: {
       flex: 1,
-      borderRight: theme.custom.borderColors.subtleGreyMain
+      borderRight: theme.custom.borderColors.subtleGreyFat
     },
     mainContent: {
       flex: 2
@@ -87,7 +103,7 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
       justifyContent: "center",
       flexDirection: "column",
       alignItems: "center",
-      borderBottom: theme.custom.borderColors.subtleGreyMain,
+      borderBottom: theme.custom.borderColors.subtleGreyFat,
       paddingBottom: theme.customSpacings.l
     },
     fullNameContainer: {
@@ -108,7 +124,7 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     userPresentationContainer: {
       margin: `${theme.customSpacings.l} ${theme.customSpacings.xs}`,
       paddingBottom: theme.customSpacings.l,
-      borderBottom: theme.custom.borderColors.subtleGreyMain
+      borderBottom: theme.custom.borderColors.subtleGreyMedium
     },
     userPresentationText: {
       color: theme.custom.palette.textVariantGrey.dark
@@ -137,15 +153,54 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     },
     workExperienceHeader: {
       fontSize: "1.6rem",
-      marginBottom: theme.customSpacings.s
+      marginBottom: theme.customSpacings.s,
+      display: "flex",
+      alignItems: "center"
     },
     educationHeader: {
       fontSize: "1.6rem",
       marginBottom: theme.customSpacings.s,
-      marginTop: theme.customSpacings.m
+      display: "flex",
+      alignItems: "center"
     },
-    workExperienceWrapper: {
-      borderBottom: theme.custom.borderColors.subtleGreyMain
+    languagesHeader: {
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      marginBottom: theme.customSpacings.xxxs,
+      display: "flex",
+      alignItems: "center"
+    },
+    drivingLicencesHeader: {
+      fontSize: "1.2rem",
+      fontWeight: "bold",
+      marginBottom: theme.customSpacings.xxxs,
+      display: "flex",
+      alignItems: "center"
+    },
+    otherInformationHeader: {
+      fontSize: "1.6rem",
+      marginBottom: theme.customSpacings.s,
+      display: "flex",
+      alignItems: "center"
+    },
+    workExperienceWrapper: {},
+    educationsContainer: {
+      marginTop: theme.customSpacings.m,
+      pageBreakBefore: "always"
+    },
+    otherInformationContainer: {
+      marginTop: theme.customSpacings.m,
+      pageBreakBefore: "always"
+    },
+    playArrowStyle: {
+      color: "#a61e1e",
+      marginLeft: "-7.5px"
+    },
+    languageList: {
+      marginLeft: "25px"
+    },
+    languagesContainer: {
+      marginBottom: "1rem"
     }
   });
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { CvPrintComponentClasses, CvTypes } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { Button, CircularProgress, Paper } from "@material-ui/core";
@@ -18,9 +18,9 @@ interface Props {
   cvVersion: CvTypes;
 }
 
-const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
+const CvPrintComponent: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
   const isSwedishCv = cvVersion === CvTypes.Swedish;
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
   const { refetch, loading, error, data } = useQuery<GetFullCvInformationResponse>(
     GET_FULL_CV_INFORMATION
   );
@@ -77,4 +77,4 @@ const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
   );
 };
 
-export default HomeScreen;
+export default CvPrintComponent;

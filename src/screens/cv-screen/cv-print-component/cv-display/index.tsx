@@ -82,16 +82,17 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     cvDisplayComponentWrapperStyles: {
       background: `#fff`,
       marginTop: theme.customSpacings.s,
-      display: "flex",
       flexDirection: "row",
       fontFamily: "Roboto"
     },
     sideInformationContainer: {
-      flex: 1,
+      float: "left",
+      width: "400px",
+      marginRight: "1.5rem",
       borderRight: theme.custom.borderColors.subtleGreyFat
     },
     mainContent: {
-      flex: 2
+      width: "100%"
     },
     sizeAvatar: {
       height: "200px",
@@ -138,7 +139,7 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     },
     iconContactContainer: {
       display: "flex",
-      marginBottom: theme.customSpacings.xxs
+      marginBottom: theme.customSpacings.s
     },
     contactInfo: {
       fontSize: "1rem",
@@ -185,12 +186,10 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     },
     workExperienceWrapper: {},
     educationsContainer: {
-      marginTop: theme.customSpacings.m,
-      pageBreakBefore: "always"
+      marginTop: theme.customSpacings.m
     },
     otherInformationContainer: {
-      marginTop: theme.customSpacings.m,
-      pageBreakBefore: "always"
+      marginTop: theme.customSpacings.m
     },
     playArrowStyle: {
       color: "#a61e1e",

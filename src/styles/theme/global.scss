@@ -27,4 +27,8 @@ input:-webkit-autofill:active {
     margin-bottom: 10mm;
     margin-top: 10mm;
   }
+  .MuiPaper-elevation1 {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
 }

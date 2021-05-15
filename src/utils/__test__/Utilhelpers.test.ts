@@ -1,4 +1,4 @@
-import { setTokens, getToken } from "./../auth-helper";
+import { getToken, setTokens } from "./../auth-helper";
 
 import {
   createDate,
@@ -10,7 +10,7 @@ import {
 
 describe("Token management works", () => {
   describe("Set and retrieve token from localstorage works", () => {
-    it("Is works correclty", () => {
+    it("Is works correctly", () => {
       const tokenData = getToken();
 
       expect(tokenData).toStrictEqual({ accessToken: "", refreshToken: "" });
@@ -56,7 +56,9 @@ describe("Date helper works", () => {
     it("Correctly creates the date", () => {
       const currentDate = createDate();
 
-      expect(currentDate).toEqual(new Date());
+      expect(currentDate.getDay).toEqual(new Date().getDay);
+      expect(currentDate.getMonth).toEqual(new Date().getMonth);
+      expect(currentDate.getFullYear).toEqual(new Date().getFullYear);
     });
   });
 

@@ -1,7 +1,4 @@
-import { GET_REFRESH_TOKEN } from "../auth/gql";
-import { apolloClient } from "./../ApolloClient";
-
-interface TokenData {
+export interface TokenData {
   accessToken: string | null;
   refreshToken: string | null;
 }
@@ -32,17 +29,3 @@ export interface RefreshTokenResponse {
     };
   };
 }
-
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const getNewToken = () => {
-  const { accessToken, refreshToken } = getToken();
-  return apolloClient.mutate({
-    mutation: GET_REFRESH_TOKEN,
-    variables: {
-      refreshTokenInput: {
-        accessToken: accessToken,
-        refreshToken: refreshToken
-      }
-    }
-  });
-};

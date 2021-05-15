@@ -34,7 +34,9 @@ describe("UserData Redux", () => {
         countryEn: "Sweden",
         cityEn: "Gothenburg",
         profileImage: "testImage",
-        publicId: "wrtwert23452345345"
+        publicId: "wrtwert23452345345",
+        workTitleSv: "Mjukvaruutvecklare",
+        workTitleEn: "Software developer"
       };
       const state = rootReducer.userDataState(initialState, setUserData(stateForUpdate));
 
@@ -49,7 +51,9 @@ describe("UserData Redux", () => {
           countryEn: state.countryEn,
           cityEn: state.cityEn,
           profileImage: state.profileImage,
-          publicId: state.publicId
+          publicId: state.publicId,
+          workTitleSv: state.workTitleSv,
+          workTitleEn: state.workTitleEn
         })
       );
     });

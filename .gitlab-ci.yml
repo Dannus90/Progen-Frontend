@@ -6,7 +6,7 @@ cache:
 
 before_script:
   - rm -rf build # remove the existing build
-  - CI=false npm install # install required packages
+  - CI=false yarn install # install required packages
 
 stages:
   - build
@@ -18,8 +18,8 @@ build:
   stage: build
   script:
     - rm -rf node_modules
-    - npm install
-    - npm run build
+    - yarn install
+    - yarn build
   artifacts:
     paths:
       - build/
@@ -27,19 +27,19 @@ build:
 lint:
   stage: lint
   script:
-    - npm run lint:ci
+    - yarn lint:ci
 
 test:
   stage: test
   script:
-    - npm run test:ci
+    - yarn test:ci
 
 deploy:
   stage: production
   script:
     - rm -rf node_modules
-    - npm install
-    - npm run build
+    - yarn install
+    - yarn build
     - rm -rf public
     - mv build public
   artifacts:

@@ -21,9 +21,8 @@ interface Props {
 const CvPrintComponent: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
   const isSwedishCv = cvVersion === CvTypes.Swedish;
   const { t } = useTranslation("common");
-  const { refetch, loading, error, data } = useQuery<GetFullCvInformationResponse>(
-    GET_FULL_CV_INFORMATION
-  );
+  const { refetch, loading, error, data } =
+    useQuery<GetFullCvInformationResponse>(GET_FULL_CV_INFORMATION);
   const [swedishData, setSwedishData] = useState<CvLanguageBasedData>();
   const [englishData, setEnglishData] = useState<CvLanguageBasedData>();
 

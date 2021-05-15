@@ -64,20 +64,23 @@ const LanguageModal: React.FC<Props> = ({
         }
   );
 
-  const [createLanguage, { loading: createLoading, error }] = useMutation<{
-    createLanguage: LanguageResponse;
-    createLanguageInput: LanguageInput;
-  }>(CREATE_LANGUAGE);
+  const [createLanguage, { loading: createLoading, error }] =
+    useMutation<{
+      createLanguage: LanguageResponse;
+      createLanguageInput: LanguageInput;
+    }>(CREATE_LANGUAGE);
 
-  const [deleteLanguage, { loading: deleteLoading, error: deleteError }] = useMutation<{
-    deleteLanguage: LanguageResponse;
-    deleteLanguageInput: DeleteLanguageInput;
-  }>(DELETE_LANGUAGE);
+  const [deleteLanguage, { loading: deleteLoading, error: deleteError }] =
+    useMutation<{
+      deleteLanguage: LanguageResponse;
+      deleteLanguageInput: DeleteLanguageInput;
+    }>(DELETE_LANGUAGE);
 
-  const [updateLanguage, { loading: updateLoading, error: updateError }] = useMutation<{
-    updateLanguage: LanguageResponse;
-    updateLanguageInput: LanguageInput;
-  }>(UPDATE_LANGUAGE);
+  const [updateLanguage, { loading: updateLoading, error: updateError }] =
+    useMutation<{
+      updateLanguage: LanguageResponse;
+      updateLanguageInput: LanguageInput;
+    }>(UPDATE_LANGUAGE);
 
   const handleCreateLanguage = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();

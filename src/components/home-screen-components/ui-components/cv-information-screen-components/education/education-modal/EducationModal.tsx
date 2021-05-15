@@ -94,20 +94,23 @@ const EducationModal: React.FC<Props> = ({
         }
   );
 
-  const [createEducation, { loading: createLoading, error }] = useMutation<{
-    createEducation: EducationResponse;
-    createEducationInput: EducationInput;
-  }>(CREATE_EDUCATION);
+  const [createEducation, { loading: createLoading, error }] =
+    useMutation<{
+      createEducation: EducationResponse;
+      createEducationInput: EducationInput;
+    }>(CREATE_EDUCATION);
 
-  const [deleteEducation, { loading: deleteLoading, error: deleteError }] = useMutation<{
-    deleteEducation: EducationResponse;
-    deleteEducationInput: DeleteEducationInput;
-  }>(DELETE_EDUCATION);
+  const [deleteEducation, { loading: deleteLoading, error: deleteError }] =
+    useMutation<{
+      deleteEducation: EducationResponse;
+      deleteEducationInput: DeleteEducationInput;
+    }>(DELETE_EDUCATION);
 
-  const [updateEducation, { loading: updateLoading, error: updateError }] = useMutation<{
-    updateEducation: EditEducationData;
-    updateEducationInput: EditEducationInput;
-  }>(UPDATE_EDUCATION);
+  const [updateEducation, { loading: updateLoading, error: updateError }] =
+    useMutation<{
+      updateEducation: EditEducationData;
+      updateEducationInput: EditEducationInput;
+    }>(UPDATE_EDUCATION);
 
   const handleCreateEducation = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();

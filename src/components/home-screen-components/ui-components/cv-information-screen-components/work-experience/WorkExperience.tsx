@@ -20,9 +20,8 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const [createOpen, setCreateOpen] = useState<boolean>(false);
   const { workExperienceState } = useAppSelector((state) => state);
-  const { refetch, error, loading, data } = useQuery<GetWorkExperiencesResponse>(
-    GET_WORK_EXPERIENCES
-  );
+  const { refetch, error, loading, data } =
+    useQuery<GetWorkExperiencesResponse>(GET_WORK_EXPERIENCES);
 
   const handleCreateModalClose = (): void => {
     setCreateOpen(false);

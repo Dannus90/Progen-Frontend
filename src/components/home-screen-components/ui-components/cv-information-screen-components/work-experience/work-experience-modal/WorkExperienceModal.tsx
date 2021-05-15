@@ -96,20 +96,23 @@ const WorkExperienceModal: React.FC<Props> = ({
         }
   );
 
-  const [createWorkExperience, { loading: createLoading, error }] = useMutation<{
-    createWorkExperience: WorkExperienceResponse;
-    createWorkExperienceInput: WorkExperienceInput;
-  }>(CREATE_WORK_EXPERIENCE);
+  const [createWorkExperience, { loading: createLoading, error }] =
+    useMutation<{
+      createWorkExperience: WorkExperienceResponse;
+      createWorkExperienceInput: WorkExperienceInput;
+    }>(CREATE_WORK_EXPERIENCE);
 
-  const [deleteWorkExperience, { loading: deleteLoading, error: deleteError }] = useMutation<{
-    deleteWorkExperience: WorkExperienceResponse;
-    deleteWorkExperienceInput: WorkExperienceInput;
-  }>(DELETE_WORK_EXPERIENCE);
+  const [deleteWorkExperience, { loading: deleteLoading, error: deleteError }] =
+    useMutation<{
+      deleteWorkExperience: WorkExperienceResponse;
+      deleteWorkExperienceInput: WorkExperienceInput;
+    }>(DELETE_WORK_EXPERIENCE);
 
-  const [updateWorkExperience, { loading: updateLoading, error: updateError }] = useMutation<{
-    updateWorkExperience: WorkExperienceResponse;
-    updateWorkExperienceInput: WorkExperienceInput;
-  }>(UPDATE_WORK_EXPERIENCE);
+  const [updateWorkExperience, { loading: updateLoading, error: updateError }] =
+    useMutation<{
+      updateWorkExperience: WorkExperienceResponse;
+      updateWorkExperienceInput: WorkExperienceInput;
+    }>(UPDATE_WORK_EXPERIENCE);
 
   const handleCreateWorkExperience = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();

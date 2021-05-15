@@ -42,13 +42,11 @@ const OtherComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     ...initialFormState
   });
   const { error, data } = useQuery<OtherInformationResponse>(GET_OTHER_INFORMATION);
-  const [
-    updateOtherInformation,
-    { loading: userPresentationLoading, error: updateError }
-  ] = useMutation<{
-    otherInformation: OtherInformationResponse;
-    otherInformationInput: UpdateOtherInformationInput;
-  }>(UPDATE_OTHER_INFORMATION);
+  const [updateOtherInformation, { loading: userPresentationLoading, error: updateError }] =
+    useMutation<{
+      otherInformation: OtherInformationResponse;
+      otherInformationInput: UpdateOtherInformationInput;
+    }>(UPDATE_OTHER_INFORMATION);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();

@@ -39,13 +39,11 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
   const { setFormData, formData, handleInputChange } = UsePresentationForm({ ...initialFormState });
   const { error, data } = useQuery<UserPresentationResponse>(GET_USER_PRESENTATION);
-  const [
-    updateUserPresentation,
-    { loading: userPresentationLoading, error: updateError }
-  ] = useMutation<{
-    userData: UserPresentationResponse;
-    updateUserPresentationInput: UpdateUserPresentationInput;
-  }>(UPDATE_USER_PRESENTATION);
+  const [updateUserPresentation, { loading: userPresentationLoading, error: updateError }] =
+    useMutation<{
+      userData: UserPresentationResponse;
+      updateUserPresentationInput: UpdateUserPresentationInput;
+    }>(UPDATE_USER_PRESENTATION);
 
   const clearSwedishFormFields = (): void => {
     setFormData({ ...formData, presentationSv: "" });

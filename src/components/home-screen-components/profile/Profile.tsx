@@ -26,10 +26,11 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [
     updateUserData,
     { loading: userDataLoading, error: updateError, data: updatedUserDataMutation }
-  ] = useMutation<{
-    userData: UpdateUserResponse;
-    updateUserDataInput: ProfileFormDataState;
-  }>(UPDATE_USERDATA);
+  ] =
+    useMutation<{
+      userData: UpdateUserResponse;
+      updateUserDataInput: ProfileFormDataState;
+    }>(UPDATE_USERDATA);
 
   useEffect(() => {
     return () => {

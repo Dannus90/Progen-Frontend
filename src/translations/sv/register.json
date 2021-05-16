@@ -22,9 +22,18 @@
         "p2": "När du accepterar så lagras din personliga data fram till den dagen du avslutar ditt konto."
       },
       "policyModal": {
-        "header": "Integritetspolicy",
-        "p1": "Genom att acceptera vår integritetspolicy godkänner du att vi lagrar personlig data.",
-        "p2": "När du accepterar så lagras din personliga data fram till den dagen du avslutar ditt konto."
+        "header": "Behandling av personuppgifter på ProGen.",
+        "p1": "För ProGen är personlig integritet viktigt. Vi eftersträvar en hög nivå av dataskydd. I denna policy förklarar vi hur vi samlar in och använder personuppgifter. Vi beskriver också dina rättigheter och hur du kan göra dem gällande. Du är alltid välkommen att kontakta oss om du har frågor om hur vi behandlar dina personuppgifter. Kontaktuppgifter ses längst ner i denna integritetspolicy. ",
+        "q1": "Vad är en personuppgift och vad är en behandling av personuppgifter? ",
+        "p2": "Personuppgifter är alla uppgifter om en levande fysisk person som direkt eller indirekt kan kopplas till den personen. Det handlar inte bara om namn och personnummer utan även om till exempel bilder och e-postadresser. Behandling av personuppgifter är allt som sker med personuppgifterna i IT-systemen, oavsett om det handlar om mobila enheter eller datorer. Det handlar om till exempel insamling, registrering, strukturering, lagring, bearbetning och överföring. I vissa fall kan även manuella register omfattas. Personuppgiftsansvarig för de behandlingar som sker inom ProGens verksamhet är ProGen personuppgiftsansvarig. (Ponnygatan 3, Mölndal). ",
+        "q2": "Vilka personuppgifter samlar vi in om dig och varför?",
+        "p3": "Vi behandlar i huvudsak ditt namn, address, kontaktuppgifter och information som behövs för att tillverka ditt cv. Vi behandlar dina personuppgifter för att kunna erbjuda en applikation som ger meningsfullt innehåll vid genering av cv. ",
+        "p4": "Vi delar inte dina personuppgifter med andra aktörer, dock kan medlemmar i samma team på sidan se information om andra medlemmar i teamet. Accepterar du integritetspolicy accepterar du även detta. ",
+        "q3": "Hur länge sparar vi dina personuppgifter?",
+        "p5": "Dina uppgifter sparas fram till den dagen du väljer att avsluta ditt medlemskap och radera ditt konto hos oss. I samband med detta raderas även dina uppgifter ur vår databas. Du kan även välja att ta bort särskild information på sidan och i samband med detta kommer denna information även att tas bort från vår databas.",
+        "q4": "Vad är dina rättigheter som registrerad?",
+        "p6": "Som registrerad har du enligt gällande lagstiftning ett antal rättigheter. Du har rätt till att få ett utdrag som visar vilka personuppgifter vi har registrerade om dig. Du kan begära rättelse av felaktiga uppgifter och i vissa fall radering.",
+        "p7": "Kontakta oss vid frågor om hur vi behandlar personuppgifter. Om du har frågor om hur vi behandlar personuppgifter kontakta Daniel Persson som är ansvarig för personuppgiftsfrågor på persson.daniel.1990@gmail.com. Vi kan komma att göra ändringar i vår integritetspolicy. Den senaste versionen av integritetspolicyn finns alltid tillgänglig här på registreringssidan."
       }
     }
   }

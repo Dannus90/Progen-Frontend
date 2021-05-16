@@ -270,14 +270,32 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
       <DraggableModal
         header={t("form.modalText.agreementModal.header")}
         p1={t("form.modalText.agreementModal.p1")}
+        q1={t("form.modalText.agreementModal.q2")}
         p2={t("form.modalText.agreementModal.p2")}
+        q2={t("form.modalText.agreementModal.q2")}
+        p3={t("form.modalText.agreementModal.p3")}
+        p4={t("form.modalText.agreementModal.p4")}
+        q3={t("form.modalText.agreementModal.q3")}
+        p5={t("form.modalText.agreementModal.p5")}
+        q4={t("form.modalText.agreementModal.q4")}
+        p6={t("form.modalText.agreementModal.p6")}
+        p7={t("form.modalText.agreementModal.p7")}
         handleClose={handleAgreementModalClose}
         open={modalAgreementOpen}
       />
       <DraggableModal
         header={t("form.modalText.policyModal.header")}
         p1={t("form.modalText.policyModal.p1")}
+        q1={t("form.modalText.policyModal.q2")}
         p2={t("form.modalText.policyModal.p2")}
+        q2={t("form.modalText.policyModal.q2")}
+        p3={t("form.modalText.policyModal.p3")}
+        p4={t("form.modalText.policyModal.p4")}
+        q3={t("form.modalText.policyModal.q3")}
+        p5={t("form.modalText.policyModal.p5")}
+        q4={t("form.modalText.policyModal.q4")}
+        p6={t("form.modalText.policyModal.p6")}
+        p7={t("form.modalText.policyModal.p7")}
         handleClose={handlePrivacyPolicyModalClose}
         open={modalPrivacyPolicyOpen}
       />

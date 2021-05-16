@@ -66,7 +66,7 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   useMemo(() => {
     const userInformation = updatedUserDataMutation?.userData.updateUserData;
-    console.log(userInformation);
+
     if (userInformation) {
       formData = {
         firstName: userInformation?.firstName ?? "",

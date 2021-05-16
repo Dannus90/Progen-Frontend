@@ -22,9 +22,18 @@
         "p2": "Once you have accepted your data will be stored until the account is deleted."
       },
       "policyModal": {
-        "header": "Privacy Policy.",
-        "p1": "By accepting our privacy policy you do accept that we store personal data.",
-        "p2": "Once you have accepted your data will be stored until the account is deleted."
+        "header": "Treatment of personal data on ProGen.",
+        "p1": "Personal integrity is important for ProGen. We strive for a high level of data protection. In this policy, we explain how we collect and use personal information. We also describe your rights and how you can enforce them. You are always welcome to contact us if you have questions about how we process your personal data. Contact information are found on the bottom of this privacy policy. ",
+        "q1": "What is personal data and what is the processing of personal data?",
+        "p2": "Personal data is all data about a living person that can be directly or indirectly linked to that person. It is not just about names and social security numbers but also about, for example, photos and e-email addresses. Processing of personal data is everything that happens with the personal data in the IT systems, regardless of whether it is mobile devices or computers. These include collection, registration, structuring, storage, processing and transfer. In some cases, manual registers may also be included. Personal data manager for the processing that takes place within ProGen’s operations is ProGen(Ponnygatan 3, Mölndal). ",
+        "q2": "What personal information do we collect about you and why?",
+        "p3": "We mainly process your name, address, contact information and information needed to produce your cv. We process your personal data in order to be able to offer an application that provides meaningful content when generating a cv.",
+        "p4": "We do not share your personal information with other players, however, members of the same team on the site can see information about other members of the team. If you accept the privacy policy, you also accept this.",
+        "q3": "How long do we store your personal information?",
+        "p5": "Your information is saved until the day that you choose to terminate your membership and delete your account. In connection with this, your information will also be deleted from our database. You can also choose to remove particular information on the site and it will be removed from the database.",
+        "q4": "What are your registered rights?",
+        "p6": "As a registered person, you have a number of rights under current legislation. You have the right to receive an extract showing what personal information we have registered about you. You can request correction of incorrect information and in some cases deletion.",
+        "p7": "Contact us with questions about how we process personal data. If you have questions about how we process personal data, contact Daniel Persson who is responsible for personal data issues at persson.daniel.1990@gmail.com. We may make changes to our privacy policy. The latest version of the privacy policy is always available here on the registration page."
       }
     }
   }

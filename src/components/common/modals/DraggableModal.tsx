@@ -21,11 +21,18 @@ const PaperComponent = (props: any): JSX.Element => {
 interface DraggableModalProps {
   handleClose: () => void;
   open: boolean;
-  header: string;
-  p1: string;
+  header?: string;
+  p1?: string;
+  q1?: string;
   p2?: string;
+  q2?: string;
   p3?: string;
   p4?: string;
+  q3?: string;
+  p5?: string;
+  q4?: string;
+  p6?: string;
+  p7?: string;
 }
 
 export default function DraggableDialog({
@@ -33,9 +40,16 @@ export default function DraggableDialog({
   open,
   header,
   p1,
+  q1,
   p2,
+  q2,
   p3,
-  p4
+  p4,
+  q3,
+  p5,
+  q4,
+  p6,
+  p7
 }: DraggableModalProps): JSX.Element {
   const { t } = useTranslation("common");
 
@@ -57,10 +71,22 @@ export default function DraggableDialog({
             {p1}
             <br />
             <br />
+            <b>{q1}</b>
+            {q1 && (
+              <>
+                <br />
+              </>
+            )}
             {p2}
             {p2 && (
               <>
                 <br />
+                <br />
+              </>
+            )}
+            <b>{q2}</b>
+            {q2 && (
+              <>
                 <br />
               </>
             )}
@@ -73,6 +99,39 @@ export default function DraggableDialog({
             )}
             {p4}
             {p4 && (
+              <>
+                <br />
+                <br />
+              </>
+            )}
+            <b>{q3}</b>
+            {q3 && (
+              <>
+                <br />
+              </>
+            )}
+            {p5}
+            {p5 && (
+              <>
+                <br />
+                <br />
+              </>
+            )}
+            <b>{q4}</b>
+            {q4 && (
+              <>
+                <br />
+              </>
+            )}
+            {p6}
+            {p6 && (
+              <>
+                <br />
+                <br />
+              </>
+            )}
+            {p7}
+            {p7 && (
               <>
                 <br />
                 <br />

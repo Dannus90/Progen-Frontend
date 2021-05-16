@@ -35,6 +35,7 @@ export interface CvDisplayComponentStyles extends Theme {
   languageList: CreateCSSProperties | CSSProperties;
   languagesContainer: CreateCSSProperties | CSSProperties;
   drivingLicencesHeader: CreateCSSProperties | CSSProperties;
+  driverLicenseWrapper: CreateCSSProperties | CSSProperties;
 }
 
 export type CvDisplayComponentClasses =
@@ -63,7 +64,8 @@ export type CvDisplayComponentClasses =
   | "languagesHeader"
   | "languageList"
   | "languagesContainer"
-  | "drivingLicencesHeader";
+  | "drivingLicencesHeader"
+  | "driverLicenseWrapper";
 
 export enum CvTypes {
   English = "English",
@@ -184,9 +186,12 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
       display: "flex",
       alignItems: "center"
     },
-    workExperienceWrapper: {},
+    workExperienceWrapper: {
+      pageBreakInside: "avoid"
+    },
     educationsContainer: {
-      marginTop: theme.customSpacings.m
+      marginTop: theme.customSpacings.m,
+      pageBreakInside: "avoid"
     },
     otherInformationContainer: {
       marginTop: theme.customSpacings.m,
@@ -201,6 +206,9 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     },
     languagesContainer: {
       marginBottom: "1rem"
+    },
+    driverLicenseWrapper: {
+      pageBreakInside: "avoid"
     }
   });
 

@@ -157,7 +157,7 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
               </div>
             )}
             {data.otherInformation.drivingLicense && (
-              <div>
+              <div className={styles.driverLicenseWrapper}>
                 <Typography className={styles.drivingLicencesHeader}>
                   {isSwedishCv ? "Körkort".toUpperCase() : "Driving licences".toUpperCase()}
                 </Typography>

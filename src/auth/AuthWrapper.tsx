@@ -62,7 +62,8 @@ const AuthWrapper: React.FC<Props> = ({ children }): JSX.Element => {
       const { exp } = jwt<TokenData>(accessToken);
       const currentTime = new Date().getTime() / 1000;
 
-      if (currentTime < exp) {
+      // We get a new token 5 minutes before expiry.
+      if (currentTime + 300 > exp) {
         getAccessToken({ accessToken, refreshToken });
       }
     } else {

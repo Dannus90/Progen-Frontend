@@ -102,9 +102,9 @@ const DrawerComponent: React.FC<Props> = ({
     } else if (userDataState.workTitleEn && lng === "en") {
       setWorkTitle(userDataState.workTitleEn);
     } else if (userData?.workTitleSv && lng === "sv") {
-      setWorkTitle(userData?.workTitleSv);
+      setWorkTitle(userData.workTitleSv);
     } else if (userData?.workTitleEn && lng === "en") {
-      setWorkTitle(userData?.workTitleEn);
+      setWorkTitle(userData.workTitleEn);
     } else {
       setWorkTitle("");
     }

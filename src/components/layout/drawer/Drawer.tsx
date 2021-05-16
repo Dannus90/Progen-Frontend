@@ -85,40 +85,38 @@ const DrawerComponent: React.FC<Props> = ({
     }
   ];
 
-  useMemo((): void => {
-    const userData = data?.userData.getFullUserInformation.user;
-    setProfileImage(data?.userData.getFullUserInformation.userData.profileImage ?? "");
-
-    if (userData?.firstName || userData?.lastName) {
-      return setFullUsername(`${userData?.firstName} ${userData?.lastName}`);
-    }
-
-    return setFullUsername(t("drawer.welcome"));
-  }, [data]);
-
   useMemo(() => {
+    const userData = data?.userData.getFullUserInformation.userData;
+    const user = data?.userData.getFullUserInformation.user;
+
     if (userDataState.profileImage) {
       setProfileImage(userDataState.profileImage);
+    } else if (userData?.profileImage) {
+      setProfileImage(userData?.profileImage);
     } else {
       setProfileImage("");
     }
 
-    if (userDataState.workTitleSv && lng === "sv") setWorkTitle(userDataState.workTitleSv);
-    if (userDataState.workTitleEn && lng === "en") setWorkTitle(userDataState.workTitleEn);
-
-    if (
-      (!userDataState.workTitleSv && lng === "sv") ||
-      (!userDataState.workTitleEn && lng === "en")
-    ) {
+    if (userDataState.workTitleSv && lng === "sv") {
+      setWorkTitle(userDataState.workTitleSv);
+    } else if (userDataState.workTitleEn && lng === "en") {
+      setWorkTitle(userDataState.workTitleEn);
+    } else if (userData?.workTitleSv && lng === "sv") {
+      setWorkTitle(userData?.workTitleSv);
+    } else if (userData?.workTitleEn && lng === "en") {
+      setWorkTitle(userData?.workTitleEn);
+    } else {
       setWorkTitle("");
     }
 
     if (userDataState.firstName || userDataState.lastName) {
       return setFullUsername(`${userDataState.firstName} ${userDataState.lastName}`);
+    } else if (user?.firstName || user?.lastName) {
+      return setFullUsername(`${user.firstName} ${user.lastName}`);
     }
 
     return setFullUsername(t("drawer.welcome"));
-  }, [userDataState, lng]);
+  }, [userDataState, lng, data]);
 
   const resolveProfileImage = (): string => {
     return profileImage ? profileImage : "./assets/images/personPlaceholder.png";

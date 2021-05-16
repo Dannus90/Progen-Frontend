@@ -15,7 +15,7 @@ import {
   Typography
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { ExitToAppRounded, Dashboard, Group, ContactSupportOutlined } from "@material-ui/icons";
+import { ExitToAppRounded } from "@material-ui/icons";
 import React, { useMemo, useState } from "react";
 import { DrawerComponentClasses } from ".";
 import { GET_USERDATA, LOGOUT_USER } from "./gql";
@@ -26,6 +26,7 @@ import {
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../../redux/hooks/hooks";
+import { listIconsLower, listIconsUpper } from "./Icons";
 
 interface Props {
   styles: ClassNameMap<DrawerComponentClasses>;
@@ -33,6 +34,12 @@ interface Props {
   window?: any;
   handleDrawerToggle: () => void;
   mobileOpen: boolean;
+}
+
+interface UserData {
+  profileImage?: string | undefined;
+  workTitleSv?: string | undefined;
+  workTitleEn?: string | undefined;
 }
 
 const DrawerComponent: React.FC<Props> = ({
@@ -64,50 +71,36 @@ const DrawerComponent: React.FC<Props> = ({
     navigateTo("/login");
   };
 
-  const listIconsUpper = [
-    {
-      name: "dashboard",
-      icon: <Dashboard />,
-      navigateTo: "/home"
-    },
-    {
-      name: "team",
-      icon: <Group />,
-      navigateTo: "/your-team"
+  const resolveWorkTitle = (data: UserData | undefined) => {
+    if (userDataState.workTitleSv && lng === "sv") {
+      setWorkTitle(userDataState.workTitleSv);
+    } else if (userDataState.workTitleEn && lng === "en") {
+      setWorkTitle(userDataState.workTitleEn);
+    } else if (data?.workTitleSv && lng === "sv") {
+      setWorkTitle(data.workTitleSv);
+    } else if (data?.workTitleEn && lng === "en") {
+      setWorkTitle(data.workTitleEn);
+    } else {
+      setWorkTitle("");
     }
-  ];
+  };
 
-  const listIconsLower = [
-    {
-      name: "support",
-      icon: <ContactSupportOutlined />,
-      navigateTo: "/support"
+  const resolveUserImage = (data: UserData | undefined) => {
+    if (userDataState.profileImage) {
+      setProfileImage(userDataState.profileImage);
+    } else if (data?.profileImage) {
+      setProfileImage(data.profileImage);
+    } else {
+      setProfileImage("");
     }
-  ];
+  };
 
   useMemo(() => {
     const userData = data?.userData.getFullUserInformation.userData;
     const user = data?.userData.getFullUserInformation.user;
 
-    if (userDataState.profileImage) {
-      setProfileImage(userDataState.profileImage);
-    } else if (userData?.profileImage) {
-      setProfileImage(userData.profileImage);
-    } else {
-      setProfileImage("");
-    }
-
-    if (userDataState.workTitleSv && lng === "sv") {
-      setWorkTitle(userDataState.workTitleSv);
-    } else if (userDataState.workTitleEn && lng === "en") {
-      setWorkTitle(userDataState.workTitleEn);
-    } else if (userData?.workTitleSv && lng === "sv") {
-      setWorkTitle(userData.workTitleSv);
-    } else if (userData?.workTitleEn && lng === "en") {
-      setWorkTitle(userData.workTitleEn);
-    } else {
-      setWorkTitle("");
-    }
+    resolveUserImage(userData);
+    resolveWorkTitle(userData);
 
     if (userDataState.firstName || userDataState.lastName) {
       return setFullUsername(`${userDataState.firstName} ${userDataState.lastName}`);

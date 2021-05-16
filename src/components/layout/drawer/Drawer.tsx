@@ -26,6 +26,7 @@ import {
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../../redux/hooks/hooks";
+import { LocalState } from "@apollo/client/core/LocalState";
 
 interface Props {
   styles: ClassNameMap<DrawerComponentClasses>;
@@ -58,10 +59,8 @@ const DrawerComponent: React.FC<Props> = ({
   const [workTitle, setWorkTitle] = useState<string>(initialWorkTitle);
 
   const handleLogoutUser = async () => {
-    const response = await logoutUser();
-    if (response.data === null && response.errors) {
-      return;
-    }
+    await logoutUser();
+    localStorage.removeItem("tokenData");
 
     navigateTo("/login");
   };

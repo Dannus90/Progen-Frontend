@@ -24,7 +24,8 @@
     "profileText": "Your profile information can be edited down belown",
     "saveSettings": "SAVE PROFILE",
     "workTitleSv": "Job title swedish",
-    "workTitleEn": "Job title english"
+    "workTitleEn": "Job title english",
+    "zipCode": "Zip code"
   },
   "exportCv": "Export CV"
 }

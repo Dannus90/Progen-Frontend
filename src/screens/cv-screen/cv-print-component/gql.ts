@@ -14,6 +14,7 @@ export const GET_FULL_CV_INFORMATION = gql`
           cityEn
           countrySv
           countryEn
+          zipCode
           profileImage
           workTitleSv
           workTitleEn

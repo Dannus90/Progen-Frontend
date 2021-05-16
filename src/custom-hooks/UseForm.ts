@@ -16,6 +16,7 @@ interface RegisterLoginProfileData {
   citySv?: acceptedTypes;
   countryEn?: acceptedTypes;
   cityEn?: acceptedTypes;
+  zipCode?: acceptedTypes;
   workTitleSv?: acceptedTypes;
   workTitleEn?: acceptedTypes;
 }

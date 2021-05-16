@@ -24,7 +24,8 @@
     "profileText": "Din profilinformatiion kan ändras nedan",
     "saveSettings": "SPARA PROFIL",
     "workTitleSv": "Arbetsbefattning svenska",
-    "workTitleEn": "Arbetsbefattning engelska"
+    "workTitleEn": "Arbetsbefattning engelska",
+    "zipCode": "Postnummer"
   },
   "exportCv": "Exportera CV"
 }

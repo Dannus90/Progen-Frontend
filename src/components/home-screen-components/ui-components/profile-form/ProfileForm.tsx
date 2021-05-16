@@ -111,21 +111,6 @@ const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }):
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  id="citySv"
-                  aria-describedby="my-helper-text"
-                  name="citySv"
-                  value={formData.citySv}
-                  variant="outlined"
-                  onChange={handleInputChange}
-                  inputProps={{ style: { fontSize: 14 } }}
-                  InputLabelProps={{ style: { fontSize: 14 } }}
-                  label={t("profileForm.citySv")}
-                  size="small"
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
                   id="countryEn"
                   aria-describedby="my-helper-text"
                   name="countryEn"
@@ -139,7 +124,22 @@ const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }):
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  id="citySv"
+                  aria-describedby="my-helper-text"
+                  name="citySv"
+                  value={formData.citySv}
+                  variant="outlined"
+                  onChange={handleInputChange}
+                  inputProps={{ style: { fontSize: 14 } }}
+                  InputLabelProps={{ style: { fontSize: 14 } }}
+                  label={t("profileForm.citySv")}
+                  size="small"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
                 <TextField
                   id="cityEn"
                   aria-describedby="my-helper-text"
@@ -150,6 +150,21 @@ const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }):
                   inputProps={{ style: { fontSize: 14 } }}
                   InputLabelProps={{ style: { fontSize: 14 } }}
                   label={t("profileForm.cityEn")}
+                  size="small"
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  id="zipCode"
+                  aria-describedby="my-helper-text"
+                  name="zipCode"
+                  value={formData.zipCode}
+                  variant="outlined"
+                  onChange={handleInputChange}
+                  inputProps={{ style: { fontSize: 14 } }}
+                  InputLabelProps={{ style: { fontSize: 14 } }}
+                  label={t("profileForm.zipCode")}
                   size="small"
                   fullWidth
                 />

@@ -11,6 +11,7 @@ export interface UserDataState {
   citySv: acceptedTypes;
   countryEn: acceptedTypes;
   cityEn: acceptedTypes;
+  zipCode: acceptedTypes;
   profileImage: acceptedTypes;
   publicId: acceptedTypes;
   workTitleSv: acceptedTypes;
@@ -32,6 +33,7 @@ export const initialState: UserDataState = {
   citySv: "",
   countryEn: "",
   cityEn: "",
+  zipCode: "",
   profileImage: "",
   publicId: "",
   workTitleSv: "",
@@ -61,6 +63,7 @@ export const userDataSlice = createSlice({
       state.citySv = action.payload.citySv;
       state.countryEn = action.payload.countryEn;
       state.cityEn = action.payload.cityEn;
+      state.zipCode = action.payload.zipCode;
       state.workTitleSv = action.payload.workTitleSv;
       state.workTitleEn = action.payload.workTitleEn;
       state.profileImage = action.payload.profileImage;

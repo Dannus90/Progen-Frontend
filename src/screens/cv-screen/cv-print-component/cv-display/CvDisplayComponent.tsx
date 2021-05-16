@@ -33,7 +33,19 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
       data.fullUserInformation.city &&
       data.fullUserInformation.country
     )
-      return `${data.fullUserInformation.city}, ${data.fullUserInformation.country}`;
+      return `${data.fullUserInformation.addressZipCode}, ${data.fullUserInformation.city}, ${data.fullUserInformation.country}`;
+    if (
+      data.fullUserInformation.addressZipCode &&
+      data.fullUserInformation.city &&
+      !data.fullUserInformation.country
+    )
+      return `${data.fullUserInformation.addressZipCode}, ${data.fullUserInformation.city}`;
+    if (
+      data.fullUserInformation.addressZipCode &&
+      !data.fullUserInformation.city &&
+      data.fullUserInformation.country
+    )
+      return `${data.fullUserInformation.addressZipCode}, ${data.fullUserInformation.country}`;
     if (!data.fullUserInformation.city && data.fullUserInformation.country)
       return `${data.fullUserInformation.country}`;
     if (data.fullUserInformation.city && !data.fullUserInformation.country)

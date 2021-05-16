@@ -59,11 +59,13 @@ const SupportScreenWrapper: React.FC = (): JSX.Element => {
     },
     supportContainer: {
       display: "flex",
+      flexDirection: smallScreen ? "column" : "row",
       padding: "2rem 1.5rem"
     },
     howToUseContactInfo: {
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
+      marginBottom: theme.customSpacings.m
     },
     faqContainer: {},
     howToUse: {
@@ -103,7 +105,8 @@ const SupportScreenWrapper: React.FC = (): JSX.Element => {
       padding: "0.2rem"
     },
     contactInfoPart: {
-      color: "rgba(0, 0, 0, 0.85)"
+      color: "rgba(0, 0, 0, 0.85)",
+      wordBreak: "break-word"
     },
     faqHeader: {
       fontWeight: "bold",

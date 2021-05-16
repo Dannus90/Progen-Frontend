@@ -1,0 +1,20 @@
+{
+  "howToUse": {
+    "header": "Hur skapar man ett CV med ProGen?",
+    "p1": "Efter lyckad inloggning hamnar du som användare på sidan “hem”. Där syns olika tabbar, varav en av tabbarna heter CV. Klicka på denna och börja lägga till information gällande utbildningar, jobb och annat. På startsidan under profil finns också information som kommer att användas till ditt cv. Du har bland annat möjlighet att ladda upp den bild som även kommer att synas på ditt cv. Du har även möjlighet att fylla i profilinformation som kommer att användas vid generering av ditt cv.",
+    "p2": "När du fyllt i all information ser du en knapp uppe till höger på “hem” skärmen som heter “exportera cv”. Klicka på denna och välj sedan på vilket språk du vill exportera ditt cv. När du valt detta landar du på en sida där du kan se ditt cv och här trycker du på knappen för att skriva ut cv. Framöver kommer det finnas fler templates att välja mellan vid cv generering."
+  },
+  "contact": {
+    "header": "Kontakta Support"
+  },
+  "faq": {
+    "header": "FAQ",
+    "q1": "Var kan jag läsa om användarvillkor och policies?",
+    "a1part1": "Användarvillkor",
+    "a1part2": "Integritetspolicy",
+    "q2": "Vad är syftet med denna applikation?",
+    "a2": "Syftet med denna applikation är att företag, framförallt inom konsultbranschen, enkelt skall få ett sätta att generera enhetliga cvn för sina anställda. Applikationen är även tillgänglig för privatpersoner, där man enkelt och snabbt kan generera ett högklassigt cv visuellt.",
+    "q3": "Kan jag ge mitt cv personliga stilar?",
+    "a3": "För närvarande går detta inte, mer än att du kan välja vilken information som skall finnas med. I framtiden är tanken att det skall finnas olika templates att välja mellan."
+  }
+}

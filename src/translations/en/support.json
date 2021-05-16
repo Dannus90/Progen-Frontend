@@ -1,0 +1,20 @@
+{
+  "howToUse": {
+    "header": "How to create a CV with ProGen?",
+    "p1": "After successful login, you as a user end up on the page ”home”. There are various tabs, one of which is called CV. Click on this and start adding information regarding educations, jobs and more. The start page under profile also contains information that will be used for your CV. Among other things, you have the opportunity to upload the image that will also be visible on your CV. You also have the opportunity to fill in profile information that will be used when generating your CV.",
+    "p2": "When you have filled in all the information, you will see a button at the top right of the ”home” screen called ”export resume”. Click on this and then choose in which language you want to export your CV. Once you have selected this, you land on a page where you can see your CV and here you press the button to print your CV. In the future, there will be more templates to choose from when generating a CV."
+  },
+  "contact": {
+    "header": "Contact support"
+  },
+  "faq": {
+    "header": "FAQ",
+    "q1": "Where can I read about terms of use and policies?",
+    "a1part1": "Terms of use",
+    "a1part2": "Privacy Policy",
+    "q2": "What is the purpose of this application?",
+    "a2": "The purpose of this application is that companies, especially in the consulting industry, should easily be given a way to generate uniform cvn for their employees. The application is also available for private individuals, where you can easily and quickly generate a high-quality CV visually.",
+    "q3": "Can I give my resume personal styles?",
+    "a3": "At present, this is not possible, other than that you can choose what information to include. In the future, the idea is that there will be different templates to choose from."
+  }
+}

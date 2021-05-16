@@ -7,7 +7,6 @@ import { Avatar, Container, Typography } from "@material-ui/core";
 import PhoneIcon from "@material-ui/icons/Phone";
 import EmailIcon from "@material-ui/icons/Email";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import WorkExperienceCvComponent from "./work-experience-cv-component/index";
 import EducationCvComponent from "./education-cv-component/index";
 
@@ -101,7 +100,6 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
         {data.workExperiences.length && (
           <div className={styles.workExperienceWrapper}>
             <Typography className={styles.workExperienceHeader}>
-              <PlayArrowIcon className={styles.playArrowStyle} />
               {isSwedishCv ? "Arbetslivserfarenhet".toUpperCase() : "Work experience".toUpperCase()}
             </Typography>
             {sortedWorkExperiences.map((we, index) => (
@@ -116,7 +114,6 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
         {data.educations.length && (
           <div className={styles.educationsContainer}>
             <Typography className={styles.educationHeader}>
-              <PlayArrowIcon className={styles.playArrowStyle} />
               {isSwedishCv ? "Utbildning".toUpperCase() : "Education".toUpperCase()}
             </Typography>
             {sortedEducations.map((ed, index) => (
@@ -127,7 +124,6 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
         {(data.languages.length || data.otherInformation.drivingLicense) && (
           <div className={styles.otherInformationContainer}>
             <Typography className={styles.educationHeader}>
-              <PlayArrowIcon className={styles.playArrowStyle} />
               {isSwedishCv ? "Övrig information".toUpperCase() : "Other information".toUpperCase()}
             </Typography>
             {data.languages.length && (

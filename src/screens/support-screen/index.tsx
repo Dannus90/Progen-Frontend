@@ -20,6 +20,9 @@ export interface SupportScreenStyles extends Theme {
   iconStyle: CreateCSSProperties | CSSProperties;
   contactInfoPart: CreateCSSProperties | CSSProperties;
   faqHeader: CreateCSSProperties | CSSProperties;
+  agreementButton: CreateCSSProperties | CSSProperties;
+  faqQuestion: CreateCSSProperties | CSSProperties;
+  faqAnswer: CreateCSSProperties | CSSProperties;
 }
 
 export type SupportScreenClasses =
@@ -36,7 +39,10 @@ export type SupportScreenClasses =
   | "iconContactContainer"
   | "iconStyle"
   | "contactInfoPart"
-  | "faqHeader";
+  | "faqHeader"
+  | "agreementButton"
+  | "faqQuestion"
+  | "faqAnswer";
 
 const SupportScreenWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -103,6 +109,24 @@ const SupportScreenWrapper: React.FC = (): JSX.Element => {
       fontWeight: "bold",
       fontSize: "1.4rem",
       marginBottom: theme.customSpacings.xs
+    },
+    agreementButton: {
+      display: "block",
+      color: `${theme.palette.primary.main}`,
+      outline: "none",
+      width: "100%",
+      cursor: "pointer",
+      fontSize: "0.9rem",
+      fontWeight: "bold",
+      listStyle: ""
+    },
+    faqQuestion: {
+      fontSize: "1.1rem",
+      fontWeight: "bold",
+      marginTop: theme.customSpacings.s
+    },
+    faqAnswer: {
+      color: "rgba(0, 0, 0, 0.85)"
     }
   });
 

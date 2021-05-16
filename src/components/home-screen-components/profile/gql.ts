@@ -16,7 +16,7 @@ export const GET_USERDATA = gql`
           cityEn
           countrySv
           countryEn
-          zipCode
+          addressZipCode
           profileImage
           profileImagePublicId
           workTitleSv
@@ -43,7 +43,7 @@ export const UPDATE_USERDATA = gql`
         cityEn
         countryEn
         countrySv
-        zipCode
+        addressZipCode
         profileImage
         profileImagePublicId
         workTitleSv

@@ -7,7 +7,7 @@ export interface ProfileFormDataState {
   citySv: string | undefined;
   countryEn: string | undefined;
   cityEn: string | undefined;
-  zipCode: string | undefined;
+  addressZipCode: string | undefined;
   profileImage: string | undefined;
   publicId: string | undefined;
   workTitleSv: string | undefined;

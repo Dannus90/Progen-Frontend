@@ -31,6 +31,7 @@ export const getSwedishData = (fullResponse: GetFullCvInformationResponse): CvLa
       city: data?.fullUserInformation.citySv ?? "",
       country: data?.fullUserInformation.countrySv ?? "",
       emailCv: data?.fullUserInformation.emailCv ?? "",
+      addressZipCode: data?.fullUserInformation.addressZipCode ?? "",
       phoneNumber: data?.fullUserInformation.phoneNumber ?? "",
       profileImage: data?.fullUserInformation.profileImage ?? "",
       workTitle: data?.fullUserInformation.workTitleSv ?? ""
@@ -89,6 +90,7 @@ export const getEnglishData = (fullResponse: GetFullCvInformationResponse): CvLa
       lastName: data?.fullUserInformation.lastName ?? "",
       city: data?.fullUserInformation.cityEn ?? "",
       country: data?.fullUserInformation.countryEn ?? "",
+      addressZipCode: data?.fullUserInformation.addressZipCode ?? "",
       emailCv: data?.fullUserInformation.emailCv ?? "",
       phoneNumber: data?.fullUserInformation.phoneNumber ?? "",
       profileImage: data?.fullUserInformation.profileImage ?? "",

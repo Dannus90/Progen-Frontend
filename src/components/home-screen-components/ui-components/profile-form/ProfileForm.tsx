@@ -124,7 +124,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }):
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   id="citySv"
                   aria-describedby="my-helper-text"
@@ -139,7 +139,7 @@ const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }):
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   id="cityEn"
                   aria-describedby="my-helper-text"
@@ -154,17 +154,17 @@ const ProfileFormComponent: React.FC<Props> = ({ styles, onUpdateProfileData }):
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={12}>
                 <TextField
-                  id="zipCode"
+                  id="addressZipCode"
                   aria-describedby="my-helper-text"
-                  name="zipCode"
-                  value={formData.zipCode}
+                  name="addressZipCode"
+                  value={formData.addressZipCode}
                   variant="outlined"
                   onChange={handleInputChange}
                   inputProps={{ style: { fontSize: 14 } }}
                   InputLabelProps={{ style: { fontSize: 14 } }}
-                  label={t("profileForm.zipCode")}
+                  label={t("profileForm.addressZipCode")}
                   size="small"
                   fullWidth
                 />

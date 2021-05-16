@@ -28,6 +28,12 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
   // CV INSPIRATION: https://www.etsy.com/in-en/listing/663855223/minimalist-resume-template-for-word
 
   const resolveCityAndCountry = (): string => {
+    if (
+      data.fullUserInformation.addressZipCode &&
+      data.fullUserInformation.city &&
+      data.fullUserInformation.country
+    )
+      return `${data.fullUserInformation.city}, ${data.fullUserInformation.country}`;
     if (!data.fullUserInformation.city && data.fullUserInformation.country)
       return `${data.fullUserInformation.country}`;
     if (data.fullUserInformation.city && !data.fullUserInformation.country)

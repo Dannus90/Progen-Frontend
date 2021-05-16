@@ -52,7 +52,7 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         citySv: userInformation?.userData.citySv ?? "",
         countryEn: userInformation?.userData.countryEn ?? "",
         cityEn: userInformation?.userData.cityEn ?? "",
-        zipCode: userInformation.userData.zipCode ?? "",
+        addressZipCode: userInformation.userData.addressZipCode ?? "",
         profileImage: userInformation?.userData.profileImage ?? "",
         publicId: userInformation?.userData.profileImagePublicId ?? "",
         workTitleSv: userInformation?.userData.workTitleSv ?? "",
@@ -76,7 +76,7 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         citySv: userInformation?.citySv ?? "",
         countryEn: userInformation?.countryEn ?? "",
         cityEn: userInformation?.cityEn ?? "",
-        zipCode: userInformation.zipCode ?? "",
+        addressZipCode: userInformation.addressZipCode ?? "",
         profileImage: userInformation.profileImage ?? "",
         publicId: userInformation?.profileImagePublicId ?? "",
         workTitleSv: userInformation?.workTitleSv ?? "",
@@ -99,7 +99,7 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           cityEn: formData.cityEn,
           countryEn: formData.countryEn,
           countrySv: formData.countrySv,
-          zipCode: formData.zipCode,
+          addressZipCode: formData.addressZipCode,
           workTitleSv: formData.workTitleSv,
           workTitleEn: formData.workTitleEn
         }

@@ -52,6 +52,7 @@ type FullUserInformation = {
   countryEn: string;
   countrySv: string;
   emailCv: string;
+  addressZipCode: string;
   firstName: string;
   lastName: string;
   id: string;
@@ -112,6 +113,7 @@ export type FullUserInformationData = {
   city: string;
   country: string;
   emailCv: string;
+  addressZipCode: string;
   firstName: string;
   lastName: string;
   id: string;

@@ -31,7 +31,7 @@ export interface ProfileFormData {
     cityEn?: string;
     countrySv?: string;
     countryEn?: string;
-    zipCode?: string;
+    addressZipCode?: string;
     profileImage?: string;
     updatedAt: Date;
     createdAt: Date;

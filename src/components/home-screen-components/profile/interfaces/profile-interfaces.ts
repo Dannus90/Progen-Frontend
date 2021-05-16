@@ -13,7 +13,7 @@ export interface UserInformationResponse {
         cityEn?: string;
         countrySv?: string;
         countryEn?: string;
-        zipCode?: string;
+        addressZipCode?: string;
         profileImage?: string;
         profileImagePublicId?: string;
         workTitleSv?: string;
@@ -33,7 +33,7 @@ export interface UpdateUserResponse {
     citySv: string | null;
     countryEn: string | null;
     countrySv: string | null;
-    zipCode: string | null;
+    addressZipCode: string | null;
     createdAt: Date;
     emailCv: string | null;
     id: string;

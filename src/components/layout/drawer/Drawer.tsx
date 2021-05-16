@@ -92,7 +92,7 @@ const DrawerComponent: React.FC<Props> = ({
     if (userDataState.profileImage) {
       setProfileImage(userDataState.profileImage);
     } else if (userData?.profileImage) {
-      setProfileImage(userData?.profileImage);
+      setProfileImage(userData.profileImage);
     } else {
       setProfileImage("");
     }

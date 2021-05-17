@@ -11,6 +11,10 @@ export interface AccountComponentStyles extends Theme {
   accountHeaderContainer: CreateCSSProperties | CSSProperties;
   accountHeader: CreateCSSProperties | CSSProperties;
   accountHeaderCardStyles: CreateCSSProperties | CSSProperties;
+  deleteAccountContainer: CreateCSSProperties | CSSProperties;
+  deleteButtonContainer: CreateCSSProperties | CSSProperties;
+  headerWrapper: CreateCSSProperties | CSSProperties;
+  headerStyles: CreateCSSProperties | CSSProperties;
 }
 
 export type AccountComponentClasses =
@@ -18,7 +22,11 @@ export type AccountComponentClasses =
   | "accountHeaderCardStyles"
   | "formsContainer"
   | "accountHeaderContainer"
-  | "accountHeader";
+  | "accountHeader"
+  | "deleteAccountContainer"
+  | "deleteButtonContainer"
+  | "headerWrapper"
+  | "headerStyles";
 
 const AccountComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -51,6 +59,32 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
     accountHeader: {
       textAlign: "center",
       fontSize: "1.5rem"
+    },
+    deleteAccountContainer: {
+      display: "flex",
+      justifyContent: "center",
+      marginTop: theme.customSpacings.m
+    },
+    deleteButtonContainer: {
+      width: "50%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      borderRadius: "15px",
+      marginRight: smallScreen ? "0rem" : "1rem",
+      marginBottom: smallScreen ? "1.75rem" : "0rem",
+      minWidth: "250px"
+    },
+    headerWrapper: {
+      display: "flex",
+      alignItems: "center",
+      padding: "1.25rem 1rem",
+      borderBottom: theme.custom.borderColors.subtleGreyMain
+    },
+    headerStyles: {
+      color: theme.custom.palette.textVariantDark.medium,
+      margin: "auto",
+      fontSize: "1.2rem"
     }
   });
 

@@ -15,5 +15,9 @@
     "clearFields": "Clear Form",
     "successfulUpdate": "Email updated successfully"
   },
-  "authCredentialsHeader": "Account management"
+  "authCredentialsHeader": "Account management",
+  "deleteAccount": {
+    "header": "Wish to delete your account?",
+    "delete": "Delete account"
+  }
 }

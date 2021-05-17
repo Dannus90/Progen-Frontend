@@ -15,5 +15,9 @@
     "clearFields": "Rensa",
     "successfulUpdate": "Din email är uppdaterad"
   },
-  "authCredentialsHeader": "Hantering av konto"
+  "authCredentialsHeader": "Hantering av konto",
+  "deleteAccount": {
+    "header": "Vill du avsluta ditt medlemskap?",
+    "delete": "Avsluta medlemskap"
+  }
 }

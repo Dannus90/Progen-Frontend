@@ -15,6 +15,7 @@ export interface AccountComponentStyles extends Theme {
   deleteButtonContainer: CreateCSSProperties | CSSProperties;
   headerWrapper: CreateCSSProperties | CSSProperties;
   headerStyles: CreateCSSProperties | CSSProperties;
+  formStyle: CreateCSSProperties | CSSProperties;
 }
 
 export type AccountComponentClasses =
@@ -26,7 +27,8 @@ export type AccountComponentClasses =
   | "deleteAccountContainer"
   | "deleteButtonContainer"
   | "headerWrapper"
-  | "headerStyles";
+  | "headerStyles"
+  | "formStyle";
 
 const AccountComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -73,7 +75,7 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
       borderRadius: "15px",
       marginRight: smallScreen ? "0rem" : "1rem",
       marginBottom: smallScreen ? "1.75rem" : "0rem",
-      minWidth: "250px"
+      minWidth: "350px"
     },
     headerWrapper: {
       display: "flex",
@@ -85,6 +87,9 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
       color: theme.custom.palette.textVariantDark.medium,
       margin: "auto",
       fontSize: "1.2rem"
+    },
+    formStyle: {
+      padding: "1rem"
     }
   });
 

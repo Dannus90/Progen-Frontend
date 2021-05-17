@@ -18,6 +18,7 @@
   "authCredentialsHeader": "Hantering av konto",
   "deleteAccount": {
     "header": "Vill du avsluta ditt medlemskap?",
-    "delete": "Avsluta medlemskap"
+    "delete": "Avsluta medlemskap",
+    "password": "Lösenord"
   }
 }

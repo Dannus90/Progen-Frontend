@@ -18,6 +18,7 @@
   "authCredentialsHeader": "Account management",
   "deleteAccount": {
     "header": "Wish to delete your account?",
-    "delete": "Delete account"
+    "delete": "Delete account",
+    "password": "Password"
   }
 }

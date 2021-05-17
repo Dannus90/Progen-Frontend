@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import withStyles, { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { AccountComponentClasses } from "./index";
 import { useDispatch } from "react-redux";
-import { Button, Card, Container, Typography } from "@material-ui/core";
+import { Button, Card, Container, Grid, TextField, Typography } from "@material-ui/core";
 import AccountEmailForm from "../ui-components/account-email-form/index";
 import AccountPasswordForm from "../ui-components/account-password-form/index";
 import { useTranslation } from "react-i18next";
 import { accountClicked } from "../../../redux/reducers/general-reducer/actions";
+import { UseAccountForm } from "../../../custom-hooks/UseAccountForm";
 
 interface Props {
   styles: ClassNameMap<AccountComponentClasses>;
@@ -15,6 +16,9 @@ interface Props {
 const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("account");
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>();
+  const { formData, setFormData, handleInputChange } = UseAccountForm({
+    password: ""
+  });
   const dispatch = useDispatch();
   useEffect(() => {
     return () => {
@@ -30,7 +34,7 @@ const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
       color: "#fff",
       height: 32,
       padding: "0 40px",
-      minWidth: "200px",
+      minWidth: "250px",
       width: "50%",
       margin: "1.25rem auto 1rem auto",
       boxShadow: "0 1px 2px 1px rgb(255 105 135 / 20%)"
@@ -58,6 +62,23 @@ const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           <Container className={styles.headerWrapper}>
             <h4 className={styles.headerStyles}>{t("deleteAccount.header")}</h4>{" "}
           </Container>
+          <Grid container spacing={3} className={styles.formStyle}>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                id="password"
+                aria-describedby="my-helper-text"
+                name="password"
+                value={formData.password}
+                variant="outlined"
+                onChange={handleInputChange}
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
+                label={t("deleteAccount.password")}
+                size="small"
+                fullWidth
+              />
+            </Grid>
+          </Grid>
           <DeleteButton variant="contained">{t("deleteAccount.delete")}</DeleteButton>
         </Card>
       </Container>

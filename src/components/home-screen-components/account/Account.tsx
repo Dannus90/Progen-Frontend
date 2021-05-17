@@ -8,6 +8,7 @@ import AccountPasswordForm from "../ui-components/account-password-form/index";
 import { useTranslation } from "react-i18next";
 import { accountClicked } from "../../../redux/reducers/general-reducer/actions";
 import { UseAccountForm } from "../../../custom-hooks/UseAccountForm";
+import DeleteAccountModal from "./delete-account-modal/index";
 
 interface Props {
   styles: ClassNameMap<AccountComponentClasses>;
@@ -15,7 +16,7 @@ interface Props {
 
 const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("account");
-  const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>();
+  const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
   const { formData, setFormData, handleInputChange } = UseAccountForm({
     password: ""
   });
@@ -25,6 +26,14 @@ const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
       dispatch(accountClicked(false));
     };
   }, []);
+
+  const handleCloseDeleteModal = () => {
+    setDeleteModalOpen(false);
+  };
+
+  const handleOpenDeleteModal = () => {
+    setDeleteModalOpen(true);
+  };
 
   const DeleteButton = withStyles({
     root: {
@@ -79,8 +88,11 @@ const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
               />
             </Grid>
           </Grid>
-          <DeleteButton variant="contained">{t("deleteAccount.delete")}</DeleteButton>
+          <DeleteButton onClick={handleOpenDeleteModal} variant="contained">
+            {t("deleteAccount.delete")}
+          </DeleteButton>
         </Card>
+        <DeleteAccountModal password={formData.password ?? ""} handleClose={handleCloseDeleteModal} open={deleteModalOpen} />
       </Container>
     </div>
   );

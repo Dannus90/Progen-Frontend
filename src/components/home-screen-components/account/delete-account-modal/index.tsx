@@ -3,7 +3,7 @@ import { useTheme } from "@material-ui/core/styles";
 import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
 import React, { CSSProperties } from "react";
 import { MainTheme } from "../../../../styles/theme";
-import CvModal from "./CvModal";
+import DeleteAccountModal from "./DeleteAccountModal";
 
 export interface CvModalComponentStyles extends Theme {
   cvModalWrapperStyles: CreateCSSProperties | CSSProperties;
@@ -13,15 +13,20 @@ export interface CvModalComponentStyles extends Theme {
 interface Props {
   handleClose: () => void;
   open: boolean;
+  password: string;
 }
 
-export type CvModalComponentClasses = "cvModalWrapperStyles" | "exitIcon";
+export type deleteAccountModalComponentClasses = "deleteAccountModalWrapperStyles" | "exitIcon";
 
-const CvModalComponentWrapper: React.FC<Props> = ({ handleClose, open }): JSX.Element => {
+const deleteAccountModalComponentWrapper: React.FC<Props> = ({
+  handleClose,
+  open,
+  password
+}): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
-  const cvModalComponentStyles = makeStyles({
-    cvModalWrapperStyles: {
+  const deleteAccountModalComponentStyles = makeStyles({
+    deleteAccountModalWrapperStyles: {
       margin: "auto",
       minWidth: "400px",
       position: "relative",
@@ -36,9 +41,9 @@ const CvModalComponentWrapper: React.FC<Props> = ({ handleClose, open }): JSX.El
     }
   });
 
-  const styles = cvModalComponentStyles();
+  const styles = deleteAccountModalComponentStyles();
 
-  return <CvModal open={open} handleClose={handleClose} styles={styles} />;
+  return <DeleteAccountModal password={password} open={open} handleClose={handleClose} styles={styles} />;
 };
 
-export default CvModalComponentWrapper;
+export default deleteAccountModalComponentWrapper;

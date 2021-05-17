@@ -12,7 +12,7 @@ interface Props {
   open: boolean;
 }
 
-const LanguageModal: React.FC<Props> = ({ styles, handleClose, open }): JSX.Element => {
+const CvModal: React.FC<Props> = ({ styles, handleClose, open }): JSX.Element => {
   const [t] = useTranslation("common");
 
   return (
@@ -42,4 +42,4 @@ const LanguageModal: React.FC<Props> = ({ styles, handleClose, open }): JSX.Elem
   );
 };
 
-export default LanguageModal;
+export default CvModal;

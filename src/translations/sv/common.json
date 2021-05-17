@@ -94,5 +94,11 @@
       "contact": "Kontakt",
       "workExperience": "Arbetslivserfarenhet"
     }
+  },
+  "deleteAccountModal": {
+    "confirm": "Avsluta medlemskap",
+    "neglect": "Stäng",
+    "title": "Vill du verkligen avsluta ditt medlemskap?",
+    "mainContent": "Avsluta ditt medlemskap genom att klicka nedan eller stäng detta fönster."
   }
 }

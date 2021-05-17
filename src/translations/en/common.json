@@ -94,5 +94,11 @@
       "contact": "Contact",
       "workExperiences": "Work experience"
     }
+  },
+  "deleteAccountModal": {
+    "confirm": "Delete account",
+    "neglect": "Close",
+    "title": "Do you really want to end your membership?",
+    "mainContent": "End your membership by clicking down below or close this window"
   }
 }

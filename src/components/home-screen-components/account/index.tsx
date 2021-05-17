@@ -26,9 +26,11 @@ const AccountComponentWrapper: React.FC = (): JSX.Element => {
 
   const accountComponentStyles = makeStyles({
     accountWrapperStyles: {
-      background: `${theme.custom.palette.lightBackground}`,
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
+      maxWidth: "960px",
+      justifyContent: "center",
+      margin: "auto"
     },
     accountHeaderCardStyles: {
       width: "auto",

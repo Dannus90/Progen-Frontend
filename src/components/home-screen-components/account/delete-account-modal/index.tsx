@@ -43,7 +43,9 @@ const deleteAccountModalComponentWrapper: React.FC<Props> = ({
 
   const styles = deleteAccountModalComponentStyles();
 
-  return <DeleteAccountModal password={password} open={open} handleClose={handleClose} styles={styles} />;
+  return (
+    <DeleteAccountModal password={password} open={open} handleClose={handleClose} styles={styles} />
+  );
 };
 
 export default deleteAccountModalComponentWrapper;

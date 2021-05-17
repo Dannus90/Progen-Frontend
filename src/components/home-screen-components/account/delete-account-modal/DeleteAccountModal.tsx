@@ -1,9 +1,12 @@
 import React from "react";
 import withStyles, { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { useTranslation } from "react-i18next";
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Link } from "@material-ui/core";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { deleteAccountModalComponentClasses } from ".";
+import { useMutation } from "@apollo/client";
+import { DeleteAccountInput, DeleteAccountResponse } from "./interfaces/delete-account-interfaces";
+import { DELETE_ACCOUNT } from "./gql";
 
 interface Props {
   styles: ClassNameMap<deleteAccountModalComponentClasses>;
@@ -27,8 +30,19 @@ const DeleteButton = withStyles({
   }
 })(Button);
 
-const DeleteAccountModal: React.FC<Props> = ({ styles, handleClose, open, password }): JSX.Element => {
+const DeleteAccountModal: React.FC<Props> = ({
+  styles,
+  handleClose,
+  open,
+  password
+}): JSX.Element => {
   const [t] = useTranslation("common");
+
+  const [deleteAccount, { error }] = useMutation<{
+    authentication: DeleteAccountResponse;
+    deleteAccountInput: DeleteAccountInput;
+  }>(DELETE_ACCOUNT);
+
 
   return (
     <Dialog

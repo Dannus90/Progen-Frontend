@@ -92,7 +92,11 @@ const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             {t("deleteAccount.delete")}
           </DeleteButton>
         </Card>
-        <DeleteAccountModal password={formData.password ?? ""} handleClose={handleCloseDeleteModal} open={deleteModalOpen} />
+        <DeleteAccountModal
+          password={formData.password ?? ""}
+          handleClose={handleCloseDeleteModal}
+          open={deleteModalOpen}
+        />
       </Container>
     </div>
   );

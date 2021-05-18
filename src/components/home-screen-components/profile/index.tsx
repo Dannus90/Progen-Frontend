@@ -1,13 +1,8 @@
-import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import React from "react";
 import { MainTheme } from "../../../styles/theme";
 import ProfileComponent from "./Profile";
-
-export interface ProfileComponentStyles extends Theme {
-  profileComponentStyles: CreateCSSProperties | CSSProperties;
-}
 
 export type ProfileComponentClasses =
   | "profileWrapperStyles"

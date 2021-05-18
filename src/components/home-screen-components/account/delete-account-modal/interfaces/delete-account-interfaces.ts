@@ -1,9 +1,7 @@
 export interface DeleteAccountResponse {
-  authentication: {
-    deleteAccount: {
-      message: string;
-      statusCode: number;
-    };
+  deleteAccount: {
+    message: string;
+    statusCode: number;
   };
 }
 

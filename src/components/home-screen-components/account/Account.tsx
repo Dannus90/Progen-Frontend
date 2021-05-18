@@ -17,7 +17,7 @@ interface Props {
 const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("account");
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
-  const { formData, setFormData, handleInputChange } = UseAccountForm({
+  const { formData, handleInputChange } = UseAccountForm({
     password: ""
   });
   const dispatch = useDispatch();

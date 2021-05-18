@@ -1,14 +1,8 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import React from "react";
 import { MainTheme } from "../../../../styles/theme";
 import DeleteAccountModal from "./DeleteAccountModal";
-
-export interface CvModalComponentStyles extends Theme {
-  cvModalWrapperStyles: CreateCSSProperties | CSSProperties;
-  exitIcon: CreateCSSProperties | CSSProperties;
-}
 
 interface Props {
   handleClose: () => void;
@@ -16,7 +10,13 @@ interface Props {
   password: string;
 }
 
-export type deleteAccountModalComponentClasses = "deleteAccountModalWrapperStyles" | "exitIcon";
+export type deleteAccountModalComponentClasses =
+  | "deleteAccountModalWrapperStyles"
+  | "exitIcon"
+  | "alertStyle"
+  | "buttonErrorContainer"
+  | "buttonContainer"
+  | "errorContainer";
 
 const deleteAccountModalComponentWrapper: React.FC<Props> = ({
   handleClose,
@@ -30,7 +30,7 @@ const deleteAccountModalComponentWrapper: React.FC<Props> = ({
       margin: "auto",
       minWidth: "400px",
       position: "relative",
-      padding: "5rem"
+      padding: "1rem"
     },
     exitIcon: {
       position: "absolute",
@@ -38,6 +38,28 @@ const deleteAccountModalComponentWrapper: React.FC<Props> = ({
       right: 7.5,
       color: theme.palette.secondary.main,
       cursor: "pointer"
+    },
+    alertStyle: {
+      height: "auto",
+      padding: "5px 30px",
+      width: "100%",
+      fontSize: "14px",
+      marginBottom: `${theme.customSpacings.xxs}`
+    },
+    buttonErrorContainer: {
+      display: "flex",
+      flexDirection: "column"
+    },
+    buttonContainer: {
+      display: "flex",
+      justifyContent: "space-between",
+      width: "100%",
+      padding: "0.75rem 0.75rem"
+    },
+    errorContainer: {
+      display: "flex",
+      width: "100%",
+      padding: "0.25rem 0.5rem"
     }
   });
 

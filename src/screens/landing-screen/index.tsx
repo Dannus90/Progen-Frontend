@@ -89,7 +89,7 @@ const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Elem
         return <Login />;
       case "register":
         return <Register />;
-      case "reset-password":
+      case "reset-password/:resetToken":
         return <ResetPassword />;
       default:
         return <Login />;

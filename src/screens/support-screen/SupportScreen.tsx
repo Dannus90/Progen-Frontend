@@ -47,7 +47,7 @@ const SupportScreen: React.FC<Props> = ({ styles }): JSX.Element => {
             <div className={styles.iconContactContainer}>
               <EmailIcon className={styles.iconStyle} />
               <Typography className={styles.contactInfoPart}>
-                {"persson.daniel.1990@gmail.com"}
+                {"progeninfomail@gmail.com"}
               </Typography>
             </div>
             <div className={styles.iconContactContainer}>

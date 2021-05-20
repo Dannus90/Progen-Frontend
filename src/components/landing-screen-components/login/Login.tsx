@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { RegisterComponentClasses } from "./index";
+import { LoginComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "./gql";
@@ -22,7 +22,7 @@ import { setTokens } from "../../../utils/auth-helper";
 import { invokeAccessToken } from "../../../api/httpClient";
 
 interface Props {
-  styles: ClassNameMap<RegisterComponentClasses>;
+  styles: ClassNameMap<LoginComponentClasses>;
 }
 
 const initialFormState: LoginData = {
@@ -160,6 +160,12 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
                 {t("form.noAccount1")}{" "}
                 <Link href="/register" variant="body2">
                   {t("form.noAccount2")}
+                </Link>
+              </Typography>
+              <Typography className={`${styles.noAccountText}`}>
+                {t("form.forgotPassword1")}{" "}
+                <Link href="/reset-password" variant="body2">
+                  {t("form.forgotPassword2")}
                 </Link>
               </Typography>
             </Grid>

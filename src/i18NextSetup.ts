@@ -14,9 +14,8 @@ import cvInformationSv from "./translations/sv/cv-information.json";
 import cvInformationEn from "./translations/en/cv-information.json";
 import supportSv from "./translations/sv/support.json";
 import supportEn from "./translations/en/support.json";
-
-// https://www.codeandweb.com/babeledit/tutorials/how-to-translate-your-react-app-with-react-i18next
-// READ MORE ABOUT SWITCHING LANGUAGES ETC
+import resetPasswordSv from "./translations/sv/reset-password.json";
+import resetPasswordEn from "./translations/en/reset-password.json";
 
 i18next.init({
   interpolation: { escapeValue: false },
@@ -29,7 +28,8 @@ i18next.init({
       home: homeEn,
       account: accountEn,
       cvInformation: cvInformationEn,
-      support: supportEn
+      support: supportEn,
+      resetPassword: resetPasswordEn
     },
     sv: {
       common: commonSv,
@@ -38,7 +38,8 @@ i18next.init({
       home: homeSv,
       account: accountSv,
       cvInformation: cvInformationSv,
-      support: supportSv
+      support: supportSv,
+      resetPassword: resetPasswordSv
     }
   },
   supportedLngs: ["sv", "en"]

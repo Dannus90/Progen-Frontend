@@ -18,6 +18,9 @@ const Register = lazy(() => import("../../components/landing-screen-components/r
 const ResetPassword = lazy(
   () => import("../../components/landing-screen-components/reset-password/index")
 );
+const RequestResetPassword = lazy(
+  () => import("../../components/landing-screen-components/request-password-reset/index")
+);
 import LanguagePicker from "../../components/common/language-picker/index";
 import useComponentVisible from "../../custom-hooks/UseComponentVisible";
 
@@ -91,6 +94,8 @@ const LandingScreenWrapper: React.FC<Props> = ({ componentToDisplay }): JSX.Elem
         return <Register />;
       case "reset-password/:resetToken":
         return <ResetPassword />;
+      case "request-reset-password":
+        return <RequestResetPassword />;
       default:
         return <Login />;
     }

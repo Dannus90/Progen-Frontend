@@ -7,6 +7,8 @@
     "noAccount2": "Registrera dig",
     "signIn": "Logga in",
     "createCV": "Skapa ditt professionella CV",
-    "successfulLogin": "Lyckad inloggning"
+    "successfulLogin": "Lyckad inloggning",
+    "forgotPassword1": "Glömt lösenord?",
+    "forgotPassword2": "Klicka här"
   }
 }

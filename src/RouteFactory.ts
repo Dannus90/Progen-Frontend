@@ -3,7 +3,8 @@ export const routeFactory = {
   auth: {
     login: (): string => "/login",
     register: (): string => "/register",
-    forgotPassword: (): string => "/reset-password/:resetToken"
+    resetPassword: (): string => "/reset-password/:resetToken",
+    requestResetPassword: (): string => "/reset-password"
   },
   home: {
     main: (): string => "/home"

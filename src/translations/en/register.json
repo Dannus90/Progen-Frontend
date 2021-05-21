@@ -17,9 +17,13 @@
     "missingAgreementCheck": "Please accept the terms of agreement.",
     "modalText": {
       "agreementModal": {
-        "header": "Terms of the service.",
-        "p1": "By accepting our terms of agreement you do accept that we store personal data.",
-        "p2": "Once you have accepted your data will be stored until the account is deleted."
+        "header": "Terms of service",
+        "p1": "By accepting our terms on on this site you accept what is written down below.",
+        "q1": "Usage of data from the application",
+        "p2": "You as a user of the application may quote content from the application, but you may not use this for commercial purposes.",
+        "p3": "You as a user have no right to download anything other than your own images / texts from the application and use them in any way.",
+        "q2": "Other users' texts and pictures",
+        "p4": "You as a user can be part of a team with other members. You as a user do not have the right to use images and texts from other members without their permission."
       },
       "policyModal": {
         "header": "Treatment of personal data on ProGen.",

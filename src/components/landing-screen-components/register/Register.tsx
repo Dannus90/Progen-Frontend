@@ -274,12 +274,6 @@ const Register: React.FC<Props> = ({ styles }): JSX.Element => {
         p2={t("form.modalText.agreementModal.p2")}
         q2={t("form.modalText.agreementModal.q2")}
         p3={t("form.modalText.agreementModal.p3")}
-        p4={t("form.modalText.agreementModal.p4")}
-        q3={t("form.modalText.agreementModal.q3")}
-        p5={t("form.modalText.agreementModal.p5")}
-        q4={t("form.modalText.agreementModal.q4")}
-        p6={t("form.modalText.agreementModal.p6")}
-        p7={t("form.modalText.agreementModal.p7")}
         handleClose={handleAgreementModalClose}
         open={modalAgreementOpen}
       />

@@ -10,9 +10,7 @@ export type RequestResetPasswordComponentClasses =
   | "paragraphStyle"
   | "backToLogin"
   | "requestResetPasswordContainerButtonSpacer"
-  | "alertStyle"
-  | "agreementButton"
-  | "successLogin";
+  | "alertStyle";
 
 const RequestResetPasswordComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -63,9 +61,6 @@ const RequestResetPasswordComponentWrapper: React.FC = (): JSX.Element => {
       outline: "none",
       width: "100%",
       cursor: "pointer"
-    },
-    successLogin: {
-      paddingRight: "1rem"
     }
   });
 

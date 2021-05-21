@@ -28,7 +28,6 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) => {
-  console.log("In here!");
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
       const tokenData = getToken();

@@ -38,7 +38,6 @@ const WorkExperienceCvComponent: React.FC<Props> = ({
 
       return "Praktik";
     } else {
-      console.log(employmentRate === "FullTime");
       if (employmentRate === "FullTime") return "Full time";
       if (employmentRate === "PartTime") return "Part time";
 

@@ -2,7 +2,16 @@ import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ResetPasswordComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { Typography, TextField, Grid, Link, Button, Container, Paper } from "@material-ui/core";
+import {
+  Typography,
+  TextField,
+  Grid,
+  Link,
+  Button,
+  Container,
+  Paper,
+  CircularProgress
+} from "@material-ui/core";
 import { useMutation } from "@apollo/client";
 import { RESET_PASSWORD } from "./gql";
 import { Alert } from "@material-ui/lab";
@@ -11,6 +20,7 @@ import {
   ResetPasswordWithTokenDataResponse
 } from "./interfaces/reset-password-interfaces";
 import { useParams } from "react-router-dom";
+import { useNavigation } from "../../../custom-hooks/UseNavigation";
 
 interface Props {
   styles: ClassNameMap<ResetPasswordComponentClasses>;
@@ -35,6 +45,7 @@ type Params = {
 
 const ResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
   const [formState, setFormState] = useState<ResetPasswordChangeData>(initialFormState);
+  const { navigateTo } = useNavigation();
   const { t } = useTranslation("resetPassword");
   const { resetToken } = useParams<Params>();
   const [displayState, setDisplayState] = useState<DisplayState>({
@@ -42,7 +53,7 @@ const ResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
     displayErrorMessage: false
   });
 
-  const [resetPassword, { error, data }] = useMutation<{
+  const [resetPassword, { error, data, loading }] = useMutation<{
     authentication: ResetPasswordWithTokenDataResponse;
     resetPasswordByTokenInput: ResetPasswordWithTokenData;
   }>(RESET_PASSWORD, {
@@ -55,8 +66,6 @@ const ResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
     errorPolicy: "all"
   });
 
-  console.log(resetToken);
-
   const handleFormStateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
@@ -67,7 +76,7 @@ const ResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
   };
 
   useMemo(() => {
-    if (data?.authentication.resetPasswordResetByToken.message) {
+    if (data?.authentication.resetPasswordByToken.message) {
       setDisplayState((prevState) => ({
         ...prevState,
         displaySuccessMessage: true,
@@ -85,6 +94,14 @@ const ResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
       }));
     }
   }, [error]);
+
+  useMemo(() => {
+    if (data) {
+      setTimeout(() => {
+        navigateTo("/login");
+      }, 3000);
+    }
+  }, [data]);
 
   const removeDisplayState = () => {
     setDisplayState((prevState) => ({
@@ -110,6 +127,7 @@ const ResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
                 variant="outlined"
                 required
                 fullWidth
+                type="password"
                 value={formState.password}
                 id="password"
                 onChange={handleFormStateChange}
@@ -128,14 +146,20 @@ const ResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
             variant="contained"
             color="primary"
             className={`${styles.resetPasswordContainerButtonSpacer}`}>
-            {t("resetPasswordWithToken.sendRequest")}
+            {loading ? (
+              <CircularProgress size={20} color="inherit" />
+            ) : (
+              t("resetPasswordWithToken.sendRequest")
+            )}
           </Button>
           {displayState.displaySuccessMessage && (
             <Alert
               className={`${styles.alertStyle}`}
               onClose={() => removeDisplayState()}
               severity="success">
-              {data?.authentication.resetPasswordResetByToken.message}
+              {data?.authentication.resetPasswordByToken.message}
+              {". "}
+              {"You are soon going to be redirected to login page."}
             </Alert>
           )}
           {displayState.displayErrorMessage && (

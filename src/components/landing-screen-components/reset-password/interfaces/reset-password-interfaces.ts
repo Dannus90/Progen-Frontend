@@ -3,7 +3,7 @@ export interface ResetPasswordWithTokenData {
 }
 
 export interface ResetPasswordWithTokenDataResponse {
-  resetPasswordResetByToken: {
+  resetPasswordByToken: {
     statusCode: number;
     message: string;
   };

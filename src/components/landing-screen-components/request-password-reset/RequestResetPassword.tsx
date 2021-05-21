@@ -2,7 +2,16 @@ import React, { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RequestResetPasswordComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { Typography, TextField, Grid, Link, Button, Container, Paper } from "@material-ui/core";
+import {
+  Typography,
+  TextField,
+  Grid,
+  Link,
+  Button,
+  Container,
+  Paper,
+  CircularProgress
+} from "@material-ui/core";
 import { useMutation } from "@apollo/client";
 import { REQUEST_RESET_PASSWORD } from "./gql";
 import {
@@ -36,7 +45,7 @@ const RequestResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
     displayErrorMessage: false
   });
 
-  const [requestResetPassword, { error, data }] = useMutation<{
+  const [requestResetPassword, { error, data, loading }] = useMutation<{
     authentication: RequestPasswordResetByEmailDataResponse;
     requestPasswordResetByEmailInput: RequestPasswordResetByEmailData;
   }>(REQUEST_RESET_PASSWORD, {
@@ -119,7 +128,11 @@ const RequestResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
             variant="contained"
             color="primary"
             className={`${styles.requestResetPasswordContainerButtonSpacer}`}>
-            {t("requestPasswordChange.sendRequest")}
+            {loading ? (
+              <CircularProgress size={20} color="inherit" />
+            ) : (
+              t("requestPasswordChange.sendRequest")
+            )}
           </Button>
           {displayState.displaySuccessMessage && (
             <Alert

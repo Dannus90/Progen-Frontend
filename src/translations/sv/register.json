@@ -18,7 +18,7 @@
     "modalText": {
       "agreementModal": {
         "header": "Användarvillkor",
-        "p1": "Genom att acceptera användarvillkoren på denna sida accepterar du nedanstående.",
+        "p1": "Genom att acceptera/ha accepterat användarvillkoren på denna sida accepterar du nedanstående.",
         "q1": "Bruk av data från applikationen.",
         "p2": "Du som användare av applikationen får citera innehåll från applikationen, men du får inte använda detta för kommersiellt syfte.",
         "p3": "Du som användare har inte rätt att ladda hem annat än egna bilder/texter från applikationen och nyttja dessa på något sett.",

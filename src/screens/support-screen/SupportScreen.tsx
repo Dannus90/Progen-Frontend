@@ -83,16 +83,11 @@ const SupportScreen: React.FC<Props> = ({ styles }): JSX.Element => {
         <DraggableModal
           header={t("register:form.modalText.agreementModal.header")}
           p1={t("register:form.modalText.agreementModal.p1")}
-          q1={t("register:form.modalText.policyModal.q2")}
-          p2={t("register:form.modalText.policyModal.p2")}
-          q2={t("register:form.modalText.policyModal.q2")}
-          p3={t("register:form.modalText.policyModal.p3")}
-          p4={t("register:form.modalText.policyModal.p4")}
-          q3={t("register:form.modalText.policyModal.q3")}
-          p5={t("register:form.modalText.policyModal.p5")}
-          q4={t("register:form.modalText.policyModal.q4")}
-          p6={t("register:form.modalText.policyModal.p6")}
-          p7={t("register:form.modalText.policyModal.p7")}
+          q1={t("register:form.modalText.agreementModal.q2")}
+          p2={t("register:form.modalText.agreementModal.p2")}
+          q2={t("register:form.modalText.agreementModal.q2")}
+          p3={t("register:form.modalText.agreementModal.p3")}
+          p4={t("register:form.modalText.agreementModal.p4")}
           handleClose={handleAgreementModalClose}
           open={modalAgreementOpen}
         />

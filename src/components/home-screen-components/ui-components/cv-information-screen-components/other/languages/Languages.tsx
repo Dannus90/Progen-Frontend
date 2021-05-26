@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { LanguagesComponentClasses } from "./index";
 import { CircularProgress, Container, Typography } from "@material-ui/core";
@@ -23,12 +23,16 @@ const LanguagesComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const { otherInformationState } = useAppSelector((state) => state);
   const { refetch, error, loading, data } = useQuery<GetLanguagesResponse>(GET_LANGUAGES);
 
-  useMemo(async () => {
+  const refetchLanguages = async () => {
     try {
       await refetch();
     } catch (err) {
       console.error(err);
     }
+  }
+
+  useEffect(() => {
+    refetchLanguages();
   }, [otherInformationState.languageModified]);
 
   let sortedLanguages = data?.language.getLanguages.languages;

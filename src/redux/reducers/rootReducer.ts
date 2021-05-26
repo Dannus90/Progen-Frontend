@@ -8,6 +8,7 @@ import generalReducer, { GeneralState } from "./general-reducer/generalReducer";
 import otherInformationReducer, {
   OtherInformationState
 } from "./other-information/otherInformationReducer";
+import skillsReducer, { SkillsState } from "./skills/skillsReducer";
 import userDataReducer, { UserDataState } from "./user-data/userDataReducer";
 import workExperienceReducer, {
   WorkExperienceState
@@ -20,6 +21,7 @@ interface RootReducer {
   educationState: Reducer<EducationState, AnyAction>;
   otherInformationState: Reducer<OtherInformationState, AnyAction>;
   certificateLicenseState: Reducer<CertificateLicenseState, AnyAction>;
+  skillState: Reducer<SkillsState, AnyAction>;
 }
 
 export const rootReducer: RootReducer = {
@@ -28,5 +30,6 @@ export const rootReducer: RootReducer = {
   workExperienceState: workExperienceReducer,
   educationState: educationReducer,
   otherInformationState: otherInformationReducer,
-  certificateLicenseState: certificateLicensesReducer
+  certificateLicenseState: certificateLicensesReducer,
+  skillState: skillsReducer
 };

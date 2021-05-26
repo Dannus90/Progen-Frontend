@@ -1,20 +1,7 @@
-import { makeStyles, Theme, useTheme } from "@material-ui/core";
-import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import { makeStyles, useTheme } from "@material-ui/core";
+import React from "react";
 import { MainTheme } from "../../../../../../styles/theme";
 import Languages from "./Languages";
-
-export interface LanguagesComponentStyles extends Theme {
-  languagesComponentStyles: CreateCSSProperties | CSSProperties;
-  addIconStyles: CreateCSSProperties | CSSProperties;
-  loaderContainer: CreateCSSProperties | CSSProperties;
-  alertStyle: CreateCSSProperties | CSSProperties;
-  refetchIcon: CreateCSSProperties | CSSProperties;
-  versionHeader: CreateCSSProperties | CSSProperties;
-  languagesContainer: CreateCSSProperties | CSSProperties;
-  languagesHeadingContainer: CreateCSSProperties | CSSProperties;
-  languagesHeadingsContainer: CreateCSSProperties | CSSProperties;
-}
 
 export type LanguagesComponentClasses =
   | "languagesWrapperStyles"

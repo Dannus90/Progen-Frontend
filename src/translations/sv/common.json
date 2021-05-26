@@ -100,5 +100,14 @@
     "neglect": "Stäng",
     "title": "Vill du verkligen avsluta ditt medlemskap?",
     "mainContent": "Avsluta ditt medlemskap genom att klicka nedan eller stäng detta fönster."
+  },
+  "certificateLicenseForm": {
+    "certificateNameSv": "Certifikat/license på svenska",
+    "certificateNameEn": "Certifikat/license på engelska",
+    "organisation": "Organisation",
+    "referenceAddress": "Referensaddress",
+    "dateIssued": "Datum för utgivande",
+    "saveCertificateLicense": "Spara certifikat/licens",
+    "updateCertificateLicense": "Updatera certifikat/licens"
   }
 }

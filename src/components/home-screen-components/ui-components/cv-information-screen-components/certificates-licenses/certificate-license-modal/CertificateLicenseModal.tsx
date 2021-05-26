@@ -50,12 +50,6 @@ const initialFormState = {
   dateIssued: getDateStandardFormat()
 };
 
-const useStyles = makeStyles({
-  root: {
-    padding: "0.6rem 1.2rem"
-  }
-});
-
 const CertificateLicenseModal: React.FC<Props> = ({
   styles,
   isCreate,
@@ -303,7 +297,7 @@ const CertificateLicenseModal: React.FC<Props> = ({
               ) : isCreate ? (
                 t("certificateLicenseForm.saveCertificateLicense")
               ) : (
-                t("certificateLicenseForm.saveCertificateLicense")
+                t("certificateLicenseForm.updateCertificateLicense")
               )}
             </Button>
           </Container>

@@ -99,7 +99,7 @@ const CertificateLicenseDisplayComponent: React.FC<Props> = ({
           isCreate={false}
           handleClose={handleEditModalClose}
           open={editModalOpen}
-          header={t("workExperience.modal.edit")}
+          header={t("certificate.modal.edit")}
           certificateLicense={certificateLicenseData as EditCertificateLicenseData}
         />
       </div>

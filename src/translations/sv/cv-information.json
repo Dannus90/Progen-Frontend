@@ -67,5 +67,12 @@
     "dateIssued": "Datum för utfärdande",
     "swedishVersion": "Svensk version",
     "englishVersion": "Engelsk version"
+  },
+  "certificate": {
+    "createNew": "Skapa ny",
+    "modal": {
+      "createNew": "Skapa nytt certifikat/license",
+      "edit": "Ändra eller ta bort certifikat/license"
+    }
   }
 }

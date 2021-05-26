@@ -108,5 +108,14 @@
     "dateIssued": "Date issued",
     "swedishVersion": "Swedish version",
     "englishVersion": "English version"
+  },
+  "certificateLicenseForm": {
+    "certificateNameSv": "Certificate/license on swedish",
+    "certificateNameEn": "Certifikat/license on english",
+    "organisation": "Organisation",
+    "referenceAddress": "Reference address",
+    "dateIssued": "Date issued",
+    "saveCertificateLicense": "Save certificate/license",
+    "updateCertificateLicense": "Update certificate/license"
   }
 }

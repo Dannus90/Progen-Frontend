@@ -67,5 +67,12 @@
     "dateIssued": "Date issued",
     "swedishVersion": "Swedish version",
     "englishVersion": "English version"
+  },
+  "certificate": {
+    "createNew": "Create new",
+    "modal": {
+      "createNew": "Create new certificate/license",
+      "edit": "Change or remove certificate/license"
+    }
   }
 }

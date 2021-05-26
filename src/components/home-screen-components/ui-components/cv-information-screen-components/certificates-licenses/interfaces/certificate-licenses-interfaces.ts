@@ -1,5 +1,5 @@
 export interface CertificateLicenseInput {
-  id?: string;
+  certificateId?: string;
   userId?: string;
   certificateNameSv: string;
   certificateNameEn: string;

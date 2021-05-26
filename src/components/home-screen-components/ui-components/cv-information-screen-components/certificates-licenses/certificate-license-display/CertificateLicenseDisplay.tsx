@@ -43,6 +43,9 @@ const CertificateLicenseDisplayComponent: React.FC<Props> = ({
     setEditModalOpen(false);
   };
 
+  const editData = { ...certificateLicenseData };
+  editData.dateIssued = transformDate(editData.dateIssued);
+
   return (
     <div className={styles.certificateLicenseDisplayWrapperStyles}>
       <div className={styles.certificateLicenseContainer}>
@@ -100,7 +103,7 @@ const CertificateLicenseDisplayComponent: React.FC<Props> = ({
           handleClose={handleEditModalClose}
           open={editModalOpen}
           header={t("certificate.modal.edit")}
-          certificateLicense={certificateLicenseData as EditCertificateLicenseData}
+          certificateLicense={editData as EditCertificateLicenseData}
         />
       </div>
     </div>

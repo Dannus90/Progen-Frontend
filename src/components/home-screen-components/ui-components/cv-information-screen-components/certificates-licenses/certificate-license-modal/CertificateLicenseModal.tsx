@@ -41,7 +41,7 @@ interface Props {
 }
 
 const initialFormState = {
-  id: "",
+  certificateId: "",
   certificateNameEn: "",
   certificateNameSv: "",
   organisation: "",
@@ -65,7 +65,7 @@ const CertificateLicenseModal: React.FC<Props> = ({
   const { formData, setFormData, handleInputChange } = useCertificateLicenseForm(
     certificateLicense
       ? {
-          id: certificateLicense.id,
+          certificateId: certificateLicense.id,
           certificateNameEn: certificateLicense.certificateNameEn,
           certificateNameSv: certificateLicense.certificateNameSv,
           organisation: certificateLicense.organisation,
@@ -104,7 +104,12 @@ const CertificateLicenseModal: React.FC<Props> = ({
       await createCertificate({
         variables: {
           createCertificateInput: {
-            ...formData
+            certificateNameSv: formData.certificateNameSv,
+            certificateNameEn: formData.certificateNameEn,
+            organisation: formData.organisation,
+            identificationId: formData.identificationId,
+            referenceAddress: formData.referenceAddress,
+            dateIssued: formData.dateIssued
           }
         }
       });
@@ -124,7 +129,7 @@ const CertificateLicenseModal: React.FC<Props> = ({
       await deleteCertificate({
         variables: {
           deleteCertificateInput: {
-            certificateId: formData.id
+            certificateId: formData.certificateId
           }
         }
       });

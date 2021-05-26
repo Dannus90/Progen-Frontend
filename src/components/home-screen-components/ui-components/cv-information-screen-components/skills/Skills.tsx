@@ -1,98 +1,145 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
-import { LanguagesComponentClasses } from "./index";
-import { CircularProgress, Container, Typography } from "@material-ui/core";
+import {
+  CircularProgress,
+  Container,
+  FormControl,
+  InputLabel,
+  NativeSelect,
+  Typography
+} from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import AddIcon from "@material-ui/icons/Add";
-import LanguagesModal from "./languages-modal/index";
-import { GET_LANGUAGES } from "./gql";
+import { GET_SKILLS, GET_USER_SKILLS } from "./gql";
 import { useQuery } from "@apollo/client";
-import { GetLanguagesResponse } from "../interfaces/other-information-interfaces";
 import { Alert } from "@material-ui/lab";
 import CachedIcon from "@material-ui/icons/Cached";
 import { useAppSelector } from "../../../../../redux/hooks/hooks";
+import { SkillComponentClasses } from ".";
+import { GetSkillsResponse, GetUserSkillsResponse } from "./interfaces/skill-interfaces";
+import { BootstrapInput } from "./ui-components/BootStrapInput";
 
 interface Props {
-  styles: ClassNameMap<LanguagesComponentClasses>;
+  styles: ClassNameMap<SkillComponentClasses>;
 }
 
-const LanguagesComponent: React.FC<Props> = ({ styles }): JSX.Element => {
-  const [t] = useTranslation("cvInformation");
-  const [languageModalOpen, setLanguageModalOpen] = useState<boolean>(false);
-  const { otherInformationState } = useAppSelector((state) => state);
-  const { refetch, error, loading, data } = useQuery<GetLanguagesResponse>(GET_LANGUAGES);
+interface SkillData {
+  id: string;
+  name: string;
+  fullIdForSelect: string;
+}
 
-  useMemo(async () => {
+const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
+  const [t] = useTranslation("cvInformation");
+  const { skillState } = useAppSelector((state) => state);
+  const [skillDataSelected, setSkillDataSelected] = useState<SkillData>({
+    id: "",
+    name: "",
+    fullIdForSelect: ""
+  });
+  const {
+    refetch: refetchSkills,
+    error: skillError,
+    loading: skillLoading,
+    data: skillData
+  } = useQuery<GetSkillsResponse>(GET_SKILLS);
+  const {
+    refetch: refetchUserSkills,
+    error: userSkillError,
+    loading: userSkillLoading,
+    data: userSkillData
+  } = useQuery<GetUserSkillsResponse>(GET_USER_SKILLS);
+
+  const refetchSkillsOnModify = async () => {
     try {
-      await refetch();
+      await refetchSkills();
     } catch (err) {
       console.error(err);
     }
-  }, [otherInformationState.languageModified]);
+  };
 
-  let sortedLanguages = data?.language.getLanguages.languages;
+  const refetchUserSkillsOnModify = async () => {
+    try {
+      await refetchUserSkills();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-  if (sortedLanguages) {
-    sortedLanguages = [...sortedLanguages].sort((a, b) => {
-      return a.languageSv.localeCompare(b.languageSv);
+  const handleSkillDataChange = (e: React.BaseSyntheticEvent) => {
+    const { value } = e.target;
+
+    const [name, id] = value.split(":");
+
+    setSkillDataSelected({
+      id,
+      name,
+      fullIdForSelect: value
     });
-  }
-
-  const handleCloseLanguageModal = () => {
-    setLanguageModalOpen(false);
   };
 
-  const handleOpenLanguageModal = () => {
-    setLanguageModalOpen(true);
-  };
+  useEffect(() => {
+    refetchSkillsOnModify();
+  }, [skillState.skillModified]);
+
+  useEffect(() => {
+    refetchUserSkillsOnModify();
+  }, [skillState.userSkillModified]);
+
+  const skillDataMemoized = useMemo(() => {
+    return skillData?.skill.getSkills.skills;
+  }, [skillData]);
+
+  const userSkillDataMemoized = useMemo(() => {
+    return userSkillData?.userSkill.getUserSkills.userSkills;
+  }, [userSkillData]);
 
   return (
-    <div className={styles.languagesWrapperStyles}>
+    <div className={styles.skillsWrapperStyles}>
       <Container>
-        <LanguagesModal
-          header={t("otherInformation.createLanguageHeader")}
-          isCreate={true}
-          handleClose={handleCloseLanguageModal}
-          open={languageModalOpen}
-        />
-        {error && (
+        {skillError && (
           <Alert
             className={`${styles.alertStyle}`}
-            icon={<CachedIcon onClick={() => refetch()} className={styles.refetchIcon} />}
+            icon={<CachedIcon onClick={() => refetchSkills()} className={styles.refetchIcon} />}
             severity="error">
-            {error?.graphQLErrors.map(
-              (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+            {skillError?.graphQLErrors.map(
+              (err) => `${err.extensions?.exception.statusCode} ${skillError?.message}`
             )}
           </Alert>
         )}
-        {loading && (
-          <Container className={styles.loaderContainer}>
-            <CircularProgress size={50} />
-          </Container>
-        )}
-        {!loading && !error && data && (
-          <Container className={styles.languagesContainer}>
-            {!!sortedLanguages && (
-              <div className={styles.languagesHeadingsContainer}>
-                <div className={styles.languagesHeadingContainer}>
-                  <Typography className={styles.versionHeader}>
-                    {t("otherInformation.language.modal.languageSwedish")}
-                  </Typography>
-                </div>
-                <div className={styles.languagesHeadingContainer}>
-                  <Typography className={styles.versionHeader}>
-                    {t("otherInformation.language.modal.languageEnglish")}
-                  </Typography>
-                  <AddIcon className={styles.addIconStyles} onClick={handleOpenLanguageModal} />
-                </div>
-              </div>
+        {userSkillError && (
+          <Alert
+            className={`${styles.alertStyle}`}
+            icon={<CachedIcon onClick={() => refetchSkills()} className={styles.refetchIcon} />}
+            severity="error">
+            {userSkillError?.graphQLErrors.map(
+              (err) => `${err.extensions?.exception.statusCode} ${userSkillError?.message}`
             )}
-{/*             <div>
-              {!!sortedLanguages &&
-                sortedLanguages.map((sl) => {
-                  return <LanguageDisplay key={sl.id} languageData={sl} />;
-                })}
-            </div> */}
+          </Alert>
+        )}
+        {userSkillLoading ||
+          (skillLoading && (
+            <Container className={styles.loaderContainer}>
+              <CircularProgress size={50} />
+            </Container>
+          ))}
+        {!skillLoading && !skillError && skillDataMemoized && (
+          <Container className={styles.languagesContainer}>
+            <FormControl>
+              <InputLabel htmlFor="custom-select-label">{t("skills.inputSkillLabel")}</InputLabel>
+              <NativeSelect
+                id="custom-select"
+                value={skillDataSelected.fullIdForSelect}
+                onChange={handleSkillDataChange}
+                input={<BootstrapInput />}>
+                <option aria-label="None" value="" />
+                {skillDataMemoized.map((sdm) => (
+                  <option key={sdm.id} value={`${sdm.skillName}:${sdm.id}`}>
+                    {sdm.skillName}
+                  </option>
+                ))}
+              </NativeSelect>
+            </FormControl>
           </Container>
         )}
       </Container>
@@ -100,4 +147,4 @@ const LanguagesComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   );
 };
 
-export default LanguagesComponent;
+export default SkillsComponent;

@@ -74,5 +74,8 @@
       "createNew": "Create new certificate/license",
       "edit": "Change or remove certificate/license"
     }
+  },
+  "skills": {
+    "inputSkillLabel": "Choose skill"
   }
 }

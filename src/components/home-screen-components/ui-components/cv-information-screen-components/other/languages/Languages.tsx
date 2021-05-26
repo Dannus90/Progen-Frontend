@@ -29,7 +29,7 @@ const LanguagesComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   useEffect(() => {
     refetchLanguages();

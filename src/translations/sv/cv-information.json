@@ -74,5 +74,8 @@
       "createNew": "Skapa nytt certifikat/license",
       "edit": "Ändra eller ta bort certifikat/license"
     }
+  },
+  "skills": {
+    "inputSkillLabel": "Välj färdighet"
   }
 }

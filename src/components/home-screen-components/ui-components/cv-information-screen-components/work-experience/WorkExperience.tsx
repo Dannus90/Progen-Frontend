@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { WorkExperienceComponentClasses } from "./index";
 import { Button, CircularProgress, Container } from "@material-ui/core";
@@ -27,12 +27,16 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     setCreateOpen(false);
   };
 
-  useMemo(async () => {
+  const refetchWorkExperiences = async () => {
     try {
       await refetch();
     } catch (err) {
       console.error(err);
     }
+  };
+
+  useEffect(() => {
+    refetchWorkExperiences();
   }, [workExperienceState.workExperienceModified]);
 
   let sortedWorkExperiences = data?.workExperience.getWorkExperiences.workExperiences;

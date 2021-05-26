@@ -100,5 +100,13 @@
     "neglect": "Close",
     "title": "Do you really want to end your membership?",
     "mainContent": "End your membership by clicking down below or close this window"
+  },
+  "certificateLicenseDisplay": {
+    "organisation": "Organisation",
+    "referenceAddress": "Reference address",
+    "identificationId": "Identification id",
+    "dateIssued": "Date issued",
+    "swedishVersion": "Swedish version",
+    "englishVersion": "English version"
   }
 }

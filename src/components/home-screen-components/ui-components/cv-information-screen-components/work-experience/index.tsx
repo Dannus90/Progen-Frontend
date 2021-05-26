@@ -1,17 +1,8 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import React from "react";
 import { MainTheme } from "../../../../../styles/theme";
 import WorkExperience from "./WorkExperience";
-
-export interface SWorkExperienceComponentStyles extends Theme {
-  workExperienceWrapperStyles: CreateCSSProperties | CSSProperties;
-  createWorkExperienceButton: CreateCSSProperties | CSSProperties;
-  createWorkExperienceButtonContainer: CreateCSSProperties | CSSProperties;
-  alertStyle: CreateCSSProperties | CSSProperties;
-  refetchIcon: CreateCSSProperties | CSSProperties;
-}
 
 export type WorkExperienceComponentClasses =
   | "workExperienceWrapperStyles"

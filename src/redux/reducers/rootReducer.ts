@@ -1,4 +1,8 @@
 import { AnyAction, Reducer } from "redux";
+import { CertificateLicenseComponentClasses } from "../../components/home-screen-components/ui-components/cv-information-screen-components/certificates-licenses";
+import certificateLicensesReducer, {
+  CertificateLicenseState
+} from "./certificates-licenses/certificateLicensesReducer";
 import educationReducer, { EducationState } from "./education/educationReducer";
 import generalReducer, { GeneralState } from "./general-reducer/generalReducer";
 import otherInformationReducer, {
@@ -15,6 +19,7 @@ interface RootReducer {
   workExperienceState: Reducer<WorkExperienceState, AnyAction>;
   educationState: Reducer<EducationState, AnyAction>;
   otherInformationState: Reducer<OtherInformationState, AnyAction>;
+  certificateLicenseState: Reducer<CertificateLicenseState, AnyAction>;
 }
 
 export const rootReducer: RootReducer = {
@@ -22,5 +27,6 @@ export const rootReducer: RootReducer = {
   generalState: generalReducer,
   workExperienceState: workExperienceReducer,
   educationState: educationReducer,
-  otherInformationState: otherInformationReducer
+  otherInformationState: otherInformationReducer,
+  certificateLicenseState: certificateLicensesReducer
 };

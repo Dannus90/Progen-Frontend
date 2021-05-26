@@ -59,5 +59,13 @@
         "edit": "Ändra eller ta bort språk"
       }
     }
+  },
+  "certificateLicenseDisplay": {
+    "organisation": "Organisation",
+    "referenceAddress": "Referensaddress",
+    "identificationId": "Identifieringsid",
+    "dateIssued": "Datum för utfärdande",
+    "swedishVersion": "Svensk version",
+    "englishVersion": "Engelsk version"
   }
 }

@@ -16,7 +16,7 @@ export interface GetUserSkillsResponse {
   };
 }
 
-type UserSkillData = {
+export type UserSkillData = {
   skill: Skill;
   userSkill: UserSkill;
 };

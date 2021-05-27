@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import {
   Button,
@@ -24,6 +24,7 @@ import {
   GetUserSkillsResponse
 } from "./interfaces/skill-interfaces";
 import { BootstrapInput } from "./ui-components/BootStrapInput";
+import UserSkill from "./user-skill/index";
 
 interface Props {
   styles: ClassNameMap<SkillComponentClasses>;
@@ -145,8 +146,10 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   }, [skillData?.skill.getSkills.skills]);
 
   const userSkillDataMemoized = useMemo(() => {
-    return userSkillData?.userSkill.getUserSkills.userSkills.slice().sort();
-  }, [userSkillData]);
+    return userSkillData?.userSkill.getUserSkills.userSkills.slice().sort((a, b) => {
+      return a.skill.skillName.localeCompare(b.skill.skillName);
+    });
+  }, [userSkillData?.userSkill.getUserSkills.userSkills]);
 
   const isRefetchingSkills = useMemo(() => {
     return skillsNetworkStatus === NetworkStatus.refetch;
@@ -243,6 +246,17 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           </Container>
         ) : (
           <CircularProgress size={50} />
+        )}
+      </Container>
+      <Container>
+        {!userSkillLoading && !userSkillError && !isRefetchingSkills && !!userSkillDataMemoized && (
+          <>
+            {userSkillDataMemoized.map((usdm) => (
+              <Fragment key={usdm.userSkill.id}>
+                <UserSkill userSkillData={usdm} />
+              </Fragment>
+            ))}
+          </>
         )}
       </Container>
     </div>

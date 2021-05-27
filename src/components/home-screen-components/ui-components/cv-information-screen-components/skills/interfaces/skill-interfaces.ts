@@ -43,3 +43,14 @@ export interface CreateSkillResponse {
 export interface CreateSkillInput {
   skillName: string;
 }
+
+export interface DeleteUserSkillResponse {
+  deleteUserSkill: {
+    message: string;
+    statusCode: number;
+  };
+}
+
+export interface DeleteUserSkillInput {
+  userSkillId: string;
+}

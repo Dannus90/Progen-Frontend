@@ -154,15 +154,13 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   return (
     <div className={styles.skillsWrapperStyles}>
-      <Container>
+      <Container className={styles.skillsContainer}>
         {skillError && (
           <Alert
             className={`${styles.alertStyle}`}
             icon={<CachedIcon onClick={() => refetchSkills()} className={styles.refetchIcon} />}
             severity="error">
-            {skillError?.graphQLErrors.map(
-              (err) => `${err.extensions?.exception.statusCode} ${skillError?.message}`
-            )}
+            {`${skillError?.message}`}
           </Alert>
         )}
         {userSkillError && (
@@ -170,9 +168,7 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             className={`${styles.alertStyle}`}
             icon={<CachedIcon onClick={() => refetchSkills()} className={styles.refetchIcon} />}
             severity="error">
-            {userSkillError?.graphQLErrors.map(
-              (err) => `${err.extensions?.exception.statusCode} ${userSkillError?.message}`
-            )}
+            {`${userSkillError?.message}`}
           </Alert>
         )}
         {userSkillLoading ||

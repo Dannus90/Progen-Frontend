@@ -15,7 +15,8 @@ export type SkillComponentClasses =
   | "languagesHeadingsContainer"
   | "selectContainer"
   | "addNewSkillButton"
-  | "addIcon";
+  | "addIcon"
+  | "skillsContainer";
 
 const SkillsComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -92,6 +93,9 @@ const SkillsComponentWrapper: React.FC = (): JSX.Element => {
     },
     addIcon: {
       fontSize: "1rem"
+    },
+    skillsContainer: {
+      borderBottom: theme.custom.borderColors.subtleGreyMain
     }
   });
 

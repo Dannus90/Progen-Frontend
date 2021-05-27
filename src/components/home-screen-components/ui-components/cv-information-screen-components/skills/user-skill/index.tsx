@@ -2,12 +2,12 @@ import { makeStyles, useTheme } from "@material-ui/core";
 import React from "react";
 import { MainTheme } from "../../../../../../styles/theme";
 import UserSkill from "./UserSkill";
-import { UserSkillData } from "../interfaces/skill-interfaces"
+import { UserSkillData } from "../interfaces/skill-interfaces";
 
 export type UserSkillComponentClasses = "userSkillWrapperStyles";
 
 interface Props {
-  userSkillData: UserSkillData
+  userSkillData: UserSkillData;
 }
 
 const UserSkillsComponentWrapper: React.FC<Props> = ({ userSkillData }): JSX.Element => {
@@ -15,8 +15,8 @@ const UserSkillsComponentWrapper: React.FC<Props> = ({ userSkillData }): JSX.Ele
 
   const userSkillComponentStyles = makeStyles({
     userSkillWrapperStyles: {
-      margin: "auto",
-      marginTop: theme.customSpacings.l
+      margin: `${theme.customSpacings.s} 10px 10px 10px`,
+      marginTop: theme.customSpacings.xs
     }
   });
 

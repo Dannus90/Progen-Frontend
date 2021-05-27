@@ -248,7 +248,7 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           <CircularProgress size={50} />
         )}
       </Container>
-      <Container>
+      <Container className={styles.userSkillsContainer}>
         {!userSkillLoading && !userSkillError && !isRefetchingSkills && !!userSkillDataMemoized && (
           <>
             {userSkillDataMemoized.map((usdm) => (

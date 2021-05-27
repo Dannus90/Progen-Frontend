@@ -10,9 +10,12 @@ export type SkillComponentClasses =
   | "alertStyle"
   | "refetchIcon"
   | "versionHeader"
-  | "languagesContainer"
+  | "skillsDataContainer"
   | "languagesHeadingContainer"
-  | "languagesHeadingsContainer";
+  | "languagesHeadingsContainer"
+  | "selectContainer"
+  | "addNewSkillButton"
+  | "addIcon";
 
 const SkillsComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -63,7 +66,7 @@ const SkillsComponentWrapper: React.FC = (): JSX.Element => {
       fontWeight: "bold",
       marginBottom: "0.5rem"
     },
-    languagesContainer: {
+    skillsDataContainer: {
       display: "flex",
       flexDirection: "column"
     },
@@ -75,6 +78,20 @@ const SkillsComponentWrapper: React.FC = (): JSX.Element => {
     languagesHeadingsContainer: {
       display: "flex",
       flexDirection: "row"
+    },
+    selectContainer: {
+      display: "flex",
+      flexDirection: "column",
+      maxWidth: "300px",
+      marginBottom: theme.customSpacings.m
+    },
+    addNewSkillButton: {
+      marginTop: theme.customSpacings.s,
+      display: "flex",
+      alignItems: "center"
+    },
+    addIcon: {
+      fontSize: "1rem"
     }
   });
 

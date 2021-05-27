@@ -34,7 +34,7 @@ const initialFormState: FormState = {
 const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("account");
   const { formData, handleInputChange, setFormData } = UseAccountForm({ ...initialFormState });
-  const [displayAlertMessage, setDisplayAlertMessage] = useState(false);
+  const [displayAlertMessage, setDisplayAlertMessage] = useState<boolean>(false);
   const [changeEmail, { error, loading, data }] = useMutation<{
     authentication: ChangeEmailResponse;
     changeEmailInput: ChangeEmailInput;

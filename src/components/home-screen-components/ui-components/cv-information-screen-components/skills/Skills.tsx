@@ -1,22 +1,28 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import {
+  Button,
   CircularProgress,
   Container,
   FormControl,
   InputLabel,
   NativeSelect,
-  Typography
+  TextField
 } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import AddIcon from "@material-ui/icons/Add";
-import { GET_SKILLS, GET_USER_SKILLS } from "./gql";
-import { useQuery } from "@apollo/client";
+import { CREATE_SKILL, GET_SKILLS, GET_USER_SKILLS } from "./gql";
+import { useMutation, useQuery, NetworkStatus } from "@apollo/client";
 import { Alert } from "@material-ui/lab";
 import CachedIcon from "@material-ui/icons/Cached";
 import { useAppSelector } from "../../../../../redux/hooks/hooks";
 import { SkillComponentClasses } from ".";
-import { GetSkillsResponse, GetUserSkillsResponse } from "./interfaces/skill-interfaces";
+import {
+  CreateSkillInput,
+  CreateSkillResponse,
+  GetSkillsResponse,
+  GetUserSkillsResponse
+} from "./interfaces/skill-interfaces";
 import { BootstrapInput } from "./ui-components/BootStrapInput";
 
 interface Props {
@@ -32,17 +38,41 @@ interface SkillData {
 const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const { skillState } = useAppSelector((state) => state);
+  const [displayAlertMessage, setDisplayAlertMessage] = useState<boolean>(false);
   const [skillDataSelected, setSkillDataSelected] = useState<SkillData>({
     id: "",
     name: "",
     fullIdForSelect: ""
   });
+
+  const [skillCreationState, setSkillCreationState] = useState({
+    newSkillName: ""
+  });
+
+  const [
+    createSkill,
+    { error: createSkillError, loading: createSkillLoading, data: createSkillData }
+  ] = useMutation<{
+    skill: CreateSkillResponse;
+    createSkillInput: CreateSkillInput;
+  }>(CREATE_SKILL, {
+    variables: {
+      createSkillInput: {
+        skillName: skillCreationState.newSkillName
+      }
+    }
+  });
+
   const {
     refetch: refetchSkills,
     error: skillError,
     loading: skillLoading,
-    data: skillData
-  } = useQuery<GetSkillsResponse>(GET_SKILLS);
+    data: skillData,
+    networkStatus: skillsNetworkStatus
+  } = useQuery<GetSkillsResponse>(GET_SKILLS, {
+    notifyOnNetworkStatusChange: true
+  });
+
   const {
     refetch: refetchUserSkills,
     error: userSkillError,
@@ -66,6 +96,21 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     }
   };
 
+  const handleCreateSkill = async () => {
+    await createSkill();
+    setDisplayAlertMessage(true);
+
+    refetchSkillsOnModify();
+
+    setTimeout(() => {
+      setDisplayAlertMessage(false);
+    }, 4000);
+  };
+
+  const removeAlertDisplay = (): void => {
+    setDisplayAlertMessage(false);
+  };
+
   const handleSkillDataChange = (e: React.BaseSyntheticEvent) => {
     const { value } = e.target;
 
@@ -78,6 +123,13 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     });
   };
 
+  const handleNewSkillChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSkillCreationState({
+      ...skillCreationState,
+      newSkillName: e.target.value
+    });
+  };
+
   useEffect(() => {
     refetchSkillsOnModify();
   }, [skillState.skillModified]);
@@ -87,12 +139,18 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   }, [skillState.userSkillModified]);
 
   const skillDataMemoized = useMemo(() => {
-    return skillData?.skill.getSkills.skills;
-  }, [skillData]);
+    return skillData?.skill.getSkills.skills.slice().sort((a, b) => {
+      return a.skillName.localeCompare(b.skillName);
+    });
+  }, [skillData?.skill.getSkills.skills]);
 
   const userSkillDataMemoized = useMemo(() => {
-    return userSkillData?.userSkill.getUserSkills.userSkills;
+    return userSkillData?.userSkill.getUserSkills.userSkills.slice().sort();
   }, [userSkillData]);
+
+  const isRefetchingSkills = useMemo(() => {
+    return skillsNetworkStatus === NetworkStatus.refetch;
+  }, [skillsNetworkStatus, NetworkStatus.refetch]);
 
   return (
     <div className={styles.skillsWrapperStyles}>
@@ -123,9 +181,9 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
               <CircularProgress size={50} />
             </Container>
           ))}
-        {!skillLoading && !skillError && skillDataMemoized && (
-          <Container className={styles.languagesContainer}>
-            <FormControl>
+        {!skillLoading && !skillError && !isRefetchingSkills && skillDataMemoized ? (
+          <Container className={styles.skillsDataContainer}>
+            <FormControl className={styles.selectContainer}>
               <InputLabel htmlFor="custom-select-label">{t("skills.inputSkillLabel")}</InputLabel>
               <NativeSelect
                 id="custom-select"
@@ -140,7 +198,55 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 ))}
               </NativeSelect>
             </FormControl>
+            <FormControl className={styles.selectContainer}>
+              <TextField
+                id="skillName"
+                aria-describedby="my-helper-text"
+                name="skillName"
+                value={skillCreationState.newSkillName}
+                variant="outlined"
+                onChange={handleNewSkillChange}
+                inputProps={{ style: { fontSize: 14 } }}
+                InputLabelProps={{ style: { fontSize: 14 } }}
+                label={t("skills.newSkill")}
+                autoFocus
+                size="small"
+                fullWidth
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleCreateSkill}
+                className={styles.addNewSkillButton}>
+                {createSkillLoading ? (
+                  <CircularProgress size={25} />
+                ) : (
+                  <>
+                    <AddIcon className={styles.addIcon} />
+                    {t("skills.addNewSkill")}
+                  </>
+                )}
+              </Button>
+              {createSkillData && displayAlertMessage && (
+                <Alert
+                  className={`${styles.alertStyle}`}
+                  onClose={() => removeAlertDisplay()}
+                  severity="success">
+                  {t("skills.successfulUpdate")}
+                </Alert>
+              )}
+              {createSkillError && displayAlertMessage && (
+                <Alert
+                  className={`${styles.alertStyle}`}
+                  onClose={() => removeAlertDisplay()}
+                  severity="error">
+                  {`${createSkillError?.message}`}
+                </Alert>
+              )}
+            </FormControl>
           </Container>
+        ) : (
+          <CircularProgress size={50} />
         )}
       </Container>
     </div>

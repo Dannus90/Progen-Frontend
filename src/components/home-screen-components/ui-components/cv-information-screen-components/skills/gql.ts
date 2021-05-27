@@ -35,3 +35,14 @@ export const GET_USER_SKILLS = gql`
     }
   }
 `;
+
+export const CREATE_SKILL = gql`
+  mutation SkillMutation($createSkillInput: CreateSkillInput!) {
+    skill {
+      createSkill(input: $createSkillInput) {
+        skillId
+        statusCode
+      }
+    }
+  }
+`;

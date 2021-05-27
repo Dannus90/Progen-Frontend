@@ -32,3 +32,14 @@ type UserSkill = {
   skillId: string;
   skillLevel: number;
 };
+
+export interface CreateSkillResponse {
+  createSkill: {
+    skillId: string;
+    statusCode: number;
+  };
+}
+
+export interface CreateSkillInput {
+  skillName: string;
+}

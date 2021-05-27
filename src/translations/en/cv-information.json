@@ -76,6 +76,9 @@
     }
   },
   "skills": {
-    "inputSkillLabel": "Choose skill"
+    "inputSkillLabel": "Choose skill",
+    "newSkill": "Is your skill missing? Add it here.",
+    "addNewSkill": "Add new skill",
+    "successfulUpdate": "Skill added successfully"
   }
 }

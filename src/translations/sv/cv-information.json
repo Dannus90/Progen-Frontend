@@ -76,6 +76,9 @@
     }
   },
   "skills": {
-    "inputSkillLabel": "Välj färdighet"
+    "inputSkillLabel": "Välj färdighet",
+    "newSkill": "Saknas din färdighet? Lägg till den här.",
+    "addNewSkill": "Lägg till ny färdighet",
+    "successfulUpdate": "Färdighet tillagd framgångsrikt"
   }
 }

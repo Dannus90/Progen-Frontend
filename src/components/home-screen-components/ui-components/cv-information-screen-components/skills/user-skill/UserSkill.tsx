@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { UserSkillComponentClasses } from ".";
 import {
@@ -13,10 +13,16 @@ import { DELETE_USERSKILL } from "./gql";
 import { useAppDispatch } from "../../../../../../redux/hooks/hooks";
 import { notifyUserSkillModified } from "../../../../../../redux/reducers/skills/actions";
 import { Alert } from "@material-ui/lab";
+import UserSkillLevelModal from "./user-skill-level-modal/index";
 
 interface Props {
   styles: ClassNameMap<UserSkillComponentClasses>;
   userSkillData: UserSkillData;
+}
+
+export interface UpdateUserSkillData {
+  userSkillId: string;
+  skillLevel: number;
 }
 
 const UserSkillComponent: React.FC<Props> = ({ styles, userSkillData }): JSX.Element => {
@@ -38,6 +44,10 @@ const UserSkillComponent: React.FC<Props> = ({ styles, userSkillData }): JSX.Ele
     setDisplayAlertMessage(false);
   };
 
+  const handleEditClose = () => {
+    setEditModalOpen(false);
+  };
+
   const handleUserSkillDelete = async () => {
     try {
       await deleteUserSkill({
@@ -53,6 +63,19 @@ const UserSkillComponent: React.FC<Props> = ({ styles, userSkillData }): JSX.Ele
       console.error(err);
     }
   };
+
+  const updateUserSkillData = useCallback((): UpdateUserSkillData => {
+    return {
+      userSkillId: id,
+      skillLevel
+    };
+  }, [id, skillLevel]);
+
+  useEffect(() => {
+    if (error) {
+      setDisplayAlertMessage(true);
+    }
+  }, [error]);
 
   return (
     <div className={styles.userSkillWrapperStyles}>
@@ -81,6 +104,11 @@ const UserSkillComponent: React.FC<Props> = ({ styles, userSkillData }): JSX.Ele
           {`${error?.message}`}
         </Alert>
       )}
+      <UserSkillLevelModal
+        open={editModalOpen}
+        handleClose={handleEditClose}
+        updateUserSkillData={updateUserSkillData()}
+      />
     </div>
   );
 };

@@ -54,3 +54,17 @@ export interface DeleteUserSkillResponse {
 export interface DeleteUserSkillInput {
   userSkillId: string;
 }
+
+export interface UpdateUserSkillInput {
+  userSkillId: string;
+  skillLevel: number;
+}
+
+export interface UpdateUserSkillResponse {
+  userSkill: {
+    updateUserSkill: {
+      userSkillId: string;
+      statusCode: number;
+    };
+  };
+}

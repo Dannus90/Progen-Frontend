@@ -79,6 +79,10 @@
     "inputSkillLabel": "Välj färdighet",
     "newSkill": "Saknas din färdighet? Lägg till den här.",
     "addNewSkill": "Lägg till ny färdighet",
-    "successfulUpdate": "Färdighet tillagd framgångsrikt"
+    "successfulUpdate": "Färdighet tillagd framgångsrikt",
+    "updateUserSkillTitle": "Uppdatera färdighetsnivå",
+    "inputUserSkillLevelLabel": "Färdighetsnivå",
+    "updateUserSkill": "Updatera färdighetsnivå",
+    "updateUserSkillSuccess": "Färdighet uppdaterad"
   }
 }

@@ -15,8 +15,7 @@ const UserSkillsComponentWrapper: React.FC<Props> = ({ userSkillData }): JSX.Ele
 
   const userSkillComponentStyles = makeStyles({
     userSkillWrapperStyles: {
-      margin: `${theme.customSpacings.s} 10px 10px 10px`,
-      marginTop: theme.customSpacings.xs
+      position: "relative"
     },
     alertStyle: {
       height: "auto",
@@ -30,6 +29,7 @@ const UserSkillsComponentWrapper: React.FC<Props> = ({ userSkillData }): JSX.Ele
     editIcon: {
       cursor: "pointer",
       borderRadius: "100px",
+      position: "absolute",
       color: "#fff",
       padding: "0.15rem",
       width: "19px",

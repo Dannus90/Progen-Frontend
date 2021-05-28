@@ -99,9 +99,12 @@ const SkillsComponentWrapper: React.FC = (): JSX.Element => {
       borderBottom: theme.custom.borderColors.subtleGreyMain
     },
     userSkillsContainer: {
-      marginTop: theme.customSpacings.s,
+      marginTop: theme.customSpacings.m,
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)"
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: "20px",
+      justifyContent: "center",
+      alignItems: "center"
     }
   });
 

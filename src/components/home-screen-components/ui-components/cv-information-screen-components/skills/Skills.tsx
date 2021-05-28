@@ -191,9 +191,7 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     });
   }, [userSkillData?.userSkill.getUserSkills.userSkills]);
 
-  const isRefetchingSkills = useMemo(() => {
-    return skillsNetworkStatus === NetworkStatus.refetch;
-  }, [skillsNetworkStatus, NetworkStatus.refetch]);
+  const isRefetchingSkills = skillsNetworkStatus === NetworkStatus.refetch;
 
   return (
     <div className={styles.skillsWrapperStyles}>

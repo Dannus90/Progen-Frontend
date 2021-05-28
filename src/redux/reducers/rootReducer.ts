@@ -1,5 +1,4 @@
 import { AnyAction, Reducer } from "redux";
-import { CertificateLicenseComponentClasses } from "../../components/home-screen-components/ui-components/cv-information-screen-components/certificates-licenses";
 import certificateLicensesReducer, {
   CertificateLicenseState
 } from "./certificates-licenses/certificateLicensesReducer";

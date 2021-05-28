@@ -5,8 +5,8 @@ export const GET_FULL_CV_INFORMATION = gql`
     fullCvInformation {
       getFullCvInformation {
         fullUserInformation {
-          id
           firstName
+          id
           lastName
           phoneNumber
           emailCv
@@ -47,8 +47,8 @@ export const GET_FULL_CV_INFORMATION = gql`
           roleEn
           descriptionSv
           descriptionEn
-          citySv
           cityEn
+          citySv
           countrySv
           countryEn
           dateStarted
@@ -61,6 +61,30 @@ export const GET_FULL_CV_INFORMATION = gql`
         userPresentation {
           presentationSv
           presentationEn
+        }
+        userSkillsAndSkills {
+          skill {
+            id
+            skillName
+          }
+          userSkill {
+            id
+            userId
+            skillId
+            skillLevel
+          }
+        }
+        certificates {
+          id
+          userId
+          certificateNameSv
+          certificateNameEn
+          organisation
+          identificationId
+          referenceAddress
+          dateIssued
+          updatedAt
+          createdAt
         }
       }
     }

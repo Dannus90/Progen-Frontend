@@ -58,7 +58,7 @@ const UserSkillLevelModal: React.FC<Props> = ({
     setLevelSelected(Number(e.target.value));
   };
 
-  const handleSkillUpdate = async () => {
+  const handleSkillUpdate = async (): Promise<void> => {
     try {
       await updateUserSkill({
         variables: {

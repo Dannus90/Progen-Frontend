@@ -83,6 +83,8 @@
     "updateUserSkillTitle": "Uppdatera färdighetsnivå",
     "inputUserSkillLevelLabel": "Färdighetsnivå",
     "updateUserSkill": "Updatera färdighetsnivå",
-    "updateUserSkillSuccess": "Färdighet uppdaterad"
+    "updateUserSkillSuccess": "Färdighet uppdaterad",
+    "createUserSkillSuccessful": "Användarfärdighet skapad",
+    "addNewUserSkill": "Skapa användarfärdighet"
   }
 }

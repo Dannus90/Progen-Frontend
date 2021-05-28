@@ -83,6 +83,8 @@
     "updateUserSkillTitle": "Uppdate skill level",
     "inputUserSkillLevelLabel": "Skill level",
     "updateUserSkill": "Update skill level",
-    "updateUserSkillSuccess": "Skill updated"
+    "updateUserSkillSuccess": "Skill updated",
+    "createUserSkillSuccessful": "Userskill created",
+    "addNewUserSkill": "Add new userskill"
   }
 }

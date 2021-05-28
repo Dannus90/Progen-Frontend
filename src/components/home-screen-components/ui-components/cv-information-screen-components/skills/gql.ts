@@ -46,3 +46,14 @@ export const CREATE_SKILL = gql`
     }
   }
 `;
+
+export const CREATE_USERSKILL = gql`
+  mutation CreateUserSkillMutation($createUserSkillInput: CreateUserSkillInput!) {
+    userSkill {
+      createUserSkill(input: $createUserSkillInput) {
+        userSkillId
+        statusCode
+      }
+    }
+  }
+`;

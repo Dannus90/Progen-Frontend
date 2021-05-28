@@ -101,7 +101,7 @@ const SkillsComponentWrapper: React.FC = (): JSX.Element => {
     userSkillsContainer: {
       marginTop: theme.customSpacings.s,
       display: "grid",
-      gridTemplateColumns: "1fr 1fr"
+      gridTemplateColumns: "repeat(3, 1fr)"
     }
   });
 

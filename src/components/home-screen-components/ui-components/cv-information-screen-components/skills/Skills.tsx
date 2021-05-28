@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useMemo, useState } from "react";
+import React, { ChangeEvent, Fragment, useEffect, useMemo, useState } from "react";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import {
   Button,
@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { useTranslation } from "react-i18next";
 import AddIcon from "@material-ui/icons/Add";
-import { CREATE_SKILL, GET_SKILLS, GET_USER_SKILLS } from "./gql";
+import { CREATE_SKILL, GET_SKILLS, GET_USER_SKILLS, CREATE_USERSKILL } from "./gql";
 import { useMutation, useQuery, NetworkStatus } from "@apollo/client";
 import { Alert } from "@material-ui/lab";
 import CachedIcon from "@material-ui/icons/Cached";
@@ -36,10 +36,16 @@ interface SkillData {
   fullIdForSelect: string;
 }
 
+const selectedValues: Array<number> = [1, 2, 3, 4, 5];
+
 const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
   const [t] = useTranslation("cvInformation");
   const { skillState } = useAppSelector((state) => state);
-  const [displayAlertMessage, setDisplayAlertMessage] = useState<boolean>(false);
+  const [levelSelected, setLevelSelected] = useState<number>(selectedValues[2]);
+  const [displayCreateSkillAlertMessage, setDisplayCreateSkillAlertMessage] =
+    useState<boolean>(false);
+  const [displayCreateUserSkillAlertMessage, setDisplayCreateUserSkillAlertMessage] =
+    useState<boolean>(false);
   const [skillDataSelected, setSkillDataSelected] = useState<SkillData>({
     id: "",
     name: "",
@@ -60,6 +66,21 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
     variables: {
       createSkillInput: {
         skillName: skillCreationState.newSkillName
+      }
+    }
+  });
+
+  const [
+    createUserSkill,
+    { error: createUserSkillError, loading: createUserSkillLoading, data: createUserSkillData }
+  ] = useMutation<{
+    skill: CreateSkillResponse;
+    createUserSkillInput: CreateSkillInput;
+  }>(CREATE_USERSKILL, {
+    variables: {
+      createUserSkillInput: {
+        skillId: skillDataSelected.id ?? "",
+        skillLevel: levelSelected
       }
     }
   });
@@ -99,17 +120,36 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   const handleCreateSkill = async () => {
     await createSkill();
-    setDisplayAlertMessage(true);
+    setDisplayCreateSkillAlertMessage(true);
 
     refetchSkillsOnModify();
 
     setTimeout(() => {
-      setDisplayAlertMessage(false);
+      setDisplayCreateSkillAlertMessage(false);
     }, 4000);
   };
 
-  const removeAlertDisplay = (): void => {
-    setDisplayAlertMessage(false);
+  const handleCreateUserSkill = async () => {
+    await createUserSkill();
+    setDisplayCreateUserSkillAlertMessage(true);
+
+    refetchUserSkillsOnModify();
+
+    setTimeout(() => {
+      setDisplayCreateUserSkillAlertMessage(false);
+    }, 4000);
+  };
+
+  const handleSkillLevelChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    setLevelSelected(Number(e.target.value));
+  };
+
+  const removeAlertSkillDisplay = (): void => {
+    setDisplayCreateSkillAlertMessage(false);
+  };
+
+  const removeAlertUserSkillDisplay = (): void => {
+    setDisplayCreateUserSkillAlertMessage(false);
   };
 
   const handleSkillDataChange = (e: React.BaseSyntheticEvent) => {
@@ -226,20 +266,67 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                   </>
                 )}
               </Button>
-              {createSkillData && displayAlertMessage && (
+              {createSkillData && displayCreateSkillAlertMessage && (
                 <Alert
                   className={`${styles.alertStyle}`}
-                  onClose={() => removeAlertDisplay()}
+                  onClose={() => removeAlertSkillDisplay()}
                   severity="success">
                   {t("skills.successfulUpdate")}
                 </Alert>
               )}
-              {createSkillError && displayAlertMessage && (
+              {createSkillError && displayCreateSkillAlertMessage && (
                 <Alert
                   className={`${styles.alertStyle}`}
-                  onClose={() => removeAlertDisplay()}
+                  onClose={() => removeAlertSkillDisplay()}
                   severity="error">
                   {`${createSkillError?.message}`}
+                </Alert>
+              )}
+            </FormControl>
+            <FormControl className={styles.selectContainer}>
+              <InputLabel htmlFor="custom-select-label">
+                {t("skills.inputUserSkillLevelLabel")}
+              </InputLabel>
+              <NativeSelect
+                id="custom-select"
+                value={levelSelected}
+                onChange={handleSkillLevelChange}
+                input={<BootstrapInput />}>
+                <option aria-label="None" value="" />
+                {selectedValues.map((sv) => (
+                  <option key={sv} value={sv}>
+                    {sv}
+                  </option>
+                ))}
+              </NativeSelect>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleCreateUserSkill}
+                className={styles.addNewSkillButton}>
+                {createUserSkillLoading ? (
+                  <CircularProgress size={25} />
+                ) : (
+                  <>
+                    <AddIcon className={styles.addIcon} />
+                    {t("skills.addNewUserSkill")}
+                  </>
+                )}
+              </Button>
+              {createUserSkillError && displayCreateUserSkillAlertMessage && (
+                <Alert
+                  className={`${styles.alertStyle}`}
+                  onClose={() => removeAlertUserSkillDisplay()}
+                  severity="error">
+                  {`${createUserSkillError?.message}`}
+                </Alert>
+              )}
+              {createUserSkillData && displayCreateUserSkillAlertMessage && (
+                <Alert
+                  className={`${styles.alertStyle}`}
+                  onClose={() => removeAlertUserSkillDisplay()}
+                  severity="success">
+                  {t("skills.createUserSkillSuccessful")}
                 </Alert>
               )}
             </FormControl>

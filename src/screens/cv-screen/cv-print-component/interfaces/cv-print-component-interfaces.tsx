@@ -11,6 +11,8 @@ export interface FullCvInformation {
   languages: Array<Language>;
   otherInformation: OtherInformation;
   userPresentation: UserPresentation;
+  userSkillsAndSkills: Array<UserSkillData>;
+  certificates: Array<Certificate>;
 }
 
 type Education = {
@@ -133,3 +135,33 @@ export type OtherInformationData = {
 export type UserPresentationData = {
   presentation: string;
 };
+
+export type Certificate = {
+  id: string;
+  userId: string;
+  certificateNameSv: string;
+  certificateNameEn: string;
+  organisation: string;
+  identificationId: string;
+  referenceAddress: string;
+  dateIssued: Date | string;
+  updatedAt: Date | string;
+  createdAt: Date | string;
+}
+
+export type UserSkillData = {
+  skill: Skill;
+  userSkill: UserSkill;
+}
+
+export type Skill = {
+  id: string;
+  skillName: string;
+}
+
+export type UserSkill = {
+  id: string;
+  userId: string;
+  skillId: string;
+  skillLevel: number;
+}

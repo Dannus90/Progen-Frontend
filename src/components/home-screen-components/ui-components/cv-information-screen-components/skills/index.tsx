@@ -1,4 +1,4 @@
-import { makeStyles, useTheme } from "@material-ui/core";
+import { makeStyles, useMediaQuery, useTheme } from "@material-ui/core";
 import React from "react";
 import { MainTheme } from "../../../../../styles/theme";
 import Skills from "./Skills";
@@ -21,6 +21,7 @@ export type SkillComponentClasses =
 
 const SkillsComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
+  const smallScreen = useMediaQuery("(max-width:1100px)");
 
   const skillsComponentStyles = makeStyles({
     skillsWrapperStyles: {
@@ -101,7 +102,7 @@ const SkillsComponentWrapper: React.FC = (): JSX.Element => {
     userSkillsContainer: {
       marginTop: theme.customSpacings.m,
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: smallScreen ? "repeat(2, 1fr)" : "repeat(3, 1fr)",
       gap: "20px",
       justifyContent: "center",
       alignItems: "center"

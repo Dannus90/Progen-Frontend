@@ -219,7 +219,7 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             </Container>
           ))}
         {!skillLoading && !skillError && !isRefetchingSkills && skillDataMemoized ? (
-          <Container className={styles.skillsDataContainer}>
+          <div className={styles.skillsDataContainer}>
             <FormControl className={styles.selectContainer}>
               <InputLabel htmlFor="custom-select-label">{t("skills.inputSkillLabel")}</InputLabel>
               <NativeSelect
@@ -328,7 +328,7 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 </Alert>
               )}
             </FormControl>
-          </Container>
+          </div>
         ) : (
           <CircularProgress size={50} />
         )}

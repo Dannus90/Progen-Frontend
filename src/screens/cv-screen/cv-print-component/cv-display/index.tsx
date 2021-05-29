@@ -35,7 +35,9 @@ export type CvDisplayComponentClasses =
   | "drivingLicencesHeader"
   | "driverLicenseWrapper"
   | "certificatesContainer"
-  | "certificateHeader";
+  | "certificateHeader"
+  | "userSkillsAndSkillsContainer"
+  | "userSkillsHeader";
 
 export enum CvTypes {
   English = "English",
@@ -133,7 +135,13 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     },
     educationHeader: {
       fontSize: "1.6rem",
-      marginBottom: theme.customSpacings.s,
+      marginBottom: theme.customSpacings.xxs,
+      display: "flex",
+      alignItems: "center"
+    },
+    userSkillsHeader: {
+      fontSize: "1.6rem",
+      marginBottom: theme.customSpacings.xxs,
       display: "flex",
       alignItems: "center"
     },
@@ -182,6 +190,9 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
       pageBreakInside: "avoid"
     },
     certificatesContainer: {
+      marginTop: theme.customSpacings.xxxs
+    },
+    userSkillsAndSkillsContainer: {
       marginTop: theme.customSpacings.xxxs
     },
     certificateHeader: {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import { CvDisplayComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { useTranslation } from "react-i18next";
@@ -9,7 +9,8 @@ import EmailIcon from "@material-ui/icons/Email";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import WorkExperienceCvComponent from "./work-experience-cv-component/index";
 import EducationCvComponent from "./education-cv-component/index";
-import CertificateCvComponent from "./certificate-component/index";
+import CertificateCvComponent from "./certificate-cv-component/index";
+import UserSkillsCvComponent from "./user-skills-cv-component/index";
 
 interface Props {
   styles: ClassNameMap<CvDisplayComponentClasses>;
@@ -28,7 +29,7 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
 
   // CV INSPIRATION: https://www.etsy.com/in-en/listing/663855223/minimalist-resume-template-for-word
 
-  const resolveCityAndCountry = (): string => {
+  const resolveCityAndCountry = useCallback((): string => {
     if (
       data.fullUserInformation.addressZipCode &&
       data.fullUserInformation.city &&
@@ -55,28 +56,36 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
       return `${data.fullUserInformation.city}, ${data.fullUserInformation.country}`;
 
     return "";
-  };
+  }, [data]);
 
-  const sortedWorkExperiences = data.workExperiences.sort((a, b) => {
-    if (a.dateStarted > b.dateStarted) return -1;
-    if (a.dateStarted === b.dateStarted) return 0;
+  const sortedWorkExperiences = useMemo(() => {
+    return data.workExperiences.sort((a, b) => {
+      if (a.dateStarted > b.dateStarted) return -1;
+      if (a.dateStarted === b.dateStarted) return 0;
 
-    return 1;
-  });
+      return 1;
+    });
+  }, [data.workExperiences]);
 
-  const sortedEducations = data.educations.sort((a, b) => {
-    if (a.dateStarted > b.dateStarted) return -1;
-    if (a.dateStarted === b.dateStarted) return 0;
+  const sortedEducations = useMemo(() => {
+    return data.educations.sort((a, b) => {
+      if (a.dateStarted > b.dateStarted) return -1;
+      if (a.dateStarted === b.dateStarted) return 0;
 
-    return 1;
-  });
+      return 1;
+    });
+  }, [data.educations]);
 
-  const sortedCertificates = data.certificates.sort((a, b) => {
-    if (a.dateIssued > b.dateIssued) return -1;
-    if (a.dateIssued === b.dateIssued) return 0;
+  const sortedCertificates = useMemo(() => {
+    return data.certificates.sort((a, b) => {
+      if (a.dateIssued > b.dateIssued) return -1;
+      if (a.dateIssued === b.dateIssued) return 0;
 
-    return 1;
-  });
+      return 1;
+    });
+  }, [data.certificates]);
+
+  const userSkills = data.userSkillsAndSkills;
 
   return (
     <div className={styles.cvDisplayComponentWrapperStyles}>
@@ -157,6 +166,14 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
             {sortedCertificates.map((sc, index) => (
               <CertificateCvComponent certificateData={sc} key={index} isSwedishCv={isSwedishCv} />
             ))}
+          </div>
+        )}
+        {data.userSkillsAndSkills.length && (
+          <div className={styles.userSkillsAndSkillsContainer}>
+            <Typography className={styles.userSkillsHeader}>
+              {isSwedishCv ? "Färdigheter".toUpperCase() : "Skills".toUpperCase()}
+            </Typography>
+            <UserSkillsCvComponent isSwedishCv={isSwedishCv} userSkillsData={userSkills} />
           </div>
         )}
         {(data.languages.length || data.otherInformation.drivingLicense) && (

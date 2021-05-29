@@ -3,7 +3,7 @@ import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { Typography } from "@material-ui/core";
 import { FullUserSkillData } from "../../interfaces/cv-print-component-interfaces";
 import { UserSkillsCvComponentClasses } from ".";
-import { chain, groupBy } from "lodash";
+import { groupBy } from "lodash";
 
 interface Props {
   styles: ClassNameMap<UserSkillsCvComponentClasses>;

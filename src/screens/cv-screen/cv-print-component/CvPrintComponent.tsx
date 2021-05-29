@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CvPrintComponentClasses, CvTypes } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { Button, CircularProgress, Paper } from "@material-ui/core";
@@ -26,7 +26,7 @@ const CvPrintComponent: React.FC<Props> = ({ styles, cvVersion }): JSX.Element =
   const [swedishData, setSwedishData] = useState<CvLanguageBasedData>();
   const [englishData, setEnglishData] = useState<CvLanguageBasedData>();
 
-  useMemo(() => {
+  useEffect(() => {
     if (data) {
       setSwedishData(getSwedishData(data));
       setEnglishData(getEnglishData(data));

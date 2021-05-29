@@ -11,7 +11,7 @@ export interface FullCvInformation {
   languages: Array<Language>;
   otherInformation: OtherInformation;
   userPresentation: UserPresentation;
-  userSkillsAndSkills: Array<UserSkillData>;
+  userSkillsAndSkills: Array<FullUserSkill>;
   certificates: Array<Certificate>;
 }
 
@@ -79,6 +79,36 @@ type UserPresentation = {
   presentationEn: string;
 };
 
+export type Certificate = {
+  id: string;
+  userId: string;
+  certificateNameSv: string;
+  certificateNameEn: string;
+  organisation: string;
+  identificationId: string;
+  referenceAddress: string;
+  dateIssued: Date | string;
+  updatedAt: Date | string;
+  createdAt: Date | string;
+}
+
+export type FullUserSkill = {
+  skill: Skill;
+  userSkill: UserSkill;
+}
+
+export type Skill = {
+  id: string;
+  skillName: string;
+}
+
+export type UserSkill = {
+  id: string;
+  userId: string;
+  skillId: string;
+  skillLevel: number;
+}
+
 export interface CvLanguageBasedData {
   educations: Array<EducationData>;
   workExperiences: Array<WorkExperienceData>;
@@ -86,6 +116,8 @@ export interface CvLanguageBasedData {
   languages: Array<LanguageData>;
   otherInformation: OtherInformationData;
   userPresentation: UserPresentationData;
+  userSkillsAndSkills: Array<FullUserSkillData>;
+  certificates: Array<CertificateData>;
 }
 
 export type EducationData = {
@@ -136,30 +168,28 @@ export type UserPresentationData = {
   presentation: string;
 };
 
-export type Certificate = {
+
+export type CertificateData = {
   id: string;
   userId: string;
-  certificateNameSv: string;
-  certificateNameEn: string;
+  certificateName: string;
   organisation: string;
   identificationId: string;
   referenceAddress: string;
   dateIssued: Date | string;
-  updatedAt: Date | string;
-  createdAt: Date | string;
 }
 
-export type UserSkillData = {
+export type FullUserSkillData = {
   skill: Skill;
   userSkill: UserSkill;
 }
 
-export type Skill = {
+export type SkillData = {
   id: string;
   skillName: string;
 }
 
-export type UserSkill = {
+export type UserSkillData = {
   id: string;
   userId: string;
   skillId: string;

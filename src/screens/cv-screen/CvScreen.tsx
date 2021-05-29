@@ -11,7 +11,7 @@ interface Props {
   cvVersion: CvTypes;
 }
 
-const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
+const CvScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
   const { t } = useTranslation("common");
   const printComponentRef = useRef<HTMLDivElement>(null);
   const cvToPrint = () => {
@@ -36,4 +36,4 @@ const HomeScreen: React.FC<Props> = ({ styles, cvVersion }): JSX.Element => {
   );
 };
 
-export default HomeScreen;
+export default CvScreen;

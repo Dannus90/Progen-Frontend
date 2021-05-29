@@ -1,16 +1,8 @@
-import { makeStyles, Theme, useMediaQuery } from "@material-ui/core";
+import { makeStyles, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import React from "react";
 import { MainTheme } from "../../styles/theme";
 import CvScreen from "./CvScreen";
-
-export interface CvScreenStyles extends Theme {
-  pageWrapperStyles: CreateCSSProperties | CSSProperties;
-  tabsStyle: CreateCSSProperties | CSSProperties;
-  exportCvButton: CreateCSSProperties | CSSProperties;
-  printButton: CreateCSSProperties | CSSProperties;
-}
 
 export type CvScreenClasses = "cvScreenWrapperStyles" | "printButton";
 

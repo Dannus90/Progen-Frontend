@@ -59,7 +59,19 @@ export const getSwedishData = (fullResponse: GetFullCvInformationResponse): CvLa
             dateStarted: we?.dateStarted ?? ""
           };
         })
-      : []
+      : [],
+      certificates: data ? data.certificates.map((c) => {
+        return {
+          certificateName: c.certificateNameSv ?? "",
+          dateIssued: c.dateIssued ?? "",
+          id: c.id ?? "",
+          identificationId: c.identificationId ?? "",
+          organisation: c.organisation ?? "",
+          referenceAddress: c.referenceAddress ?? "",
+          userId: c.userId ?? ""
+        }
+      }) : [],
+      userSkillsAndSkills: data ? data.userSkillsAndSkills : []
   };
 };
 
@@ -119,6 +131,18 @@ export const getEnglishData = (fullResponse: GetFullCvInformationResponse): CvLa
             dateStarted: we?.dateStarted ?? ""
           };
         })
-      : []
+      : [],
+      certificates: data ? data.certificates.map((c) => {
+        return {
+          certificateName: c.certificateNameEn ?? "",
+          dateIssued: c.dateIssued ?? "",
+          id: c.id ?? "",
+          identificationId: c.identificationId ?? "",
+          organisation: c.organisation ?? "",
+          referenceAddress: c.referenceAddress ?? "",
+          userId: c.userId ?? ""
+        }
+      }) : [],
+      userSkillsAndSkills: data ? data.userSkillsAndSkills : []
   };
 };

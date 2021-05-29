@@ -1,24 +1,9 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import React from "react";
 import { MainTheme } from "../../../../../styles/theme";
 import { EducationData } from "../../interfaces/cv-print-component-interfaces";
 import EducationCvComponent from "./EducationCvComponent";
-
-export interface EducationCvComponentStyles extends Theme {
-  educationCvComponentWrapperStyles: CreateCSSProperties | CSSProperties;
-  education: CreateCSSProperties | CSSProperties;
-  exam: CreateCSSProperties | CSSProperties;
-  grade: CreateCSSProperties | CSSProperties;
-  date: CreateCSSProperties | CSSProperties;
-  description: CreateCSSProperties | CSSProperties;
-  headingIconWrapper: CreateCSSProperties | CSSProperties;
-  versionHeader: CreateCSSProperties | CSSProperties;
-  location: CreateCSSProperties | CSSProperties;
-  subject: CreateCSSProperties | CSSProperties;
-  educationContainer: CreateCSSProperties | CSSProperties;
-}
 
 export type EducationCvComponentClasses =
   | "educationCvComponentWrapperStyles"

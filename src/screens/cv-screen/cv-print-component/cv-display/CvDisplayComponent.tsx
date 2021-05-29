@@ -9,6 +9,7 @@ import EmailIcon from "@material-ui/icons/Email";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import WorkExperienceCvComponent from "./work-experience-cv-component/index";
 import EducationCvComponent from "./education-cv-component/index";
+import CertificateCvComponent from "./certificate-component/index";
 
 interface Props {
   styles: ClassNameMap<CvDisplayComponentClasses>;
@@ -66,6 +67,13 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
   const sortedEducations = data.educations.sort((a, b) => {
     if (a.dateStarted > b.dateStarted) return -1;
     if (a.dateStarted === b.dateStarted) return 0;
+
+    return 1;
+  });
+
+  const sortedCertificates = data.certificates.sort((a, b) => {
+    if (a.dateIssued > b.dateIssued) return -1;
+    if (a.dateIssued === b.dateIssued) return 0;
 
     return 1;
   });
@@ -136,6 +144,18 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
             </Typography>
             {sortedEducations.map((ed, index) => (
               <EducationCvComponent isSwedishCv={isSwedishCv} educationData={ed} key={index} />
+            ))}
+          </div>
+        )}
+        {data.certificates.length && (
+          <div className={styles.certificatesContainer}>
+            <Typography className={styles.educationHeader}>
+              {isSwedishCv
+                ? "Certifikat/Licenser".toUpperCase()
+                : "Certificates/Licences".toUpperCase()}
+            </Typography>
+            {sortedCertificates.map((sc, index) => (
+              <CertificateCvComponent certificateData={sc} key={index} isSwedishCv={isSwedishCv} />
             ))}
           </div>
         )}

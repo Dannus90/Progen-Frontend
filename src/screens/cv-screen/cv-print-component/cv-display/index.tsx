@@ -1,42 +1,10 @@
 import { makeStyles, Theme } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import React from "react";
 import { MainTheme } from "../../../../styles/theme";
 import { CvLanguageBasedData } from "../interfaces/cv-print-component-interfaces";
 import CvDisplayComponent from "./CvDisplayComponent";
 import "./Font.css";
-
-export interface CvDisplayComponentStyles extends Theme {
-  cvDisplayComponentWrapperStyles: CreateCSSProperties | CSSProperties;
-  imageContactInfoContainer: CreateCSSProperties | CSSProperties;
-  sizeAvatar: CreateCSSProperties | CSSProperties;
-  avatarWorkTitleContainer: CreateCSSProperties | CSSProperties;
-  workTitle: CreateCSSProperties | CSSProperties;
-  sideInformationContainer: CreateCSSProperties | CSSProperties;
-  name: CreateCSSProperties | CSSProperties;
-  fullNameContainer: CreateCSSProperties | CSSProperties;
-  mainContent: CreateCSSProperties | CSSProperties;
-  userPresentationContainer: CreateCSSProperties | CSSProperties;
-  userPresentationText: CreateCSSProperties | CSSProperties;
-  contactInformationContainer: CreateCSSProperties | CSSProperties;
-  contactInformationHeader: CreateCSSProperties | CSSProperties;
-  phoneNumberContainer: CreateCSSProperties | CSSProperties;
-  phoneNumber: CreateCSSProperties | CSSProperties;
-  iconStyle: CreateCSSProperties | CSSProperties;
-  workExperiencesContainer: CreateCSSProperties | CSSProperties;
-  workExperienceEducationHeader: CreateCSSProperties | CSSProperties;
-  workExperienceWrapper: CreateCSSProperties | CSSProperties;
-  educationsContainer: CreateCSSProperties | CSSProperties;
-  playArrowStyle: CreateCSSProperties | CSSProperties;
-  otherInformationContainer: CreateCSSProperties | CSSProperties;
-  otherInformationHeader: CreateCSSProperties | CSSProperties;
-  languagesHeader: CreateCSSProperties | CSSProperties;
-  languageList: CreateCSSProperties | CSSProperties;
-  languagesContainer: CreateCSSProperties | CSSProperties;
-  drivingLicencesHeader: CreateCSSProperties | CSSProperties;
-  driverLicenseWrapper: CreateCSSProperties | CSSProperties;
-}
 
 export type CvDisplayComponentClasses =
   | "cvDisplayComponentWrapperStyles"
@@ -65,7 +33,9 @@ export type CvDisplayComponentClasses =
   | "languageList"
   | "languagesContainer"
   | "drivingLicencesHeader"
-  | "driverLicenseWrapper";
+  | "driverLicenseWrapper"
+  | "certificatesContainer"
+  | "certificateHeader";
 
 export enum CvTypes {
   English = "English",
@@ -85,7 +55,8 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
       background: `#fff`,
       marginTop: theme.customSpacings.s,
       flexDirection: "row",
-      fontFamily: "Roboto"
+      fontFamily: "Roboto",
+      pageBreakInside: "avoid"
     },
     sideInformationContainer: {
       float: "left",
@@ -190,11 +161,11 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
       pageBreakInside: "avoid"
     },
     educationsContainer: {
-      marginTop: theme.customSpacings.m,
+      marginTop: theme.customSpacings.xxxs,
       pageBreakInside: "avoid"
     },
     otherInformationContainer: {
-      marginTop: theme.customSpacings.m,
+      marginTop: theme.customSpacings.xxxs,
       pageBreakInside: "avoid"
     },
     playArrowStyle: {
@@ -209,6 +180,15 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
     },
     driverLicenseWrapper: {
       pageBreakInside: "avoid"
+    },
+    certificatesContainer: {
+      marginTop: theme.customSpacings.xxxs
+    },
+    certificateHeader: {
+      fontSize: "1.6rem",
+      marginBottom: theme.customSpacings.s,
+      display: "flex",
+      alignItems: "center"
     }
   });
 

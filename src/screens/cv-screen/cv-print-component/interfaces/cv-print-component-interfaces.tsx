@@ -90,24 +90,24 @@ export type Certificate = {
   dateIssued: Date | string;
   updatedAt: Date | string;
   createdAt: Date | string;
-}
+};
 
 export type FullUserSkill = {
   skill: Skill;
   userSkill: UserSkill;
-}
+};
 
 export type Skill = {
   id: string;
   skillName: string;
-}
+};
 
 export type UserSkill = {
   id: string;
   userId: string;
   skillId: string;
   skillLevel: number;
-}
+};
 
 export interface CvLanguageBasedData {
   educations: Array<EducationData>;
@@ -168,7 +168,6 @@ export type UserPresentationData = {
   presentation: string;
 };
 
-
 export type CertificateData = {
   id: string;
   userId: string;
@@ -177,21 +176,21 @@ export type CertificateData = {
   identificationId: string;
   referenceAddress: string;
   dateIssued: Date | string;
-}
+};
 
 export type FullUserSkillData = {
   skill: Skill;
   userSkill: UserSkill;
-}
+};
 
 export type SkillData = {
   id: string;
   skillName: string;
-}
+};
 
 export type UserSkillData = {
   id: string;
   userId: string;
   skillId: string;
   skillLevel: number;
-}
+};

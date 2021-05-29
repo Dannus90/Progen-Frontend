@@ -6,7 +6,7 @@ import {
   DeleteUserSkillResponse,
   UserSkillData
 } from "../interfaces/skill-interfaces";
-import { Avatar, Chip } from "@material-ui/core";
+import { Avatar, Chip, CircularProgress } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import { useMutation } from "@apollo/client";
 import { DELETE_USERSKILL } from "./gql";
@@ -14,6 +14,7 @@ import { useAppDispatch } from "../../../../../../redux/hooks/hooks";
 import { notifyUserSkillModified } from "../../../../../../redux/reducers/skills/actions";
 import { Alert } from "@material-ui/lab";
 import UserSkillLevelModal from "./user-skill-level-modal/index";
+import CancelIcon from "@material-ui/icons/Cancel";
 
 interface Props {
   styles: ClassNameMap<UserSkillComponentClasses>;
@@ -31,10 +32,10 @@ const UserSkillComponent: React.FC<Props> = ({ styles, userSkillData }): JSX.Ele
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const {
     skill: { skillName },
-    userSkill: { id, skillLevel, skillId, userId }
+    userSkill: { id, skillLevel }
   } = userSkillData;
 
-  const [deleteUserSkill, { loading, error, data }] =
+  const [deleteUserSkill, { loading, error }] =
     useMutation<{
       userSkill: DeleteUserSkillResponse;
       deleteUserSkillInput: DeleteUserSkillInput;
@@ -87,6 +88,7 @@ const UserSkillComponent: React.FC<Props> = ({ styles, userSkillData }): JSX.Ele
             clickable
             color="secondary"
             onDelete={handleUserSkillDelete}
+            deleteIcon={loading ? <CircularProgress size={15} /> : <CancelIcon />}
             variant="outlined"
           />
           <EditIcon

@@ -21,7 +21,8 @@ const YourTeamScreenWrapper: React.FC = (): JSX.Element => {
       minHeight: "calc(100vh - 52px)",
       marginTop: "52px",
       width: smallScreen ? "100vw" : "calc(100vw - 240px)",
-      marginLeft: smallScreen ? "0px" : "240px"
+      marginLeft: smallScreen ? "0px" : "240px",
+      padding: theme.customSpacings.l
     }
   });
 

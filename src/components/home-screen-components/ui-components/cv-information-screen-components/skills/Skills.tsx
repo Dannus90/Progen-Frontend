@@ -215,7 +215,7 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         {userSkillLoading ||
           (skillLoading && (
             <Container className={styles.loaderContainer}>
-              <CircularProgress size={50} />
+              <CircularProgress size={75} />
             </Container>
           ))}
         {!skillLoading && !skillError && !isRefetchingSkills && skillDataMemoized ? (
@@ -330,7 +330,9 @@ const SkillsComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             </FormControl>
           </div>
         ) : (
-          <CircularProgress size={50} />
+          <Container className={styles.userSkillLoadingContainer}>
+            <CircularProgress size={75} />
+          </Container>
         )}
       </Container>
       <Container className={styles.userSkillsContainer}>

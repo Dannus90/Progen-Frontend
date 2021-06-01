@@ -17,7 +17,8 @@ export type SkillComponentClasses =
   | "addNewSkillButton"
   | "addIcon"
   | "skillsContainer"
-  | "userSkillsContainer";
+  | "userSkillsContainer"
+  | "userSkillLoadingContainer";
 
 const SkillsComponentWrapper: React.FC = (): JSX.Element => {
   const theme = useTheme<MainTheme>();
@@ -104,6 +105,11 @@ const SkillsComponentWrapper: React.FC = (): JSX.Element => {
       display: "grid",
       gridTemplateColumns: smallScreen ? "repeat(2, 1fr)" : "repeat(3, 1fr)",
       gap: "20px",
+      justifyContent: "center",
+      alignItems: "center"
+    },
+    userSkillLoadingContainer: {
+      display: "flex",
       justifyContent: "center",
       alignItems: "center"
     }

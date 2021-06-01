@@ -158,13 +158,13 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
         )}
         {data.certificates.length && (
           <div className={styles.certificatesContainer}>
-            <Typography className={styles.educationHeader}>
-              {isSwedishCv
-                ? "Certifikat/Licenser".toUpperCase()
-                : "Certificates/Licences".toUpperCase()}
-            </Typography>
             {sortedCertificates.map((sc, index) => (
-              <CertificateCvComponent certificateData={sc} key={index} isSwedishCv={isSwedishCv} />
+              <CertificateCvComponent
+                isFirstCvComponent={index === 0}
+                certificateData={sc}
+                key={index}
+                isSwedishCv={isSwedishCv}
+              />
             ))}
           </div>
         )}

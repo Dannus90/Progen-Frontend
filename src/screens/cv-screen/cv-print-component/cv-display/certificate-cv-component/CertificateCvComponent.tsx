@@ -9,12 +9,14 @@ interface Props {
   styles: ClassNameMap<CertificateCvComponentClasses>;
   certificateData: CertificateData;
   isSwedishCv: boolean;
+  isFirstCvComponent: boolean;
 }
 
 const CertificateDisplayComponent: React.FC<Props> = ({
   styles,
   certificateData,
-  isSwedishCv
+  isSwedishCv,
+  isFirstCvComponent
 }): JSX.Element => {
   const certificateName = certificateData.certificateName;
   const referenceAddress = certificateData.referenceAddress;
@@ -31,6 +33,13 @@ const CertificateDisplayComponent: React.FC<Props> = ({
 
   return (
     <div className={styles.certificateCvComponentWrapperStyles}>
+      {isFirstCvComponent && (
+        <Typography className={styles.certificateHeader}>
+          {isSwedishCv
+            ? "Certifikat/Licenser".toUpperCase()
+            : "Certificates/Licences".toUpperCase()}
+        </Typography>
+      )}
       <div className={styles.certificateContainer}>
         <div className={styles.headingWrapper}>
           <Typography className={styles.certificate}>{certificateName}</Typography>

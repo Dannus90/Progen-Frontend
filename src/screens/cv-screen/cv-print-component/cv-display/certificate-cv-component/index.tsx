@@ -14,23 +14,26 @@ export type CertificateCvComponentClasses =
   | "referenceAddress"
   | "certificateContainer"
   | "certificate"
-  | "organisation";
+  | "organisation"
+  | "certificateHeader";
 
 interface Props {
   certificateData: CertificateData;
   isSwedishCv: boolean;
+  isFirstCvComponent: boolean;
 }
 
 const CertificateCvComponentWrapper: React.FC<Props> = ({
   certificateData,
-  isSwedishCv
+  isSwedishCv,
+  isFirstCvComponent
 }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const certificateComponentStyles = makeStyles({
     certificateCvComponentWrapperStyles: {
       display: "flex",
-      flexDirection: "row",
+      flexDirection: "column",
       justifyContent: "space-between",
       marginBottom: theme.customSpacings.xs,
       paddingBottom: theme.customSpacings.xs,
@@ -62,6 +65,12 @@ const CertificateCvComponentWrapper: React.FC<Props> = ({
     identificationId: {
       color: theme.custom.palette.textVariantDark.medium,
       fontSize: "0.85rem"
+    },
+    certificateHeader: {
+      fontSize: "1.6rem",
+      marginBottom: theme.customSpacings.xxs,
+      display: "flex",
+      alignItems: "center"
     }
   });
 
@@ -72,6 +81,7 @@ const CertificateCvComponentWrapper: React.FC<Props> = ({
       isSwedishCv={isSwedishCv}
       certificateData={certificateData}
       styles={styles}
+      isFirstCvComponent={isFirstCvComponent}
     />
   );
 };

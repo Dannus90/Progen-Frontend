@@ -16,23 +16,26 @@ export type EducationCvComponentClasses =
   | "versionHeader"
   | "location"
   | "subject"
-  | "educationContainer";
+  | "educationContainer"
+  | "educationHeader";
 
 interface Props {
   educationData: EducationData;
   isSwedishCv: boolean;
+  isFirstCvComponent: boolean;
 }
 
 const EducationCvComponentWrapper: React.FC<Props> = ({
   educationData,
-  isSwedishCv
+  isSwedishCv,
+  isFirstCvComponent
 }): JSX.Element => {
   const theme = useTheme<MainTheme>();
 
   const educationComponentStyles = makeStyles({
     educationCvComponentWrapperStyles: {
       display: "flex",
-      flexDirection: "row",
+      flexDirection: "column",
       justifyContent: "space-between",
       marginBottom: theme.customSpacings.xs,
       paddingBottom: theme.customSpacings.xs,
@@ -78,13 +81,24 @@ const EducationCvComponentWrapper: React.FC<Props> = ({
       color: theme.custom.palette.textVariantDark.main,
       fontSize: "0.95rem",
       marginBottom: "1rem"
+    },
+    educationHeader: {
+      fontSize: "1.6rem",
+      marginBottom: theme.customSpacings.xxs,
+      display: "flex",
+      alignItems: "center"
     }
   });
 
   const styles = educationComponentStyles();
 
   return (
-    <EducationCvComponent educationData={educationData} isSwedishCv={isSwedishCv} styles={styles} />
+    <EducationCvComponent
+      isFirstCvComponent={isFirstCvComponent}
+      educationData={educationData}
+      isSwedishCv={isSwedishCv}
+      styles={styles}
+    />
   );
 };
 

@@ -148,11 +148,13 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
         )}
         {data.educations.length && (
           <div className={styles.educationsContainer}>
-            <Typography className={styles.educationHeader}>
-              {isSwedishCv ? "Utbildning".toUpperCase() : "Education".toUpperCase()}
-            </Typography>
             {sortedEducations.map((ed, index) => (
-              <EducationCvComponent isSwedishCv={isSwedishCv} educationData={ed} key={index} />
+              <EducationCvComponent
+                isFirstCvComponent={index === 0}
+                isSwedishCv={isSwedishCv}
+                educationData={ed}
+                key={index}
+              />
             ))}
           </div>
         )}
@@ -170,9 +172,6 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
         )}
         {data.userSkillsAndSkills.length && (
           <div className={styles.userSkillsAndSkillsContainer}>
-            <Typography className={styles.userSkillsHeader}>
-              {isSwedishCv ? "Färdigheter".toUpperCase() : "Skills".toUpperCase()}
-            </Typography>
             <UserSkillsCvComponent isSwedishCv={isSwedishCv} userSkillsData={userSkills} />
           </div>
         )}

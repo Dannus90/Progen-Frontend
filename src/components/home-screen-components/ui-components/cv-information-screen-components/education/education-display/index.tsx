@@ -52,7 +52,8 @@ const EducationDisplayComponentWrapper: React.FC<Props> = ({ educationData }): J
       paddingBottom: theme.customSpacings.xs
     },
     educationContainer: {
-      width: "50%"
+      width: "50%",
+      margin: "0.5rem"
     },
     versionHeader: {
       fontSize: "1.3rem",

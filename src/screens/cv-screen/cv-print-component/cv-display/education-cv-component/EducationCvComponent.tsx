@@ -9,12 +9,14 @@ interface Props {
   styles: ClassNameMap<EducationCvComponentClasses>;
   educationData: EducationData;
   isSwedishCv: boolean;
+  isFirstCvComponent: boolean;
 }
 
 const EducationDisplayComponent: React.FC<Props> = ({
   styles,
   educationData,
-  isSwedishCv
+  isSwedishCv,
+  isFirstCvComponent
 }): JSX.Element => {
   const city = educationData.city;
   const country = educationData.country;
@@ -35,6 +37,11 @@ const EducationDisplayComponent: React.FC<Props> = ({
 
   return (
     <div className={styles.educationCvComponentWrapperStyles}>
+      {isFirstCvComponent && (
+        <Typography className={styles.educationHeader}>
+          {isSwedishCv ? "Utbildning".toUpperCase() : "Education".toUpperCase()}
+        </Typography>
+      )}
       <div className={styles.educationContainer}>
         <div className={styles.headingWrapper}>
           <Typography className={styles.education}>{educationName}</Typography>

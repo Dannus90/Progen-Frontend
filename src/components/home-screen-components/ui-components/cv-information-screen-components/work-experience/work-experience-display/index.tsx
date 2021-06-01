@@ -51,7 +51,8 @@ const WorkExperienceDisplayComponentWrapper: React.FC<Props> = ({
       paddingBottom: theme.customSpacings.xs
     },
     workExperienceContainer: {
-      width: "50%"
+      width: "50%",
+      margin: "0.5rem"
     },
     versionHeader: {
       fontSize: "1.3em",

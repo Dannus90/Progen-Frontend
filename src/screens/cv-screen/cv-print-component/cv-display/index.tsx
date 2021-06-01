@@ -193,7 +193,8 @@ const CvDisplayComponentWrapper: React.FC<Props> = ({ data, isSwedishCv }): JSX.
       marginTop: theme.customSpacings.xxxs
     },
     userSkillsAndSkillsContainer: {
-      marginTop: theme.customSpacings.xxxs
+      marginTop: theme.customSpacings.xxxs,
+      pageBreakInside: "avoid"
     },
     certificateHeader: {
       fontSize: "1.6rem",

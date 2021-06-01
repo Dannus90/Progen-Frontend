@@ -1,24 +1,9 @@
-import { makeStyles, Theme } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
-import { CreateCSSProperties } from "@material-ui/core/styles/withStyles";
-import React, { CSSProperties } from "react";
+import React from "react";
 import { MainTheme } from "../../../../../styles/theme";
 import { WorkExperienceData } from "../../interfaces/cv-print-component-interfaces";
 import WorkExperienceCvComponent from "./WorkExperienceCvComponent";
-
-export interface WorkExperienceCvComponentStyles extends Theme {
-  workExperienceDisplayWrapperStyles: CreateCSSProperties | CSSProperties;
-  company: CreateCSSProperties | CSSProperties;
-  role: CreateCSSProperties | CSSProperties;
-  employmentRate: CreateCSSProperties | CSSProperties;
-  cityCountry: CreateCSSProperties | CSSProperties;
-  date: CreateCSSProperties | CSSProperties;
-  description: CreateCSSProperties | CSSProperties;
-  headingIconWrapper: CreateCSSProperties | CSSProperties;
-  editIcon: CreateCSSProperties | CSSProperties;
-  versionHeader: CreateCSSProperties | CSSProperties;
-  workExperienceContainer: CreateCSSProperties | CSSProperties;
-}
 
 export type WorkExperienceCvComponentClasses =
   | "workExperienceCvComponentWrapperStyles"

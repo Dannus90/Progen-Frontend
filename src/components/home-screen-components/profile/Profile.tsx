@@ -42,7 +42,8 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   useMemo(() => {
     const userInformation = data?.userData.getFullUserInformation;
-    if (userInformation && !updatedUserDataMutation) {
+
+    if (userInformation && !updatedUserDataMutation && !userDataState.beenLoaded) {
       formData = {
         firstName: userInformation?.user.firstName ?? "",
         lastName: userInformation?.user.lastName ?? "",
@@ -59,6 +60,7 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
         workTitleEn: userInformation?.userData.workTitleEn ?? ""
       };
 
+      dispatch(setHasLoaded());
       dispatch(setUserData(formData));
     }
   }, [data]);

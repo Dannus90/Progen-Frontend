@@ -76,7 +76,6 @@ const UserSkillLevelModal: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    console.log(error);
     if (error) {
       setDisplayAlertMessage(true);
     }

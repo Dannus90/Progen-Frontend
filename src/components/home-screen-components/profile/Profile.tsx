@@ -42,7 +42,7 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
 
   useMemo(() => {
     const userInformation = data?.userData.getFullUserInformation;
-    if (userInformation && !updatedUserDataMutation && !userDataState.beenLoaded) {
+    if (userInformation && !updatedUserDataMutation) {
       formData = {
         firstName: userInformation?.user.firstName ?? "",
         lastName: userInformation?.user.lastName ?? "",
@@ -60,7 +60,6 @@ const ProfileComponent: React.FC<Props> = ({ styles }): JSX.Element => {
       };
 
       dispatch(setUserData(formData));
-      dispatch(setHasLoaded());
     }
   }, [data]);
 

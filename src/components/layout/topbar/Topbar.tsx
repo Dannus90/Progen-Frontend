@@ -25,6 +25,7 @@ import { useNavigation } from "../../../custom-hooks/UseNavigation";
 import { LogoutUserResponseBackend } from "../drawer/interfaces/drawer-interfaces";
 import { LOGOUT_USER } from "../drawer/gql";
 import { useMutation } from "@apollo/client";
+import { apolloClient } from "../../../ApolloClient";
 
 interface Props {
   styles: ClassNameMap<TopBarClasses>;
@@ -72,6 +73,8 @@ const TopBar: React.FC<Props> = ({ styles, handleDrawerToggle }): JSX.Element =>
     if (response.data === null && response.errors) {
       return;
     }
+
+    apolloClient.clearStore();
 
     navigateTo("/login");
     setAnchorEl(null);

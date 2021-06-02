@@ -20,6 +20,7 @@ import { LoginData, LoginResponse } from "./interfaces/login-interfaces";
 import { useNavigation } from "../../../custom-hooks/UseNavigation";
 import { setTokens } from "../../../utils/auth-helper";
 import { invokeAccessToken } from "../../../api/httpClient";
+import { apolloClient } from "../../../ApolloClient";
 
 interface Props {
   styles: ClassNameMap<LoginComponentClasses>;
@@ -54,6 +55,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
     if (loginDisabled) {
       return;
     }
+    apolloClient.clearStore();
 
     setDisplayErrorMessage(false);
 

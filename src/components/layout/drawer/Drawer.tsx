@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ExitToAppRounded } from "@material-ui/icons";
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { DrawerComponentClasses } from ".";
 import { GET_USERDATA, LOGOUT_USER } from "./gql";
 import {
@@ -51,7 +51,7 @@ const DrawerComponent: React.FC<Props> = ({
   const { navigateTo } = useNavigation();
   const [t, i18n] = useTranslation("common");
   const [logoutUser] = useMutation<LogoutUserResponseBackend>(LOGOUT_USER);
-  const { loading, error, data } = useQuery<PartialUserInformationResponse>(GET_USERDATA);
+  const { loading, error, data, refetch } = useQuery<PartialUserInformationResponse>(GET_USERDATA);
   const lng = i18n.language;
   const [profileImage, setProfileImage] = useState<string>("");
   const { userDataState } = useAppSelector((state) => state);
@@ -85,17 +85,21 @@ const DrawerComponent: React.FC<Props> = ({
     }
   };
 
-  const resolveUserImage = (data: UserData | undefined) => {
-    if (userDataState.profileImage) {
-      setProfileImage(userDataState.profileImage);
-    } else if (data?.profileImage) {
-      setProfileImage(data.profileImage);
-    } else {
-      setProfileImage("");
-    }
-  };
+  const resolveUserImage = useCallback(
+    (data: UserData | undefined) => {
+      if (userDataState.profileImage) {
+        setProfileImage(userDataState.profileImage);
+      } else if (data?.profileImage) {
+        setProfileImage(data.profileImage);
+      } else {
+        setProfileImage("");
+      }
+    },
+    [userDataState, data]
+  );
 
   useMemo(() => {
+    refetch();
     const userData = data?.userData.getFullUserInformation.userData;
     const user = data?.userData.getFullUserInformation.user;
 

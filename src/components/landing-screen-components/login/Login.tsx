@@ -21,6 +21,8 @@ import { useNavigation } from "../../../custom-hooks/UseNavigation";
 import { setTokens } from "../../../utils/auth-helper";
 import { invokeAccessToken } from "../../../api/httpClient";
 import { apolloClient } from "../../../ApolloClient";
+import { setHasNotLoaded } from "../../../redux/reducers/user-data/actions";
+import { useAppDispatch } from "../../../redux/hooks/hooks";
 
 interface Props {
   styles: ClassNameMap<LoginComponentClasses>;
@@ -35,6 +37,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
   const { formData, handleInputChange } = useForm(initialFormState);
   const { navigateTo } = useNavigation();
   const { t } = useTranslation("login");
+  const dispatch = useAppDispatch();
   const [loginDisabled, setLoginDisabled] = useState(false);
   const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
   const [loginUser, { error, data }] = useMutation<{
@@ -58,6 +61,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
     apolloClient.clearStore();
 
     setDisplayErrorMessage(false);
+    dispatch(setHasNotLoaded());
 
     await loginUser();
 

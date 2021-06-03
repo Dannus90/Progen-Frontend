@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { truncate } from "fs/promises";
 
 type acceptedTypes = string | null | undefined;
 
@@ -74,7 +75,10 @@ export const userDataSlice = createSlice({
       state.publicId = action.payload.profileImagePublicId;
     },
     setHasLoaded: (state) => {
-      state.beenLoaded = !state.beenLoaded;
+      state.beenLoaded = true;
+    },
+    setHasNotLoaded: (state) => {
+      state.beenLoaded = false;
     }
   }
 });

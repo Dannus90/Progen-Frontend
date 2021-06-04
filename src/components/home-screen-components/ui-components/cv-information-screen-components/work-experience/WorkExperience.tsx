@@ -79,7 +79,7 @@ const WorkExperienceComponent: React.FC<Props> = ({ styles }): JSX.Element => {
           icon={<CachedIcon onClick={() => refetch()} className={styles.refetchIcon} />}
           severity="error">
           {error?.graphQLErrors.map(
-            (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+            (err) => `${err.message}`
           )}
         </Alert>
       )}

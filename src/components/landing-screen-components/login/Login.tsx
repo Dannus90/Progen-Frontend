@@ -102,9 +102,7 @@ const Login: React.FC<Props> = ({ styles }): JSX.Element => {
             className={`${styles.alertStyle}`}
             onClose={() => removeErrorDisplay()}
             severity="error">
-            {error?.graphQLErrors.map(
-              (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
-            )}
+            {error?.graphQLErrors.map((err) => `${err.message}`)}
           </Alert>
         )}
         <form noValidate onSubmit={(e) => handleLoginUser(e)}>

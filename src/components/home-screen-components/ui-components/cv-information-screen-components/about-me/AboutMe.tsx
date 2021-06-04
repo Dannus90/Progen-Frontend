@@ -151,7 +151,7 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             onClose={() => removeAlertDisplay()}
             severity="error">
             {error?.graphQLErrors.map(
-              (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              (err) => `${err.message}`
             )}
           </Alert>
         )}
@@ -161,7 +161,7 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             onClose={() => removeAlertDisplay()}
             severity="error">
             {updateError?.graphQLErrors.map(
-              (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              (err) => `${err.message}`
             )}
           </Alert>
         )}

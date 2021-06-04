@@ -168,7 +168,7 @@ const ResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
               onClose={() => removeDisplayState()}
               severity="error">
               {error?.graphQLErrors.map(
-                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+                (err) => `${err.message}`
               )}
             </Alert>
           )}

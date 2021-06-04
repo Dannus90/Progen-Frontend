@@ -156,7 +156,7 @@ const OtherComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             onClose={() => removeAlertDisplay()}
             severity="error">
             {error?.graphQLErrors.map(
-              (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              (err) => `${err.message}`
             )}
           </Alert>
         )}
@@ -166,7 +166,7 @@ const OtherComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             onClose={() => removeAlertDisplay()}
             severity="error">
             {updateError?.graphQLErrors.map(
-              (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+              (err) => `${err.message}`
             )}
           </Alert>
         )}

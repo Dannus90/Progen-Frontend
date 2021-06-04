@@ -385,7 +385,7 @@ const WorkExperienceModal: React.FC<Props> = ({
               onClose={() => removeAlertDisplay()}
               severity="error">
               {error?.graphQLErrors.map(
-                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+                (err) => `${err.message}`
               )}
             </Alert>
           )}
@@ -395,7 +395,7 @@ const WorkExperienceModal: React.FC<Props> = ({
               onClose={() => removeAlertDisplay()}
               severity="error">
               {deleteError?.graphQLErrors.map(
-                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+                (err) => `${err.message}`
               )}
             </Alert>
           )}
@@ -405,7 +405,7 @@ const WorkExperienceModal: React.FC<Props> = ({
               onClose={() => removeAlertDisplay()}
               severity="error">
               {updateError?.graphQLErrors.map(
-                (err) => `${err.extensions?.exception.statusCode} ${error?.message}`
+                (err) => `${err.message}`
               )}
             </Alert>
           )}

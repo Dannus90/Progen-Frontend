@@ -12,7 +12,8 @@ export type UserSkillsCvComponentClasses =
   | "skillsHeader"
   | "skillAdvanced"
   | "skillMedium"
-  | "skillBasic";
+  | "skillBasic"
+  | "skillsHeaderMain";
 
 interface Props {
   userSkillsData: Array<FullUserSkillData>;
@@ -30,15 +31,16 @@ const UserSkillsCvComponentWrapper: React.FC<Props> = ({
   const userSkillsComponentStyles = makeStyles({
     userSkillsCvComponentWrapperStyles: {
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: "1fr",
       justifyContent: "space-between",
-      gap: "10px",
+      gap: "5px",
       marginBottom: theme.customSpacings.xs,
       paddingBottom: theme.customSpacings.xs,
       pageBreakInside: "avoid"
     },
     groupedSkillsContainer: {
-      padding: "0"
+      padding: "0",
+      display: "flex"
     },
     groupedSkillsAndHeadingContainer: {
       display: "flex",
@@ -46,45 +48,42 @@ const UserSkillsCvComponentWrapper: React.FC<Props> = ({
     },
     skillsHeader: {
       color: theme.custom.palette.textVariantDark.main,
-      fontSize: "1rem",
+      fontSize: "1.1rem",
       fontWeight: "bold",
-      marginBottom: theme.customSpacings.xxs
+      marginBottom: theme.customSpacings.xs
     },
     skillAdvanced: {
       borderRadius: "4px",
-      padding: "5px 5px 4px",
-      color: "#fff",
+      color: theme.custom.palette.textVariantDark.dark,
       fontSize: "14px",
-      boxShadow: "0 1px 2px rgb(0 0 0 / 27%)",
       textShadow: "0 2px 2px rgb(0 0 0 / 10%)",
       textTransform: "uppercase",
-      fontWeight: "bold",
-      background: "linear-gradient(to bottom right, #6a3b3b 0%, #070707 100%)",
+      marginRight: theme.customSpacings.s,
       marginBottom: theme.customSpacings.xxs
     },
     skillMedium: {
       borderRadius: "4px",
-      padding: "5px 5px 4px",
-      color: "#fff",
+      color: theme.custom.palette.textVariantDark.dark,
       fontSize: "14px",
-      boxShadow: "0 1px 2px rgb(0 0 0 / 27%)",
       textShadow: "0 2px 2px rgb(0 0 0 / 10%)",
       textTransform: "uppercase",
-      fontWeight: "bold",
-      background: "linear-gradient(to bottom right, #6a3b3b 0%, #070707 100%)",
+      marginRight: theme.customSpacings.s,
       marginBottom: theme.customSpacings.xxs
     },
     skillBasic: {
       borderRadius: "4px",
-      padding: "5px 5px 4px",
-      color: "#fff",
+      color: theme.custom.palette.textVariantDark.dark,
       fontSize: "14px",
-      boxShadow: "0 1px 2px rgb(0 0 0 / 27%)",
       textShadow: "0 2px 2px rgb(0 0 0 / 10%)",
       textTransform: "uppercase",
-      fontWeight: "bold",
-      background: "linear-gradient(to bottom right, #6a3b3b 0%, #070707 100%)",
+      marginRight: theme.customSpacings.s,
       marginBottom: theme.customSpacings.xxs
+    },
+    skillsHeaderMain: {
+      fontSize: "1.6rem",
+      marginBottom: theme.customSpacings.xxs,
+      display: "flex",
+      alignItems: "center"
     }
   });
 

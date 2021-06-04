@@ -11,6 +11,20 @@ interface Props {
   isSwedishCv: boolean;
 }
 
+const resolveEmploymentRateForLanguage = (employmentRate: string, isSwedishCv: boolean) => {
+  if (isSwedishCv) {
+    if (employmentRate === "FullTime") return "Heltid";
+    if (employmentRate === "PartTime") return "Deltid";
+
+    return "Praktik";
+  } else {
+    if (employmentRate === "FullTime") return "Full time";
+    if (employmentRate === "PartTime") return "Part time";
+
+    return "Internship";
+  }
+};
+
 const WorkExperienceCvComponent: React.FC<Props> = ({
   styles,
   workExperienceData,
@@ -31,20 +45,6 @@ const WorkExperienceCvComponent: React.FC<Props> = ({
     )}`;
   };
 
-  const resolveEmploymentRateForLanguage = (employmentRate: string) => {
-    if (isSwedishCv) {
-      if (employmentRate === "FullTime") return "Heltid";
-      if (employmentRate === "PartTime") return "Deltid";
-
-      return "Praktik";
-    } else {
-      if (employmentRate === "FullTime") return "Full time";
-      if (employmentRate === "PartTime") return "Part time";
-
-      return "Internship";
-    }
-  };
-
   return (
     <div className={styles.workExperienceCvComponentWrapperStyles}>
       <div className={styles.workExperienceContainer}>
@@ -53,7 +53,7 @@ const WorkExperienceCvComponent: React.FC<Props> = ({
         </div>
         <Typography className={styles.role}>{roleSv}</Typography>
         <Typography className={styles.employmentRate}>
-          {resolveEmploymentRateForLanguage(workExperienceData.employmentRate)}
+          {resolveEmploymentRateForLanguage(workExperienceData.employmentRate, isSwedishCv)}
         </Typography>
         <Typography className={styles.date}>{resolveDate()}</Typography>
         <Typography className={styles.cityCountry}>

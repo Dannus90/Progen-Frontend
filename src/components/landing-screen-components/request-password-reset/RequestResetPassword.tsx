@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RequestResetPasswordComponentClasses } from "./index";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
@@ -66,7 +66,7 @@ const RequestResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
     requestResetPassword();
   };
 
-  useMemo(() => {
+  useEffect(() => {
     if (data?.authentication.requestPasswordResetByEmail.message) {
       setDisplayState((prevState) => ({
         ...prevState,
@@ -76,7 +76,7 @@ const RequestResetPassword: React.FC<Props> = ({ styles }): JSX.Element => {
     }
   }, [data]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (error) {
       setDisplayState((prevState) => ({
         ...prevState,

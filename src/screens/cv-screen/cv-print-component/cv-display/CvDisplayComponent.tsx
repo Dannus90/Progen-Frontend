@@ -132,7 +132,7 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
         </div>
       </Container>
       <Container className={styles.mainContent}>
-        {data.workExperiences.length && (
+        {data.workExperiences.length > 0 && (
           <div className={styles.workExperienceWrapper}>
             <Typography className={styles.workExperienceHeader}>
               {isSwedishCv ? "Arbetslivserfarenhet".toUpperCase() : "Work experience".toUpperCase()}
@@ -146,7 +146,7 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
             ))}
           </div>
         )}
-        {data.educations.length && (
+        {data.educations.length > 0 && (
           <div className={styles.educationsContainer}>
             {sortedEducations.map((ed, index) => (
               <EducationCvComponent
@@ -158,7 +158,7 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
             ))}
           </div>
         )}
-        {data.certificates.length && (
+        {data.certificates.length > 0 && (
           <div className={styles.certificatesContainer}>
             {sortedCertificates.map((sc, index) => (
               <CertificateCvComponent
@@ -170,7 +170,7 @@ const CvDisplayComponent: React.FC<Props> = ({ styles, data, isSwedishCv }): JSX
             ))}
           </div>
         )}
-        {data.userSkillsAndSkills.length && (
+        {data.userSkillsAndSkills.length > 0 && (
           <div className={styles.userSkillsAndSkillsContainer}>
             <UserSkillsCvComponent isSwedishCv={isSwedishCv} userSkillsData={userSkills} />
           </div>

@@ -66,49 +66,54 @@ const CertificateDisplayComponent: React.FC<Props> = ({
   const basicSkills = groupedSkills["Basic"];
 
   return (
-    <div className={styles.userSkillsCvComponentWrapperStyles}>
-      {advancedSkills && advancedSkills.length && (
-        <div className={styles.groupedSkillsAndHeadingContainer}>
-          <Typography className={styles.skillsHeader}>
-            {isSwedishCv ? "Avancerad" : "Advanced"}
-          </Typography>
-          <div className={styles.groupedSkillsContainer}>
-            {advancedSkills.map((as) => (
-              <p className={styles.skillAdvanced} key={as.skillName}>
-                {as.skillName}
-              </p>
-            ))}
+    <div>
+      <Typography className={styles.skillsHeaderMain}>
+        {isSwedishCv ? "Färdigheter".toUpperCase() : "Skills".toUpperCase()}
+      </Typography>
+      <div className={styles.userSkillsCvComponentWrapperStyles}>
+        {advancedSkills && advancedSkills.length && (
+          <div className={styles.groupedSkillsAndHeadingContainer}>
+            <Typography className={styles.skillsHeader}>
+              {isSwedishCv ? "Avancerad" : "Advanced"}
+            </Typography>
+            <div className={styles.groupedSkillsContainer}>
+              {advancedSkills.map((as) => (
+                <p className={styles.skillAdvanced} key={as.skillName}>
+                  {as.skillName}
+                </p>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-      {mediumSkills && mediumSkills.length && (
-        <div className={styles.groupedSkillsAndHeadingContainer}>
-          <Typography className={styles.skillsHeader}>
-            {isSwedishCv ? "Erfaren" : "Experienced"}
-          </Typography>
-          <div className={styles.groupedSkillsContainer}>
-            {mediumSkills.map((ms) => (
-              <p className={styles.skillMedium} key={ms.skillName}>
-                {ms.skillName}
-              </p>
-            ))}
+        )}
+        {mediumSkills && mediumSkills.length && (
+          <div className={styles.groupedSkillsAndHeadingContainer}>
+            <Typography className={styles.skillsHeader}>
+              {isSwedishCv ? "Erfaren" : "Experienced"}
+            </Typography>
+            <div className={styles.groupedSkillsContainer}>
+              {mediumSkills.map((ms) => (
+                <p className={styles.skillMedium} key={ms.skillName}>
+                  {ms.skillName}
+                </p>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
-      {basicSkills && basicSkills.length && (
-        <div className={styles.groupedSkillsAndHeadingContainer}>
-          <Typography className={styles.skillsHeader}>
-            {isSwedishCv ? "Grundläggande" : "Basic"}
-          </Typography>
-          <div className={styles.groupedSkillsContainer}>
-            {basicSkills.map((bs) => (
-              <p className={styles.skillBasic} key={bs.skillName}>
-                {bs.skillName}
-              </p>
-            ))}
+        )}
+        {basicSkills && basicSkills.length && (
+          <div className={styles.groupedSkillsAndHeadingContainer}>
+            <Typography className={styles.skillsHeader}>
+              {isSwedishCv ? "Grundläggande" : "Basic"}
+            </Typography>
+            <div className={styles.groupedSkillsContainer}>
+              {basicSkills.map((bs) => (
+                <p className={styles.skillBasic} key={bs.skillName}>
+                  {bs.skillName}
+                </p>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

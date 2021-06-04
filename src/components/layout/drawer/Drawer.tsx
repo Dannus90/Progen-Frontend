@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core";
 import { ClassNameMap } from "@material-ui/core/styles/withStyles";
 import { ExitToAppRounded } from "@material-ui/icons";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { DrawerComponentClasses } from ".";
 import { GET_USERDATA, LOGOUT_USER } from "./gql";
 import {
@@ -98,7 +98,7 @@ const DrawerComponent: React.FC<Props> = ({
     [userDataState, data]
   );
 
-  useMemo(() => {
+  useEffect(() => {
     refetch();
     const userData = data?.userData.getFullUserInformation.userData;
     const user = data?.userData.getFullUserInformation.user;
@@ -115,14 +115,13 @@ const DrawerComponent: React.FC<Props> = ({
     return setFullUsername(t("drawer.welcome"));
   }, [userDataState, lng, data]);
 
-  const resolveProfileImage = (): string => {
-    return profileImage ? profileImage : "./assets/images/personPlaceholder.png";
-  };
-
   const drawerBody = (
     <>
       <Divider />
-      <Avatar className={styles.sizeAvatar} src={resolveProfileImage()} />
+      <Avatar
+        className={styles.sizeAvatar}
+        src={profileImage ?? "./assets/images/personPlaceholder.png"}
+      />
       {loading && (
         <Container className={styles.progressContainer}>
           <CircularProgress size={30} />

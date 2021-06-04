@@ -34,9 +34,6 @@ const EducationCvComponentWrapper: React.FC<Props> = ({
 
   const educationComponentStyles = makeStyles({
     educationCvComponentWrapperStyles: {
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
       marginBottom: theme.customSpacings.xs,
       paddingBottom: theme.customSpacings.xs,
       pageBreakInside: "avoid"

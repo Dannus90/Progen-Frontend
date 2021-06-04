@@ -80,7 +80,7 @@
     "updateLanguage": "Update language"
   },
   "cvModal": {
-    "title": "Print cv",
+    "title": "Print CV",
     "mainContent": "Chose down below which language you would like to print out in.",
     "swedishCv": "Cv in swedish",
     "englishCv": "Cv in english"
@@ -89,7 +89,7 @@
     "printCv": "Print cv"
   },
   "fullCvInformation": {
-    "loadFail": "Failed loading cv information",
+    "loadFail": "Failed loading CV information",
     "generateCv": {
       "contact": "Contact",
       "workExperiences": "Work experience"

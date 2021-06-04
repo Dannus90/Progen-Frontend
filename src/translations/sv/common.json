@@ -80,16 +80,16 @@
     "updateLanguage": "Updatera språk"
   },
   "cvModal": {
-    "title": "Skriv ut cv",
-    "mainContent": "Välj nedan på vilket språk som du vill skriva ut ditt cv.",
-    "swedishCv": "Cv på svenska",
-    "englishCv": "Cv på engelska"
+    "title": "Skriv ut CV",
+    "mainContent": "Välj nedan på vilket språk som du vill skriva ut ditt CV.",
+    "swedishCv": "CV på svenska",
+    "englishCv": "CV på engelska"
   },
   "printCv": {
-    "printCv": "Skriv ut cv"
+    "printCv": "Skriv ut CV"
   },
   "fullCvInformation": {
-    "loadFail": "Kunde inte ladda cv information",
+    "loadFail": "Kunde inte ladda CV information",
     "generateCv": {
       "contact": "Kontakt",
       "workExperience": "Arbetslivserfarenhet"

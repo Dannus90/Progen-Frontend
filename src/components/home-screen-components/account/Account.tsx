@@ -84,6 +84,7 @@ const AccountComponent: React.FC<Props> = ({ styles }): JSX.Element => {
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("deleteAccount.password")}
                 size="small"
+                type="password"
                 fullWidth
               />
             </Grid>

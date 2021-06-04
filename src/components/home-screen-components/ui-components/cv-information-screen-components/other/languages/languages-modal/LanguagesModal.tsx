@@ -199,9 +199,7 @@ const LanguageModal: React.FC<Props> = ({
                 className={`${styles.alertStyle}`}
                 onClose={() => removeAlertDisplay()}
                 severity="error">
-                {error?.graphQLErrors.map(
-                  (err) => `${err.message}`
-                )}
+                {error?.graphQLErrors.map((err) => `${err.message}`)}
               </Alert>
             )}
             {deleteError && displayAlertMessage && (
@@ -209,9 +207,7 @@ const LanguageModal: React.FC<Props> = ({
                 className={`${styles.alertStyle}`}
                 onClose={() => removeAlertDisplay()}
                 severity="error">
-                {deleteError?.graphQLErrors.map(
-                  (err) => `${err.message}`
-                )}
+                {deleteError?.graphQLErrors.map((err) => `${err.message}`)}
               </Alert>
             )}
             {updateError && displayAlertMessage && (
@@ -219,9 +215,7 @@ const LanguageModal: React.FC<Props> = ({
                 className={`${styles.alertStyle}`}
                 onClose={() => removeAlertDisplay()}
                 severity="error">
-                {updateError?.graphQLErrors.map(
-                  (err) => `${err.message}`
-                )}
+                {updateError?.graphQLErrors.map((err) => `${err.message}`)}
               </Alert>
             )}
             <Container className={styles.submitButtonWrapper}>

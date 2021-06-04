@@ -105,6 +105,7 @@ const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element 
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("accountPasswordForm.newPassword")}
+                type="password"
                 size="small"
                 fullWidth
               />
@@ -120,6 +121,7 @@ const AccountPasswordFormComponent: React.FC<Props> = ({ styles }): JSX.Element 
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}
                 label={t("accountPasswordForm.oldPassword")}
+                type="password"
                 size="small"
                 fullWidth
               />

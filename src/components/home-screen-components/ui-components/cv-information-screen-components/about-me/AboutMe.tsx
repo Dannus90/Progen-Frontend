@@ -150,9 +150,7 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             className={`${styles.alertStyle}`}
             onClose={() => removeAlertDisplay()}
             severity="error">
-            {error?.graphQLErrors.map(
-              (err) => `${err.message}`
-            )}
+            {error?.graphQLErrors.map((err) => `${err.message}`)}
           </Alert>
         )}
         {displayAlertMessage && updateError && (
@@ -160,9 +158,7 @@ const AboutMeComponent: React.FC<Props> = ({ styles }): JSX.Element => {
             className={`${styles.alertStyle}`}
             onClose={() => removeAlertDisplay()}
             severity="error">
-            {updateError?.graphQLErrors.map(
-              (err) => `${err.message}`
-            )}
+            {updateError?.graphQLErrors.map((err) => `${err.message}`)}
           </Alert>
         )}
         <Button

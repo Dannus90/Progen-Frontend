@@ -111,6 +111,7 @@ const AccountEmailFormComponent: React.FC<Props> = ({ styles }): JSX.Element => 
                 name="password"
                 value={formData.password}
                 variant="outlined"
+                type="password"
                 onChange={handleInputChange}
                 inputProps={{ style: { fontSize: 14 } }}
                 InputLabelProps={{ style: { fontSize: 14 } }}

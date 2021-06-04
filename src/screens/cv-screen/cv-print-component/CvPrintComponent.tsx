@@ -53,14 +53,8 @@ const CvPrintComponent: React.FC<Props> = ({ styles, cvVersion }): JSX.Element =
             </Button>
           }>
           <AlertTitle>{t("fullCvInformation.loadFail")}</AlertTitle>
-          {error &&
-            error?.graphQLErrors.map(
-              (err) => `${err.message}`
-            )}
-          {error &&
-            error?.graphQLErrors.map(
-              (err) => `${err.message}`
-            )}
+          {error && error?.graphQLErrors.map((err) => `${err.message}`)}
+          {error && error?.graphQLErrors.map((err) => `${err.message}`)}
         </Alert>
       </div>
     );

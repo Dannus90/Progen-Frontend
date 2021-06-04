@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { truncate } from "fs/promises";
 
 type acceptedTypes = string | null | undefined;
 

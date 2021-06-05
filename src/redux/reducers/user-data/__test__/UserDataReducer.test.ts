@@ -1,6 +1,12 @@
 import { userDataSlice, initialState } from "./../userDataReducer";
 import { rootReducer } from "../../rootReducer";
-import { setHasLoaded, setName, setProfileImageData, setUserData } from "../actions";
+import {
+  setHasLoaded,
+  setHasNotLoaded,
+  setName,
+  setProfileImageData,
+  setUserData
+} from "../actions";
 
 describe("UserData Redux", () => {
   describe("User data redux setup is correct", () => {
@@ -80,7 +86,7 @@ describe("UserData Redux", () => {
 
       expect(state.beenLoaded).toEqual(true);
 
-      const updatedState = rootReducer.userDataState(state, setHasLoaded());
+      const updatedState = rootReducer.userDataState(state, setHasNotLoaded());
 
       expect(updatedState.beenLoaded).toEqual(false);
     });

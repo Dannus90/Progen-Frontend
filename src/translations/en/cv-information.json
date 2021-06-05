@@ -69,7 +69,7 @@
     "englishVersion": "English version"
   },
   "certificate": {
-    "createNew": "Create new",
+    "createNew": "Create new certificate/license",
     "modal": {
       "createNew": "Create new certificate/license",
       "edit": "Change or remove certificate/license"

@@ -69,7 +69,7 @@
     "englishVersion": "Engelsk version"
   },
   "certificate": {
-    "createNew": "Skapa ny",
+    "createNew": "Lägg till certifikat/license",
     "modal": {
       "createNew": "Skapa nytt certifikat/license",
       "edit": "Ändra eller ta bort certifikat/license"

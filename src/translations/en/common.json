@@ -117,5 +117,8 @@
     "dateIssued": "Date issued",
     "saveCertificateLicense": "Save certificate/license",
     "updateCertificateLicense": "Update certificate/license"
+  },
+  "notFound": {
+    "message": "404 - Not Found"
   }
 }

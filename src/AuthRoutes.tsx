@@ -5,6 +5,8 @@ import HomeScreen from "./screens/home-screen/index";
 import YourTeamScreen from "./screens/your-team-screen/index";
 import SupportScreen from "./screens/support-screen/index";
 import CvScreen, { CvTypes } from "./screens/cv-screen/index";
+import LandingScreen from "./screens/landing-screen/index";
+import NotFoundComponent from "./screens/not-found-screen/index";
 
 export const AuthRoutes: React.FC = () => {
   return (
@@ -22,6 +24,12 @@ export const AuthRoutes: React.FC = () => {
         path={routeFactory.cvPrintEn.main()}
         component={() => <CvScreen cvVersion={CvTypes.English} />}
       />
+      <Route
+        exact
+        path={routeFactory.appRoot()}
+        component={() => <LandingScreen componentToDisplay="login" />}
+      />
+      <Route path="*" exact={true} component={() => <NotFoundComponent />} />
     </>
   );
 };

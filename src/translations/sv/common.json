@@ -109,5 +109,8 @@
     "dateIssued": "Datum för utgivande",
     "saveCertificateLicense": "Spara certifikat/licens",
     "updateCertificateLicense": "Updatera certifikat/licens"
+  },
+  "notFound": {
+    "message": "404 - Sidan kunde ej hittas"
   }
 }
